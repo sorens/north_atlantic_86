@@ -40,6 +40,11 @@ public:
     _Grid(const std::string &name, GridType type, const int x, const int y) :
     _name(name), _type(type), _x(x), _y(y), _weather(Weather::random())
     {
+        if (_type == GridType::Ocean) {
+            // create a random water temperature to start, weather
+            // patterns will adjust it later. it will also change with the seasons
+            _water_temp = rand() % 35 + 15;
+        }
     }
     
     const std::string description() override
@@ -51,6 +56,8 @@ public:
         ss << ", type: " << GridTypeUtility::to_string(_type);
         if (!_name.empty())
             ss << ", name: '" << _name << "'";
+        if (_type == GridType::Ocean)
+            ss << ", water_temp: " << _water_temp;
         if (_weather) {
             ss << ", " << _weather->description();
         }
@@ -77,6 +84,11 @@ public:
     {
         return _y;
     }
+        
+    const int water_temperature() override
+    {
+        return _water_temp;
+    }
 
     const std::shared_ptr<Weather> weather() override
     {
@@ -94,6 +106,7 @@ private:
     int _y;
     GridType _type;
     std::vector<std::shared_ptr<Unit>> _units;
+    int _water_temp;
     std::shared_ptr<Weather> _weather;
 };
 
@@ -125,6 +138,11 @@ const int Grid::x()
 }
 
 const int Grid::y()
+{
+    return -1;
+}
+        
+const const int Grid::water_temperature()
 {
     return -1;
 }

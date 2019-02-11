@@ -40,6 +40,8 @@ int main(int argc, const char * argv[]) {
         auto map = game->map();
         auto portsmouth = map->at(2, 2);
         std::cout << portsmouth->description() << std::endl;
+        auto ocean = map->at(5, 4);
+        std::cout << "water_temperature at (5, 4): " << ocean->water_temperature() << std::endl;
     }
     catch(std::exception &e)
     {

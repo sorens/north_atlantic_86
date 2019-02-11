@@ -49,6 +49,10 @@ public:
     // return y-coordinate of this grid
     virtual const int y();
     
+    // return the water temperature at this location, if applicable
+    // if landmass or port/airbase, return -1
+    virtual const int water_temperature();
+    
     // return the current Weather for this grid
     virtual const std::shared_ptr<Weather> weather();
     

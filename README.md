@@ -54,6 +54,13 @@ std::cout << portsmouth->description() << std::endl;3
 ```
 
 ```c++
+auto ocean = map->at(5, 4);
+std::cout << "water_temperature at (5, 4): " << ocean->water_temperature() << std::endl;
+
+// e.g. water_temperature at (5, 4): 42
+```
+
+```c++
 // Return a list of the units at a coordinate. 
 // Throws MapOutOfBoundsException
 std::vector<std::shared_ptr<Unit>> map->units(int x, int y);
