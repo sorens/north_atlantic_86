@@ -38,8 +38,8 @@ int main(int argc, const char * argv[]) {
         game->display_map();
         game->display_weather();
         auto map = game->map();
-        auto grid = map->at(2, 2);
-        std::cout << grid->description() << std::endl;
+        auto portsmouth = map->at(2, 2);
+        std::cout << portsmouth->description() << std::endl;
     }
     catch(std::exception &e)
     {
