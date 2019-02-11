@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
+		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
+		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
+		61F7D0232210A32B009C3F34 /* unit_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0222210A32B009C3F34 /* unit_type.cpp */; };
+		61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0242210A381009C3F34 /* weather_type.cpp */; };
+		61F7D0292210A523009C3F34 /* weather.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0272210A523009C3F34 /* weather.cpp */; };
+		61F7D02C2210AF9B009C3F34 /* fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D02A2210AF9B009C3F34 /* fleet.cpp */; };
+		61F7D02F2210BDD3009C3F34 /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D02D2210BDD3009C3F34 /* map.cpp */; };
+		61F7D0322210BE81009C3F34 /* map_setup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0302210BE81009C3F34 /* map_setup.cpp */; };
+		61F7D0362211D972009C3F34 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0342211D972009C3F34 /* game.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		61F7D00D2210980D009C3F34 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
+		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
+		61F7D01A2210985D009C3F34 /* unit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit.hpp; sourceTree = "<group>"; };
+		61F7D01D22109C93009C3F34 /* unit_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_type.hpp; sourceTree = "<group>"; };
+		61F7D01F22109FD3009C3F34 /* grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grid.cpp; sourceTree = "<group>"; };
+		61F7D02022109FD3009C3F34 /* grid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grid.hpp; sourceTree = "<group>"; };
+		61F7D0222210A32B009C3F34 /* unit_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_type.cpp; sourceTree = "<group>"; };
+		61F7D0242210A381009C3F34 /* weather_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weather_type.cpp; sourceTree = "<group>"; };
+		61F7D0252210A381009C3F34 /* weather_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weather_type.hpp; sourceTree = "<group>"; };
+		61F7D0272210A523009C3F34 /* weather.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weather.cpp; sourceTree = "<group>"; };
+		61F7D0282210A523009C3F34 /* weather.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weather.hpp; sourceTree = "<group>"; };
+		61F7D02A2210AF9B009C3F34 /* fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fleet.cpp; sourceTree = "<group>"; };
+		61F7D02B2210AF9B009C3F34 /* fleet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fleet.hpp; sourceTree = "<group>"; };
+		61F7D02D2210BDD3009C3F34 /* map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map.cpp; sourceTree = "<group>"; };
+		61F7D02E2210BDD3009C3F34 /* map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map.hpp; sourceTree = "<group>"; };
+		61F7D0302210BE81009C3F34 /* map_setup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_setup.cpp; sourceTree = "<group>"; };
+		61F7D0312210BE81009C3F34 /* map_setup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map_setup.hpp; sourceTree = "<group>"; };
+		61F7D0332210BFAB009C3F34 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		61F7D0342211D972009C3F34 /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		61F7D0352211D972009C3F34 /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61F7D00C2210980D009C3F34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61F7D0062210980D009C3F34 = {
+			isa = PBXGroup;
+			children = (
+				61F7D0112210980D009C3F34 /* north_atlantic_86 */,
+				61F7D0102210980D009C3F34 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61F7D0102210980D009C3F34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61F7D00F2210980D009C3F34 /* north_atlantic_86 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61F7D0112210980D009C3F34 /* north_atlantic_86 */ = {
+			isa = PBXGroup;
+			children = (
+				61F7D0332210BFAB009C3F34 /* json.hpp */,
+				61F7D0122210980D009C3F34 /* main.cpp */,
+				61F7D0192210985D009C3F34 /* unit.cpp */,
+				61F7D01A2210985D009C3F34 /* unit.hpp */,
+				61F7D01D22109C93009C3F34 /* unit_type.hpp */,
+				61F7D0222210A32B009C3F34 /* unit_type.cpp */,
+				61F7D01F22109FD3009C3F34 /* grid.cpp */,
+				61F7D02022109FD3009C3F34 /* grid.hpp */,
+				61F7D0242210A381009C3F34 /* weather_type.cpp */,
+				61F7D0252210A381009C3F34 /* weather_type.hpp */,
+				61F7D0272210A523009C3F34 /* weather.cpp */,
+				61F7D0282210A523009C3F34 /* weather.hpp */,
+				61F7D02A2210AF9B009C3F34 /* fleet.cpp */,
+				61F7D02B2210AF9B009C3F34 /* fleet.hpp */,
+				61F7D02D2210BDD3009C3F34 /* map.cpp */,
+				61F7D02E2210BDD3009C3F34 /* map.hpp */,
+				61F7D0302210BE81009C3F34 /* map_setup.cpp */,
+				61F7D0312210BE81009C3F34 /* map_setup.hpp */,
+				61F7D0342211D972009C3F34 /* game.cpp */,
+				61F7D0352211D972009C3F34 /* game.hpp */,
+			);
+			path = north_atlantic_86;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61F7D00E2210980D009C3F34 /* north_atlantic_86 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61F7D0162210980D009C3F34 /* Build configuration list for PBXNativeTarget "north_atlantic_86" */;
+			buildPhases = (
+				61F7D00B2210980D009C3F34 /* Sources */,
+				61F7D00C2210980D009C3F34 /* Frameworks */,
+				61F7D00D2210980D009C3F34 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = north_atlantic_86;
+			productName = north_atlantic_86;
+			productReference = 61F7D00F2210980D009C3F34 /* north_atlantic_86 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61F7D0072210980D009C3F34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "STEPHEN ORENS";
+				TargetAttributes = {
+					61F7D00E2210980D009C3F34 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 61F7D00A2210980D009C3F34 /* Build configuration list for PBXProject "north_atlantic_86" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 61F7D0062210980D009C3F34;
+			productRefGroup = 61F7D0102210980D009C3F34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61F7D00E2210980D009C3F34 /* north_atlantic_86 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61F7D00B2210980D009C3F34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61F7D0132210980D009C3F34 /* main.cpp in Sources */,
+				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
+				61F7D02C2210AF9B009C3F34 /* fleet.cpp in Sources */,
+				61F7D0362211D972009C3F34 /* game.cpp in Sources */,
+				61F7D01B2210985D009C3F34 /* unit.cpp in Sources */,
+				61F7D02122109FD3009C3F34 /* grid.cpp in Sources */,
+				61F7D0292210A523009C3F34 /* weather.cpp in Sources */,
+				61F7D02F2210BDD3009C3F34 /* map.cpp in Sources */,
+				61F7D0322210BE81009C3F34 /* map_setup.cpp in Sources */,
+				61F7D0232210A32B009C3F34 /* unit_type.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		61F7D0142210980D009C3F34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		61F7D0152210980D009C3F34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		61F7D0172210980D009C3F34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61F7D0182210980D009C3F34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61F7D00A2210980D009C3F34 /* Build configuration list for PBXProject "north_atlantic_86" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61F7D0142210980D009C3F34 /* Debug */,
+				61F7D0152210980D009C3F34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61F7D0162210980D009C3F34 /* Build configuration list for PBXNativeTarget "north_atlantic_86" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61F7D0172210980D009C3F34 /* Debug */,
+				61F7D0182210980D009C3F34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61F7D0072210980D009C3F34 /* Project object */;
+}
