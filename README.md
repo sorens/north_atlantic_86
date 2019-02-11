@@ -137,3 +137,7 @@ auto weather_type = weather->type();
 ## Unit
 
 A unit will describe a ship, an aircraft or a port/airbase. Each unit will have different characteristics. Ships can move, Aircraft remain fixed to a ship or base but can attack and defend if scrambled, ports and airbases have aircraft, troops and supplies. A unit will be defined via inheritance and composition.
+
+## Example
+
+![map_weather_grid](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/map_weather_grid.png "Map and Weather")

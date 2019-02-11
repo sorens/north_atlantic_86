@@ -32,6 +32,8 @@ public:
     void display_map() override
     {
         // TODO inject std::cout
+        
+        std::cout << "**** MAP ****" << std::endl;
         auto grid = _map->grid();
         auto size = grid.size();
         int side = std::pow(size, 0.5);
@@ -62,12 +64,15 @@ public:
             }
         }
                     
-        std::cout << std::endl;
+        std::cout << "*************" << std::endl;
     }
     
     void display_weather() override
     {
         // TODO inject std::cout
+
+        std::cout << "** WEATHER **" << std::endl;
+        
         auto grid = _map->grid();
         auto size = grid.size();
         int side = std::pow(size, 0.5);
@@ -93,6 +98,7 @@ public:
                 std::cout << std::endl;
             }
         }
+        std::cout << "*************" << std::endl;
     }
     
     void initialize(std::vector<std::shared_ptr<MapSetup>> map_data)
