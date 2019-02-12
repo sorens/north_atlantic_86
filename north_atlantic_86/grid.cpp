@@ -142,7 +142,7 @@ const int Grid::y()
     return -1;
 }
         
-const const int Grid::water_temperature()
+const int Grid::water_temperature()
 {
     return -1;
 }
