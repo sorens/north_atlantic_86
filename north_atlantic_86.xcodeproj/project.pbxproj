@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		61148E1B2213460000AFF3F1 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E192213460000AFF3F1 /* player.cpp */; };
+		61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E1F22135B9600AFF3F1 /* ship_db.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -35,6 +36,8 @@
 /* Begin PBXFileReference section */
 		61148E192213460000AFF3F1 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		61148E1A2213460000AFF3F1 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		61148E1F22135B9600AFF3F1 /* ship_db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ship_db.cpp; sourceTree = "<group>"; };
+		61148E2022135B9600AFF3F1 /* ship_db.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ship_db.hpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 				61F7D0282210A523009C3F34 /* weather.hpp */,
 				61F7D0242210A381009C3F34 /* weather_type.cpp */,
 				61F7D0252210A381009C3F34 /* weather_type.hpp */,
+				61148E1F22135B9600AFF3F1 /* ship_db.cpp */,
+				61148E2022135B9600AFF3F1 /* ship_db.hpp */,
 			);
 			path = north_atlantic_86;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61F7D0132210980D009C3F34 /* main.cpp in Sources */,
+				61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */,
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
 				61F7D02C2210AF9B009C3F34 /* fleet.cpp in Sources */,
 				61F7D0362211D972009C3F34 /* game.cpp in Sources */,
