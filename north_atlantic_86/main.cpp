@@ -35,6 +35,8 @@ int main(int argc, const char * argv[]) {
         
         auto setup_data = MapSetup::factory(map_data);
         auto game = Game::factory(setup_data);
+        game->add_nato_player("Sally");
+        game->add_soviet_player("Yuri");
         game->display_map();
         game->display_weather();
         auto map = game->map();

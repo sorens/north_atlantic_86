@@ -18,6 +18,16 @@ public:
     {
     }
     
+    void add_nato_player(const std::string &name) override
+    {
+        _player_nato = Player::factory(Alliance::NATO, name);
+    }
+    
+    void add_soviet_player(const std::string &name) override
+    {
+        _player_soviet = Player::factory(Alliance::SOVIET, name);
+    }
+    
     std::string current_time() override
     {
         // TODO convert _current_turn into a human-readable string
@@ -33,7 +43,9 @@ public:
     {
         // TODO inject std::cout
         
-        std::cout << "**** MAP ****" << std::endl;
+        std::cout << "NATO:     " << _player_nato->name() << std::endl;
+        std::cout << "SOVIET:   " << _player_soviet->name() << std::endl;
+        std::cout << "======= MAP =======" << std::endl;
         auto grid = _map->grid();
         auto size = grid.size();
         int side = std::pow(size, 0.5);
@@ -64,7 +76,7 @@ public:
             }
         }
                     
-        std::cout << "*************" << std::endl;
+        std::cout << "===================" << std::endl;
     }
     
     void display_weather() override
@@ -115,13 +127,33 @@ public:
     {
         // TODO implemenent
     }
+    
+    std::shared_ptr<Player> player_nato() override
+    {
+        return _player_nato;
+    }
+
+    std::shared_ptr<Player> player_soviet() override
+    {
+        return _player_soviet;
+    }
 
 private:
     std::shared_ptr<Map> _map;
     int _current_turn;
+    std::shared_ptr<Player> _player_nato;
+    std::shared_ptr<Player> _player_soviet;
 };
 
 #pragma mark Game
+        
+void Game::add_nato_player(const std::string &name)
+{
+}
+
+void Game::add_soviet_player(const std::string &name)
+{
+}
 
 std::string Game::current_time()
 {
@@ -156,4 +188,14 @@ std::shared_ptr<Map> Game::map()
 
 void Game::next_turn()
 {
+}
+
+std::shared_ptr<Player> Game::player_nato()
+{
+    return nullptr;
+}
+
+std::shared_ptr<Player> Game::player_soviet()
+{
+    return nullptr;
 }

@@ -10,10 +10,17 @@
 
 #include "map.hpp"
 #include "map_setup.hpp"
+#include "player.hpp"
 
 class Game
 {
 public:
+    // add the nato player
+    virtual void add_nato_player(const std::string &name);
+    
+    // add the soviet player
+    virtual void add_soviet_player(const std::string &name);
+    
     // return the current time
     virtual std::string current_time();
     
@@ -34,4 +41,10 @@ public:
     
     // run the next turn
     virtual void next_turn();
+    
+    // return the nato player
+    virtual std::shared_ptr<Player> player_nato();
+    
+    // return the soviet player
+    virtual std::shared_ptr<Player> player_soviet();
 };
