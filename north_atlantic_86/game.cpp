@@ -8,6 +8,7 @@
 
 #include "game.hpp"
 #include <iostream>     // TODO inject
+#include "affiliation_type.hpp"
 
 #pragma mark _Game
 
@@ -20,12 +21,12 @@ public:
     
     void add_nato_player(const std::string &name) override
     {
-        _player_nato = Player::factory(Alliance::NATO, name);
+        _player_nato = Player::factory(AffiliationType::NATO, name);
     }
     
     void add_soviet_player(const std::string &name) override
     {
-        _player_soviet = Player::factory(Alliance::SOVIET, name);
+        _player_soviet = Player::factory(AffiliationType::SOVIET, name);
     }
     
     std::string current_time() override

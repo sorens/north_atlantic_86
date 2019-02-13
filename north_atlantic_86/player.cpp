@@ -14,8 +14,8 @@
 class _Player : public Player
 {
 public:
-    _Player(Alliance alliance, const std::string &name) :
-    _alliance(alliance), _name(name), _score(0)
+    _Player(AffiliationType affiliation, const std::string &name) :
+    _affiliation(affiliation), _name(name), _score(0)
     {
         uuid_t uuid;
         uuid_generate(uuid);
@@ -24,9 +24,9 @@ public:
         _id = std::string(uuid_string);
     }
     
-    const Alliance alliance() override
+    const AffiliationType affiliation() override
     {
-        return _alliance;
+        return _affiliation;
     }
     
     const std::string id() override
@@ -50,7 +50,7 @@ public:
     }
     
 private:
-    Alliance _alliance;
+    AffiliationType _affiliation;
     std::vector<std::shared_ptr<Fleet>> _fleets;
     std::string _id;
     std::string _name;
@@ -60,12 +60,12 @@ private:
 
 #pragma mark Player
 
-const Alliance Player::alliance()
+const AffiliationType Player::affiliation()
 {
-    return Alliance::Unknown;
+    return AffiliationType::UNKNOWN;
 }
 
-const std::string Player::alliance_to_string(const Alliance alliance)
+const std::string Player::alliance_to_string(const AffiliationType affiliation)
 {
     // TODO implement
     return "";
@@ -73,9 +73,9 @@ const std::string Player::alliance_to_string(const Alliance alliance)
 
 // const std::vector<std::shared_ptr<Base>> Player::bases()
 
-std::shared_ptr<Player> Player::factory(const Alliance alliance, const std::string &name)
+std::shared_ptr<Player> Player::factory(const AffiliationType affiliation, const std::string &name)
 {
-    return std::make_shared<_Player>(alliance, name);
+    return std::make_shared<_Player>(affiliation, name);
 }
 
 const std::vector<std::shared_ptr<Fleet>> Player::fleets()

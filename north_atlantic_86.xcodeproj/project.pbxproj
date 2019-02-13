@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		61148E1B2213460000AFF3F1 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E192213460000AFF3F1 /* player.cpp */; };
 		61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E1F22135B9600AFF3F1 /* ship_db.cpp */; };
+		61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E482214CD0400AFF3F1 /* affiliation_type.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -38,6 +39,8 @@
 		61148E1A2213460000AFF3F1 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
 		61148E1F22135B9600AFF3F1 /* ship_db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ship_db.cpp; sourceTree = "<group>"; };
 		61148E2022135B9600AFF3F1 /* ship_db.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ship_db.hpp; sourceTree = "<group>"; };
+		61148E462214CB9100AFF3F1 /* affiliation_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = affiliation_type.hpp; sourceTree = "<group>"; };
+		61148E482214CD0400AFF3F1 /* affiliation_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = affiliation_type.cpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				61F7D0332210BFAB009C3F34 /* json.hpp */,
+				61148E462214CB9100AFF3F1 /* affiliation_type.hpp */,
+				61148E482214CD0400AFF3F1 /* affiliation_type.cpp */,
 				61F7D0122210980D009C3F34 /* main.cpp */,
 				61F7D02A2210AF9B009C3F34 /* fleet.cpp */,
 				61F7D02B2210AF9B009C3F34 /* fleet.hpp */,
@@ -178,6 +183,7 @@
 			files = (
 				61F7D0132210980D009C3F34 /* main.cpp in Sources */,
 				61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */,
+				61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */,
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
 				61F7D02C2210AF9B009C3F34 /* fleet.cpp in Sources */,
 				61F7D0362211D972009C3F34 /* game.cpp in Sources */,

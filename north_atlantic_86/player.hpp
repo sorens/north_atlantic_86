@@ -9,29 +9,24 @@
 #pragma once
 
 #include <vector>
+#include "affiliation_type.hpp"
 #include "fleet.hpp"
+#include "unit.hpp"
 
-enum class Alliance : int
-{
-    Unknown = -1,
-    NATO,
-    SOVIET
-};
-    
 class Player
 {
 public:
-    // return the player's alliance (e.g. NATO, SOVIET)
-    virtual const Alliance alliance();
+    // return the player's affiliation (e.g. NATO, SOVIET)
+    virtual const AffiliationType affiliation();
     
     // convert Alliance to a human-readable string
-    static const std::string alliance_to_string(const Alliance alliance);
+    static const std::string alliance_to_string(const AffiliationType affiliation);
     
     // return a list of ports and airbases
     // const std::vector<std::shared_ptr<Base>> bases();
     
     // factory method to create a player
-    static std::shared_ptr<Player> factory(const Alliance alliance, const std::string &name);
+    static std::shared_ptr<Player> factory(const AffiliationType affiliation, const std::string &name);
 
     // return a list of fleets
     virtual const std::vector<std::shared_ptr<Fleet>> fleets();
