@@ -6,9 +6,10 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
-#include "game.hpp"
+#include <cmath>
 #include <iostream>     // TODO inject
 #include "affiliation_type.hpp"
+#include "game.hpp"
 
 #pragma mark _Game
 

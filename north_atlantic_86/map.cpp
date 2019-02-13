@@ -8,8 +8,9 @@
 
 #include "grid.hpp"
 #include "map.hpp"
-#include <sstream>
+#include <cmath>
 #include <iostream>
+#include <sstream>
 #include <time.h>
 
 # pragma mark _Map
