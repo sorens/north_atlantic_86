@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include "json.hpp"
 #include <vector>
 
 class SetupException : public std::exception
@@ -55,9 +54,6 @@ public:
         return "name is too long, should 32 characters or less";
     }
 };
-
-// for convenience
-using json = nlohmann::json;
 
 enum class MapSetupType : int
 {

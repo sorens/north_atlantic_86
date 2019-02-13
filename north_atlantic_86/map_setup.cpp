@@ -6,9 +6,11 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "json11.hpp"
 #include "map_setup.hpp"
-#include <sstream>
+#include <cmath>
 #include <iostream>
+#include <sstream>
 
 #pragma mark MapSetupUtility
 
@@ -96,11 +98,18 @@ std::vector<std::shared_ptr<MapSetup>> MapSetup::factory(const std::string json_
     if (json_import.empty())
         throw SetupException();
     
-    auto json = json::parse(json_import);
-    auto map = json["map"];     // array of integers
-    auto names = json["names"]; // array of names
+    std::string error;
+    auto json = json11::Json::parse(json_import, error);
+    if (!json["map"].is_array())
+        throw NoMapSetupException();
     
-    if (map.empty() || !map.is_array())
+    if (!json["names"].is_array())
+        throw NoMapSetupException();
+    
+    auto map = json["map"].array_items();     // array of integers
+    auto names = json["names"].array_items(); // array of names
+    
+    if (map.empty())
         throw NoMapSetupException();
     
     auto map_size = map.size();
@@ -115,14 +124,14 @@ std::vector<std::shared_ptr<MapSetup>> MapSetup::factory(const std::string json_
 
     for (auto &element : map) {
         std::string name;
-        MapSetupType type = static_cast<MapSetupType>(element);
+        MapSetupType type = static_cast<MapSetupType>(element.int_value());
         
         if (type == MapSetupType::Airbase || type == MapSetupType::Port
             ) {
-            if (names.empty() || !names.is_array())
+            if (names.empty())
                 throw new NameSetupException();
             
-            name = names[name_index++];
+            name = names[name_index++].string_value();
             
             if (name.length() > 32)
                 throw new NameTooLongSetupException();
