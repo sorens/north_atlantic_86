@@ -60,6 +60,21 @@ private:
 
 #pragma mark Unit
 
+const int Unit::anti_aircraft_gun()
+{
+    return 0;
+}
+
+const int Unit::carco_capacity()
+{
+    return 0;
+}
+
+const int Unit::defense_factor()
+{
+    return 0;
+}
+
 const std::string Unit::description()
 {
     return "";
@@ -75,7 +90,17 @@ const std::string Unit::id()
     return "";
 }
 
+const int Unit::main_gun()
+{
+    return 0;
+}
+
 const int Unit::max_speed()
+{
+    return 0;
+}
+
+const int Unit::missile_defense()
 {
     return 0;
 }
@@ -88,4 +113,9 @@ const std::string Unit::name()
 const UnitType Unit::type()
 {
     return UnitType::Unknown;
+}
+
+const std::string Unit::unit_class()
+{
+    return "";
 }

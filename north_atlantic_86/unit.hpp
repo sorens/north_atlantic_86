@@ -16,13 +16,13 @@ class Unit
 {
 public:
     // value for unit anti-aircraft gun
-    virtual int anti_aircraft_gun();
+    virtual const int anti_aircraft_gun();
 
     // value for cargo capacity
-    virtual int carco_capacity();
+    virtual const int carco_capacity();
 
     // value for defense factor
-    virtual int defense_factor();
+    virtual const int defense_factor();
 
     // return a human-readable string that describes a unit
     virtual const std::string description();
@@ -34,13 +34,13 @@ public:
     virtual const std::string id();
     
     // value for unit main gun
-    virtual int main_gun();
+    virtual const int main_gun();
 
     // return the unit maximum speed
     virtual const int max_speed();
     
     // value for missile defense
-    virtual int missile_defense();
+    virtual const int missile_defense();
     
     // return the name of this unit
     virtual const std::string name();
@@ -49,5 +49,5 @@ public:
     virtual const UnitType type();
     
     // return the unit classification (e.g. CVN)
-    virtual std::string unit_class();
+    virtual const std::string unit_class();
 };
