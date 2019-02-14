@@ -10,51 +10,6 @@
 
 #include <vector>
 
-class SetupException : public std::exception
-{
-public:
-    virtual const char * what() noexcept
-    {
-        return "setup failed";
-    }
-};
-
-class NoMapSetupException : public SetupException
-{
-public:
-    virtual const char * what() noexcept
-    {
-        return "map missing from json data";
-    }
-};
-
-class MapNotSquareSetupException : public SetupException
-{
-public:
-    virtual const char * what() noexcept
-    {
-        return "map data must be N x N in size";
-    }
-};
-
-class NameSetupException : public SetupException
-{
-public:
-    virtual const char * what() noexcept
-    {
-        return "name missing from json data";
-    }
-};
-
-class NameTooLongSetupException : public SetupException
-{
-public:
-    virtual const char * what() noexcept
-    {
-        return "name is too long, should 32 characters or less";
-    }
-};
-
 enum class MapSetupType : int
 {
     Unknown = -1,

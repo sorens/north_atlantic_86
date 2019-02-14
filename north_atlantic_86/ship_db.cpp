@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include "json11.hpp"
 #include "ship_db.hpp"
+#include "ship_data_exception.hpp"
 #include "unit.hpp"
 
 using namespace json11;
@@ -21,7 +22,7 @@ public:
     void initialize(const std::string &json_import, AffiliationType affiliation) 
     {
         if (json_import.empty())
-            throw new import_failed_ship_data_exception();
+            throw import_failed_ship_data_exception();
             
         std::string error;
         auto json = Json::parse(json_import, error);

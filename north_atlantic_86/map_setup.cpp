@@ -8,6 +8,7 @@
 
 #include "json11.hpp"
 #include "map_setup.hpp"
+#include "map_setup_exception.hpp"
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -96,27 +97,27 @@ const std::string MapSetup::description()
 std::vector<std::shared_ptr<MapSetup>> MapSetup::factory(const std::string json_import)
 {
     if (json_import.empty())
-        throw SetupException();
+        throw setup_exception();
     
     std::string error;
     auto json = json11::Json::parse(json_import, error);
     if (!json["map"].is_array())
-        throw NoMapSetupException();
+        throw no_map_setup_exception("json 'map' is not an array");
     
     if (!json["names"].is_array())
-        throw NoMapSetupException();
+        throw no_map_setup_exception("json 'names' is not an array");
     
     auto map = json["map"].array_items();     // array of integers
     auto names = json["names"].array_items(); // array of names
     
     if (map.empty())
-        throw NoMapSetupException();
+        throw no_map_setup_exception("json 'map' is empty");
     
     auto map_size = map.size();
     int n = std::pow(map_size, 0.5);
     
     if (n * n != map_size)
-        throw MapNotSquareSetupException();
+        throw map_not_square_setup_exception();
 
     int x = 0, y = 0;
     int name_index = 0;
@@ -129,12 +130,12 @@ std::vector<std::shared_ptr<MapSetup>> MapSetup::factory(const std::string json_
         if (type == MapSetupType::Airbase || type == MapSetupType::Port
             ) {
             if (names.empty())
-                throw new NameSetupException();
+                throw new name_setup_exception();
             
             name = names[name_index++].string_value();
             
             if (name.length() > 32)
-                throw new NameTooLongSetupException();
+                throw new name_too_long_setup_exception();
         }
         
         auto setup = std::make_shared<_MapSetup>(type, x, y, name);
