@@ -13,7 +13,9 @@
 #include "map_setup.hpp"
 #include "mutable_unit.hpp"
 #include "ship_db.hpp"
+#include <fstream>
 #include <iostream>
+#include <sys/stat.h>
 
 int main(int argc, const char * argv[]) {
     try
@@ -36,18 +38,50 @@ int main(int argc, const char * argv[]) {
         }
         )";
         
-        auto ship_data = R"(
-        {
-            "ships": [
-                ["CVN-68", "Nimitz", 0, 0, 75, 30, 72, 97, 1, "cvn", 1],
-                ["CVN-70", "Vinson", 0, 0, 75, 30, 72, 97, 1, "cvn", 1]
-            ]
+        // auto ship_data = R"(
+        // {
+        //     "ships": [
+        //         ["CVN-68", "Nimitz", 0, 0, 75, 30, 72, 97, 1, "cvn", 1],
+        //         ["CVN-70", "Vinson", 0, 0, 75, 30, 72, 97, 1, "cvn", 1]
+        //     ]
+        // }
+        // )";
+
+        // read in ship_data.json
+        std::string path = "ship_data.json";
+        std::string ship_data;
+        struct stat ss;
+        size_t size = 0;
+        if (stat(path.c_str(), &ss) >= 0)
+            size = ss.st_size;
+
+        if (size > 0) {
+            std::fstream file;
+            file.open("ship_data.json", std::ios_base::in);
+            char *buf = (char *)malloc((size + 1) * sizeof(char));
+            buf[size] = '\0';
+            if (file.good()) {
+                // auto position_before = file.tellg();
+
+                file.read(buf, size);
+                // auto read_bytes = file.tellg() - position_before;
+                // TODO runtime_assert(read_bytes == size);
+                
+                if (!file.good() && !file.eof())
+                    throw std::runtime_error(std::string("failed to read all of ship_data.json"));
+                
+                ship_data = std::string(buf, size);
+            }
+
+            file.close();
+            free(buf);
         }
-        )";
-        
+
         auto ships = ShipDB::factory(ship_data, AffiliationType::NATO);
         auto nimitz = ships->find_unit("CVN-68");
         std::cout << nimitz->description() << std::endl;
+        auto ticonderoga = ships->find_unit("CG-47");
+        std::cout << ticonderoga->description() << std::endl;
         
         auto setup_data = MapSetup::factory(map_data);
         auto game = Game::factory(setup_data);
@@ -72,7 +106,11 @@ int main(int argc, const char * argv[]) {
     }
     catch(std::exception &e)
     {
-        std::cerr << "error! '" << e.what() << "'" << std::endl;
+        std::cout << "error! '" << e.what() << "'" << std::endl;
+    }
+    catch(...)
+    {
+        std::cout << "ruh roh" << std::endl;
     }
     
     return 0;
