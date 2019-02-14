@@ -10,6 +10,7 @@
 
 #include <memory>
 #include <string>
+#include "affiliation_type.hpp"
 #include "unit_type.hpp"
 
 class Unit
@@ -19,7 +20,7 @@ public:
     virtual const int anti_aircraft_gun();
 
     // value for cargo capacity
-    virtual const int carco_capacity();
+    virtual const int cargo_capacity();
 
     // value for defense factor
     virtual const int defense_factor();
@@ -28,7 +29,10 @@ public:
     virtual const std::string description();
     
     // factory method to create a unit
-    std::shared_ptr<Unit> factory(const std::string &id, const std::string &name, const UnitType type);
+    static std::shared_ptr<Unit> factory(const std::string &id, const std::string &name, const UnitType type);
+    
+    // factory method to create a unit
+    static std::shared_ptr<Unit> factory(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation);
 
     // return the unique ID of this unit
     virtual const std::string id();

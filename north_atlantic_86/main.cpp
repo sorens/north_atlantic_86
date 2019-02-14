@@ -6,10 +6,12 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "affiliation_type.hpp"
 #include "json11.hpp"
 #include "game.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
+#include "ship_db.hpp"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
@@ -32,6 +34,19 @@ int main(int argc, const char * argv[]) {
                       "Centersville"]
         }
         )";
+        
+        auto ship_data = R"(
+        {
+            "ships": [
+                ["CVN-68", "Nimitz", 0, 0, 75, 30, 72, 97, 1, "cvn", 1],
+                ["CVN-70", "Vinson", 0, 0, 75, 30, 72, 97, 1, "cvn", 1]
+            ]
+        }
+        )";
+        
+        auto ships = ShipDB::factory(ship_data, AffiliationType::NATO);
+        auto nimitz = ships->find_unit("CVN-68");
+        std::cout << nimitz->description() << std::endl;
         
         auto setup_data = MapSetup::factory(map_data);
         auto game = Game::factory(setup_data);
