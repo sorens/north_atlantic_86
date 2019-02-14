@@ -11,6 +11,7 @@
 #include "game.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
+#include "mutable_unit.hpp"
 #include "ship_db.hpp"
 #include <iostream>
 
@@ -59,6 +60,15 @@ int main(int argc, const char * argv[]) {
         std::cout << portsmouth->description() << std::endl;
         auto ocean = map->at(5, 4);
         std::cout << "water_temperature at (5, 4): " << ocean->water_temperature() << std::endl;
+        
+        auto nimitz_mutable = MutableUnit::factory(nimitz);
+        while (!nimitz_mutable->is_sunk()) {
+            nimitz_mutable->apply_damage(10);
+            std::cout << "Nimitz damage: " << nimitz_mutable->damage() << std::endl;
+        }
+        
+        if (nimitz_mutable->is_sunk())
+            std::cout << "The Nimitz has been sunk!" << std::endl;
     }
     catch(std::exception &e)
     {
