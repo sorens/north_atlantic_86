@@ -26,7 +26,7 @@ public:
         std::string error;
         auto json = Json::parse(json_import, error);
         if (!error.empty())     // TODO customize exception to accept error string
-            throw new import_failed_ship_data_exception();
+            throw import_failed_ship_data_exception();
         
         Json data = json["ships"];
         

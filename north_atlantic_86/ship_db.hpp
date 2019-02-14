@@ -10,6 +10,7 @@
 
 #include "affiliation_type.hpp"
 #include "unit.hpp"
+#include <stdexcept>
 
 class ship_data_exception : public std::exception
 {
@@ -20,7 +21,7 @@ public:
     }
 };
 
-class import_failed_ship_data_exception : ship_data_exception
+class import_failed_ship_data_exception : public ship_data_exception
 {
 public:
     virtual const char * what() noexcept
@@ -29,7 +30,7 @@ public:
     }
 };
 
-class no_ship_data_ship_data_exception : ship_data_exception
+class no_ship_data_ship_data_exception : public ship_data_exception
 {
 public:
     virtual const char * what() noexcept
