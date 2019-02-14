@@ -39,6 +39,20 @@ public:
     }
 };
 
+class duplicate_id_ship_data_exception : public ship_data_exception
+{
+public:
+    duplicate_id_ship_data_exception(const std::string &id) : _id(id) {}
+
+    virtual const char *what() const throw()
+    {
+        return std::string("duplicate ID for a unit found: '" + _id + "'").c_str();
+    }
+
+private:
+    std::string _id;
+};
+
 class ShipDB
 {
 public:

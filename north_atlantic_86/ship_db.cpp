@@ -53,6 +53,9 @@ public:
             // TODO look up class_id and convert to enumerated unit_class
             auto ship = Unit::factory(id, name, UnitType::Ship, unit_class, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, static_cast<AffiliationType>(affiliation_id));
             
+            if (_data.find(id) != _data.end())
+                throw duplicate_id_ship_data_exception(id);
+
             _data.insert(std::make_pair(id, ship));
         }
     }
