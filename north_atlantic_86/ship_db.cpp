@@ -39,20 +39,26 @@ public:
             if (!element.is_array())
                 throw new import_failed_ship_data_exception();
                 
-            std::string id = element[0].string_value();             // e.g. CVN-68
-            std::string name = element[1].string_value();           // e.g. Nimitz
-            int main_gun = element[2].int_value();                  // e.g. 0
-            int aa_gun = element[3].int_value();                    // e.g. 0
-            int missile_def = element[4].int_value();               // e.g. 75
-            int max_speed = element[5].int_value();                 // e.g. 30
-            int cargo_capacity = element[6].int_value();            // e.g. 72
-            int defense_factor = element[7].int_value();            // e.g. 97
-            int class_id = element[8].int_value();                  // e.g. 1
-            std::string unit_class = element[9].string_value();     // e.g. cvn
-            int affiliation_id = element[10].int_value();            // e.g. 1
+            std::string id = element[0].string_value();                 // e.g. CVN-68
+            std::string name = element[1].string_value();               // e.g. Nimitz
+            int main_gun = element[2].int_value();                      // e.g. 0
+            int aa_gun = element[3].int_value();                        // e.g. 0
+            int missile_def = element[4].int_value();                   // e.g. 75
+            int max_speed = element[5].int_value();                     // e.g. 30
+            int cargo_capacity = element[6].int_value();                // e.g. 72
+            int defense_factor = element[7].int_value();                // e.g. 97
+            int class_id = element[8].int_value();                      // e.g. 1
+            std::string ship_prefix = element[9].string_value();        // e.g. cvn
+            std::string unit_class = element[10].string_value();        // e.g. Nimitz  // TODO incorporate unit_class
+            std::string affiliation_id = element[11].string_value();    // e.g. NATO
+            
+            AffiliationType affiliation_type = AffiliationType::NATO;
+            if (affiliation_id == "USSR") {
+                affiliation_type = AffiliationType::SOVIET;
+            }
             
             // TODO look up class_id and convert to enumerated unit_class
-            auto ship = Unit::factory(id, name, UnitType::Ship, unit_class, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, static_cast<AffiliationType>(affiliation_id));
+            auto ship = Unit::factory(id, name, UnitType::Ship, unit_class, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, affiliation_type);
             
             if (_data.find(id) != _data.end())
                 throw duplicate_id_ship_data_exception(id);

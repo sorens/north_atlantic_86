@@ -12,6 +12,7 @@
 #include "map.hpp"
 #include "map_setup.hpp"
 #include "mutable_unit.hpp"
+#include "ship_data_exception.hpp"
 #include "ship_db.hpp"
 #include <fstream>
 #include <iostream>
@@ -103,14 +104,21 @@ int main(int argc, const char * argv[]) {
         
         if (nimitz_mutable->is_sunk())
             std::cout << "The Nimitz has been sunk!" << std::endl;
+        
+        auto sub = ships->find_unit("SSN-V31");
+        std::cout << sub->description() << std::endl;
+    }
+    catch(ship_data_exception e)
+    {
+        std::cout << "ship_data_exception => '" << e.what() << "'" << std::endl;
     }
     catch(std::exception &e)
     {
-        std::cout << "error! '" << e.what() << "'" << std::endl;
+        std::cout << "std::exception => '" << e.what() << "'" << std::endl;
     }
     catch(...)
     {
-        std::cout << "ruh roh" << std::endl;
+        std::cout << "unhandled exception" << std::endl;
     }
     
     return 0;
