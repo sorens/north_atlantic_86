@@ -15,7 +15,7 @@ class ship_data_exception : public na_exception
 {
 public:
     ship_data_exception() : na_exception("ship data failure") {}
-    ship_data_exception(const std::string &id) : na_exception(id) {}
+    ship_data_exception(const std::string &info) : na_exception(info) {}
 };
 
 class import_failed_ship_data_exception : public ship_data_exception
@@ -34,11 +34,6 @@ class duplicate_id_ship_data_exception : public ship_data_exception
 {
 public:
     duplicate_id_ship_data_exception() : ship_data_exception() {}
-    duplicate_id_ship_data_exception(const std::string &id) : ship_data_exception(id) {}
-    
-    virtual const char *what() const throw()
-    {
-        return std::string("duplicate ID for a unit found " + std::string(info())).c_str();
-    }
+    duplicate_id_ship_data_exception(const std::string &info) : ship_data_exception("duplicate unit ID {" + info + "}") {}
 };
 

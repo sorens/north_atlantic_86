@@ -15,14 +15,14 @@ class setup_exception : public na_exception
 {
 public:
     setup_exception() : na_exception("setup failed") {}
-    setup_exception(const std::string &id) : na_exception(id) {}
+    setup_exception(const std::string &info) : na_exception(info) {}
 };
 
 class no_map_setup_exception : public setup_exception
 {
 public:
     no_map_setup_exception() : setup_exception("map missing from json data") {}
-    no_map_setup_exception(const std::string &id) : setup_exception(id) {}
+    no_map_setup_exception(const std::string &info) : setup_exception(info) {}
 };
 
 class map_not_square_setup_exception : public setup_exception

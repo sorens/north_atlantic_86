@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
         auto sub = ships->find_unit("SSN-V31");
         std::cout << sub->description() << std::endl;
     }
-    catch(ship_data_exception e)
+    catch(ship_data_exception &e)
     {
         std::cout << "ship_data_exception => '" << e.what() << "'" << std::endl;
     }
