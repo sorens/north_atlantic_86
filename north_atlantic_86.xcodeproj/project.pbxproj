@@ -12,6 +12,8 @@
 		61148E4422149D6200AFF3F1 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E4222149D6200AFF3F1 /* json11.cpp */; };
 		61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E482214CD0400AFF3F1 /* affiliation_type.cpp */; };
 		61148E4C2214FBFF00AFF3F1 /* mutable_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E4A2214FBFF00AFF3F1 /* mutable_unit.cpp */; };
+		61148E6B221695A600AFF3F1 /* weapon_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E69221695A600AFF3F1 /* weapon_system.cpp */; };
+		61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E6C2217543700AFF3F1 /* weapon_system_type.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -50,6 +52,10 @@
 		61148E612215344300AFF3F1 /* ship_data_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ship_data_exception.hpp; sourceTree = "<group>"; };
 		61148E642215348800AFF3F1 /* exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = exception.hpp; sourceTree = "<group>"; };
 		61148E672215BDB600AFF3F1 /* map_setup_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map_setup_exception.hpp; sourceTree = "<group>"; };
+		61148E69221695A600AFF3F1 /* weapon_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapon_system.cpp; sourceTree = "<group>"; };
+		61148E6A221695A600AFF3F1 /* weapon_system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_system.hpp; sourceTree = "<group>"; };
+		61148E6C2217543700AFF3F1 /* weapon_system_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapon_system_type.cpp; sourceTree = "<group>"; };
+		61148E6D2217543700AFF3F1 /* weapon_system_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_system_type.hpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -130,6 +136,10 @@
 				61F7D01A2210985D009C3F34 /* unit.hpp */,
 				61F7D01D22109C93009C3F34 /* unit_type.hpp */,
 				61F7D0222210A32B009C3F34 /* unit_type.cpp */,
+				61148E69221695A600AFF3F1 /* weapon_system.cpp */,
+				61148E6A221695A600AFF3F1 /* weapon_system.hpp */,
+				61148E6C2217543700AFF3F1 /* weapon_system_type.cpp */,
+				61148E6D2217543700AFF3F1 /* weapon_system_type.hpp */,
 				61F7D0272210A523009C3F34 /* weather.cpp */,
 				61F7D0282210A523009C3F34 /* weather.hpp */,
 				61F7D0242210A381009C3F34 /* weather_type.cpp */,
@@ -195,9 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61148E6B221695A600AFF3F1 /* weapon_system.cpp in Sources */,
 				61148E4C2214FBFF00AFF3F1 /* mutable_unit.cpp in Sources */,
 				61F7D0132210980D009C3F34 /* main.cpp in Sources */,
 				61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */,
+				61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */,
 				61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */,
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
 				61F7D02C2210AF9B009C3F34 /* fleet.cpp in Sources */,
