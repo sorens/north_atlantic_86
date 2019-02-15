@@ -68,8 +68,11 @@ int main(int argc, const char * argv[]) {
                 // auto read_bytes = file.tellg() - position_before;
                 // TODO runtime_assert(read_bytes == size);
                 
-                if (!file.good() && !file.eof())
+                if (!file.good() && !file.eof()) {
+                    file.close();
+                    free(buf);
                     throw std::runtime_error(std::string("failed to read all of ship_data.json"));
+                }
                 
                 ship_data = std::string(buf, size);
             }
