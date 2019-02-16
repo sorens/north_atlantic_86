@@ -14,6 +14,9 @@
 #include "mutable_unit.hpp"
 #include "ship_data_exception.hpp"
 #include "ship_db.hpp"
+#include "weapon_mount.hpp"
+#include "weapon_system.hpp"
+#include "weapon_mount_exception.hpp"
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
@@ -110,6 +113,20 @@ int main(int argc, const char * argv[]) {
         
         auto sub = ships->find_unit("SSN-V31");
         std::cout << sub->description() << std::endl;
+        
+        std::shared_ptr<WeaponSystem> ws = WeaponSystem::Make("Harpoon", WeaponSystemType::SSM, AffiliationType::NATO, 110, 4, 9, true);
+        auto wm = WeaponMount::Make(ws, 100, 10);
+        std::cout << wm->description() << std::endl;
+        
+        try {
+            while (wm->rounds_remaining() > 0) {
+                wm->fire(9);
+                std::cout << wm->description() << std::endl;
+            }
+        }
+        catch(not_enough_rounds_weapon_mount_exception &e) {
+            std::cout << e.what() << std::endl;
+        }
     }
     catch(ship_data_exception &e)
     {

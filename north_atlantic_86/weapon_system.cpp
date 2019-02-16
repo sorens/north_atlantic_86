@@ -7,6 +7,7 @@
 //
 
 #include "weapon_system.hpp"
+#include <sstream>
 
 #pragma mark _WeaponSystem
 
@@ -22,7 +23,7 @@ class _WeaponSystem : public WeaponSystem
 
 public:
     _WeaponSystem(const std::string &name, const WeaponSystemType type, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming) :
-    _accuracy_rating(accuracy_rating), _affiliation(affiliation), _average_damage(average_damage), _name(name), _surface_skimming(surface_skimming), _type(type)
+    _accuracy_rating(accuracy_rating), _affiliation(affiliation), _average_damage(average_damage), _name(name), _range(range), _surface_skimming(surface_skimming), _type(type)
     {
     }
     
@@ -39,6 +40,22 @@ public:
     const int average_damage() override
     {
         return _average_damage;
+    }
+    
+    const std::string description() override
+    {
+        std::stringstream ss;
+        ss << "<WeaponSystem";
+        ss << " type: '" << WeaponSystemTypeUtility::to_string(_type) << "'";
+        ss << ", affiliation: '" << AffiliationUtility::to_string(_affiliation) << "'";
+        ss << ", range: '" << _range << "'";
+        ss << ", name: '" << _name << "'";
+        ss << ", average_damage: '" << _average_damage << "'";
+        ss << ", accuracy_damage: '" << _accuracy_rating << "'";
+        ss << ", surface_skimming: '" << (_surface_skimming ? "yes" : "no") << "'";
+        ss << ">";
+        
+        return ss.str();
     }
     
     const std::string name() override
@@ -77,6 +94,11 @@ const AffiliationType WeaponSystem::affiliation()
 const int WeaponSystem::average_damage()
 {
     return -1;
+}
+        
+const std::string WeaponSystem::description()
+{
+    return "";
 }
 
 const std::string WeaponSystem::name()

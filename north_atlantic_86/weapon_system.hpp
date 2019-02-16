@@ -24,6 +24,9 @@ public:
     // return the average damage per hit
     virtual const int average_damage();
     
+    // return a human-readable string that describes a weapon system
+    virtual const std::string description();
+    
     // return the name
     virtual const std::string name();
     
