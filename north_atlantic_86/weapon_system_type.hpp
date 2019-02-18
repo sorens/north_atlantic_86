@@ -13,10 +13,13 @@
 enum class WeaponSystemType : int
 {
     Unknown,
-    SSM,
-    SAM,
-    ASW,
-    AST
+    SSM,                // surface-to-surface missile (e.g. Tomahawk)
+    SAM,                // surface-to-air missile (e.g. Standard)
+    ASROC,              // anti-submarine rocket
+    AST,                // anti-ship torpedo (e.g MK46)
+    AAM,                // air-to-air missle (e.g. Sidewinder)
+    AAM_LONGRANGE,      // long range air-to-air missle (e.g. Phoenix)
+    ASM                 // air-to-surface missile (e.g. Walleye)
 };
 
 class WeaponSystemTypeUtility

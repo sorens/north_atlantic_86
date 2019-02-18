@@ -15,6 +15,7 @@
 		61148E6B221695A600AFF3F1 /* weapon_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E69221695A600AFF3F1 /* weapon_system.cpp */; };
 		61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E6C2217543700AFF3F1 /* weapon_system_type.cpp */; };
 		61148E712217636A00AFF3F1 /* weapon_mount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E6F2217636A00AFF3F1 /* weapon_mount.cpp */; };
+		61148E772219B28F00AFF3F1 /* weapon_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E752219B28F00AFF3F1 /* weapon_data.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -60,6 +61,8 @@
 		61148E6F2217636A00AFF3F1 /* weapon_mount.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapon_mount.cpp; sourceTree = "<group>"; };
 		61148E702217636A00AFF3F1 /* weapon_mount.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_mount.hpp; sourceTree = "<group>"; };
 		61148E73221765E300AFF3F1 /* weapon_mount_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_mount_exception.hpp; sourceTree = "<group>"; };
+		61148E752219B28F00AFF3F1 /* weapon_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapon_data.cpp; sourceTree = "<group>"; };
+		61148E762219B28F00AFF3F1 /* weapon_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_data.hpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -112,11 +115,8 @@
 		61F7D0112210980D009C3F34 /* north_atlantic_86 */ = {
 			isa = PBXGroup;
 			children = (
-				61148E4222149D6200AFF3F1 /* json11.cpp */,
-				61148E4322149D6200AFF3F1 /* json11.hpp */,
-				61148E462214CB9100AFF3F1 /* affiliation_type.hpp */,
 				61148E482214CD0400AFF3F1 /* affiliation_type.cpp */,
-				61F7D0122210980D009C3F34 /* main.cpp */,
+				61148E462214CB9100AFF3F1 /* affiliation_type.hpp */,
 				61148E642215348800AFF3F1 /* exception.hpp */,
 				61F7D02A2210AF9B009C3F34 /* fleet.cpp */,
 				61F7D02B2210AF9B009C3F34 /* fleet.hpp */,
@@ -124,33 +124,38 @@
 				61F7D0352211D972009C3F34 /* game.hpp */,
 				61F7D01F22109FD3009C3F34 /* grid.cpp */,
 				61F7D02022109FD3009C3F34 /* grid.hpp */,
-				61F7D02D2210BDD3009C3F34 /* map.cpp */,
-				61F7D02E2210BDD3009C3F34 /* map.hpp */,
+				61148E4222149D6200AFF3F1 /* json11.cpp */,
+				61148E4322149D6200AFF3F1 /* json11.hpp */,
+				61F7D0122210980D009C3F34 /* main.cpp */,
+				61148E672215BDB600AFF3F1 /* map_setup_exception.hpp */,
 				61F7D0302210BE81009C3F34 /* map_setup.cpp */,
 				61F7D0312210BE81009C3F34 /* map_setup.hpp */,
-				61148E672215BDB600AFF3F1 /* map_setup_exception.hpp */,
+				61F7D02D2210BDD3009C3F34 /* map.cpp */,
+				61F7D02E2210BDD3009C3F34 /* map.hpp */,
 				61148E4A2214FBFF00AFF3F1 /* mutable_unit.cpp */,
 				61148E4B2214FBFF00AFF3F1 /* mutable_unit.hpp */,
 				61148E192213460000AFF3F1 /* player.cpp */,
 				61148E1A2213460000AFF3F1 /* player.hpp */,
+				61148E612215344300AFF3F1 /* ship_data_exception.hpp */,
 				61148E1F22135B9600AFF3F1 /* ship_db.cpp */,
 				61148E2022135B9600AFF3F1 /* ship_db.hpp */,
-				61148E612215344300AFF3F1 /* ship_data_exception.hpp */,
+				61F7D0222210A32B009C3F34 /* unit_type.cpp */,
+				61F7D01D22109C93009C3F34 /* unit_type.hpp */,
 				61F7D0192210985D009C3F34 /* unit.cpp */,
 				61F7D01A2210985D009C3F34 /* unit.hpp */,
-				61F7D01D22109C93009C3F34 /* unit_type.hpp */,
-				61F7D0222210A32B009C3F34 /* unit_type.cpp */,
+				61148E752219B28F00AFF3F1 /* weapon_data.cpp */,
+				61148E762219B28F00AFF3F1 /* weapon_data.hpp */,
+				61148E73221765E300AFF3F1 /* weapon_mount_exception.hpp */,
 				61148E6F2217636A00AFF3F1 /* weapon_mount.cpp */,
 				61148E702217636A00AFF3F1 /* weapon_mount.hpp */,
-				61148E73221765E300AFF3F1 /* weapon_mount_exception.hpp */,
-				61148E69221695A600AFF3F1 /* weapon_system.cpp */,
-				61148E6A221695A600AFF3F1 /* weapon_system.hpp */,
 				61148E6C2217543700AFF3F1 /* weapon_system_type.cpp */,
 				61148E6D2217543700AFF3F1 /* weapon_system_type.hpp */,
-				61F7D0272210A523009C3F34 /* weather.cpp */,
-				61F7D0282210A523009C3F34 /* weather.hpp */,
+				61148E69221695A600AFF3F1 /* weapon_system.cpp */,
+				61148E6A221695A600AFF3F1 /* weapon_system.hpp */,
 				61F7D0242210A381009C3F34 /* weather_type.cpp */,
 				61F7D0252210A381009C3F34 /* weather_type.hpp */,
+				61F7D0272210A523009C3F34 /* weather.cpp */,
+				61F7D0282210A523009C3F34 /* weather.hpp */,
 			);
 			path = north_atlantic_86;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */,
 				61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */,
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
+				61148E772219B28F00AFF3F1 /* weapon_data.cpp in Sources */,
 				61F7D02C2210AF9B009C3F34 /* fleet.cpp in Sources */,
 				61F7D0362211D972009C3F34 /* game.cpp in Sources */,
 				61148E1B2213460000AFF3F1 /* player.cpp in Sources */,

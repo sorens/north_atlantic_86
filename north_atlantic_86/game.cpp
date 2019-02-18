@@ -10,13 +10,16 @@
 #include <iostream>     // TODO inject
 #include "affiliation_type.hpp"
 #include "game.hpp"
+#include "weapon_data.hpp"
+#include "weapon_mount.hpp"
+#include "weapon_mount_exception.hpp"
 
 #pragma mark _Game
 
 class _Game : public Game
 {
 public:
-    _Game()
+    _Game() : _weapon_data(WeaponData::Make())
     {
     }
     
@@ -127,7 +130,21 @@ public:
     
     void next_turn() override
     {
-        // TODO implemenent
+        auto harpoon = _weapon_data->weapon_system("HARPOON");
+        if (harpoon) {
+            auto wm = WeaponMount::Make(harpoon, 100, 10);
+            std::cout << wm->description() << std::endl;
+            
+            try {
+                while (wm->rounds_remaining() > 0) {
+                    wm->fire(9);
+                    std::cout << wm->description() << std::endl;
+                }
+            }
+            catch(not_enough_rounds_weapon_mount_exception &e) {
+                std::cout << e.what() << std::endl;
+            }
+        }
     }
     
     std::shared_ptr<Player> player_nato() override
@@ -145,6 +162,7 @@ private:
     int _current_turn;
     std::shared_ptr<Player> _player_nato;
     std::shared_ptr<Player> _player_soviet;
+    std::shared_ptr<WeaponData> _weapon_data;
 };
 
 #pragma mark Game

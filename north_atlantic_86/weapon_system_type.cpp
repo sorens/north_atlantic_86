@@ -18,9 +18,15 @@ const std::string WeaponSystemTypeUtility::to_string(WeaponSystemType t)
             return "SSM";
         case WeaponSystemType::SAM:
             return "SAM";
-        case WeaponSystemType::ASW:
-            return "ASW";
+        case WeaponSystemType::ASROC:
+            return "ASROC";
         case WeaponSystemType::AST:
             return "AST";
+        case WeaponSystemType::AAM:
+            return "AAM";
+        case WeaponSystemType::AAM_LONGRANGE:
+            return "AAM_LONGRANGE";
+        case WeaponSystemType::ASM:
+            return "ASM";
     }
 }
