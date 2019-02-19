@@ -19,7 +19,7 @@ class _ShipDB : public ShipDB
 public:
     _ShipDB() {}
     
-    void initialize(const std::string &json_import, AffiliationType affiliation) 
+    void initialize(const std::string &json_import) 
     {
         if (json_import.empty())
             throw import_failed_ship_data_exception();
@@ -80,10 +80,10 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Unit>> _data;
 };
 
-std::shared_ptr<ShipDB> ShipDB::factory(const std::string &json_import, AffiliationType affiliation)
+std::shared_ptr<ShipDB> ShipDB::factory(const std::string &json_import)
 {
     auto ship_data = std::make_shared<_ShipDB>();
-    ship_data->initialize(json_import, affiliation);
+    ship_data->initialize(json_import);
     return ship_data;
 }
 

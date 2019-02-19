@@ -85,7 +85,7 @@ int main(int argc, const char * argv[]) {
             free(buf);
         }
 
-        auto ships = ShipDB::factory(ship_data, AffiliationType::NATO);
+        auto ships = ShipDB::factory(ship_data);
         logverbose(ships->find_unit("CG-47")->description());
         auto nimitz = ships->find_unit("CVN-68");
         logverbose(nimitz->description());
@@ -111,8 +111,8 @@ int main(int argc, const char * argv[]) {
         if (nimitz_mutable->is_sunk())
             loginfo("The Nimitz has been sunk!");
         
-//        auto sub = ships->find_unit("SSN-V31");
-//        loginfo(ships->find_unit("SSN-V31")->description());
+        auto sub = ships->find_unit("SSN-V31");
+        loginfo(ships->find_unit("SSN-V31")->description());
         
         // take a turn
         game->next_turn();
