@@ -1,5 +1,5 @@
 //
-//  ship_db.cpp
+//  ship_data.cpp
 //  north_atlantic_86
 //
 //  Created by STEPHEN ORENS on 2/12/19.
@@ -8,16 +8,16 @@
 
 #include <unordered_map>
 #include "json11.hpp"
-#include "ship_db.hpp"
+#include "ship_data.hpp"
 #include "ship_data_exception.hpp"
 #include "unit.hpp"
 
 using namespace json11;
 
-class _ShipDB : public ShipDB
+class _ShipData : public ShipData
 {
 public:
-    _ShipDB() {}
+    _ShipData() {}
     
     void initialize(const std::string &json_import) 
     {
@@ -80,14 +80,14 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Unit>> _data;
 };
 
-std::shared_ptr<ShipDB> ShipDB::factory(const std::string &json_import)
+std::shared_ptr<ShipData> ShipData::factory(const std::string &json_import)
 {
-    auto ship_data = std::make_shared<_ShipDB>();
+    auto ship_data = std::make_shared<_ShipData>();
     ship_data->initialize(json_import);
     return ship_data;
 }
 
-std::shared_ptr<Unit> ShipDB::find_unit(const std::string &id)
+std::shared_ptr<Unit> ShipData::find_unit(const std::string &id)
 {
     return nullptr;
 }

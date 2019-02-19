@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		61148E1B2213460000AFF3F1 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E192213460000AFF3F1 /* player.cpp */; };
-		61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E1F22135B9600AFF3F1 /* ship_db.cpp */; };
+		61148E2122135B9600AFF3F1 /* ship_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E1F22135B9600AFF3F1 /* ship_data.cpp */; };
 		61148E4422149D6200AFF3F1 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E4222149D6200AFF3F1 /* json11.cpp */; };
 		61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E482214CD0400AFF3F1 /* affiliation_type.cpp */; };
 		61148E4C2214FBFF00AFF3F1 /* mutable_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E4A2214FBFF00AFF3F1 /* mutable_unit.cpp */; };
@@ -44,8 +44,8 @@
 /* Begin PBXFileReference section */
 		61148E192213460000AFF3F1 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		61148E1A2213460000AFF3F1 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
-		61148E1F22135B9600AFF3F1 /* ship_db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ship_db.cpp; sourceTree = "<group>"; };
-		61148E2022135B9600AFF3F1 /* ship_db.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ship_db.hpp; sourceTree = "<group>"; };
+		61148E1F22135B9600AFF3F1 /* ship_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ship_data.cpp; sourceTree = "<group>"; };
+		61148E2022135B9600AFF3F1 /* ship_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ship_data.hpp; sourceTree = "<group>"; };
 		61148E4222149D6200AFF3F1 /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
 		61148E4322149D6200AFF3F1 /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
 		61148E462214CB9100AFF3F1 /* affiliation_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = affiliation_type.hpp; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 				61148E192213460000AFF3F1 /* player.cpp */,
 				61148E1A2213460000AFF3F1 /* player.hpp */,
 				61148E612215344300AFF3F1 /* ship_data_exception.hpp */,
-				61148E1F22135B9600AFF3F1 /* ship_db.cpp */,
-				61148E2022135B9600AFF3F1 /* ship_db.hpp */,
+				61148E1F22135B9600AFF3F1 /* ship_data.cpp */,
+				61148E2022135B9600AFF3F1 /* ship_data.hpp */,
 				61F7D0222210A32B009C3F34 /* unit_type.cpp */,
 				61F7D01D22109C93009C3F34 /* unit_type.hpp */,
 				61F7D0192210985D009C3F34 /* unit.cpp */,
@@ -228,7 +228,7 @@
 				61148E712217636A00AFF3F1 /* weapon_mount.cpp in Sources */,
 				61148E4C2214FBFF00AFF3F1 /* mutable_unit.cpp in Sources */,
 				61F7D0132210980D009C3F34 /* main.cpp in Sources */,
-				61148E2122135B9600AFF3F1 /* ship_db.cpp in Sources */,
+				61148E2122135B9600AFF3F1 /* ship_data.cpp in Sources */,
 				61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */,
 				61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */,
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,

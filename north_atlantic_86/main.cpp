@@ -15,7 +15,7 @@
 #include "map_setup.hpp"
 #include "mutable_unit.hpp"
 #include "ship_data_exception.hpp"
-#include "ship_db.hpp"
+#include "ship_data.hpp"
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
@@ -85,7 +85,7 @@ int main(int argc, const char * argv[]) {
             free(buf);
         }
 
-        auto ships = ShipDB::factory(ship_data);
+        auto ships = ShipData::factory(ship_data);
         logverbose(ships->find_unit("CG-47")->description());
         auto nimitz = ships->find_unit("CVN-68");
         logverbose(nimitz->description());
