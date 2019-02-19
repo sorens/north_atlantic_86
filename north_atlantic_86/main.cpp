@@ -7,6 +7,7 @@
 //
 
 #include "affiliation_type.hpp"
+#include "debug.hpp"
 #include "json11.hpp"
 #include "game.hpp"
 #include "log.hpp"
@@ -65,11 +66,11 @@ int main(int argc, const char * argv[]) {
             char *buf = (char *)malloc((size + 1) * sizeof(char));
             buf[size] = '\0';
             if (file.good()) {
-                // auto position_before = file.tellg();
+                auto position_before = file.tellg();
 
                 file.read(buf, size);
-                // auto read_bytes = file.tellg() - position_before;
-                // TODO runtime_assert(read_bytes == size);
+                auto read_bytes = file.tellg() - position_before;
+                runtime_assert(read_bytes == size);
                 
                 if (!file.good() && !file.eof()) {
                     file.close();
