@@ -8,8 +8,9 @@
 
 #include "affiliation_type.hpp"
 #include "debug.hpp"
-#include "json11.hpp"
+#include "file.hpp"
 #include "game.hpp"
+#include "json11.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
@@ -43,48 +44,32 @@ int main(int argc, const char * argv[]) {
         }
         )";
         
-        // auto ship_data = R"(
-        // {
-        //     "ships": [
-        //         ["CVN-68", "Nimitz", 0, 0, 75, 30, 72, 97, 1, "cvn", 1],
-        //         ["CVN-70", "Vinson", 0, 0, 75, 30, 72, 97, 1, "cvn", 1]
-        //     ]
-        // }
-        // )";
-
         // read in ship_data.json
-        std::string path = "ship_data.json";
         std::string ship_data;
-        struct stat ss;
-        size_t size = 0;
-        if (stat(path.c_str(), &ss) >= 0)
-            size = ss.st_size;
-
-        if (size > 0) {
-            std::fstream file;
-            file.open("ship_data.json", std::ios_base::in);
-            char *buf = (char *)malloc((size + 1) * sizeof(char));
-            buf[size] = '\0';
-            if (file.good()) {
-                auto position_before = file.tellg();
-
-                file.read(buf, size);
-                auto read_bytes = file.tellg() - position_before;
-                runtime_assert(read_bytes == size);
-                
-                if (!file.good() && !file.eof()) {
-                    file.close();
+        
+        auto ship_file = File::Make("ship_data.json");
+        
+        if (ship_file) {
+            if (ship_file->open(FileModeOpenRead)) {
+                auto size = ship_file->size();
+                if (size > 0) {
+                    char *buf = (char *)malloc((size + 1) * sizeof(char));
+                    buf[size] = '\0';
+                    
+                    auto read_bytes = ship_file->read(buf, size);
+                    runtime_assert(read_bytes == size);
+                    
+                    ship_data = std::string(buf, size);
+                    
+                    ship_file->close();
                     free(buf);
-                    throw std::runtime_error(std::string("failed to read all of ship_data.json"));
                 }
-                
-                ship_data = std::string(buf, size);
             }
-
-            file.close();
-            free(buf);
         }
-
+        
+        if (ship_data.empty())
+            runtime_assert_not_reached();
+        
         auto ships = ShipData::factory(ship_data);
         logverbose(ships->find_unit("CG-47")->description());
         auto nimitz = ships->find_unit("CVN-68");
