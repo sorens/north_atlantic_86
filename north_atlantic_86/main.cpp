@@ -85,9 +85,9 @@ int main(int argc, const char * argv[]) {
         }
 
         auto ships = ShipDB::factory(ship_data, AffiliationType::NATO);
-        loginfo(ships->find_unit("CG-47")->description());
+        logverbose(ships->find_unit("CG-47")->description());
         auto nimitz = ships->find_unit("CVN-68");
-        loginfo(nimitz->description());
+        logverbose(nimitz->description());
         
         auto setup_data = MapSetup::factory(map_data);
         auto game = Game::factory(setup_data);
@@ -97,9 +97,9 @@ int main(int argc, const char * argv[]) {
         game->display_weather();
         auto map = game->map();
         auto portsmouth = map->at(2, 2);
-        loginfo(portsmouth->description());
+        logverbose(portsmouth->description());
         auto ocean = map->at(5, 4);
-        loginfo("water temperature at (5, 4): " << ocean->water_temperature());
+        logverbose("water temperature at (5, 4): " << ocean->water_temperature());
         
         auto nimitz_mutable = MutableUnit::factory(nimitz);
         while (!nimitz_mutable->is_sunk()) {

@@ -36,7 +36,7 @@ const std::string LogLine::level_to_string(LogLevel level)
         case LogLevel::WARNING:
             return "WARNING";
         case LogLevel::INFO:
-            return "NOTICE";
+            return "INFO";
         case LogLevel::VERBOSE:
             return "VERBOSE";
     }
@@ -56,7 +56,16 @@ const std::string LogLine::message() const
 
 void Log::write_log(LogLevel level, const std::string &message)
 {
-    std::string level_string = LogLine::level_to_string(level);
+    // for syslog, VERBOSE => notice, INFO => warning, WARNING => error, ERROR => critical
+    
+    std::string level_string = "critical";
+    if (LogLevel::VERBOSE == level)
+        level_string = "notice";
+    else if (LogLevel::INFO == level)
+        level_string = "warning";
+    else if (LogLevel::WARNING == level)
+        level_string = "error";
+    
     std::transform(level_string.begin(), level_string.end(), level_string.begin(), ::tolower);
     std::ostringstream ss;
     ss << "syslog -s -l notice" << level_string << " \"" << message << "\"";
