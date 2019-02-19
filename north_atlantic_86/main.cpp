@@ -9,6 +9,7 @@
 #include "affiliation_type.hpp"
 #include "json11.hpp"
 #include "game.hpp"
+#include "log.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
 #include "mutable_unit.hpp"
@@ -19,8 +20,10 @@
 #include <sys/stat.h>
 
 int main(int argc, const char * argv[]) {
+    
     try
     {
+        loginfo("********* GAME STARTING *********");
         auto map_data = R"(
         {
             "map": [0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
@@ -82,10 +85,9 @@ int main(int argc, const char * argv[]) {
         }
 
         auto ships = ShipDB::factory(ship_data, AffiliationType::NATO);
+        loginfo(ships->find_unit("CG-47")->description());
         auto nimitz = ships->find_unit("CVN-68");
-        std::cout << nimitz->description() << std::endl;
-        auto ticonderoga = ships->find_unit("CG-47");
-        std::cout << ticonderoga->description() << std::endl;
+        loginfo(nimitz->description());
         
         auto setup_data = MapSetup::factory(map_data);
         auto game = Game::factory(setup_data);
@@ -95,21 +97,21 @@ int main(int argc, const char * argv[]) {
         game->display_weather();
         auto map = game->map();
         auto portsmouth = map->at(2, 2);
-        std::cout << portsmouth->description() << std::endl;
+        loginfo(portsmouth->description());
         auto ocean = map->at(5, 4);
-        std::cout << "water_temperature at (5, 4): " << ocean->water_temperature() << std::endl;
+        loginfo("water temperature at (5, 4): " << ocean->water_temperature());
         
         auto nimitz_mutable = MutableUnit::factory(nimitz);
         while (!nimitz_mutable->is_sunk()) {
             nimitz_mutable->apply_damage(10);
-            std::cout << "Nimitz damage: " << nimitz_mutable->damage() << std::endl;
+            loginfo("Nimitz damage: " << nimitz_mutable->damage());
         }
         
         if (nimitz_mutable->is_sunk())
-            std::cout << "The Nimitz has been sunk!" << std::endl;
+            loginfo("The Nimitz has been sunk!");
         
-        auto sub = ships->find_unit("SSN-V31");
-        std::cout << sub->description() << std::endl;
+//        auto sub = ships->find_unit("SSN-V31");
+//        loginfo(ships->find_unit("SSN-V31")->description());
         
         // take a turn
         game->next_turn();

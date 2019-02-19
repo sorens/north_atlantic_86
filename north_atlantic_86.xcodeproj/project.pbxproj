@@ -16,6 +16,7 @@
 		61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E6C2217543700AFF3F1 /* weapon_system_type.cpp */; };
 		61148E712217636A00AFF3F1 /* weapon_mount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E6F2217636A00AFF3F1 /* weapon_mount.cpp */; };
 		61148E772219B28F00AFF3F1 /* weapon_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E752219B28F00AFF3F1 /* weapon_data.cpp */; };
+		61148E8D221BC10300AFF3F1 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E8B221BC10300AFF3F1 /* log.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -63,6 +64,8 @@
 		61148E73221765E300AFF3F1 /* weapon_mount_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_mount_exception.hpp; sourceTree = "<group>"; };
 		61148E752219B28F00AFF3F1 /* weapon_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weapon_data.cpp; sourceTree = "<group>"; };
 		61148E762219B28F00AFF3F1 /* weapon_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_data.hpp; sourceTree = "<group>"; };
+		61148E8B221BC10300AFF3F1 /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cpp; sourceTree = "<group>"; };
+		61148E8C221BC10300AFF3F1 /* log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = log.hpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				61F7D0252210A381009C3F34 /* weather_type.hpp */,
 				61F7D0272210A523009C3F34 /* weather.cpp */,
 				61F7D0282210A523009C3F34 /* weather.hpp */,
+				61148E8B221BC10300AFF3F1 /* log.cpp */,
+				61148E8C221BC10300AFF3F1 /* log.hpp */,
 			);
 			path = north_atlantic_86;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				61F7D0292210A523009C3F34 /* weather.cpp in Sources */,
 				61F7D02F2210BDD3009C3F34 /* map.cpp in Sources */,
 				61F7D0322210BE81009C3F34 /* map_setup.cpp in Sources */,
+				61148E8D221BC10300AFF3F1 /* log.cpp in Sources */,
 				61F7D0232210A32B009C3F34 /* unit_type.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

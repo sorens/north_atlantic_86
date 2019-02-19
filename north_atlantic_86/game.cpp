@@ -10,6 +10,7 @@
 #include <iostream>     // TODO inject
 #include "affiliation_type.hpp"
 #include "game.hpp"
+#include "log.hpp"
 #include "weapon_data.hpp"
 #include "weapon_mount.hpp"
 #include "weapon_mount_exception.hpp"
@@ -133,16 +134,16 @@ public:
         auto harpoon = _weapon_data->weapon_system("HARPOON");
         if (harpoon) {
             auto wm = WeaponMount::Make(harpoon, 100, 10);
-            std::cout << wm->description() << std::endl;
+            loginfo(wm->description());
             
             try {
                 while (wm->rounds_remaining() > 0) {
                     wm->fire(9);
-                    std::cout << wm->description() << std::endl;
+                    loginfo(wm->description());
                 }
             }
             catch(not_enough_rounds_weapon_mount_exception &e) {
-                std::cout << e.what() << std::endl;
+                logerror(e.what());
             }
         }
     }
