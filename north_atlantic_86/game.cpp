@@ -48,46 +48,6 @@ public:
         return _current_turn;
     }
     
-    void display_map() override
-    {
-        // TODO inject std::cout
-        
-        std::cout << "NATO:     " << _player_nato->name() << std::endl;
-        std::cout << "SOVIET:   " << _player_soviet->name() << std::endl;
-        std::cout << "======= MAP =======" << std::endl;
-        auto grid = _map->grid();
-        auto size = grid.size();
-        int side = std::pow(size, 0.5);
-        
-        int i = 0;
-        for (auto g : grid) {
-            switch (g->type()) {
-                case GridType::Landmass:
-                    std::cout << "*";
-                    break;
-                case GridType::Ocean:
-                    std::cout << "_";
-                    break;
-                case GridType::Airbase:
-                case GridType::Port:
-                    std::cout << g->name()[0];
-                    break;
-                case GridType::Unknown:
-                    break;
-            }
-                    
-            std::cout << " ";
-            
-            ++i;
-            if (i % side == 0) {
-                i = 0;
-                std::cout << std::endl;
-            }
-        }
-                    
-        std::cout << "===================" << std::endl;
-    }
-    
     void display_weather() override
     {
         // TODO inject std::cout

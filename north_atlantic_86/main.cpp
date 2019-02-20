@@ -13,6 +13,7 @@
 #include "json11.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_display_ascii.hpp"
 #include "map_setup.hpp"
 #include "ship_data_exception.hpp"
 #include "ship_data.hpp"
@@ -104,8 +105,8 @@ int main(int argc, const char * argv[]) {
         auto game = Game::Make(setup_data, ship_data, weapon_data);
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
-        game->display_map();
-        game->display_weather();
+        auto display = MapDisplayAscii::Generate(game);
+        std::cout << display.str();
 
         // take a turn
         game->next_turn();
