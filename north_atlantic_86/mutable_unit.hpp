@@ -28,4 +28,7 @@ public:
 
     // is this unit sunk?
     virtual const bool is_sunk();
+    
+    // return the immutable unit
+    virtual std::shared_ptr<Unit> unit();
 };

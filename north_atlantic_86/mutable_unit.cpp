@@ -6,6 +6,7 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "debug.hpp"
 #include "mutable_unit.hpp"
 
 #pragma mark _MutableUnit
@@ -43,6 +44,11 @@ public:
     {
         return _damage >= _unit->defense_factor();
     }
+    
+    std::shared_ptr<Unit> unit() override
+    {
+        return _unit;
+    }
 
 private:
     int _damage;
@@ -78,4 +84,9 @@ const int MutableUnit::max_speed()
 const bool MutableUnit::is_sunk()
 {
     return false;
+}
+
+std::shared_ptr<Unit> MutableUnit::unit()
+{
+    runtime_assert_not_reached();
 }
