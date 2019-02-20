@@ -12,6 +12,7 @@
 #include "file.hpp"
 #include "game.hpp"
 #include "map.hpp"
+#include "mutable_unit.hpp"
 #include "ship_data.hpp"
 #include "task_force.hpp"
 #include "task_force_exception.hpp"
@@ -235,7 +236,26 @@ public:
 
     void unit_test() override
     {
+        _initialize_every_time();
 
+        auto nimitz_mutable = MutableUnit::factory(_game->unit("CVN-68"));
+        nimitz_mutable->apply_damage(nimitz_mutable->unit()->defense_factor() + 1);
+        
+        bool result = false;
+        if (nimitz_mutable->is_sunk())
+            result = true;
+        
+        test_result("unit_test", "Ship sinks when dmg >= df", result);
+        
+        result = false;
+        nimitz_mutable = MutableUnit::factory(_game->unit("CVN-68"));
+        nimitz_mutable->apply_damage(nimitz_mutable->unit()->defense_factor() / 2);
+        if (!nimitz_mutable->is_sunk())
+            result = true;
+
+        test_result("unit_test", "Ship does not sink when dmg < df", result);
+
+        _clean_up_every_time();
     }
 
     void weapon_mount_unit_test() override
