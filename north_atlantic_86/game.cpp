@@ -153,6 +153,10 @@ public:
         }
         
         return unit;
+        
+    std::shared_ptr<WeaponSystem> weapon_system(const std::string &id) override
+    {
+        return _weapon_data->weapon_system(id);
     }
 
 private:
@@ -224,6 +228,11 @@ std::shared_ptr<Player> Game::player_soviet()
 }
 
 std::shared_ptr<Unit> Game::unit(const std::string &id)
+{
+    runtime_assert_not_reached();
+}
+
+std::shared_ptr<WeaponSystem> Game::weapon_system(const std::string &id)
 {
     runtime_assert_not_reached();
 }

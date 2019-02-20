@@ -12,6 +12,7 @@
 #include "map_setup.hpp"
 #include "player.hpp"
 #include "unit.hpp"
+#include "weapon_system.hpp"
 
 class Game
 {
@@ -51,4 +52,7 @@ public:
     
     // return a unit
     virtual std::shared_ptr<Unit> unit(const std::string &id);
+    
+    // return a weapon system
+    virtual std::shared_ptr<WeaponSystem> weapon_system(const std::string &id);
 };
