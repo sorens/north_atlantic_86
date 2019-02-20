@@ -17,99 +17,43 @@
 #include "map_setup.hpp"
 #include "ship_data_exception.hpp"
 #include "ship_data.hpp"
+#include "weapon_data.hpp"
+
+#include "tests.hpp"
+
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
+
+#include "task_force.hpp"
 
 int main(int argc, const char * argv[]) {
     
     try
     {
-        loginfo("********* GAME STARTING *********");
+        auto tests = Tests::Make();
+        tests->task_force_unit_test();
         
-        // read in map data
-        std::string map_data;
-        
-        auto map_file = File::Make("map_data.json");
-        
-        if (map_file) {
-            if (map_file->open(FileModeOpenRead)) {
-                auto size = map_file->size();
-                if (size > 0) {
-                    char *buf = (char *)malloc((size + 1) * sizeof(char));
-                    buf[size] = '\0';
-                    
-                    auto read_bytes = map_file->read(buf, size);
-                    runtime_assert(read_bytes == size);
-                    
-                    map_data = std::string(buf, size);
-                    
-                    map_file->close();
-                    free(buf);
-                }
-            }
-        }
-        
-        // read in ship_data.json
-        std::string ship_data;
-        
-        auto ship_file = File::Make("ship_data.json");
-        
-        if (ship_file) {
-            if (ship_file->open(FileModeOpenRead)) {
-                auto size = ship_file->size();
-                if (size > 0) {
-                    char *buf = (char *)malloc((size + 1) * sizeof(char));
-                    buf[size] = '\0';
-                    
-                    auto read_bytes = ship_file->read(buf, size);
-                    runtime_assert(read_bytes == size);
-                    
-                    ship_data = std::string(buf, size);
-                    
-                    ship_file->close();
-                    free(buf);
-                }
-            }
-        }
-        
-        if (ship_data.empty())
-            runtime_assert_not_reached();
-        
-        // read in weapon_data.json
-        std::string weapon_data;
-        auto weapon_file = File::Make("weapon_data.json");
-        
-        if (weapon_file) {
-            if (weapon_file->open(FileModeOpenRead)) {
-                auto size = weapon_file->size();
-                if (size > 0) {
-                    char *buf = (char *)malloc((size + 1) * sizeof(char));
-                    buf[size] = '\0';
-                    
-                    auto read_bytes = weapon_file->read(buf, size);
-                    runtime_assert(read_bytes == size);
-                    
-                    weapon_data = std::string(buf, size);
-                    
-                    weapon_file->close();
-                    free(buf);
-                }
-            }
-        }
-        
-        if (weapon_data.empty())
-            runtime_assert_not_reached();
-        
-        auto setup_data = MapSetup::factory(map_data);
-        auto game = Game::Make(setup_data, ship_data, weapon_data);
-        game->add_nato_player("Sally");
-        game->add_soviet_player("Yuri");
-        auto display = MapDisplayAscii::Generate(game);
-        std::cout << display.str();
-
-        // take a turn
-        game->next_turn();
+//        loginfo("********* GAME STARTING *********");
+//        
+//        // read in map data
+//        std::string map_data = MapSetup::Import_Data("map_data.json");
+//        
+//        // read in ship_data.json
+//        std::string ship_data = ShipData::Import_Data("ship_data.json");
+//       
+//        // read in weapon_data.json
+//        std::string weapon_data = WeaponData::Import_Data("weapon_data.json");
+//        
+//        auto setup_data = MapSetup::factory(map_data);
+//        auto game = Game::Make(setup_data, ship_data, weapon_data);
+//        game->add_nato_player("Sally");
+//        game->add_soviet_player("Yuri");
+//        auto display = MapDisplayAscii::Generate(game);
+//        std::cout << display.str();
+//
+//        // take a turn
+//        game->next_turn();
     }
     catch(ship_data_exception &e)
     {
