@@ -7,8 +7,12 @@
 //
 
 #include <unordered_map>
+#include "json11.hpp"
 #include "weapon_data.hpp"
+#include "weapon_data_exception.hpp"
 #include "weapon_system.hpp"
+
+using namespace json11;
 
 #pragma mark _WeaponData
 
@@ -24,6 +28,47 @@ public:
         _weapon_systems[key] = system;
     }
     
+    void initialize(const std::string &json_import)
+    {
+        if (json_import.empty())
+            throw import_failed_weapon_data_exception("json data is empty");
+        
+        std::string error;
+        auto json = Json::parse(json_import, error);
+        if (!error.empty())     // TODO customize exception to accept error string
+            throw import_failed_weapon_data_exception(error);
+        
+        Json data = json["weapons"];
+        
+        if (!data.is_array())
+            throw new no_weapon_data_weapon_data_exception();
+        
+        for (auto &element : data.array_items()) {
+            // each row will be an array as well
+            if (!element.is_array())
+                throw new import_failed_weapon_data_exception("expecting an array");
+            
+            std::string name = element[0].string_value();               // e.g. Harpoon
+            WeaponSystemType type = WeaponSystemTypeUtility::to_enum(element[1].string_value()); // e.g. SSM
+            std::string affiliation_id = element[2].string_value();     // e.g. NATO
+            AffiliationType affiliation_type = AffiliationType::NATO;
+            if (affiliation_id == "USSR") {
+                affiliation_type = AffiliationType::SOVIET;
+            }
+            int range = element[3].int_value();                         // e.g. 110
+            int average_damage = element[4].int_value();                // e.g. 4
+            int accuracy_rating = element[5].int_value();               // e.g. 9
+            bool surface_skimming = element[6].bool_value();            // e.g. true
+            int sam_salvo_rate = 0;
+            if (type == WeaponSystemType::SAM)                          // e.g. 0
+                sam_salvo_rate = element[7].int_value();
+            
+            auto weapon_system = WeaponSystem::Make(name, type, affiliation_type, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate);
+            
+            add_system(weapon_system);
+        }
+    }
+    
     std::shared_ptr<WeaponSystem> weapon_system(const std::string &id) override
     {
         std::string key(id);
@@ -37,63 +82,11 @@ public:
 
 #pragma mark WeaponData
 
-std::shared_ptr<WeaponData> WeaponData::Make()
+std::shared_ptr<WeaponData> WeaponData::Make(const std::string &json_import)
 {
-    std::shared_ptr<_WeaponData> data = std::make_shared<_WeaponData>();
-    
-    // *** NATO ***
-    
-    // AAM
-    data->add_system(WeaponSystem::Make("Sidewinder", WeaponSystemType::AAM, AffiliationType::NATO, 10, 1, 1, false));
-    // AAM_LONGRANGE
-    data->add_system(WeaponSystem::Make("AMRAAM", WeaponSystemType::AAM_LONGRANGE, AffiliationType::NATO, 150, 2, 2, false));
-    data->add_system(WeaponSystem::Make("Phoenix", WeaponSystemType::AAM_LONGRANGE, AffiliationType::NATO, 300, 2, 3, false));
-    // SAM
-    data->add_system(WeaponSystem::Make("Standard", WeaponSystemType::SAM, AffiliationType::NATO, 50, 2, 4, false));
-    data->add_system(WeaponSystem::Make("Seadart", WeaponSystemType::SAM, AffiliationType::NATO, 50, 2, 2, false));
-    data->add_system(WeaponSystem::Make("Seaslug", WeaponSystemType::SAM, AffiliationType::SOVIET, 30, 2, 1, false));
-    // SSM
-    data->add_system(WeaponSystem::Make("Harpoon", WeaponSystemType::SSM, AffiliationType::NATO, 110, 4, 9, true));
-    data->add_system(WeaponSystem::Make("Exocet", WeaponSystemType::SSM, AffiliationType::NATO, 70, 7, 9, true));
-    data->add_system(WeaponSystem::Make("Tomahawk", WeaponSystemType::SSM, AffiliationType::NATO, 500, 7, 9, true));
-    // ASM
-    data->add_system(WeaponSystem::Make("Walleye", WeaponSystemType::ASM, AffiliationType::NATO, 50, 12, 7, false));
-    // AST
-    data->add_system(WeaponSystem::Make("MK46", WeaponSystemType::AST, AffiliationType::NATO, 10, 3, 4, false));
-    data->add_system(WeaponSystem::Make("MK48", WeaponSystemType::AST, AffiliationType::NATO, 50, 8, 5, false));
-    data->add_system(WeaponSystem::Make("Tigerfish", WeaponSystemType::AST, AffiliationType::NATO, 40, 8, 4, false));
-    // ASW
-    data->add_system(WeaponSystem::Make("SUBROC", WeaponSystemType::ASROC, AffiliationType::NATO, 55, 4, 3, false));
-    data->add_system(WeaponSystem::Make("Ikara", WeaponSystemType::ASROC, AffiliationType::NATO, 20, 3, 3, false));
-    
-    // *** SOVIET ***
-    
-    // AAM
-    data->add_system(WeaponSystem::Make("Aphid", WeaponSystemType::AAM, AffiliationType::SOVIET, 10, 1, 1, false));
-    // AAM_LONGRANGE
-    data->add_system(WeaponSystem::Make("Apex", WeaponSystemType::AAM_LONGRANGE, AffiliationType::SOVIET, 150, 2, 1, false));
-    // SAM
-    data->add_system(WeaponSystem::Make("SA-N-1", WeaponSystemType::SAM, AffiliationType::SOVIET, 30, 2, 1, false));
-    data->add_system(WeaponSystem::Make("SA-N-3", WeaponSystemType::SAM, AffiliationType::SOVIET, 40, 2, 2, false));
-    data->add_system(WeaponSystem::Make("SA-N-6", WeaponSystemType::SAM, AffiliationType::SOVIET, 80, 2, 3, false));
-    data->add_system(WeaponSystem::Make("SA-N-7", WeaponSystemType::SAM, AffiliationType::SOVIET, 25, 2, 4, true));
-    // SSM
-    data->add_system(WeaponSystem::Make("SS-N-2C", WeaponSystemType::SSM, AffiliationType::SOVIET, 50, 5, 5, false));
-    data->add_system(WeaponSystem::Make("SS-N-3", WeaponSystemType::SSM, AffiliationType::SOVIET, 450, 15, 4, false));
-    data->add_system(WeaponSystem::Make("SS-N-7", WeaponSystemType::SSM, AffiliationType::SOVIET, 60, 9, 7, false));
-    data->add_system(WeaponSystem::Make("SS-N-12", WeaponSystemType::SSM, AffiliationType::SOVIET, 500, 9, 6, false));
-    data->add_system(WeaponSystem::Make("SS-N-19", WeaponSystemType::SSM, AffiliationType::SOVIET, 500, 8, 7, false));
-    data->add_system(WeaponSystem::Make("SS-N-22", WeaponSystemType::SSM, AffiliationType::SOVIET, 120, 6, 7, false));
-    // ASM
-    data->add_system(WeaponSystem::Make("AS-6", WeaponSystemType::ASM, AffiliationType::SOVIET, 300, 15, 5, true));
-    data->add_system(WeaponSystem::Make("AS-7", WeaponSystemType::ASM, AffiliationType::SOVIET, 10, 7, 7, false));
-    // AST
-    data->add_system(WeaponSystem::Make("533MM", WeaponSystemType::AST, AffiliationType::SOVIET, 20, 3, 8, false));
-    data->add_system(WeaponSystem::Make("400MM", WeaponSystemType::AST, AffiliationType::SOVIET, 7, 4, 3, false));
-    // ASW
-    data->add_system(WeaponSystem::Make("FRAS-1", WeaponSystemType::ASROC, AffiliationType::SOVIET, 25, 3, 4, false));
-
-    return data;
+    auto weapon_data = std::make_shared<_WeaponData>();
+    weapon_data->initialize(json_import);
+    return weapon_data;
 }
 
 std::shared_ptr<WeaponSystem> WeaponData::weapon_system(const std::string &id)

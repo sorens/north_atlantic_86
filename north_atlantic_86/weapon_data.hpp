@@ -14,7 +14,7 @@
 class WeaponData
 {
 public:
-    static std::shared_ptr<WeaponData> Make();
+    static std::shared_ptr<WeaponData> Make(const std::string &json_import);
     
     virtual std::shared_ptr<WeaponSystem> weapon_system(const std::string &id);
 };

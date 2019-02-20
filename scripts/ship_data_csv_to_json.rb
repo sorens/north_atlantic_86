@@ -3,9 +3,6 @@
 require 'csv'
 require 'json'
 
-require 'csv'
-require 'json'
-
 def field_or_empty(field)
     return field if !field.nil? && !field.empty?
     return ""
@@ -24,6 +21,7 @@ ships = []
 # PRIMARY_ROLE,SECONDARY_ROLE,TERTIARY_ROLE
 # 1,CVN-68,Nimitz,0,0,75,30,72,97,1,CVN,Nimitz,NATO,6,6,0,4,4,10,4,,,,,,,ATTACK,,
 
+FIELD_ORDER             = 0
 FIELD_ID                = 1
 FIELD_NAME              = 2
 FIELD_MAIN_GUN          = 3

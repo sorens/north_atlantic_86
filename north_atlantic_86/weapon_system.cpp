@@ -6,6 +6,7 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "debug.hpp"
 #include "weapon_system.hpp"
 #include <sstream>
 
@@ -18,12 +19,13 @@ class _WeaponSystem : public WeaponSystem
     int _average_damage;
     std::string _name;
     int _range;
+    int _sam_salvo_rate;
     bool _surface_skimming;
     WeaponSystemType _type;
 
 public:
-    _WeaponSystem(const std::string &name, const WeaponSystemType type, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming) :
-    _accuracy_rating(accuracy_rating), _affiliation(affiliation), _average_damage(average_damage), _name(name), _range(range), _surface_skimming(surface_skimming), _type(type)
+    _WeaponSystem(const std::string &name, const WeaponSystemType type, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate) :
+    _accuracy_rating(accuracy_rating), _affiliation(affiliation), _average_damage(average_damage), _name(name), _range(range), _sam_salvo_rate(sam_salvo_rate), _surface_skimming(surface_skimming), _type(type)
     {
     }
     
@@ -72,6 +74,11 @@ public:
     {
         return _surface_skimming;
     }
+        
+    const int sam_salvo_rate() override
+    {
+        return _sam_salvo_rate;
+    }
     
     const WeaponSystemType type() override
     {
@@ -107,14 +114,19 @@ const std::string WeaponSystem::name()
 }
 
 // create a weapon system
-std::shared_ptr<WeaponSystem> WeaponSystem::Make(const std::string &name, const WeaponSystemType type, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming)
+std::shared_ptr<WeaponSystem> WeaponSystem::Make(const std::string &name, const WeaponSystemType type, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate)
 {
-    return std::make_shared<_WeaponSystem>(name, type, affiliation, range, average_damage, accuracy_rating, surface_skimming);
+    return std::make_shared<_WeaponSystem>(name, type, affiliation, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate);
 }
 
 const int WeaponSystem::range()
 {
     return -1;
+}
+        
+const int WeaponSystem::sam_salvo_rate()
+{
+    runtime_assert_not_reached();
 }
 
 const bool WeaponSystem::surface_skimming()

@@ -30,3 +30,23 @@ const std::string WeaponSystemTypeUtility::to_string(WeaponSystemType t)
             return "ASM";
     }
 }
+
+const WeaponSystemType WeaponSystemTypeUtility::to_enum(const std::string &t)
+{
+    if ("SSM" == t)
+        return WeaponSystemType::SSM;
+    else if ("SAM" == t)
+        return WeaponSystemType::SAM;
+    else if ("ASROC" == t)
+        return WeaponSystemType::ASROC;
+    else if ("AST" == t)
+        return WeaponSystemType::AST;
+    else if ("AAM" == t)
+        return WeaponSystemType::AAM;
+    else if ("AAM_LONGRANGE" == t)
+        return WeaponSystemType::AAM_LONGRANGE;
+    else if ("ASM" == t)
+        return WeaponSystemType::ASM;
+    
+    return WeaponSystemType::Unknown;
+}

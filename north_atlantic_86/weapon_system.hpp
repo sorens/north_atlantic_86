@@ -31,10 +31,13 @@ public:
     virtual const std::string name();
     
     // create a weapon system
-    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const WeaponSystemType tye, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming);
+    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const WeaponSystemType tye, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate);
 
     // return the range
     virtual const int range();
+    
+    // return the SAM salvo rate
+    virtual const int sam_salvo_rate();
 
     // does this weapon skim the surface?
     virtual const bool surface_skimming();

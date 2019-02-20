@@ -26,4 +26,5 @@ class WeaponSystemTypeUtility
 {
 public:
     static const std::string to_string(WeaponSystemType t);
+    static const WeaponSystemType to_enum(const std::string &t);
 };

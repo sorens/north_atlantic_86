@@ -11,6 +11,7 @@
 #include "map.hpp"
 #include "map_setup.hpp"
 #include "player.hpp"
+#include "unit.hpp"
 
 class Game
 {
@@ -34,7 +35,7 @@ public:
     virtual void display_weather();     // debug-only
     
     // factory method to create a game
-    static std::shared_ptr<Game> factory(std::vector<std::shared_ptr<MapSetup>> map_data);
+    static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_file, const std::string &weapons_file);
     
     // return a Map
     virtual std::shared_ptr<Map> map();
@@ -47,4 +48,7 @@ public:
     
     // return the soviet player
     virtual std::shared_ptr<Player> player_soviet();
+    
+    // return a unit
+    virtual std::shared_ptr<Unit> unit(const std::string &id);
 };

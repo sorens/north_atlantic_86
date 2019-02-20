@@ -14,6 +14,8 @@
 
 using namespace json11;
 
+#pragma mark _ShipData
+
 class _ShipData : public ShipData
 {
 public:

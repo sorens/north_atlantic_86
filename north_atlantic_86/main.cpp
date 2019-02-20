@@ -14,7 +14,6 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
-#include "mutable_unit.hpp"
 #include "ship_data_exception.hpp"
 #include "ship_data.hpp"
 #include <fstream>
@@ -70,35 +69,38 @@ int main(int argc, const char * argv[]) {
         if (ship_data.empty())
             runtime_assert_not_reached();
         
-        auto ships = ShipData::factory(ship_data);
-        logverbose(ships->find_unit("CG-47")->description());
-        auto nimitz = ships->find_unit("CVN-68");
-        logverbose(nimitz->description());
+        // read in weapon_data.json
+        std::string weapon_data;
+        auto weapon_file = File::Make("weapon_data.json");
+        
+        if (weapon_file) {
+            if (weapon_file->open(FileModeOpenRead)) {
+                auto size = weapon_file->size();
+                if (size > 0) {
+                    char *buf = (char *)malloc((size + 1) * sizeof(char));
+                    buf[size] = '\0';
+                    
+                    auto read_bytes = weapon_file->read(buf, size);
+                    runtime_assert(read_bytes == size);
+                    
+                    weapon_data = std::string(buf, size);
+                    
+                    weapon_file->close();
+                    free(buf);
+                }
+            }
+        }
+        
+        if (weapon_data.empty())
+            runtime_assert_not_reached();
         
         auto setup_data = MapSetup::factory(map_data);
-        auto game = Game::factory(setup_data);
+        auto game = Game::Make(setup_data, ship_data, weapon_data);
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
         game->display_map();
         game->display_weather();
-        auto map = game->map();
-        auto portsmouth = map->at(2, 2);
-        logverbose(portsmouth->description());
-        auto ocean = map->at(5, 4);
-        logverbose("water temperature at (5, 4): " << ocean->water_temperature());
-        
-        auto nimitz_mutable = MutableUnit::factory(nimitz);
-        while (!nimitz_mutable->is_sunk()) {
-            nimitz_mutable->apply_damage(10);
-            loginfo("Nimitz damage: " << nimitz_mutable->damage());
-        }
-        
-        if (nimitz_mutable->is_sunk())
-            loginfo("The Nimitz has been sunk!");
-        
-        auto sub = ships->find_unit("SSN-V31");
-        loginfo(ships->find_unit("SSN-V31")->description());
-        
+
         // take a turn
         game->next_turn();
     }
