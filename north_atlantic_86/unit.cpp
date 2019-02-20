@@ -7,21 +7,22 @@
 //
 
 #include "affiliation_type.hpp"
+#include "debug.hpp"
 #include "unit.hpp"
 #include <sstream>
 
 #pragma mark _Unit
 
-class _Unit : public Unit {
+class _Unit : public Unit
+{
 public:
-    _Unit(const std::string &id, const std::string &name, const UnitType type)
-    : _id(id), _name(name), _type(type)
-    {
-    }
-    
     _Unit(const std::string &id, const std::string &name, const UnitType type,
-          const std::string &unit_class, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation)
-    : _anti_aircraft_gun(aa_gun), _cargo_capacity(cargo_capacity), _defense_factor(defense_factor), _id(id), _main_gun(main_gun), _max_speed(max_speed), _missile_defense(missile_defense), _name(name), _type(type), _unit_class(unit_class), _affiliation(affiliation)
+          const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun,
+          const int aa_gun, const int missile_defense, const int max_speed,
+          const int cargo_capacity, const int defense_factor, const AffiliationType affiliation)
+    : _anti_aircraft_gun(aa_gun), _cargo_capacity(cargo_capacity), _defense_factor(defense_factor),
+    _id(id), _main_gun(main_gun), _max_speed(max_speed), _missile_defense(missile_defense),
+    _name(name), _prefix(prefix), _type(type), _unit_class(unit_class), _affiliation(affiliation)
     {
     }
     
@@ -38,25 +39,6 @@ public:
     const int defense_factor() override
     {
         return _defense_factor;
-    }
-    
-    const std::string description() override
-    {
-        std::stringstream ss;
-        ss << "<Unit";
-        ss << " id: '" << _id << "'";
-        ss << ", class: '" << _unit_class << "'";
-        ss << ", name: '" << _name << "'";
-        ss << ", type: '" << UnitTypeUtility::to_string(_type) << "'";
-        ss << ", main_gun: " << _main_gun;
-        ss << ", aa_gun: " << _anti_aircraft_gun;
-        ss << ", missile_defense: " << _missile_defense;
-        ss << ", max_speed: " << _max_speed;
-        ss << ", defense_factor: " << _defense_factor;
-        ss << ", cargo_capacity: " << _cargo_capacity;
-        ss << ">";
-        
-        return ss.str();
     }
     
     const std::string id() override
@@ -84,6 +66,11 @@ public:
         return _name;
     }
     
+    const std::string prefix() override
+    {
+        return _prefix;
+    }
+    
     const UnitType type() override
     {
         return _type;
@@ -94,6 +81,26 @@ public:
         return _unit_class;
     }
     
+    const std::string description() override
+    {
+        std::stringstream ss;
+        ss << "<Unit";
+        ss << " id: '" << _id << "'";
+        ss << ", class: '" << _unit_class << "'";
+        ss << ", name: '" << _name << "'";
+        ss << ", type: '" << UnitTypeUtility::to_string(_type) << "'";
+        ss << ", main_gun: " << _main_gun;
+        ss << ", aa_gun: " << _anti_aircraft_gun;
+        ss << ", missile_defense: " << _missile_defense;
+        ss << ", max_speed: " << _max_speed;
+        ss << ", defense_factor: " << _defense_factor;
+        ss << ", cargo_capacity: " << _cargo_capacity;
+        ss << ", prefix: " << _prefix;
+        ss << ">";
+        
+        return ss.str();
+    }
+        
 private:
     AffiliationType _affiliation;
     int _anti_aircraft_gun;
@@ -104,6 +111,7 @@ private:
     int _max_speed;
     int _missile_defense;
     std::string _name;
+    std::string _prefix;
     UnitType _type;
     std::string _unit_class;
     int _class_id;
@@ -113,65 +121,65 @@ private:
 
 const int Unit::anti_aircraft_gun()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const int Unit::cargo_capacity()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const int Unit::defense_factor()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const std::string Unit::description()
 {
-    return "";
-}
-
-std::shared_ptr<Unit> Unit::factory(const std::string &id, const std::string &name, const UnitType type)
-{
-    return std::make_shared<_Unit>(id, name, type);
-}
-
-std::shared_ptr<Unit> Unit::factory(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation)
-{
-    return std::make_shared<_Unit>(id, name, type, unit_class, class_id, main_gun, aa_gun, missile_defense, max_speed, cargo_capacity, defense_factor, affiliation);
+    runtime_assert_not_reached();
 }
 
 const std::string Unit::id()
 {
-    return "";
+    runtime_assert_not_reached();
+}
+
+std::shared_ptr<Unit> Unit::Make(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation)
+{
+    return std::make_shared<_Unit>(id, name, type, unit_class, prefix, class_id, main_gun, aa_gun, missile_defense, max_speed, cargo_capacity, defense_factor, affiliation);
 }
 
 const int Unit::main_gun()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const int Unit::max_speed()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const int Unit::missile_defense()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const std::string Unit::name()
 {
-    return "";
+    runtime_assert_not_reached();
+}
+        
+const std::string Unit::prefix()
+{
+    runtime_assert_not_reached();
 }
 
 const UnitType Unit::type()
 {
-    return UnitType::Unknown;
+    runtime_assert_not_reached();
 }
 
 const std::string Unit::unit_class()
 {
-    return "";
+    runtime_assert_not_reached();
 }

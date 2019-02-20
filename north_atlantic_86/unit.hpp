@@ -28,14 +28,11 @@ public:
     // return a human-readable string that describes a unit
     virtual const std::string description();
     
-    // factory method to create a unit
-    static std::shared_ptr<Unit> factory(const std::string &id, const std::string &name, const UnitType type);
-    
-    // factory method to create a unit
-    static std::shared_ptr<Unit> factory(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation);
-
     // return the unique ID of this unit
     virtual const std::string id();
+    
+    // factory method to create a unit
+    static std::shared_ptr<Unit> Make(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation);
     
     // value for unit main gun
     virtual const int main_gun();
@@ -45,6 +42,9 @@ public:
     
     // value for missile defense
     virtual const int missile_defense();
+    
+    // value for the ship prefix (e.g. cvn)
+    virtual const std::string prefix();
     
     // return the name of this unit
     virtual const std::string name();
