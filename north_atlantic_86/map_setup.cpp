@@ -6,6 +6,8 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "debug.hpp"
+#include "file.hpp"
 #include "json11.hpp"
 #include "map_setup.hpp"
 #include "map_setup_exception.hpp"
@@ -149,6 +151,36 @@ std::vector<std::shared_ptr<MapSetup>> MapSetup::factory(const std::string json_
     }
     
     return result;
+}
+        
+const std::string MapSetup::Import_Data(const std::string &path)
+{
+    // read in map data
+    std::string map_data;
+    
+    auto map_file = File::Make("map_data.json");
+    
+    if (map_file) {
+        if (map_file->open(FileModeOpenRead)) {
+            auto size = map_file->size();
+            if (size > 0) {
+                char *buf = (char *)malloc((size + 1) * sizeof(char));
+                buf[size] = '\0';
+                
+                auto read_bytes = map_file->read(buf, size);
+                runtime_assert(read_bytes == size);
+                
+                map_data = std::string(buf, size);
+                
+                map_file->close();
+                free(buf);
+            }
+        }
+    }
+    
+    runtime_assert(!map_data.empty());
+
+    return map_data;
 }
 
 // name of airbase or port (empty if not an airbase or port)

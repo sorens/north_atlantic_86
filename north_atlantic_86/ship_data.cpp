@@ -7,6 +7,8 @@
 //
 
 #include <unordered_map>
+#include "debug.hpp"
+#include "file.hpp"
 #include "json11.hpp"
 #include "ship_data.hpp"
 #include "ship_data_exception.hpp"
@@ -92,4 +94,34 @@ std::shared_ptr<ShipData> ShipData::factory(const std::string &json_import)
 std::shared_ptr<Unit> ShipData::find_unit(const std::string &id)
 {
     return nullptr;
+}
+
+const std::string ShipData::Import_Data(const std::string &path)
+{
+    // read in ship_data.json
+    std::string ship_data;
+    
+    auto ship_file = File::Make("ship_data.json");
+    
+    if (ship_file) {
+        if (ship_file->open(FileModeOpenRead)) {
+            auto size = ship_file->size();
+            if (size > 0) {
+                char *buf = (char *)malloc((size + 1) * sizeof(char));
+                buf[size] = '\0';
+                
+                auto read_bytes = ship_file->read(buf, size);
+                runtime_assert(read_bytes == size);
+                
+                ship_data = std::string(buf, size);
+                
+                ship_file->close();
+                free(buf);
+            }
+        }
+    }
+    
+    runtime_assert(!ship_data.empty());
+
+    return ship_data;
 }

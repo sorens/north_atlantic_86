@@ -18,4 +18,7 @@ public:
     
     // find a ship by it's id (e.g. CVN-68 is the USS Nimitz)
     virtual std::shared_ptr<Unit> find_unit(const std::string &id);
+    
+    // import JSON data
+    static const std::string Import_Data(const std::string &path);
 };

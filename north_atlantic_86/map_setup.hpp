@@ -34,6 +34,9 @@ public:
     // import a blob of JSON data
     static std::vector<std::shared_ptr<MapSetup>> factory(const std::string json_import);
     
+    // import JSON data
+    static const std::string Import_Data(const std::string &path);
+    
     // name of airbase or port (empty if not an airbase or port)
     virtual const std::string name();
     

@@ -7,6 +7,8 @@
 //
 
 #include <unordered_map>
+#include "debug.hpp"
+#include "file.hpp"
 #include "json11.hpp"
 #include "weapon_data.hpp"
 #include "weapon_data_exception.hpp"
@@ -81,6 +83,36 @@ public:
 };
 
 #pragma mark WeaponData
+
+const std::string WeaponData::Import_Data(const std::string &path)
+{
+    // read in weapon_data.json
+    std::string weapon_data;
+    
+    auto weapon_file = File::Make("weapon_data.json");
+    
+    if (weapon_file) {
+        if (weapon_file->open(FileModeOpenRead)) {
+            auto size = weapon_file->size();
+            if (size > 0) {
+                char *buf = (char *)malloc((size + 1) * sizeof(char));
+                buf[size] = '\0';
+                
+                auto read_bytes = weapon_file->read(buf, size);
+                runtime_assert(read_bytes == size);
+                
+                weapon_data = std::string(buf, size);
+                
+                weapon_file->close();
+                free(buf);
+            }
+        }
+    }
+    
+    runtime_assert(!weapon_data.empty());
+    
+    return weapon_data;
+}
 
 std::shared_ptr<WeaponData> WeaponData::Make(const std::string &json_import)
 {
