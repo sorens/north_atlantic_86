@@ -146,13 +146,12 @@ public:
     
     std::shared_ptr<Unit> unit(const std::string &id) override
     {
-        std::shared_ptr<Unit> unit;
-        
         if (_ship_data) {
-            unit = _ship_data->find_unit(id);
+            return _ship_data->find_unit(id);
         }
         
-        return unit;
+        return nullptr;
+    }
         
     std::shared_ptr<WeaponSystem> weapon_system(const std::string &id) override
     {
