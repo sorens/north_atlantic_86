@@ -25,23 +25,29 @@ int main(int argc, const char * argv[]) {
     try
     {
         loginfo("********* GAME STARTING *********");
-        auto map_data = R"(
-        {
-            "map": [0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
-                    0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
-                    0, 0, 3, 1, 1, 1, 1, 1, 0, 2,
-                    0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
-                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                    1, 1, 1, 1, 0, 0, 1, 1, 1, 1,
-                    1, 1, 1, 1, 2, 0, 1, 1, 1, 1,
-                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            "names": ["Portsmouth", 
-                      "Halifax",
-                      "Centersville"]
+        
+        // read in map data
+        std::string map_data;
+        
+        auto map_file = File::Make("map_data.json");
+        
+        if (map_file) {
+            if (map_file->open(FileModeOpenRead)) {
+                auto size = map_file->size();
+                if (size > 0) {
+                    char *buf = (char *)malloc((size + 1) * sizeof(char));
+                    buf[size] = '\0';
+                    
+                    auto read_bytes = map_file->read(buf, size);
+                    runtime_assert(read_bytes == size);
+                    
+                    map_data = std::string(buf, size);
+                    
+                    map_file->close();
+                    free(buf);
+                }
+            }
         }
-        )";
         
         // read in ship_data.json
         std::string ship_data;
