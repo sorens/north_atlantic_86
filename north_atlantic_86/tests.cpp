@@ -18,6 +18,8 @@
 #include "task_force_exception.hpp"
 #include "tests.hpp"
 #include "weapon_data.hpp"
+#include "weapon_mount.hpp"
+#include "weapon_mount_exception.hpp"
 
 #pragma mark _Tests
 
@@ -260,7 +262,26 @@ public:
 
     void weapon_mount_unit_test() override
     {
+        _initialize_every_time();
 
+        bool result = false;
+        auto harpoon = _game->weapon_system("HARPOON");
+        if (harpoon) {
+            auto wm = WeaponMount::Make(harpoon, 100, 10);
+            
+            try {
+                while (wm->rounds_remaining() > 0) {
+                    wm->fire(9);
+                }
+            }
+            catch(not_enough_rounds_weapon_mount_exception &e) {
+                result = true;
+            }
+        }
+        
+        test_result("weapon_mount_unit_test", "Exception received when weapon fired with empty magazine", result);
+        
+        _clean_up_every_time();
     }
 
     void weapon_system_unit_test() override
