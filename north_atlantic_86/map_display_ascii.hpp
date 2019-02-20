@@ -15,5 +15,9 @@
 class MapDisplayAscii
 {
 public:
+    // Convert game coordinates to a storage index
+    static int ConvertCoordinates(const int x, const int y);
+    
+    // Generate a stream containing the consolidated map
     static std::ostringstream Generate(std::shared_ptr<Game> game);
 };
