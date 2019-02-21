@@ -95,7 +95,17 @@ public:
 
     void grid_unit_test() override
     {
-
+        _initialize_every_time();
+        
+        bool result = false;
+        auto grid1 = Grid::factory("A", GridType::Ocean, 4, 5);
+        auto grid2 = Grid::factory("b", GridType::Ocean, 9, 6);
+        float distance = Grid::Distance(grid1, grid2);
+        if (distance == 6)
+            result = true;
+        test_result("grid_unit_test", "Calculate distance between grids", result);
+        
+        _clean_up_every_time();
     }
 
     void map_unit_test() override

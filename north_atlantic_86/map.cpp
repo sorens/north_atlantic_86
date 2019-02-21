@@ -6,8 +6,10 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
-#include "grid.hpp"
 #include "map.hpp"
+
+#include "debug.hpp"
+#include "grid.hpp"
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -87,12 +89,12 @@ private:
         
 std::shared_ptr<Grid> Map::at(const int x, const int y)
 {
-    return nullptr;
+    runtime_assert_not_reached();
 }
 
 std::string Map::description()
 {
-    return "";
+    runtime_assert_not_reached();
 }
 
 std::shared_ptr<Map> Map::factory(std::vector<std::shared_ptr<MapSetup>> setup)
@@ -104,10 +106,10 @@ std::shared_ptr<Map> Map::factory(std::vector<std::shared_ptr<MapSetup>> setup)
 
 const std::vector<std::shared_ptr<Grid>> Map::grid()
 {
-    return std::vector<std::shared_ptr<Grid>>(0);
+    runtime_assert_not_reached();
 }
 
 std::vector<std::shared_ptr<Unit>> Map::units(const int x, const int y)
 {
-    return std::vector<std::shared_ptr<Unit>>(0);
+    runtime_assert_not_reached();
 }

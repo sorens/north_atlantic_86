@@ -7,9 +7,11 @@
 //
 
 #include "grid.hpp"
+#include "debug.hpp"
 #include "map_setup.hpp"
 #include "unit.hpp"
 #include "weather.hpp"
+#include <cmath>
 #include <sstream>
 #include <iostream>
 
@@ -114,7 +116,22 @@ private:
 
 const std::string Grid::description()
 {
-    return "";
+    runtime_assert_not_reached();
+}
+
+int Grid::Distance(std::shared_ptr<Grid> grid1, std::shared_ptr<Grid> grid2)
+{
+    int result = 0;
+    
+    int x1 = grid1->x();
+    int y1 = grid1->y();
+    int x2 = grid2->x();
+    int y2 = grid2->y();
+    
+    int sums = std::pow(x1-x2, 2) + std::pow(y1-y2, 2);
+    float d = std::pow(sums, 0.5);
+    result = static_cast<int>(std::ceil(d));
+    return result;
 }
 
 std::shared_ptr<Grid> Grid::factory(const std::string &name, GridType type, const int x, const int y)
@@ -124,35 +141,35 @@ std::shared_ptr<Grid> Grid::factory(const std::string &name, GridType type, cons
         
 const std::string Grid::name()
 {
-    return "";
+    runtime_assert_not_reached();
 }
 
 const GridType Grid::type()
 {
-    return GridType::Unknown;
+    runtime_assert_not_reached();
 }
 
 const int Grid::x()
 {
-    return -1;
+    runtime_assert_not_reached();
 }
 
 const int Grid::y()
 {
-    return -1;
+    runtime_assert_not_reached();
 }
         
 const int Grid::water_temperature()
 {
-    return -1;
+    runtime_assert_not_reached();
 }
 
 const std::shared_ptr<Weather> Grid::weather()
 {
-    return nullptr;
+    runtime_assert_not_reached();
 }
 
 const std::vector<std::shared_ptr<Unit>> Grid::units()
 {
-    return std::vector<std::shared_ptr<Unit>>(0);
+    runtime_assert_not_reached();
 }

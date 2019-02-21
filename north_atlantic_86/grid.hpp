@@ -34,6 +34,9 @@ public:
     // description of a grid
     virtual const std::string description();
     
+    // calculate the distance between two grid points
+    static int Distance(std::shared_ptr<Grid> grid1, std::shared_ptr<Grid> grid2);
+    
     // factory to create a grid object
     static std::shared_ptr<Grid> factory(const std::string &name, GridType type, const int x, const int y);
     
