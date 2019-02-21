@@ -1,8 +1,25 @@
 # North Atlantic 86 Simulation Library
 
+## Original Game
+
+The original game, [North Atlantic '86](https://en.wikipedia.org/wiki/North_Atlantic_%2786), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the thread to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
+
+![Original Box Front](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/box-front.png "Box Cover")
+
 ## Summary
 
-Build a simple API that allows a board to be populated with units(aircraft, ships or munitions), landmass, ocean, bases(airbases and/or ports), weather and/or water temperature
+I needed a reason to practice coding and re-creating this game was more fun than the various coding exercises. The requirements:
+
+1. Employ good coding practices
+1. The game should be playable
+1. capture in Github at https://github.com/sorens/north_atlantic_86
+
+This game project is broken into four chief components:
+
+1. the data necessary to drive the game (IN_PROGRESS)
+1. the game engine to prosecute the moves
+1. the user interface that allows the player to play the game
+1. the artificial intelligence engine to conduct the opponents moves
 
 ## Game
 
@@ -10,7 +27,8 @@ The game object will be constructed from a factory method that allows clients to
 
 ```c++
 // Create a game object using the MapSetup vector. See MapSetup below
-std::shared_ptr<Game> game = Game::factory(std::vector<std::shared_ptr<MapSetup>> map);
+std::shared_ptr<Game> game = Game::Make(std::vector<std::shared_ptr<MapSetup>> 
+    map_data, const std::string &ships_file, const std::string &weapons_file);
 ```
 
 ```c++
@@ -141,10 +159,30 @@ auto weather_type = weather->type();
     // e.g. Gale, Clear, etc
 ```
 
-## Unit
+## Unit and MutableUnit
 
-A unit will describe a ship, an aircraft or a port/airbase. Each unit will have different characteristics. Ships can move, Aircraft remain fixed to a ship or base but can attack and defend if scrambled, ports and airbases have aircraft, troops and supplies. A unit will be defined via inheritance and composition.
+A unit will describe a ship, an aircraft or a port/airbase. Each unit will have different characteristics. Ships can move, Aircraft remain fixed to a ship or base but can attack and defend if scrambled, ports and airbases have aircraft, troops and supplies. A unit will be defined via inheritance and composition. A MutableUnit will allow the game to modify certain fields of a unit as the game progress (e.g. damage)
+
+## ShipData
+
+A ShipData class will load the read-only ship from JSON data so that the game object will have access to all the fields of each ship.
+
+## WeaponSystem and WeaponMount
+
+Each Weapon System in the game will be backed by a read-only object loaded from JSON data. Weapon Mounts will be created on each of the units with a reference to the WeaponSystem it employs. Weapon Mounts will track magazine size, salvo rate, etc.
+
+## Task Force
+
+A Task Force is comprised of one or more units from the same navy. Each navy can put to sea Task Forces with the mission type: COMBAT, BOMBARDMENT, TRANSPORT, EVACUATION or SUBMARINE. A sixth mission type, RETURN, is used when a Task Force can no longer fufill its original mission.
 
 ## Example
 
 ![map_weather_grid](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/map_weather_grid.png "Map and Weather")
+
+An early look at what the game map for the North Atlantic
+
+![game_map](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/map.png "Game Map")
+
+Some initial unit tests
+
+![unit_tests](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/unit_tests.png "Unit Tests")
