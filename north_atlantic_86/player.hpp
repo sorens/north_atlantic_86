@@ -28,6 +28,9 @@ public:
     // create a task force, client should catch player_exception and validate that the returned shared_ptr is non-nullptr
     virtual std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y);
     
+    // disolve a task force
+    virtual void dissolve_task_force(std::shared_ptr<TaskForce> tf);
+    
     // return the player's id
     virtual const std::string id();
     

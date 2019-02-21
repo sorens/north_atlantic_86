@@ -72,6 +72,18 @@ public:
         return task_force;
     }
     
+    void dissolve_task_force(std::shared_ptr<TaskForce> tf)
+    {
+        // TODO throw exception when not in port
+        if (tf) {
+            // TODO iterate over each unit, put it back in this port
+            
+            // TODO delete the task force
+            
+            // TODO update the possible task force array to allow this task force again
+        }
+    }
+    
     const std::string id() override
     {
         return _id;
@@ -128,6 +140,11 @@ const std::string Player::alliance_to_string(const AffiliationType affiliation)
 }
 
 std::shared_ptr<TaskForce> Player::create_task_force(const TaskForceMissionType mission, const int x, const int y)
+{
+    runtime_assert_not_reached();
+}
+
+void Player::dissolve_task_force(std::shared_ptr<TaskForce> tf)
 {
     runtime_assert_not_reached();
 }
