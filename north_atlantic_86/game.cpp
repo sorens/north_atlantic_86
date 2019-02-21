@@ -29,12 +29,12 @@ public:
     
     void add_nato_player(const std::string &name) override
     {
-        _player_nato = Player::factory(AffiliationType::NATO, name);
+        _player_nato = Player::Make(AffiliationType::NATO, name, {"11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"});
     }
     
     void add_soviet_player(const std::string &name) override
     {
-        _player_soviet = Player::factory(AffiliationType::SOVIET, name);
+        _player_soviet = Player::Make(AffiliationType::SOVIET, name, {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
     }
     
     std::string current_time() override
@@ -97,7 +97,7 @@ public:
     void next_turn() override
     {
         // create a task force
-        auto combat_tf = TaskForce::Make("11", TaskForceMissionType::COMBAT, 10, 10);
+        auto combat_tf = _player_nato->create_task_force(TaskForceMissionType::COMBAT, 10, 10);
         combat_tf->add_unit(unit("CG-47"));     // Ticonderoga
         combat_tf->add_unit(unit("CVN-68"));    // Nimitz
     }

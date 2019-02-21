@@ -30,14 +30,17 @@ public:
     
     virtual std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y);
     
-    // factory method to create a player
-    static std::shared_ptr<Player> factory(const AffiliationType affiliation, const std::string &name);
-
     // return the player's id
     virtual const std::string id();
     
+    // factory method to create a player
+    static std::shared_ptr<Player> Make(const AffiliationType affiliation, const std::string &name, std::vector<std::string> task_force_ids);  // TODO bases
+    
     // return the player's name
     virtual const std::string name();
+    
+    // return the number of remaining task forces this player can create
+    virtual const int number_remaining_task_forces();
     
     // return the current score
     virtual const int score();
