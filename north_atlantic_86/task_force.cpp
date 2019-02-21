@@ -48,6 +48,7 @@ public:
             }
         }
         
+        logverbose("task force '" << _id << "' adding unit: " << unit->description());
         _units.push_back(unit);
     }
     
@@ -107,6 +108,23 @@ public:
         return _y;
     }
     
+    const std::string description() override
+    {
+        std::stringstream ss;
+        ss << "<Task Force";
+        ss << " id: " << _id;
+        ss << " mission: " << TaskForceMissionTypeUtility::To_String(_mission);
+        ss << " location: " << _x << ", " << _y;
+        ss << " units (" << _units.size() << "): ";
+        for (auto &unit : _units) {
+            if (auto strong = unit.lock())
+                ss << strong->id() << ", ";
+        }
+        ss << ">";
+        
+        return ss.str();
+    }
+    
 private:
     std::string _id;
     TaskForceMissionType _mission;
@@ -118,6 +136,11 @@ private:
 #pragma mark TaskForce
 
 void TaskForce::add_unit(std::shared_ptr<Unit> unit)
+{
+    runtime_assert_not_reached();
+}
+
+const std::string TaskForce::description()
 {
     runtime_assert_not_reached();
 }

@@ -96,42 +96,10 @@ public:
     
     void next_turn() override
     {
-        logverbose(unit("CG-47")->description());
-        auto nimitz = unit("CVN-68");
-        logverbose(nimitz->description());
-        
-        auto portsmouth = _map->at(2, 2);
-        logverbose(portsmouth->description());
-        auto ocean = _map->at(5, 4);
-        logverbose("water temperature at (5, 4): " << ocean->water_temperature());
-        
-        auto nimitz_mutable = MutableUnit::factory(nimitz);
-        while (!nimitz_mutable->is_sunk()) {
-            nimitz_mutable->apply_damage(10);
-            loginfo("Nimitz damage: " << nimitz_mutable->damage());
-        }
-        
-        if (nimitz_mutable->is_sunk())
-            loginfo("The Nimitz has been sunk!");
-        
-        auto sub = unit("SSN-V31");
-        loginfo(unit("SSN-V31")->description());
-        
-        auto harpoon = _weapon_data->weapon_system("HARPOON");
-        if (harpoon) {
-            auto wm = WeaponMount::Make(harpoon, 100, 10);
-            loginfo(wm->description());
-            
-            try {
-                while (wm->rounds_remaining() > 0) {
-                    wm->fire(9);
-                    loginfo(wm->description());
-                }
-            }
-            catch(not_enough_rounds_weapon_mount_exception &e) {
-                logerror(e.what());
-            }
-        }
+        // create a task force
+        auto combat_tf = TaskForce::Make("11", TaskForceMissionType::COMBAT, 10, 10);
+        combat_tf->add_unit(unit("CG-47"));     // Ticonderoga
+        combat_tf->add_unit(unit("CVN-68"));    // Nimitz
     }
     
     std::shared_ptr<Player> player_nato() override

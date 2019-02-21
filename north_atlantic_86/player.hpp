@@ -10,7 +10,7 @@
 
 #include <vector>
 #include "affiliation_type.hpp"
-#include "fleet.hpp"
+#include "task_force.hpp"
 #include "unit.hpp"
 
 class Player
@@ -19,18 +19,20 @@ public:
     // return the player's affiliation (e.g. NATO, SOVIET)
     virtual const AffiliationType affiliation();
     
+    // add a task force
+    virtual void add_task_force(std::shared_ptr<TaskForce> task_force);
+    
     // convert Alliance to a human-readable string
     static const std::string alliance_to_string(const AffiliationType affiliation);
     
     // return a list of ports and airbases
     // const std::vector<std::shared_ptr<Base>> bases();
     
+    virtual std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y);
+    
     // factory method to create a player
     static std::shared_ptr<Player> factory(const AffiliationType affiliation, const std::string &name);
 
-    // return a list of fleets
-    virtual const std::vector<std::shared_ptr<Fleet>> fleets();
-    
     // return the player's id
     virtual const std::string id();
     
@@ -42,4 +44,7 @@ public:
     
     // return a vector of sunken ships
     virtual const std::vector<std::shared_ptr<Unit>> sunken_ships();
+    
+    // return a list of task forces
+    virtual const std::vector<std::shared_ptr<TaskForce>> task_forces();
 };

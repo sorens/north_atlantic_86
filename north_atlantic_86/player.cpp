@@ -7,6 +7,7 @@
 //
 
 #include <uuid/uuid.h>
+#include "debug.hpp"
 #include "player.hpp"
 
 #pragma mark _Player
@@ -29,6 +30,17 @@ public:
         return _affiliation;
     }
     
+    void add_task_force(std::shared_ptr<TaskForce> task_force) override
+    {
+        
+    }
+    
+    std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y) override
+    {
+        // TODO implement once we expand constructor to inject more data
+        return nullptr;
+    }
+    
     const std::string id() override
     {
         return _id;
@@ -49,26 +61,41 @@ public:
         return _sunken_ships;
     }
     
+    const std::vector<std::shared_ptr<TaskForce>> task_forces() override
+    {
+        return _task_forces;
+    }
+    
 private:
     AffiliationType _affiliation;
-    std::vector<std::shared_ptr<Fleet>> _fleets;
     std::string _id;
     std::string _name;
     int _score;
     std::vector<std::shared_ptr<Unit>> _sunken_ships;
+    std::vector<std::shared_ptr<TaskForce>> _task_forces;
 };
 
 #pragma mark Player
 
 const AffiliationType Player::affiliation()
 {
-    return AffiliationType::UNKNOWN;
+    runtime_assert_not_reached();
+}
+
+void Player::add_task_force(std::shared_ptr<TaskForce> task_force)
+{
+    runtime_assert_not_reached();
 }
 
 const std::string Player::alliance_to_string(const AffiliationType affiliation)
 {
     // TODO implement
     return "";
+}
+
+std::shared_ptr<TaskForce> Player::create_task_force(const TaskForceMissionType mission, const int x, const int y)
+{
+    runtime_assert_not_reached();
 }
 
 // const std::vector<std::shared_ptr<Base>> Player::bases()
@@ -78,27 +105,27 @@ std::shared_ptr<Player> Player::factory(const AffiliationType affiliation, const
     return std::make_shared<_Player>(affiliation, name);
 }
 
-const std::vector<std::shared_ptr<Fleet>> Player::fleets()
-{
-    return std::vector<std::shared_ptr<Fleet>>(0);
-}
-
 const std::string Player::id()
 {
-    return "";
+    runtime_assert_not_reached();
 }
 
 const std::string Player::name()
 {
-    return "";
+    runtime_assert_not_reached();
 }
 
 const int Player::score()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
 const std::vector<std::shared_ptr<Unit>> Player::sunken_ships()
 {
-    return std::vector<std::shared_ptr<Unit>>(0);
+    runtime_assert_not_reached();
+}
+
+const std::vector<std::shared_ptr<TaskForce>> Player::task_forces()
+{
+    runtime_assert_not_reached();
 }

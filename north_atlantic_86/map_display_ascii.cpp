@@ -6,6 +6,7 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "debug.hpp"
 #include "map_display_ascii.hpp"
 #include <cmath>
 
@@ -51,16 +52,18 @@ std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<Game> game)
     
     
     // place all NATO fleet objects
-//    auto nato_fleets = game->player_nato()->fleets();
-//    
-//    for (auto &fleet : nato_fleets) {
-//    }
+    auto nato_tfs = game->player_nato()->task_forces();
+    
+    for (auto &tf : nato_tfs) {
+        logverbose(tf->description());
+    }
     
     // place all SOVIET fleet objects
-//    auto soviet_fleets = game->player_soviet()->fleets();
-//    
-//    for (auto &fleet : soviet_fleets) {
-//    }
+    auto soviet_tfs = game->player_soviet()->task_forces();
+    
+    for (auto &tf : soviet_tfs) {
+        logverbose(tf->description());
+    }
     
     std::ostringstream ss;
     

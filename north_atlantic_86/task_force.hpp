@@ -18,6 +18,9 @@ public:
     // add a unit to this task force
     virtual void add_unit(std::shared_ptr<Unit> unit);
     
+    // return a human-readable string that describes a task force
+    virtual const std::string description();
+    
     // unique ID for this task force
     virtual const std::string id();
     
