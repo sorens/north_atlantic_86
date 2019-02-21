@@ -13,6 +13,8 @@
 #include "game.hpp"
 #include "map.hpp"
 #include "mutable_unit.hpp"
+#include "player.hpp"
+#include "player_exception.hpp"
 #include "ship_data.hpp"
 #include "task_force.hpp"
 #include "task_force_exception.hpp"
@@ -68,14 +70,14 @@ public:
     
     void test_result(const std::string &test_case, const std::string &message, const bool result)
     {
-        std::string result_string = "💥💥💥";
+        std::string result_string = "💥,";
         if (result)
-            result_string = "✅";
+            result_string = "✅,";
         
-        std::string test_case_with_markers = ", '" + test_case + "', ";
+        std::string test_case_with_markers = "'" + test_case + "', ";
         std::string message_with_markers = "'" + message + "', ";
         
-        std::cout << "<TEST CASE result: " << result_string << std::left << std::setw(30) << test_case_with_markers << "CONDITION: " << std::left << std::setw(40) << message_with_markers << std::endl;
+        std::cout << "<TEST CASE result: " << std::left << std::setw(6) << result_string << std::left << std::setw(30) << test_case_with_markers << "CONDITION: " << std::left << std::setw(40) << message_with_markers << std::endl;
     }
     
     void test_all() override
@@ -108,7 +110,42 @@ public:
 
     void player_unit_test() override
     {
-
+        _initialize_every_time();
+        
+        auto nato = _game->player_nato();
+        
+        bool result = true;
+        for (int i = 1; i < 14; ++i) {
+            try {
+                auto tf = nato->create_task_force(TaskForceMissionType::COMBAT, 10, 10);
+                if (tf && i > 11)
+                    result = false;
+            }
+            catch(no_task_forces_available_player_exception &e) {
+                if (i < 12)
+                    result = false;
+            }
+        }
+        
+        test_result("player_unit_test", "nato player can only have 11 task forces", result);
+        
+        auto soviet = _game->player_soviet();
+        result = true;
+        for (int i = 1; i < 14; ++i) {
+            try {
+                auto tf = soviet->create_task_force(TaskForceMissionType::COMBAT, 10, 10);
+                if (tf && i > 9)
+                    result = false;
+            }
+            catch(no_task_forces_available_player_exception &e) {
+                if (i < 10)
+                    result = false;
+            }
+        }
+        
+        test_result("player_unit_test", "soviet player can only have 9 task forces", result);
+        
+        _clean_up_every_time();
     }
 
     void task_force_unit_test() override

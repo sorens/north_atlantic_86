@@ -20,6 +20,11 @@
 
 #pragma mark _Game
 
+// NATO gets 11 active TFs maximum
+static const std::vector<std::string> NATO_POSSIBLE_TASK_FORCES     = {"11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
+// SOVIET gets 9 active TFs maximum
+static const std::vector<std::string> SOVIET_POSSIBLE_TASK_FORCES   = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
 class _Game : public Game
 {
 public:
@@ -29,12 +34,12 @@ public:
     
     void add_nato_player(const std::string &name) override
     {
-        _player_nato = Player::Make(AffiliationType::NATO, name, {"11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"});
+        _player_nato = Player::Make(AffiliationType::NATO, name, NATO_POSSIBLE_TASK_FORCES);
     }
     
     void add_soviet_player(const std::string &name) override
     {
-        _player_soviet = Player::Make(AffiliationType::SOVIET, name, {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+        _player_soviet = Player::Make(AffiliationType::SOVIET, name, SOVIET_POSSIBLE_TASK_FORCES);
     }
     
     std::string current_time() override

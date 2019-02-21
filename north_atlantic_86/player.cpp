@@ -47,11 +47,6 @@ public:
         return _affiliation;
     }
     
-    void add_task_force(std::shared_ptr<TaskForce> task_force) override
-    {
-        
-    }
-    
     std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y) override
     {
         if (number_remaining_task_forces() <= 0)
@@ -122,11 +117,6 @@ private:
 #pragma mark Player
 
 const AffiliationType Player::affiliation()
-{
-    runtime_assert_not_reached();
-}
-
-void Player::add_task_force(std::shared_ptr<TaskForce> task_force)
 {
     runtime_assert_not_reached();
 }
