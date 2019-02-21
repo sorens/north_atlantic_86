@@ -84,6 +84,7 @@
 		61148E9F221D113400AFF3F1 /* task_force_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = task_force_exception.hpp; sourceTree = "<group>"; };
 		61148EA4221DB96100AFF3F1 /* tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
 		61148EA5221DB96100AFF3F1 /* tests.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tests.hpp; sourceTree = "<group>"; };
+		61148EAB221E476F00AFF3F1 /* argh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = argh.h; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 			children = (
 				61148E482214CD0400AFF3F1 /* affiliation_type.cpp */,
 				61148E462214CB9100AFF3F1 /* affiliation_type.hpp */,
+				61148EAB221E476F00AFF3F1 /* argh.h */,
 				61148E8F221C8AC500AFF3F1 /* debug.hpp */,
 				61148E642215348800AFF3F1 /* exception.hpp */,
 				61F7D02A2210AF9B009C3F34 /* fleet.cpp */,
