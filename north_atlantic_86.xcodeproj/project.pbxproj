@@ -88,6 +88,7 @@
 		61148EAD221E662300AFF3F1 /* player_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_exception.hpp; sourceTree = "<group>"; };
 		61148EAF221E768C00AFF3F1 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
 		61148EB0221E768C00AFF3F1 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
+		61148EB3221F568E00AFF3F1 /* base_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base_type.hpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 				61148EAB221E476F00AFF3F1 /* argh.h */,
 				61148EAF221E768C00AFF3F1 /* base.cpp */,
 				61148EB0221E768C00AFF3F1 /* base.hpp */,
+				61148EB3221F568E00AFF3F1 /* base_type.hpp */,
 				61148E8F221C8AC500AFF3F1 /* debug.hpp */,
 				61148E642215348800AFF3F1 /* exception.hpp */,
 				61148E91221C988A00AFF3F1 /* file.cpp */,

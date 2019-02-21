@@ -8,8 +8,15 @@
 
 #pragma once
 
+#include "base_type.hpp"
+
 // a base can be an airbase or a port (which includes an airbase)
 
 class Base
 {
+public:
+    virtual const std::string name();
+    virtual const int airbase_capacity();
+    virtual const BaseType type();
+    virtual bool airfields_suppressed();
 };
