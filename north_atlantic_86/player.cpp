@@ -47,6 +47,11 @@ public:
         return _affiliation;
     }
     
+    const std::vector<std::shared_ptr<Base>> bases() override
+    {
+        return _bases;
+    }
+    
     std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y) override
     {
         if (number_remaining_task_forces() <= 0)
@@ -72,7 +77,7 @@ public:
         return task_force;
     }
     
-    void dissolve_task_force(std::shared_ptr<TaskForce> tf)
+    void dissolve_task_force(std::shared_ptr<TaskForce> tf) override
     {
         // TODO throw exception when not in port
         if (tf) {
@@ -118,6 +123,7 @@ public:
     
 private:
     AffiliationType _affiliation;
+    std::vector<std::shared_ptr<Base>> _bases;
     std::string _id;
     std::string _name;
     std::vector<std::tuple<std::string, bool>> _possible_task_forces;
@@ -137,6 +143,11 @@ const std::string Player::alliance_to_string(const AffiliationType affiliation)
 {
     // TODO implement
     return "";
+}
+    
+const std::vector<std::shared_ptr<Base>> Player::bases()
+{
+    runtime_assert_not_reached();
 }
 
 std::shared_ptr<TaskForce> Player::create_task_force(const TaskForceMissionType mission, const int x, const int y)

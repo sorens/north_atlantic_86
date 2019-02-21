@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "affiliation_type.hpp"
+#include "base.hpp"
 #include "task_force.hpp"
 #include "unit.hpp"
 
@@ -23,7 +24,7 @@ public:
     static const std::string alliance_to_string(const AffiliationType affiliation);
     
     // return a list of ports and airbases
-    // const std::vector<std::shared_ptr<Base>> bases();
+    virtual const std::vector<std::shared_ptr<Base>> bases();
 
     // create a task force, client should catch player_exception and validate that the returned shared_ptr is non-nullptr
     virtual std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y);
