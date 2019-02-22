@@ -17,18 +17,19 @@ weapons = []
 # ORDER,NAME,TYPE,AFFILIATION,RANGE,AVERAGE_DAMAGE,
 # ACCURACY_RATING,SURFACE_SKIMMING,SAM_SALVO_RATE
 
-FIELD_ORDER             = 0
-FIELD_NAME              = 1
-FIELD_TYPE              = 2
-FIELD_AFFILIATION       = 3
-FIELD_RANGE             = 4
-FIELD_AVERAGE_DAMAGE    = 5
-FIELD_ACCURACY_RATING   = 6
-FIELD_SURFACE_SKIMMING  = 7
-FIELD_SAM_SALVO_RATE    = 8
+FIELD_ORDER                 = 0
+FIELD_NAME                  = 1
+FIELD_TYPE                  = 2
+FIELD_AFFILIATION           = 3
+FIELD_RANGE                 = 4
+FIELD_AVERAGE_DAMAGE        = 5
+FIELD_ACCURACY_RATING       = 6
+FIELD_SURFACE_SKIMMING      = 7
+FIELD_SAM_SALVO_RATE        = 8
+FIELD_LRAAM_SALVO_RATE      = 9
 
 CSV.foreach(input_path, {headers: true}) do |row|
-    if row.size == 9
+    if row.size == 10
         weapon = []
         weapon << row[FIELD_NAME]
         weapon << row[FIELD_TYPE]
@@ -39,6 +40,7 @@ CSV.foreach(input_path, {headers: true}) do |row|
         weapon << true if (row[FIELD_SURFACE_SKIMMING] == "TRUE")
         weapon << false if (row[FIELD_SURFACE_SKIMMING] == "FALSE")
         weapon << row[FIELD_SAM_SALVO_RATE].to_i
+        weapon << row[FIELD_LRAAM_SALVO_RATE].to_i
         weapons << weapon
     end
 end

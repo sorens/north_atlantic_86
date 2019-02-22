@@ -18,6 +18,16 @@ using namespace json11;
 
 #pragma mark _WeaponData
 
+const static int FIELD_NAME                 = 0;
+const static int FIELD_TYPE                 = 1;
+const static int FIELD_AFFILIATION          = 2;
+const static int FIELD_RANGE                = 3;
+const static int FIELD_AVERAGE_DAMAGE       = 4;
+const static int FIELD_ACCURACY_RATING      = 5;
+const static int FIELD_SURFACE_SKIMMING     = 6;
+const static int FIELD_SAM_SALVO_RATE       = 7;
+const static int FIELD_LRAAM_SALVO_RATE     = 8;
+
 class _WeaponData : public WeaponData
 {
     std::unordered_map<std::string, std::shared_ptr<WeaponSystem>> _weapon_systems;
@@ -50,22 +60,24 @@ public:
             if (!element.is_array())
                 throw new import_failed_weapon_data_exception("expecting an array");
             
-            std::string name = element[0].string_value();               // e.g. Harpoon
-            WeaponSystemType type = WeaponSystemTypeUtility::to_enum(element[1].string_value()); // e.g. SSM
-            std::string affiliation_id = element[2].string_value();     // e.g. NATO
+            std::string name = element[FIELD_NAME].string_value();                  // e.g. Harpoon
+            WeaponSystemType type = WeaponSystemTypeUtility::to_enum(element[FIELD_TYPE].string_value()); // e.g. SSM
+            std::string affiliation_id = element[FIELD_AFFILIATION].string_value(); // e.g. NATO
             AffiliationType affiliation_type = AffiliationType::NATO;
             if (affiliation_id == "USSR") {
                 affiliation_type = AffiliationType::SOVIET;
             }
-            int range = element[3].int_value();                         // e.g. 110
-            int average_damage = element[4].int_value();                // e.g. 4
-            int accuracy_rating = element[5].int_value();               // e.g. 9
-            bool surface_skimming = element[6].bool_value();            // e.g. true
+            int range = element[FIELD_RANGE].int_value();                           // e.g. 110
+            int average_damage = element[FIELD_AVERAGE_DAMAGE].int_value();         // e.g. 4
+            int accuracy_rating = element[FIELD_ACCURACY_RATING].int_value();       // e.g. 9
+            bool surface_skimming = element[FIELD_SURFACE_SKIMMING].bool_value();   // e.g. true
             int sam_salvo_rate = 0;
-            if (type == WeaponSystemType::SAM)                          // e.g. 0
-                sam_salvo_rate = element[7].int_value();
+            if (type == WeaponSystemType::SAM)
+                sam_salvo_rate = element[FIELD_SAM_SALVO_RATE].int_value();         // e.g. 0
             
-            auto weapon_system = WeaponSystem::Make(name, type, affiliation_type, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate);
+            int lraam_salvo_rate = element[FIELD_LRAAM_SALVO_RATE].int_value();     // e.g. 0
+            
+            auto weapon_system = WeaponSystem::Make(name, type, affiliation_type, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate, lraam_salvo_rate);
             
             add_system(weapon_system);
         }

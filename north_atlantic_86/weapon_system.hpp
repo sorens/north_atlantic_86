@@ -27,11 +27,14 @@ public:
     // return a human-readable string that describes a weapon system
     virtual const std::string description();
     
+    // long Range AAM salvo rate
+    virtual const int long_range_aam_salvo_rate();
+    
     // return the name
     virtual const std::string name();
     
     // create a weapon system
-    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const WeaponSystemType tye, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate);
+    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const WeaponSystemType tye, const AffiliationType affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
 
     // return the range
     virtual const int range();
