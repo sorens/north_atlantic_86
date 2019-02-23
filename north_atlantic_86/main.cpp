@@ -6,6 +6,7 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "aircraft_data.hpp"
 #include "affiliation_type.hpp"
 #include "debug.hpp"
 #include "file.hpp"
@@ -43,8 +44,11 @@ void play_game()
         // read in weapon_data.json
         std::string weapon_data = WeaponData::Import_Data("weapon_data.json");
         
+        // read in aircraft_data.json
+        std::string aircraft_data = AircraftData::Import_Data("aircraft_data.json");
+        
         auto setup_data = MapSetup::factory(map_data);
-        auto game = Game::Make(setup_data, ship_data, weapon_data);
+        auto game = Game::Make(setup_data, ship_data, weapon_data, aircraft_data);
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
 

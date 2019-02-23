@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "aircraft.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
 #include "player.hpp"
@@ -17,6 +18,10 @@
 class Game
 {
 public:
+    
+    // return an aicraft
+    virtual std::shared_ptr<Aircraft> aircraft(const std::string &designation);
+    
     // add the nato player
     virtual void add_nato_player(const std::string &name);
     
@@ -36,7 +41,7 @@ public:
     virtual void display_weather();     // debug-only
     
     // factory method to create a game
-    static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_file, const std::string &weapons_file);
+    static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data, const std::string &aircraft_json_data);
     
     // return a Map
     virtual std::shared_ptr<Map> map();

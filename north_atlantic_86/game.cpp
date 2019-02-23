@@ -8,6 +8,7 @@
 
 #include <cmath>
 #include <iostream>     // TODO inject
+#include "aircraft_data.hpp"
 #include "affiliation_type.hpp"
 #include "debug.hpp"
 #include "game.hpp"
@@ -30,6 +31,12 @@ class _Game : public Game
 public:
     _Game()
     {
+    }
+    
+    std::shared_ptr<Aircraft> aircraft(const std::string &designation) override
+    {
+        runtime_assert(_aircraft_data);
+        return _aircraft_data->find_aircraft(designation);
     }
     
     void add_nato_player(const std::string &name) override
@@ -87,11 +94,12 @@ public:
         std::cout << "*************" << std::endl;
     }
     
-    void initialize(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data)
+        void initialize(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data, const std::string &aircraft_json_data)
     {
         _map = Map::factory(map_data);
         _ship_data = ShipData::factory(ships_json_data);
         _weapon_data = WeaponData::Make(weapons_json_data);
+        _aircraft_data = AircraftData::Make(aircraft_json_data, _weapon_data);
     }
     
     std::shared_ptr<Map> map() override
@@ -132,6 +140,7 @@ public:
     }
 
 private:
+    std::shared_ptr<AircraftData> _aircraft_data;
     std::shared_ptr<Map> _map;
     int _current_turn;
     std::shared_ptr<Player> _player_nato;
@@ -141,6 +150,11 @@ private:
 };
 
 #pragma mark Game
+
+std::shared_ptr<Aircraft> Game::aircraft(const std::string &designation)
+{
+    runtime_assert_not_reached();
+}
         
 void Game::add_nato_player(const std::string &name)
 {
@@ -172,10 +186,10 @@ void Game::display_weather()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Game> Game::Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data)
+        std::shared_ptr<Game> Game::Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data, const std::string &aircraft_json_data)
 {
     auto game = std::make_shared<_Game>();
-    game->initialize(map_data, ships_json_data, weapons_json_data);
+    game->initialize(map_data, ships_json_data, weapons_json_data, aircraft_json_data);
     return game;
 }
 

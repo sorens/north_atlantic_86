@@ -8,6 +8,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include "aircraft_data.hpp"
 #include "debug.hpp"
 #include "file.hpp"
 #include "game.hpp"
@@ -52,9 +53,12 @@ public:
        
         // read in weapon_data.json
         std::string weapon_data = WeaponData::Import_Data("weapon_data.json");
+        
+        // read in aircraft_data.json
+        std::string aircraft_data = AircraftData::Import_Data("aircraft_data.json");
 
         auto setup_data = MapSetup::factory(map_data);
-        _game = Game::Make(setup_data, ship_data, weapon_data);
+        _game = Game::Make(setup_data, ship_data, weapon_data, aircraft_data);
         _game->add_nato_player("Sally");
         _game->add_soviet_player("Yuri");    
     }
@@ -82,6 +86,7 @@ public:
     
     void test_all() override
     {
+        aircraft_unit_test();
         grid_unit_test();
         map_unit_test();
         mutable_unit_unit_test();
@@ -91,6 +96,27 @@ public:
         weapon_mount_unit_test();
         weapon_system_unit_test();
         weather_unit_test();
+    }
+    
+    void aircraft_unit_test() override
+    {
+        _initialize_every_time();
+        
+        auto f14 = _game->aircraft("F14");
+        bool result = false;
+        if (f14)
+            result = true;
+        
+        test_result("aircraft_unit_test", "Lookup F14", result);
+        
+        result = false;
+        auto phoenix = f14->weapon_system();
+        if (phoenix && phoenix->name() == "Phoenix")
+            result = true;
+        
+        test_result("aircraft_unit_test", "F14 has a Phoenix weapons system", result);
+        
+        _clean_up_every_time();
     }
 
     void grid_unit_test() override
@@ -353,6 +379,11 @@ std::shared_ptr<Tests> Tests::Make()
 }
 
 void Tests::test_all()
+{
+    runtime_assert_not_reached();
+}
+
+void Tests::aircraft_unit_test()
 {
     runtime_assert_not_reached();
 }

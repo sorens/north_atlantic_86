@@ -23,6 +23,9 @@
 		61148E9D221D0B1300AFF3F1 /* task_force_mission_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148E9B221D0B1300AFF3F1 /* task_force_mission_type.cpp */; };
 		61148EA6221DB96100AFF3F1 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EA4221DB96100AFF3F1 /* tests.cpp */; };
 		61148EB1221E768C00AFF3F1 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EAF221E768C00AFF3F1 /* base.cpp */; };
+		61148EB7221F8BE700AFF3F1 /* aircraft_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EB5221F8BE700AFF3F1 /* aircraft_type.cpp */; };
+		61148EBA222091D700AFF3F1 /* aircraft_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EB8222091D700AFF3F1 /* aircraft_data.cpp */; };
+		61148EBD2220923D00AFF3F1 /* aircraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EBB2220923D00AFF3F1 /* aircraft.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -89,6 +92,13 @@
 		61148EAF221E768C00AFF3F1 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
 		61148EB0221E768C00AFF3F1 /* base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base.hpp; sourceTree = "<group>"; };
 		61148EB3221F568E00AFF3F1 /* base_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base_type.hpp; sourceTree = "<group>"; };
+		61148EB5221F8BE700AFF3F1 /* aircraft_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aircraft_type.cpp; sourceTree = "<group>"; };
+		61148EB6221F8BE700AFF3F1 /* aircraft_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aircraft_type.hpp; sourceTree = "<group>"; };
+		61148EB8222091D700AFF3F1 /* aircraft_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aircraft_data.cpp; sourceTree = "<group>"; };
+		61148EB9222091D700AFF3F1 /* aircraft_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aircraft_data.hpp; sourceTree = "<group>"; };
+		61148EBB2220923D00AFF3F1 /* aircraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aircraft.cpp; sourceTree = "<group>"; };
+		61148EBC2220923D00AFF3F1 /* aircraft.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aircraft.hpp; sourceTree = "<group>"; };
+		61148EBF2220B53B00AFF3F1 /* aircraft_data_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aircraft_data_exception.hpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -141,6 +151,13 @@
 			children = (
 				61148E482214CD0400AFF3F1 /* affiliation_type.cpp */,
 				61148E462214CB9100AFF3F1 /* affiliation_type.hpp */,
+				61148EBB2220923D00AFF3F1 /* aircraft.cpp */,
+				61148EBC2220923D00AFF3F1 /* aircraft.hpp */,
+				61148EB8222091D700AFF3F1 /* aircraft_data.cpp */,
+				61148EB9222091D700AFF3F1 /* aircraft_data.hpp */,
+				61148EBF2220B53B00AFF3F1 /* aircraft_data_exception.hpp */,
+				61148EB5221F8BE700AFF3F1 /* aircraft_type.cpp */,
+				61148EB6221F8BE700AFF3F1 /* aircraft_type.hpp */,
 				61148EAB221E476F00AFF3F1 /* argh.h */,
 				61148EAF221E768C00AFF3F1 /* base.cpp */,
 				61148EB0221E768C00AFF3F1 /* base.hpp */,
@@ -270,6 +287,8 @@
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
 				61148E772219B28F00AFF3F1 /* weapon_data.cpp in Sources */,
 				61F7D0362211D972009C3F34 /* game.cpp in Sources */,
+				61148EB7221F8BE700AFF3F1 /* aircraft_type.cpp in Sources */,
+				61148EBA222091D700AFF3F1 /* aircraft_data.cpp in Sources */,
 				61148E1B2213460000AFF3F1 /* player.cpp in Sources */,
 				61F7D01B2210985D009C3F34 /* unit.cpp in Sources */,
 				61148E4422149D6200AFF3F1 /* json11.cpp in Sources */,
@@ -278,6 +297,7 @@
 				61F7D0292210A523009C3F34 /* weather.cpp in Sources */,
 				61F7D02F2210BDD3009C3F34 /* map.cpp in Sources */,
 				61148E9A221D0A4300AFF3F1 /* task_force.cpp in Sources */,
+				61148EBD2220923D00AFF3F1 /* aircraft.cpp in Sources */,
 				61F7D0322210BE81009C3F34 /* map_setup.cpp in Sources */,
 				61148E8D221BC10300AFF3F1 /* log.cpp in Sources */,
 				61F7D0232210A32B009C3F34 /* unit_type.cpp in Sources */,
