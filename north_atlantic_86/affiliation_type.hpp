@@ -14,7 +14,8 @@ enum class AffiliationType : int
 {
     UNKNOWN = -1,
     NATO,
-    SOVIET
+    SOVIET,
+    CONTESTED
 };
     
 class AffiliationUtility

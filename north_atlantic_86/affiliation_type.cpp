@@ -18,5 +18,7 @@ const std::string AffiliationUtility::to_string(AffiliationType t)
             return "NATO";
         case AffiliationType::SOVIET:
             return "SOVIET";
+        case AffiliationType::CONTESTEd:
+            return "CONTESTED";
     }
 }
