@@ -18,8 +18,8 @@ const std::string WeaponSystemTypeUtility::to_string(WeaponSystemType t)
             return "SSM";
         case WeaponSystemType::SAM:
             return "SAM";
-        case WeaponSystemType::ASROC:
-            return "ASROC";
+        case WeaponSystemType::ASW:
+            return "ASW";
         case WeaponSystemType::AST:
             return "AST";
         case WeaponSystemType::AAM:
@@ -37,8 +37,8 @@ const WeaponSystemType WeaponSystemTypeUtility::to_enum(const std::string &t)
         return WeaponSystemType::SSM;
     else if ("SAM" == t)
         return WeaponSystemType::SAM;
-    else if ("ASROC" == t)
-        return WeaponSystemType::ASROC;
+    else if ("ASW" == t)
+        return WeaponSystemType::ASW;
     else if ("AST" == t)
         return WeaponSystemType::AST;
     else if ("AAM" == t)

@@ -96,7 +96,7 @@ public:
         if (WeaponSystemType::SSM == t) {
             return _ssm;
         }
-        else if (WeaponSystemType::ASROC == t) {
+        else if (WeaponSystemType::ASW == t) {
             return _asw;
         }
         else if (WeaponSystemType::SAM == t) {
