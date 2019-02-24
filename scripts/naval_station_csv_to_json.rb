@@ -12,7 +12,7 @@ input_path = ARGV[0]
 output_path = ARGV[1]
 
 data = {}
-bases = []
+naval_stations = []
 
 # NAME,TYPE,AFFILIATION,MAIN_GUNS,LIGHT_GUNS,MISSILE_DEFENSE,
 # CARGO_CAPACITY,DEFENSE_FACTOR,SSM,SSM_SALVO_RATE,
@@ -39,29 +39,29 @@ FIELD_SONAR_STRENGTH    = 16
 
 CSV.foreach(input_path, {headers: true}) do |row|
     if row.size == 17
-        base = []
-        base << row[FIELD_NAME]
-        base << row[FIELD_TYPE]
-        base << row[FIELD_AFFILIATION]
-        base << row[FIELD_MAIN_GUN].to_i
-        base << row[FIELD_AA_GUN].to_i
-        base << row[FIELD_MD].to_i
-        base << row[FIELD_CC].to_i
-        base << row[FIELD_DF].to_i
-        base << field_or_empty(row[FIELD_SSM])
-        base << row[FIELD_SSM_SALVO].to_i
-        base << row[FIELD_SSM_MAGAZINE].to_i
-        base << field_or_empty(row[FIELD_ASW])
-        base << field_or_empty(row[FIELD_SAM])
-        base << field_or_empty(row[FIELD_AST])
-        base << row[FIELD_HELICOPTERS].to_i
-        base << row[FIELD_EW_STRENGTH].to_i
-        base << row[FIELD_SONAR_STRENGTH].to_i
-        bases << base
+        naval_station = []
+        naval_station << row[FIELD_NAME]
+        naval_station << row[FIELD_TYPE]
+        naval_station << row[FIELD_AFFILIATION]
+        naval_station << row[FIELD_MAIN_GUN].to_i
+        naval_station << row[FIELD_AA_GUN].to_i
+        naval_station << row[FIELD_MD].to_i
+        naval_station << row[FIELD_CC].to_i
+        naval_station << row[FIELD_DF].to_i
+        naval_station << field_or_empty(row[FIELD_SSM])
+        naval_station << row[FIELD_SSM_SALVO].to_i
+        naval_station << row[FIELD_SSM_MAGAZINE].to_i
+        naval_station << field_or_empty(row[FIELD_ASW])
+        naval_station << field_or_empty(row[FIELD_SAM])
+        naval_station << field_or_empty(row[FIELD_AST])
+        naval_station << row[FIELD_HELICOPTERS].to_i
+        naval_station << row[FIELD_EW_STRENGTH].to_i
+        naval_station << row[FIELD_SONAR_STRENGTH].to_i
+        naval_stations << naval_station
     end
 end
 
-data["bases"] = bases
+data["naval_stations"] = naval_stations
 
 File.open(output_path, "w") do |file|
     file.write(JSON.pretty_generate(data))

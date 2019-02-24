@@ -1,5 +1,5 @@
 //
-//  base_type.hpp
+//  naval_station_type.hpp
 //  north_atlantic_86
 //
 //  Created by STEPHEN ORENS on 2/21/19.
@@ -8,8 +8,8 @@
 
 #pragma once
 
-typedef enum BaseType : int BaseType;
-enum BaseType : int
+typedef enum naval_station_type : int naval_station_type;
+enum naval_station_type : int
 {
     Unknown = 0,
     Port,

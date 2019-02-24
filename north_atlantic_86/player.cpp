@@ -47,7 +47,7 @@ public:
         return _affiliation;
     }
     
-    const std::vector<std::shared_ptr<Base>> bases() override
+    const std::vector<std::shared_ptr<naval_station>> bases() override
     {
         return _bases;
     }
@@ -123,7 +123,7 @@ public:
     
 private:
     AffiliationType _affiliation;
-    std::vector<std::shared_ptr<Base>> _bases;
+    std::vector<std::shared_ptr<naval_station>> _bases;
     std::string _id;
     std::string _name;
     std::vector<std::tuple<std::string, bool>> _possible_task_forces;
@@ -145,7 +145,7 @@ const std::string Player::alliance_to_string(const AffiliationType affiliation)
     return "";
 }
     
-const std::vector<std::shared_ptr<Base>> Player::bases()
+const std::vector<std::shared_ptr<naval_station>> Player::bases()
 {
     runtime_assert_not_reached();
 }
