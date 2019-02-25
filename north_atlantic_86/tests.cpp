@@ -354,7 +354,7 @@ public:
     {
         _initialize_every_time();
 
-        auto nimitz_mutable = MutableUnit::factory(_game->unit("CVN-68"));
+        auto nimitz_mutable = mutable_unit::Make(_game->unit("CVN-68"));
         nimitz_mutable->apply_damage(nimitz_mutable->unit()->defense_factor() + 1);
         
         bool result = false;
@@ -364,7 +364,7 @@ public:
         test_result("unit_test", "Ship sinks when dmg >= df", result);
         
         result = false;
-        nimitz_mutable = MutableUnit::factory(_game->unit("CVN-68"));
+        nimitz_mutable = mutable_unit::Make(_game->unit("CVN-68"));
         nimitz_mutable->apply_damage(nimitz_mutable->unit()->defense_factor() / 2);
         if (!nimitz_mutable->is_sunk())
             result = true;

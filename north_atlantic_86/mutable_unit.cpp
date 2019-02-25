@@ -9,11 +9,11 @@
 #include "debug.hpp"
 #include "mutable_unit.hpp"
 
-#pragma mark _MutableUnit
-class _MutableUnit : public MutableUnit
+#pragma mark _mutable_unit
+class _mutable_unit : public mutable_unit
 {
 public:
-    _MutableUnit(std::shared_ptr<Unit> unit) :
+    _mutable_unit(std::shared_ptr<Unit> unit) :
     _unit(unit)
     {
         _damage = 0;
@@ -56,37 +56,37 @@ private:
     std::shared_ptr<Unit> _unit;
 };
 
-#pragma mark MutableUnit
+#pragma mark mutable_unit
 
-void MutableUnit::apply_damage(const int damage)
+void mutable_unit::apply_damage(const int damage)
 {
 }
 
-const int MutableUnit::damage()
-{
-    return -1;
-}
-
-std::shared_ptr<MutableUnit> MutableUnit::factory(std::shared_ptr<Unit> unit)
-{
-    return std::make_shared<_MutableUnit>(unit);
-}
-
-void MutableUnit::update_max_speed(const int max_speed)
-{
-}
-
-const int MutableUnit::max_speed()
+const int mutable_unit::damage()
 {
     return -1;
 }
 
-const bool MutableUnit::is_sunk()
+std::shared_ptr<mutable_unit> mutable_unit::Make(std::shared_ptr<Unit> unit)
+{
+    return std::make_shared<_mutable_unit>(unit);
+}
+
+void mutable_unit::update_max_speed(const int max_speed)
+{
+}
+
+const int mutable_unit::max_speed()
+{
+    return -1;
+}
+
+const bool mutable_unit::is_sunk()
 {
     return false;
 }
 
-std::shared_ptr<Unit> MutableUnit::unit()
+std::shared_ptr<Unit> mutable_unit::unit()
 {
     runtime_assert_not_reached();
 }

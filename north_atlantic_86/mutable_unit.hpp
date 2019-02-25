@@ -10,9 +10,9 @@
 
 #include "unit.hpp"
 
-// MutableUnit provides read and write access to fields
+// mutable_unit provides read and write access to fields
 // of a Unit that can be updated during the progress of the game
-class MutableUnit : public Unit
+class mutable_unit : public Unit
 {
 public:
     // damage
@@ -20,7 +20,7 @@ public:
     virtual const int damage();
 
     // return a mutable unit
-    static std::shared_ptr<MutableUnit> factory(std::shared_ptr<Unit> unit);
+    static std::shared_ptr<mutable_unit> Make(std::shared_ptr<Unit> unit);
     
     // max speed
     virtual void update_max_speed(const int max_speed);
