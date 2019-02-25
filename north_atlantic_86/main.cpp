@@ -52,8 +52,7 @@ void play_game()
         // read in naval_station_data.json
         std::string naval_station_data = naval_station_data::Import_Data("naval_station_data.json");
         
-        auto setup_data = MapSetup::factory(map_data);
-        auto game = Game::Make(setup_data, ship_data, weapon_data, aircraft_data, naval_station_data);
+        auto game = Game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data);
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
 

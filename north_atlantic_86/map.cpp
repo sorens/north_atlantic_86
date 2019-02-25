@@ -10,6 +10,7 @@
 
 #include "debug.hpp"
 #include "grid.hpp"
+#include "map_setup.hpp"
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -60,8 +61,10 @@ public:
         return _grid;
     }
     
-    void initialize(std::vector<std::shared_ptr<MapSetup>> setup, std::shared_ptr<naval_station_data> naval_station_data)
+    void initialize(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data)
     {
+        auto setup = MapSetup::factory(map_data);
+
         for (auto &element : setup) {
             GridType type = GridType(static_cast<int>(element->type()));
             std::shared_ptr<Grid> grid = Grid::Make(element->name(), type, element->x(), element->y(), naval_station_data);
@@ -70,7 +73,7 @@ public:
         
         _dimension = std::pow(_grid.size(), 0.5);
     }
-        
+    
     std::vector<std::shared_ptr<Unit>> units(const int x, const int y) override
     {
         int index = (y * (_dimension - 1)) + x;
@@ -97,16 +100,16 @@ std::string Map::description()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Map> Map::factory(std::vector<std::shared_ptr<MapSetup>> setup, std::shared_ptr<naval_station_data> naval_station_data)
-{
-    auto map = std::make_shared<_Map>();
-    map->initialize(setup, naval_station_data);
-    return map;
-}
-
 const std::vector<std::shared_ptr<Grid>> Map::grid()
 {
     runtime_assert_not_reached();
+}
+
+std::shared_ptr<Map> Map::Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data)
+{
+    auto map = std::make_shared<_Map>();
+    map->initialize(map_data, naval_station_data);
+    return map;
 }
 
 std::vector<std::shared_ptr<Unit>> Map::units(const int x, const int y)

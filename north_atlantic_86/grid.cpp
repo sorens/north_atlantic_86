@@ -8,7 +8,6 @@
 
 #include "grid.hpp"
 #include "debug.hpp"
-#include "map_setup.hpp"
 #include "naval_station.hpp"
 #include "unit.hpp"
 #include "weather.hpp"

@@ -10,7 +10,6 @@
 
 #include "aircraft.hpp"
 #include "map.hpp"
-#include "map_setup.hpp"
 #include "naval_station.hpp"
 #include "player.hpp"
 #include "unit.hpp"
@@ -45,7 +44,7 @@ public:
     virtual std::shared_ptr<naval_station> find_naval_station(const std::string &name);
     
     // factory method to create a game
-    static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data,
+    static std::shared_ptr<Game> Make(const std::string &map_data,
                                       const std::string &ships_json_data,
                                       const std::string &weapons_json_data,
                                       const std::string &aircraft_json_data,

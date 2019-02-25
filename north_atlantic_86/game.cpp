@@ -103,7 +103,7 @@ public:
         return _naval_station_data->find_naval_station(name);
     }
     
-    void initialize(std::vector<std::shared_ptr<MapSetup>> map_data,
+    void initialize(const std::string &map_data,
                         const std::string &ships_json_data,
                         const std::string &weapons_json_data,
                         const std::string &aircraft_json_data,
@@ -112,7 +112,7 @@ public:
         _weapon_data = WeaponData::Make(weapons_json_data);
         _aircraft_data = AircraftData::Make(aircraft_json_data, _weapon_data);
         _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
-        _map = Map::factory(map_data, _naval_station_data);
+        _map = Map::Make(map_data, _naval_station_data);
     }
     
     std::shared_ptr<Map> map() override
@@ -205,7 +205,7 @@ std::shared_ptr<naval_station> Game::find_naval_station(const std::string &name)
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Game> Game::Make(std::vector<std::shared_ptr<MapSetup>> map_data,
+std::shared_ptr<Game> Game::Make(const std::string &map_data,
                                  const std::string &ships_json_data,
                                  const std::string &weapons_json_data,
                                  const std::string &aircraft_json_data,
