@@ -123,7 +123,7 @@ public:
     void next_turn() override
     {
         // create a task force
-        auto combat_tf = _player_nato->create_task_force(TaskForceMissionType::COMBAT, 10, 10);
+        auto combat_tf = _player_nato->create_task_force(task_force_mission_type::COMBAT, 10, 10);
         combat_tf->add_unit(unit("CG-47"));     // Ticonderoga
         combat_tf->add_unit(unit("CVN-68"));    // Nimitz
     }

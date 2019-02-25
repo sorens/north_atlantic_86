@@ -12,6 +12,7 @@
 #include "affiliation_type.hpp"
 #include "naval_station.hpp"
 #include "task_force.hpp"
+#include "task_force_mission_type.hpp"
 #include "unit.hpp"
 
 class player
@@ -27,7 +28,7 @@ public:
     virtual const std::vector<std::shared_ptr<naval_station>> bases();
 
     // create a task force, client should catch player_exception and validate that the returned shared_ptr is non-nullptr
-    virtual std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y);
+    virtual std::shared_ptr<TaskForce> create_task_force(const task_force_mission_type mission, const int x, const int y);
     
     // disolve a task force
     virtual void dissolve_task_force(std::shared_ptr<TaskForce> tf);

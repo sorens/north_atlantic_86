@@ -52,7 +52,7 @@ public:
         return _bases;
     }
     
-    std::shared_ptr<TaskForce> create_task_force(const TaskForceMissionType mission, const int x, const int y) override
+    std::shared_ptr<TaskForce> create_task_force(const task_force_mission_type mission, const int x, const int y) override
     {
         if (number_remaining_task_forces() <= 0)
             throw no_task_forces_available_player_exception();
@@ -150,7 +150,7 @@ const std::vector<std::shared_ptr<naval_station>> player::bases()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<TaskForce> player::create_task_force(const TaskForceMissionType mission, const int x, const int y)
+std::shared_ptr<TaskForce> player::create_task_force(const task_force_mission_type mission, const int x, const int y)
 {
     runtime_assert_not_reached();
 }

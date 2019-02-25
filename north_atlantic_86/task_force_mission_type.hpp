@@ -10,8 +10,7 @@
 
 #include <string>
 
-typedef enum TaskForceMissionType : int TaskForceMissionType;
-enum TaskForceMissionType : int
+enum class task_force_mission_type : int
 {
     UNKNOWN = 0,
     COMBAT,
@@ -22,15 +21,15 @@ enum TaskForceMissionType : int
     RETURN
 };
 
-class TaskForceMissionTypeUtility
+class task_force_mission_type_utility
 {
 public:
     // mission indurance by type
-    static int Endurance(TaskForceMissionType t);
+    static int endurance(task_force_mission_type t);
     
     // return enum TaskForceMissionType for string
-    static const TaskForceMissionType To_Enum(const std::string &t);
+    static const task_force_mission_type to_enum(const std::string &t);
     
     // return string for TaskForceMissionType
-    static const std::string To_String(TaskForceMissionType t);
+    static const std::string to_string(task_force_mission_type t);
 };

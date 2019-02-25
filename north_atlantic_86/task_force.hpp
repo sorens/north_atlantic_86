@@ -25,19 +25,19 @@ public:
     virtual const std::string id();
     
     // create a task force
-    static std::shared_ptr<TaskForce> Make(const std::string &id, const TaskForceMissionType mission, const int x, const int y);
+    static std::shared_ptr<TaskForce> Make(const std::string &id, const task_force_mission_type mission, const int x, const int y);
     
     // maximum speed of the task force (minimium speed of all units in task force)
     virtual const int max_speed();
     
     // mission type for this task force
-    virtual const TaskForceMissionType mission();
+    virtual const task_force_mission_type mission();
     
     // remove the unit from the task force
     virtual void remove_unit(const std::string &id);
     
     // set the mission type for this task force
-    virtual void set_mission_type(const TaskForceMissionType mission);
+    virtual void set_mission_type(const task_force_mission_type mission);
     
     // a list of units in this task force
     virtual const std::vector<std::weak_ptr<Unit>> units();

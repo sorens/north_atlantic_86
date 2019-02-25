@@ -194,7 +194,7 @@ public:
         bool result = true;
         for (int i = 1; i < 14; ++i) {
             try {
-                auto tf = nato->create_task_force(TaskForceMissionType::COMBAT, 10, 10);
+                auto tf = nato->create_task_force(task_force_mission_type::COMBAT, 10, 10);
                 if (tf && i > 11)
                     result = false;
             }
@@ -210,7 +210,7 @@ public:
         result = true;
         for (int i = 1; i < 14; ++i) {
             try {
-                auto tf = soviet->create_task_force(TaskForceMissionType::COMBAT, 10, 10);
+                auto tf = soviet->create_task_force(task_force_mission_type::COMBAT, 10, 10);
                 if (tf && i > 9)
                     result = false;
             }
@@ -230,7 +230,7 @@ public:
         _initialize_every_time();
 
         // TRANSPORT Task Force
-        auto transport_tf = TaskForce::Make("11", TaskForceMissionType::TRANSPORT, 1, 1);
+        auto transport_tf = TaskForce::Make("11", task_force_mission_type::TRANSPORT, 1, 1);
         auto nimitz = _game->unit("CVN-68");
         
         bool result = false;
@@ -275,7 +275,7 @@ public:
 
         
         // COMBAT Task Force
-        auto combat_tf = TaskForce::Make("12", TaskForceMissionType::COMBAT, 1, 1);
+        auto combat_tf = TaskForce::Make("12", task_force_mission_type::COMBAT, 1, 1);
         
         auto guam = _game->unit("LPH-9");
         
@@ -318,7 +318,7 @@ public:
         test_result("task_force_unit_test", "Prevent SSN adding to Combat TF", result);
 
         // BOMBARDMENT Task Force
-        auto bombardment_tf = TaskForce::Make("13", TaskForceMissionType::BOMBARDMENT, 1, 1);
+        auto bombardment_tf = TaskForce::Make("13", task_force_mission_type::BOMBARDMENT, 1, 1);
 
         result = false;
         try
@@ -345,7 +345,7 @@ public:
         test_result("task_force_unit_test", "Prevent CV adding to Bombardment TF", result);
 
         // EVACUATION Task Force
-        auto evacuation_tf = TaskForce::Make("13", TaskForceMissionType::EVACUATION, 1, 1);
+        auto evacuation_tf = TaskForce::Make("13", task_force_mission_type::EVACUATION, 1, 1);
         
         _clean_up_every_time();
     }

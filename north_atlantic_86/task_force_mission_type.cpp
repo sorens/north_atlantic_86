@@ -10,62 +10,61 @@
 
 #pragma mark TaskForceMissionTypeUtility
 
-int TaskForceMissionTypeUtility::Endurance(TaskForceMissionType t)
+int task_force_mission_type_utility::endurance(task_force_mission_type t)
 {
     switch (t)
     {
-        case UNKNOWN:
+        case task_force_mission_type::UNKNOWN:
             return -1;
-        case RETURN:
+        case task_force_mission_type::RETURN:
             return 0;
-        case COMBAT:
-        case BOMBARDMENT:
-        case TRANSPORT:
-        case EVACUATION:
+        case task_force_mission_type::COMBAT:
+        case task_force_mission_type::BOMBARDMENT:
+        case task_force_mission_type::TRANSPORT:
+        case task_force_mission_type::EVACUATION:
             return 60;
-        case SUBMARINE:
+        case task_force_mission_type::SUBMARINE:
             return 90;
     }
 }
 
-// return enum TaskForceMissionType for string
-const TaskForceMissionType TaskForceMissionTypeUtility::To_Enum(const std::string &t)
+// return enum task_force_mission_type for string
+const task_force_mission_type task_force_mission_type_utility::to_enum(const std::string &t)
 {
-    TaskForceMissionType result = UNKNOWN;
+    task_force_mission_type result = task_force_mission_type::UNKNOWN;
     if (t == "COMBAT")
-        result = COMBAT;
+        result = task_force_mission_type::COMBAT;
     else if (t == "BOMBARDMENT")
-        result = BOMBARDMENT;
+        result = task_force_mission_type::BOMBARDMENT;
     else if (t == "TRANSPORT")
-        result = TRANSPORT;
+        result = task_force_mission_type::TRANSPORT;
     else if (t == "EVACUATION")
-        result = EVACUATION;
+        result = task_force_mission_type::EVACUATION;
     else if (t == "SUBMARINE")
-        result = SUBMARINE;
+        result = task_force_mission_type::SUBMARINE;
     else if (t == "RETURN")
-        result = RETURN;
+        result = task_force_mission_type::RETURN;
     
     return result;
 }
 
-// return string for TaskForceMissionType
-const std::string TaskForceMissionTypeUtility::To_String(TaskForceMissionType t)
+// return string for task_force_mission_type
+const std::string task_force_mission_type_utility::to_string(task_force_mission_type t)
 {
-    switch (t)
-    {
-        case UNKNOWN:
+    switch (t) {
+        case task_force_mission_type::UNKNOWN:
             return "UNKNOWN";
-        case RETURN:
+        case task_force_mission_type::RETURN:
             return "RETURN";
-        case COMBAT:
+        case task_force_mission_type::COMBAT:
             return "COMBAT";
-        case BOMBARDMENT:
+        case task_force_mission_type::BOMBARDMENT:
             return "BOMBARDMENT";
-        case TRANSPORT:
+        case task_force_mission_type::TRANSPORT:
             return "TRANSPORT";
-        case EVACUATION:
+        case task_force_mission_type::EVACUATION:
             return "EVACUATION";
-        case SUBMARINE:
+        case task_force_mission_type::SUBMARINE:
             return "SUBMARINE";
     }
 }

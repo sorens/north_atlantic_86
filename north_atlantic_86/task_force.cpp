@@ -15,7 +15,7 @@
 class _TaskForce : public TaskForce
 {
 public:
-    _TaskForce(const std::string id, const TaskForceMissionType mission, const int x, const int y) :
+    _TaskForce(const std::string id, const task_force_mission_type mission, const int x, const int y) :
     _id(id), _mission(mission), _x(x), _y(y)
     {
     }
@@ -28,22 +28,22 @@ public:
         std::string prefix = unit->prefix();
         
         if (prefix[0] == 'C' && prefix[1] == 'V') {
-            if (_mission != TaskForceMissionType::COMBAT) {
+            if (_mission != task_force_mission_type::COMBAT) {
                 throw ship_not_allowed_for_mission_task_force_exception(prefix + " only allowed in COMBAT missions");
             }
         }
         else if (prefix[0] == 'S') {
-            if (_mission != TaskForceMissionType::SUBMARINE) {
+            if (_mission != task_force_mission_type::SUBMARINE) {
                 throw ship_not_allowed_for_mission_task_force_exception(prefix + " only allowed in SUBMARINE missions");
             }
         }
         else if (prefix[0] == 'L') {
-            if (_mission != TaskForceMissionType::TRANSPORT && _mission != TaskForceMissionType::EVACUATION) {
+            if (_mission != task_force_mission_type::TRANSPORT && _mission != task_force_mission_type::EVACUATION) {
                 throw ship_not_allowed_for_mission_task_force_exception(prefix + " only allowed in TRANSPORT or EVACUATION missions");
             }
         }
         else if (prefix[0] == 'A') {
-            if (_mission != TaskForceMissionType::TRANSPORT) {
+            if (_mission != task_force_mission_type::TRANSPORT) {
                 throw ship_not_allowed_for_mission_task_force_exception(prefix + " only allowed in TRANSPORT missions");
             }
         }
@@ -57,7 +57,7 @@ public:
         return _id;
     }
     
-    const TaskForceMissionType mission() override
+    const task_force_mission_type mission() override
     {
         return _mission;
     }
@@ -88,7 +88,7 @@ public:
         }
     }
     
-    void set_mission_type(const TaskForceMissionType mission) override
+    void set_mission_type(const task_force_mission_type mission) override
     {
         _mission = mission;
     }
@@ -113,7 +113,7 @@ public:
         std::stringstream ss;
         ss << "<Task Force";
         ss << " id: " << _id;
-        ss << " mission: " << TaskForceMissionTypeUtility::To_String(_mission);
+        ss << " mission: " << task_force_mission_type_utility::to_string(_mission);
         ss << " location: " << _x << ", " << _y;
         ss << " units (" << _units.size() << "): ";
         for (auto &unit : _units) {
@@ -127,7 +127,7 @@ public:
     
 private:
     std::string _id;
-    TaskForceMissionType _mission;
+    task_force_mission_type _mission;
     std::vector<std::weak_ptr<Unit>> _units;
     int _x;
     int _y;
@@ -150,7 +150,7 @@ const std::string TaskForce::id()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<TaskForce> TaskForce::Make(const std::string &id, const TaskForceMissionType mission, const int x, const int y)
+std::shared_ptr<TaskForce> TaskForce::Make(const std::string &id, const task_force_mission_type mission, const int x, const int y)
 {
     return std::make_shared<_TaskForce>(id, mission, x, y);
 }
@@ -160,7 +160,7 @@ const int TaskForce::max_speed()
     runtime_assert_not_reached();
 }
 
-const TaskForceMissionType TaskForce::mission()
+const task_force_mission_type TaskForce::mission()
 {
     runtime_assert_not_reached();
 }
@@ -170,7 +170,7 @@ void TaskForce::remove_unit(const std::string &id)
     runtime_assert_not_reached();
 }
 
-void TaskForce::set_mission_type(const TaskForceMissionType mission)
+void TaskForce::set_mission_type(const task_force_mission_type mission)
 {
     runtime_assert_not_reached();
 }
