@@ -12,7 +12,7 @@
 #include <vector>
 #include "game.hpp"
 
-class MapDisplayAscii
+class map_display_ascii
 {
 public:
     // Convert game coordinates to a storage index

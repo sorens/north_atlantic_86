@@ -59,7 +59,7 @@ void play_game()
         // take a turn
         game->next_turn();
 
-        auto display = MapDisplayAscii::Generate(game);
+        auto display = map_display_ascii::Generate(game);
         std::cout << display.str();
     }
     catch(ship_data_exception &e)

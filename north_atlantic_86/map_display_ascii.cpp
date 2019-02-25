@@ -10,15 +10,15 @@
 #include "map_display_ascii.hpp"
 #include <cmath>
 
-#pragma mark MapDisplayAscii
+#pragma mark map_display_ascii
 
-int MapDisplayAscii::ConvertCoordinates(const int x, const int y)
+int map_display_ascii::ConvertCoordinates(const int x, const int y)
 {
     // TODO hard-coded
     return (y * 40) + x;
 }
 
-std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<game> game)
+std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
 {
     auto grid = game->map()->grids();
     auto size = grid.size();
