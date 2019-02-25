@@ -32,6 +32,7 @@
 		61148EBA222091D700AFF3F1 /* aircraft_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EB8222091D700AFF3F1 /* aircraft_data.cpp */; };
 		61148EBD2220923D00AFF3F1 /* aircraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EBB2220923D00AFF3F1 /* aircraft.cpp */; };
 		61148EC32223445700AFF3F1 /* naval_station.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EC12223445700AFF3F1 /* naval_station.cpp */; };
+		618D3FD42223A90C00C081CA /* grid_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 618D3FD32223A90C00C081CA /* grid_type.cpp */; };
 		61F7D0132210980D009C3F34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0122210980D009C3F34 /* main.cpp */; };
 		61F7D01B2210985D009C3F34 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D0192210985D009C3F34 /* unit.cpp */; };
 		61F7D02122109FD3009C3F34 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61F7D01F22109FD3009C3F34 /* grid.cpp */; };
@@ -119,6 +120,8 @@
 		61148EC22223445700AFF3F1 /* naval_station.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = naval_station.hpp; sourceTree = "<group>"; };
 		61148EC4222345AD00AFF3F1 /* naval_station_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = naval_station_type.hpp; sourceTree = "<group>"; };
 		618D3FCF22239D0400C081CA /* map_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map_exception.hpp; sourceTree = "<group>"; };
+		618D3FD12223A88A00C081CA /* grid_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grid_type.hpp; sourceTree = "<group>"; };
+		618D3FD32223A90C00C081CA /* grid_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grid_type.cpp; sourceTree = "<group>"; };
 		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				61148E92221C988A00AFF3F1 /* file.hpp */,
 				61F7D0342211D972009C3F34 /* game.cpp */,
 				61F7D0352211D972009C3F34 /* game.hpp */,
+				618D3FD32223A90C00C081CA /* grid_type.cpp */,
+				618D3FD12223A88A00C081CA /* grid_type.hpp */,
 				61F7D01F22109FD3009C3F34 /* grid.cpp */,
 				61F7D02022109FD3009C3F34 /* grid.hpp */,
 				61148E4222149D6200AFF3F1 /* json11.cpp */,
@@ -324,6 +329,7 @@
 				61148E6E2217543700AFF3F1 /* weapon_system_type.cpp in Sources */,
 				61148E492214CD0400AFF3F1 /* affiliation_type.cpp in Sources */,
 				61F7D0262210A381009C3F34 /* weather_type.cpp in Sources */,
+				618D3FD42223A90C00C081CA /* grid_type.cpp in Sources */,
 				61148E772219B28F00AFF3F1 /* weapon_data.cpp in Sources */,
 				61F7D0362211D972009C3F34 /* game.cpp in Sources */,
 				61148EB7221F8BE700AFF3F1 /* aircraft_type.cpp in Sources */,

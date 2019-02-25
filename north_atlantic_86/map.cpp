@@ -27,7 +27,7 @@ public:
         srand(static_cast<unsigned int>(time(NULL)));
     }
     
-    std::shared_ptr<Grid> at(const int x, const int y) override
+    std::shared_ptr<grid> at(const int x, const int y) override
     {
         int index = (y * _dimension) + x;
         if (index < 0 || index >= _grid.size())
@@ -43,13 +43,13 @@ public:
         ss << " size: " << _grid.size();
         ss << " grid: ";
         bool first = true;
-        for (auto grid : _grid) {
+        for (auto g : _grid) {
             if (first)
                 first = false;
             else
                 ss << ", ";
             
-            ss << grid->description();
+            ss << g->description();
         }
         
         ss << ">";
@@ -57,7 +57,7 @@ public:
         return ss.str();
     }
     
-    const std::vector<std::shared_ptr<Grid>> grid() override
+    const std::vector<std::shared_ptr<grid>> grids() override
     {
         return _grid;
     }
@@ -67,8 +67,8 @@ public:
         auto setup = MapSetup::factory(map_data);
 
         for (auto &element : setup) {
-            GridType type = GridType(static_cast<int>(element->type()));
-            std::shared_ptr<Grid> grid = Grid::Make(element->name(), type, element->x(), element->y(), naval_station_data);
+            grid_type type = grid_type(static_cast<int>(element->type()));
+            std::shared_ptr<grid> grid = grid::Make(element->name(), type, element->x(), element->y(), naval_station_data);
             _grid.push_back(grid);
         }
         
@@ -85,13 +85,13 @@ public:
     }
     
 private:
-    std::vector<std::shared_ptr<Grid>> _grid;
+    std::vector<std::shared_ptr<grid>> _grid;
     int _dimension = -1;
 };
 
 #pragma mark Map
         
-std::shared_ptr<Grid> Map::at(const int x, const int y)
+std::shared_ptr<grid> Map::at(const int x, const int y)
 {
     runtime_assert_not_reached();
 }
@@ -101,7 +101,7 @@ std::string Map::description()
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<Grid>> Map::grid()
+const std::vector<std::shared_ptr<grid>> Map::grids()
 {
     runtime_assert_not_reached();
 }

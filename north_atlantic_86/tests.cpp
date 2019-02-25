@@ -133,9 +133,9 @@ public:
         auto naval_station_data = naval_station_data::Make(naval_station_data::Import_Data("naval_station_data.json"), wd);
         
         bool result = false;
-        auto grid1 = Grid::Make("A", GridType::Ocean, 4, 5, naval_station_data);
-        auto grid2 = Grid::Make("b", GridType::Ocean, 9, 6, naval_station_data);
-        float distance = Grid::Distance(grid1, grid2);
+        auto grid1 = grid::Make("A", grid_type::Ocean, 4, 5, naval_station_data);
+        auto grid2 = grid::Make("b", grid_type::Ocean, 9, 6, naval_station_data);
+        float distance = grid::Distance(grid1, grid2);
         if (distance == 6)
             result = true;
         test_result("grid_unit_test", "Calculate distance between grids", result);

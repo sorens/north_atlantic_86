@@ -7,6 +7,7 @@
 //
 
 #include "grid.hpp"
+#include "grid_type.hpp"
 #include "debug.hpp"
 #include "naval_station.hpp"
 #include "unit.hpp"
@@ -15,34 +16,15 @@
 #include <sstream>
 #include <iostream>
 
-#pragma mark GridTypeUtility
+#pragma mark _grid
 
-const std::string GridTypeUtility::to_string(GridType t)
-{
-    switch (t)
-    {
-        case GridType::Unknown:
-            return "unknown";
-        case GridType::Landmass:
-            return "landmass";
-        case GridType::Ocean:
-            return "ocean";
-        case GridType::Airbase:
-            return "airbase";
-        case GridType::Port:
-            return "port";
-    }
-}
-
-#pragma mark _Grid
-
-class _Grid : public Grid
+class _grid : public grid
 {
 public:
-    _Grid(const std::string &name, GridType type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data) :
+    _grid(const std::string &name, grid_type type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data) :
     _type(type), _x(x), _y(y), _weather(Weather::random())
     {
-        if (_type == GridType::Ocean) {
+        if (_type == grid_type::Ocean) {
             // create a random water temperature to start, weather
             // patterns will adjust it later. it will also change with the seasons
             _water_temp = rand() % 35 + 15;
@@ -58,13 +40,13 @@ public:
     const std::string description() override
     {
         std::stringstream ss;
-        ss << "<Grid";
+        ss << "<grid";
         ss << " x: " << _x;
         ss << ", y: " << _y;
-        ss << ", type: " << GridTypeUtility::to_string(_type);
+        ss << ", type: " << grid_type_utility::to_string(_type);
         if (_station)
             ss << ", name: '" << _station->name() << "'";
-        if (_type == GridType::Ocean)
+        if (_type == grid_type::Ocean)
             ss << ", water_temp: " << _water_temp;
         if (_weather) {
             ss << ", " << _weather->description();
@@ -78,7 +60,7 @@ public:
         return _station;
     }
     
-    const GridType type() override
+    const grid_type type() override
     {
         return _type;
     }
@@ -112,20 +94,20 @@ private:
     std::shared_ptr<naval_station> _station;
     int _x;
     int _y;
-    GridType _type;
+    grid_type _type;
     std::vector<std::shared_ptr<Unit>> _units;
     int _water_temp;
     std::shared_ptr<Weather> _weather;
 };
 
-#pragma mark Grid
+#pragma mark grid
 
-const std::string Grid::description()
+const std::string grid::description()
 {
     runtime_assert_not_reached();
 }
 
-int Grid::Distance(std::shared_ptr<Grid> grid1, std::shared_ptr<Grid> grid2)
+int grid::Distance(std::shared_ptr<grid> grid1, std::shared_ptr<grid> grid2)
 {
     int result = 0;
     
@@ -140,42 +122,42 @@ int Grid::Distance(std::shared_ptr<Grid> grid1, std::shared_ptr<Grid> grid2)
     return result;
 }
 
-std::shared_ptr<Grid> Grid::Make(const std::string &name, GridType type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data)
+std::shared_ptr<grid> grid::Make(const std::string &name, grid_type type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data)
 {
-    return std::make_shared<_Grid>(name, type, x, y, naval_station_data);
+    return std::make_shared<_grid>(name, type, x, y, naval_station_data);
 }
         
-std::shared_ptr<naval_station> Grid::station()
-{
-    runtime_assert_not_reached();
-}
-        
-const GridType Grid::type()
-{
-    runtime_assert_not_reached();
-}
-
-const int Grid::x()
-{
-    runtime_assert_not_reached();
-}
-
-const int Grid::y()
+std::shared_ptr<naval_station> grid::station()
 {
     runtime_assert_not_reached();
 }
         
-const int Grid::water_temperature()
+const grid_type grid::type()
 {
     runtime_assert_not_reached();
 }
 
-const std::shared_ptr<Weather> Grid::weather()
+const int grid::x()
 {
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<Unit>> Grid::units()
+const int grid::y()
+{
+    runtime_assert_not_reached();
+}
+        
+const int grid::water_temperature()
+{
+    runtime_assert_not_reached();
+}
+
+const std::shared_ptr<Weather> grid::weather()
+{
+    runtime_assert_not_reached();
+}
+
+const std::vector<std::shared_ptr<Unit>> grid::units()
 {
     runtime_assert_not_reached();
 }

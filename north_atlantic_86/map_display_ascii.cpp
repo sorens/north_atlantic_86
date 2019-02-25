@@ -20,7 +20,7 @@ int MapDisplayAscii::ConvertCoordinates(const int x, const int y)
 
 std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<game> game)
 {
-    auto grid = game->map()->grid();
+    auto grid = game->map()->grids();
     auto size = grid.size();
     int side = std::pow(size, 0.5);
     
@@ -31,17 +31,17 @@ std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<game> game)
     // place all grid objects
     for (auto g : grid) {
         switch (g->type()) {
-            case GridType::Landmass:
+            case grid_type::Landmass:
                 map[i] = '*';
                 break;
-            case GridType::Ocean:
+            case grid_type::Ocean:
                 map[i] = '-';
                 break;
-            case GridType::Airbase:
-            case GridType::Port:
+            case grid_type::Airbase:
+            case grid_type::Port:
                 map[i] = g->station()->name()[0];
                 break;
-            case GridType::Unknown:
+            case grid_type::Unknown:
                 break;
         }
         

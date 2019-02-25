@@ -69,7 +69,7 @@ public:
 
         std::cout << "** WEATHER **" << std::endl;
         
-        auto grid = _map->grid();
+        auto grid = _map->grids();
         auto size = grid.size();
         int side = std::pow(size, 0.5);
         int i = 0;

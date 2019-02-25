@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "grid_type.hpp"
 #include "naval_station.hpp"
 #include "naval_station_data.hpp"
 #include "unit.hpp"
@@ -15,38 +16,23 @@
 #include <string>
 #include <vector>
 
-enum class GridType : int
-{
-    Unknown = -1,
-    Landmass,
-    Ocean,
-    Airbase,
-    Port
-};
-    
-class GridTypeUtility
-{
-public:
-    static const std::string to_string(GridType t);
-};
-
-class Grid
+class grid
 {
 public:
     // description of a grid
     virtual const std::string description();
     
     // calculate the distance between two grid points
-    static int Distance(std::shared_ptr<Grid> grid1, std::shared_ptr<Grid> grid2);
+    static int Distance(std::shared_ptr<grid> grid1, std::shared_ptr<grid> grid2);
     
     // factory to create a grid object
-    static std::shared_ptr<Grid> Make(const std::string &name, GridType type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data);
+    static std::shared_ptr<grid> Make(const std::string &name, grid_type type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data);
     
     // return a naval_station at this grid, if one exists
     virtual std::shared_ptr<naval_station> station();
     
     // return the grid type of this grid
-    virtual const GridType type();
+    virtual const grid_type type();
     
     // return x-coordinate of this grid
     virtual const int x();
