@@ -74,7 +74,7 @@ public:
         int side = std::pow(size, 0.5);
         int i = 0;
         for (auto g : grid) {
-            auto weather = g->weather();
+            auto weather = g->grid_weather();
             int type = static_cast<int>(weather->type());
             if (type < 10)
                 std::cout << type;

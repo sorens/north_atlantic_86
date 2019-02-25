@@ -10,14 +10,14 @@
 
 #include "weather_type.hpp"
 
-class Weather
+class weather
 {
 public:
-    // describe a Weather
+    // describe a weather
     virtual const std::string description();
     
     // factory method to create weather
-    static std::shared_ptr<Weather> factory(weather_type type, float radar_modifier,
+    static std::shared_ptr<weather> factory(weather_type type, float radar_modifier,
                                             float satellite_modifier, float sonar_modifier,
                                             float speed_modifier, float visibility_modifier);
     
@@ -25,7 +25,7 @@ public:
     virtual const float radar_modifier();
     
     // create a random weather
-    static std::shared_ptr<Weather> random();
+    static std::shared_ptr<weather> random();
     
     // how much is satellite performance affected
     virtual const float satellite_modifier();

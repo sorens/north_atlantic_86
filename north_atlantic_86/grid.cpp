@@ -22,7 +22,7 @@ class _grid : public grid
 {
 public:
     _grid(const std::string &name, grid_type type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data) :
-    _type(type), _x(x), _y(y), _weather(Weather::random())
+    _type(type), _x(x), _y(y), _weather(weather::random())
     {
         if (_type == grid_type::Ocean) {
             // create a random water temperature to start, weather
@@ -80,7 +80,7 @@ public:
         return _water_temp;
     }
 
-    const std::shared_ptr<Weather> weather() override
+    const std::shared_ptr<weather> grid_weather() override
     {
         return _weather;
     }
@@ -97,7 +97,7 @@ private:
     grid_type _type;
     std::vector<std::shared_ptr<unit>> _units;
     int _water_temp;
-    std::shared_ptr<Weather> _weather;
+    std::shared_ptr<weather> _weather;
 };
 
 #pragma mark grid
@@ -152,7 +152,7 @@ const int grid::water_temperature()
     runtime_assert_not_reached();
 }
 
-const std::shared_ptr<Weather> grid::weather()
+const std::shared_ptr<weather> grid::grid_weather()
 {
     runtime_assert_not_reached();
 }

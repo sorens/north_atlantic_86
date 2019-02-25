@@ -45,7 +45,7 @@ public:
     virtual const int water_temperature();
     
     // return the current Weather for this grid
-    virtual const std::shared_ptr<Weather> weather();
+    virtual const std::shared_ptr<weather> grid_weather();
     
     // return the vector of Units at this grid
     virtual const std::vector<std::shared_ptr<unit>> units();
