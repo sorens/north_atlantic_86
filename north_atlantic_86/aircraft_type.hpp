@@ -10,7 +10,7 @@
 
 #include <string>
 
-enum class AircraftType : int
+enum class aircraft_type : int
 {
     Unknown = -1,
     Fighter,
@@ -22,8 +22,8 @@ enum class AircraftType : int
     RECON           // Airborne Reconnaissance Aircraft, AIR-RECON (surface only)
 };
     
-class AircraftTypeUtility
+class aircraft_type_utility
 {
 public:
-    static const std::string To_String(AircraftType t);
+    static const std::string to_string(aircraft_type t);
 };

@@ -8,26 +8,26 @@
 
 #include "aircraft_type.hpp"
 
-#pragma mark AircraftType
+#pragma mark aircraft_type
 
-const std::string AircraftTypeUtility::To_String(AircraftType t)
+const std::string aircraft_type_utility::to_string(aircraft_type t)
 {
     switch (t) {
-        case AircraftType::Unknown:
+        case aircraft_type::Unknown:
             return "Unknown";
-        case AircraftType::Fighter:
+        case aircraft_type::Fighter:
             return "Fighter";
-        case AircraftType::Attack:
+        case aircraft_type::Attack:
             return "Attack";
-        case AircraftType::Transport:
+        case aircraft_type::Transport:
             return "Transport";
-        case AircraftType::AWAC:
+        case aircraft_type::AWAC:
             return "AWAC";
-        case AircraftType::AEW:
+        case aircraft_type::AEW:
             return "AEW";
-        case AircraftType::ASW:
+        case aircraft_type::ASW:
             return "ASW";
-        case AircraftType::RECON:
+        case aircraft_type::RECON:
             return "RECON";
     }
 }
