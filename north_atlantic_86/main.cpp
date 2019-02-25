@@ -15,7 +15,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_display_ascii.hpp"
-#include "map_setup.hpp"
+#include "map_data.hpp"
 #include "naval_station_data.hpp"
 #include "naval_station_data_exception.hpp"
 #include "ship_data_exception.hpp"
@@ -38,7 +38,7 @@ void play_game()
         loginfo("********* GAME STARTING *********");
         
         // read in map data
-        std::string map_data = MapSetup::Import_Data("map_data.json");
+        std::string map_data = map_data::Import_Data("map_data.json");
         
         // read in ship_data.json
         std::string ship_data = ShipData::Import_Data("ship_data.json");

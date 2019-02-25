@@ -13,7 +13,7 @@
 #include "file.hpp"
 #include "game.hpp"
 #include "map.hpp"
-#include "map_setup.hpp"
+#include "map_data.hpp"
 #include "mutable_unit.hpp"
 #include "naval_station_data.hpp"
 #include "naval_station_data_exception.hpp"
@@ -49,7 +49,7 @@ public:
     void _initialize_every_time()
     {
         // read in map data
-        std::string map_data = MapSetup::Import_Data("map_data.json");
+        std::string map_data = map_data::Import_Data("map_data.json");
         
         // read in ship_data.json
         std::string ship_data = ShipData::Import_Data("ship_data.json");
