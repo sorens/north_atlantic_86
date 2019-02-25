@@ -18,7 +18,7 @@ int MapDisplayAscii::ConvertCoordinates(const int x, const int y)
     return (y * 40) + x;
 }
 
-std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<Game> game)
+std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<game> game)
 {
     auto grid = game->map()->grid();
     auto size = grid.size();

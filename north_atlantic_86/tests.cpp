@@ -63,7 +63,7 @@ public:
         // read in naval_station_data.json
         std::string naval_station_data = naval_station_data::Import_Data("naval_station_data.json");
 
-        _game = Game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data);
+        _game = game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data);
         _game->add_nato_player("Sally");
         _game->add_soviet_player("Yuri");    
     }
@@ -409,7 +409,7 @@ public:
     }
 
 private:
-    std::shared_ptr<Game> _game;
+    std::shared_ptr<game> _game;
 };
 
 #pragma mark Tests

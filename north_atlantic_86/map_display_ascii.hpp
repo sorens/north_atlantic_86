@@ -19,5 +19,5 @@ public:
     static int ConvertCoordinates(const int x, const int y);
     
     // Generate a stream containing the consolidated map
-    static std::ostringstream Generate(std::shared_ptr<Game> game);
+    static std::ostringstream Generate(std::shared_ptr<game> game);
 };

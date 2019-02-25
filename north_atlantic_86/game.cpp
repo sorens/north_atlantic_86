@@ -22,17 +22,17 @@
 #include "weapon_mount.hpp"
 #include "weapon_mount_exception.hpp"
 
-#pragma mark _Game
+#pragma mark _game
 
 // NATO gets 11 active TFs maximum
 static const std::vector<std::string> NATO_POSSIBLE_TASK_FORCES     = {"11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
 // SOVIET gets 9 active TFs maximum
 static const std::vector<std::string> SOVIET_POSSIBLE_TASK_FORCES   = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-class _Game : public Game
+class _game : public game
 {
 public:
-    _Game()
+    _game()
     {
     }
     
@@ -163,85 +163,85 @@ private:
     std::shared_ptr<WeaponData> _weapon_data;
 };
 
-#pragma mark Game
+#pragma mark game
 
-std::shared_ptr<aircraft> Game::aircraft(const std::string &designation)
+std::shared_ptr<aircraft> game::aircraft(const std::string &designation)
 {
     runtime_assert_not_reached();
 }
         
-void Game::add_nato_player(const std::string &name)
+void game::add_nato_player(const std::string &name)
 {
     runtime_assert_not_reached();
 }
 
-void Game::add_soviet_player(const std::string &name)
+void game::add_soviet_player(const std::string &name)
 {
     runtime_assert_not_reached();
 }
 
-std::string Game::current_time()
+std::string game::current_time()
 {
     runtime_assert_not_reached();
 }
 
-int Game::current_turn()
+int game::current_turn()
 {
     runtime_assert_not_reached();
 }
 
-void Game::display_map()
+void game::display_map()
 {
     runtime_assert_not_reached();
 }
 
-void Game::display_weather()
+void game::display_weather()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<naval_station> Game::find_naval_station(const std::string &name)
+std::shared_ptr<naval_station> game::find_naval_station(const std::string &name)
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Game> Game::Make(const std::string &map_data,
+std::shared_ptr<game> game::Make(const std::string &map_data,
                                  const std::string &ships_json_data,
                                  const std::string &weapons_json_data,
                                  const std::string &aircraft_json_data,
                                  const std::string &naval_station_json_data)
 {
-    auto game = std::make_shared<_Game>();
+    auto game = std::make_shared<_game>();
     game->initialize(map_data, ships_json_data, weapons_json_data, aircraft_json_data, naval_station_json_data);
     return game;
 }
 
-std::shared_ptr<Map> Game::map()
+std::shared_ptr<Map> game::map()
 {
     runtime_assert_not_reached();
 }
         
-void Game::next_turn()
+void game::next_turn()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Player> Game::player_nato()
+std::shared_ptr<Player> game::player_nato()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Player> Game::player_soviet()
+std::shared_ptr<Player> game::player_soviet()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Unit> Game::unit(const std::string &id)
+std::shared_ptr<Unit> game::unit(const std::string &id)
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<WeaponSystem> Game::weapon_system(const std::string &id)
+std::shared_ptr<WeaponSystem> game::weapon_system(const std::string &id)
 {
     runtime_assert_not_reached();
 }
