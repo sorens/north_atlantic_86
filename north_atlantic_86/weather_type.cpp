@@ -8,47 +8,46 @@
 
 #include "weather_type.hpp"
 
-const std::string WeatherTypeUtility::to_string(WeatherType t)
+const std::string weather_type_utility::to_string(weather_type t)
 {
-    switch (t)
-    {
-        case WeatherType::Unknown:
+    switch (t) {
+        case weather_type::Unknown:
             return "unknown";
             
-        case WeatherType::Clear:
+        case weather_type::Clear:
             return "clear";
             
-        case WeatherType::CloudyPartly:
+        case weather_type::CloudyPartly:
             return "partly cloudy";
             
-        case WeatherType::Cloudy:
+        case weather_type::Cloudy:
             return "cloudy";
             
-        case WeatherType::Drizzle:
+        case weather_type::Drizzle:
             return "drizzling";
             
-        case WeatherType::RainLight:
+        case weather_type::RainLight:
             return "light rain";
             
-        case WeatherType::RainMedium:
+        case weather_type::RainMedium:
             return "medium rain";
             
-        case WeatherType::RainHeavy:
+        case weather_type::RainHeavy:
             return "heavy rain";
             
-        case WeatherType::Storm1:
+        case weather_type::Storm1:
             return "storm, level 1";
             
-        case WeatherType::Storm2:
+        case weather_type::Storm2:
             return "storm, level 2";
             
-        case WeatherType::Storm3:
+        case weather_type::Storm3:
             return "storm, level 3";
             
-        case WeatherType::Gale:
+        case weather_type::Gale:
             return "gale";
             
-        case WeatherType::Hurricane:
+        case weather_type::Hurricane:
             return "hurricane";
     }
 }

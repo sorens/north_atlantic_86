@@ -17,7 +17,7 @@ public:
     virtual const std::string description();
     
     // factory method to create weather
-    static std::shared_ptr<Weather> factory(WeatherType type, float radar_modifier,
+    static std::shared_ptr<Weather> factory(weather_type type, float radar_modifier,
                                             float satellite_modifier, float sonar_modifier,
                                             float speed_modifier, float visibility_modifier);
     
@@ -37,7 +37,7 @@ public:
     virtual const float speed_modifier();
 
     // return the weather type
-    virtual const WeatherType type();
+    virtual const weather_type type();
 
     // how much is visibility affected
     virtual const float visibility_modifier();

@@ -10,7 +10,7 @@
 
 #include <string>
 
-enum class WeatherType : int
+enum class weather_type : int
 {
     Unknown = -1,
     Clear,
@@ -27,8 +27,8 @@ enum class WeatherType : int
     Hurricane
 };
 
-class WeatherTypeUtility
+class weather_type_utility
 {
 public:
-    static const std::string to_string(WeatherType t);
+    static const std::string to_string(weather_type t);
 };
