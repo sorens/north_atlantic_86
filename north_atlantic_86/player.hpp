@@ -14,7 +14,7 @@
 #include "task_force.hpp"
 #include "unit.hpp"
 
-class Player
+class player
 {
 public:
     // return the player's affiliation (e.g. NATO, SOVIET)
@@ -36,7 +36,7 @@ public:
     virtual const std::string id();
     
     // factory method to create a player
-    static std::shared_ptr<Player> Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids);  // TODO bases
+    static std::shared_ptr<player> Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids);  // TODO bases
     
     // return the player's name
     virtual const std::string name();

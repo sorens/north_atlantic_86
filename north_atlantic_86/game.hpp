@@ -58,10 +58,10 @@ public:
     virtual void next_turn();
     
     // return the nato player
-    virtual std::shared_ptr<Player> player_nato();
+    virtual std::shared_ptr<player> player_nato();
     
     // return the soviet player
-    virtual std::shared_ptr<Player> player_soviet();
+    virtual std::shared_ptr<player> player_soviet();
     
     // return a unit
     virtual std::shared_ptr<Unit> unit(const std::string &id);

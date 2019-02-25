@@ -12,15 +12,15 @@
 #include "player.hpp"
 #include "player_exception.hpp"
 
-#pragma mark _Player
+#pragma mark _player
 
 static const int Field_TaskForce_ID         = 0;
 static const int Field_TaskForce_AVAILABLE  = 1;
 
-class _Player : public Player
+class _player : public player
 {
 public:
-    _Player(affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
+    _player(affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
     _affiliation(affiliation), _name(name), _possible_task_forces(task_force_ids.size()), _score(0)
     {
         uuid_t uuid;
@@ -37,7 +37,7 @@ public:
         }
     }
     
-    ~_Player()
+    ~_player()
     {
         _possible_task_forces.clear();
     }
@@ -132,67 +132,67 @@ private:
     std::vector<std::shared_ptr<TaskForce>> _task_forces;
 };
 
-#pragma mark Player
+#pragma mark player
 
-const affilation_type Player::affiliation()
+const affilation_type player::affiliation()
 {
     runtime_assert_not_reached();
 }
 
-const std::string Player::alliance_to_string(const affilation_type affiliation)
+const std::string player::alliance_to_string(const affilation_type affiliation)
 {
     // TODO implement
     return "";
 }
     
-const std::vector<std::shared_ptr<naval_station>> Player::bases()
+const std::vector<std::shared_ptr<naval_station>> player::bases()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<TaskForce> Player::create_task_force(const TaskForceMissionType mission, const int x, const int y)
+std::shared_ptr<TaskForce> player::create_task_force(const TaskForceMissionType mission, const int x, const int y)
 {
     runtime_assert_not_reached();
 }
 
-void Player::dissolve_task_force(std::shared_ptr<TaskForce> tf)
+void player::dissolve_task_force(std::shared_ptr<TaskForce> tf)
 {
     runtime_assert_not_reached();
 }
 
-// const std::vector<std::shared_ptr<Base>> Player::bases()
+// const std::vector<std::shared_ptr<Base>> player::bases()
 
-const std::string Player::id()
+const std::string player::id()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Player> Player::Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids)
+std::shared_ptr<player> player::Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids)
 {
-    return std::make_shared<_Player>(affiliation, name, task_force_ids);
+    return std::make_shared<_player>(affiliation, name, task_force_ids);
 }
 
-const std::string Player::name()
-{
-    runtime_assert_not_reached();
-}
-
-const int Player::number_remaining_task_forces()
+const std::string player::name()
 {
     runtime_assert_not_reached();
 }
 
-const int Player::score()
+const int player::number_remaining_task_forces()
 {
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<Unit>> Player::sunken_ships()
+const int player::score()
 {
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<TaskForce>> Player::task_forces()
+const std::vector<std::shared_ptr<Unit>> player::sunken_ships()
+{
+    runtime_assert_not_reached();
+}
+
+const std::vector<std::shared_ptr<TaskForce>> player::task_forces()
 {
     runtime_assert_not_reached();
 }

@@ -44,12 +44,12 @@ public:
     
     void add_nato_player(const std::string &name) override
     {
-        _player_nato = Player::Make(affilation_type::NATO, name, NATO_POSSIBLE_TASK_FORCES);
+        _player_nato = player::Make(affilation_type::NATO, name, NATO_POSSIBLE_TASK_FORCES);
     }
     
     void add_soviet_player(const std::string &name) override
     {
-        _player_soviet = Player::Make(affilation_type::SOVIET, name, SOVIET_POSSIBLE_TASK_FORCES);
+        _player_soviet = player::Make(affilation_type::SOVIET, name, SOVIET_POSSIBLE_TASK_FORCES);
     }
     
     std::string current_time() override
@@ -128,12 +128,12 @@ public:
         combat_tf->add_unit(unit("CVN-68"));    // Nimitz
     }
     
-    std::shared_ptr<Player> player_nato() override
+    std::shared_ptr<player> player_nato() override
     {
         return _player_nato;
     }
 
-    std::shared_ptr<Player> player_soviet() override
+    std::shared_ptr<player> player_soviet() override
     {
         return _player_soviet;
     }
@@ -157,8 +157,8 @@ private:
     std::shared_ptr<map> _game_map;
     int _current_turn;
     std::shared_ptr<naval_station_data> _naval_station_data;
-    std::shared_ptr<Player> _player_nato;
-    std::shared_ptr<Player> _player_soviet;
+    std::shared_ptr<player> _player_nato;
+    std::shared_ptr<player> _player_soviet;
     std::shared_ptr<ShipData> _ship_data;
     std::shared_ptr<WeaponData> _weapon_data;
 };
@@ -226,12 +226,12 @@ void game::next_turn()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Player> game::player_nato()
+std::shared_ptr<player> game::player_nato()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Player> game::player_soviet()
+std::shared_ptr<player> game::player_soviet()
 {
     runtime_assert_not_reached();
 }
