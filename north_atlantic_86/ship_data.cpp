@@ -57,7 +57,7 @@ public:
             std::string affiliation_id = element[11].string_value();    // e.g. NATO
             
             affilation_type affiliation_type = affilation_type::NATO;
-            if (affiliation_id == "USSR") {
+            if (affiliation_id == "SOVIET") {
                 affiliation_type = affilation_type::SOVIET;
             }
             

@@ -64,7 +64,7 @@ public:
             WeaponSystemType type = WeaponSystemTypeUtility::to_enum(element[FIELD_TYPE].string_value()); // e.g. SSM
             std::string affiliation_id = element[FIELD_AFFILIATION].string_value(); // e.g. NATO
             affilation_type affiliation_type = affilation_type::NATO;
-            if (affiliation_id == "USSR") {
+            if (affiliation_id == "SOVIET") {
                 affiliation_type = affilation_type::SOVIET;
             }
             int range = element[FIELD_RANGE].int_value();                           // e.g. 110
