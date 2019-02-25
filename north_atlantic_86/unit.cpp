@@ -16,7 +16,7 @@
 class _Unit : public Unit
 {
 public:
-    _Unit(const std::string &id, const std::string &name, const UnitType type,
+    _Unit(const std::string &id, const std::string &name, const unit_type type,
           const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun,
           const int aa_gun, const int missile_defense, const int max_speed,
           const int cargo_capacity, const int defense_factor, const affilation_type affiliation)
@@ -71,7 +71,7 @@ public:
         return _prefix;
     }
     
-    const UnitType type() override
+    const unit_type type() override
     {
         return _type;
     }
@@ -88,7 +88,7 @@ public:
         ss << " id: '" << _id << "'";
         ss << ", class: '" << _unit_class << "'";
         ss << ", name: '" << _name << "'";
-        ss << ", type: '" << UnitTypeUtility::to_string(_type) << "'";
+        ss << ", type: '" << unit_type_utility::to_string(_type) << "'";
         ss << ", main_gun: " << _main_gun;
         ss << ", aa_gun: " << _anti_aircraft_gun;
         ss << ", missile_defense: " << _missile_defense;
@@ -112,7 +112,7 @@ private:
     int _missile_defense;
     std::string _name;
     std::string _prefix;
-    UnitType _type;
+    unit_type _type;
     std::string _unit_class;
     int _class_id;
 };
@@ -144,7 +144,7 @@ const std::string Unit::id()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Unit> Unit::Make(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const affilation_type affiliation)
+std::shared_ptr<Unit> Unit::Make(const std::string &id, const std::string &name, const unit_type type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const affilation_type affiliation)
 {
     return std::make_shared<_Unit>(id, name, type, unit_class, prefix, class_id, main_gun, aa_gun, missile_defense, max_speed, cargo_capacity, defense_factor, affiliation);
 }
@@ -174,7 +174,7 @@ const std::string Unit::prefix()
     runtime_assert_not_reached();
 }
 
-const UnitType Unit::type()
+const unit_type Unit::type()
 {
     runtime_assert_not_reached();
 }

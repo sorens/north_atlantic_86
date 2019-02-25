@@ -62,7 +62,7 @@ public:
             }
             
             // TODO look up class_id and convert to enumerated unit_class
-            auto ship = Unit::Make(id, name, UnitType::Ship, unit_class, ship_prefix, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, affiliation_type);
+            auto ship = Unit::Make(id, name, unit_type::Ship, unit_class, ship_prefix, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, affiliation_type);
             
             if (_data.find(id) != _data.end())
                 throw duplicate_id_ship_data_exception(id);

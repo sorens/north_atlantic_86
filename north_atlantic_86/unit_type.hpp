@@ -10,7 +10,7 @@
 
 #include <string>
 
-enum class UnitType : int
+enum class unit_type : int
 {
     Unknown,
     Aircraft,
@@ -19,10 +19,10 @@ enum class UnitType : int
     Port
 };
 
-class UnitTypeUtility
+class unit_type_utility
 {
 public:
-    static const std::string to_string(UnitType t);
+    static const std::string to_string(unit_type t);
 };
 
 

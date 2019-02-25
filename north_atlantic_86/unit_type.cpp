@@ -8,23 +8,22 @@
 
 #include "unit_type.hpp"
 
-const std::string UnitTypeUtility::to_string(UnitType t)
+const std::string unit_type_utility::to_string(unit_type t)
 {
-    switch (t)
-    {
-        case UnitType::Unknown:
+    switch (t) {
+        case unit_type::Unknown:
             return "unknown";
             
-        case UnitType::Aircraft:
+        case unit_type::Aircraft:
             return "aircraft";
             
-        case UnitType::Ship:
+        case unit_type::Ship:
             return "ship";
             
-        case UnitType::Airbase:
+        case unit_type::Airbase:
             return "airbase";
             
-        case UnitType::Port:
+        case unit_type::Port:
             return "port";
     }
 }
