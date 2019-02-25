@@ -63,9 +63,9 @@ public:
             std::string name = element[FIELD_NAME].string_value();                  // e.g. Harpoon
             WeaponSystemType type = WeaponSystemTypeUtility::to_enum(element[FIELD_TYPE].string_value()); // e.g. SSM
             std::string affiliation_id = element[FIELD_AFFILIATION].string_value(); // e.g. NATO
-            AffiliationType affiliation_type = AffiliationType::NATO;
+            affilation_type affiliation_type = affilation_type::NATO;
             if (affiliation_id == "USSR") {
-                affiliation_type = AffiliationType::SOVIET;
+                affiliation_type = affilation_type::SOVIET;
             }
             int range = element[FIELD_RANGE].int_value();                           // e.g. 110
             int average_damage = element[FIELD_AVERAGE_DAMAGE].int_value();         // e.g. 4

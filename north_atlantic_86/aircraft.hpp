@@ -17,7 +17,7 @@ class Aircraft
 {
 public:
     // return the aircraft's affiliation (e.g. NATO, SOVIET)
-    virtual const AffiliationType affiliation();
+    virtual const affilation_type affiliation();
     
     // accuracy while bombing, if applicable (otherwise 0)
     virtual const int bomber_accuracy();
@@ -74,7 +74,7 @@ public:
 
     static std::shared_ptr<Aircraft> Make(const std::string &name, const std::string &designation,
         const int range, const std::shared_ptr<WeaponSystem> weapon_system, const bool is_carrier_aircraft, 
-        const AffiliationType affiliation, const int ecm_rating, const int dogfighting_rating, 
+        const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
         const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
         const int lrcap_missile_ew_max, const int lrcap_missile_avg, const int lrcap_missile_max, 
         const int lrcap_dogfight_ew_avg, const int lrcap_dogfight_ew_max, const int lrcap_dogfight_avg, 

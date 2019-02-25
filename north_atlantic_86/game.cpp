@@ -44,12 +44,12 @@ public:
     
     void add_nato_player(const std::string &name) override
     {
-        _player_nato = Player::Make(AffiliationType::NATO, name, NATO_POSSIBLE_TASK_FORCES);
+        _player_nato = Player::Make(affilation_type::NATO, name, NATO_POSSIBLE_TASK_FORCES);
     }
     
     void add_soviet_player(const std::string &name) override
     {
-        _player_soviet = Player::Make(AffiliationType::SOVIET, name, SOVIET_POSSIBLE_TASK_FORCES);
+        _player_soviet = Player::Make(affilation_type::SOVIET, name, SOVIET_POSSIBLE_TASK_FORCES);
     }
     
     std::string current_time() override

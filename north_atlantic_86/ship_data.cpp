@@ -56,9 +56,9 @@ public:
             std::string unit_class = element[10].string_value();        // e.g. Nimitz  // TODO incorporate unit_class
             std::string affiliation_id = element[11].string_value();    // e.g. NATO
             
-            AffiliationType affiliation_type = AffiliationType::NATO;
+            affilation_type affiliation_type = affilation_type::NATO;
             if (affiliation_id == "USSR") {
-                affiliation_type = AffiliationType::SOVIET;
+                affiliation_type = affilation_type::SOVIET;
             }
             
             // TODO look up class_id and convert to enumerated unit_class

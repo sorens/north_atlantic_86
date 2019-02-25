@@ -23,7 +23,7 @@ class naval_station
 {
 public:
     // affiliation type
-    virtual const AffiliationType affiliation();
+    virtual const affilation_type affiliation();
 
     // aircraft capacity
     virtual const int airbase_capacity();
@@ -45,7 +45,7 @@ public:
 
     // create a naval_station
     static std::shared_ptr<naval_station> Make(const std::string &name, const
-                                               AffiliationType affiliation,
+                                               affilation_type affiliation,
                                                const naval_station_type type,
                                                const int airbase_capacity,
                                                const int aa,

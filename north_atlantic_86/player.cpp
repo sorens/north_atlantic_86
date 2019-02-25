@@ -20,7 +20,7 @@ static const int Field_TaskForce_AVAILABLE  = 1;
 class _Player : public Player
 {
 public:
-    _Player(AffiliationType affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
+    _Player(affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
     _affiliation(affiliation), _name(name), _possible_task_forces(task_force_ids.size()), _score(0)
     {
         uuid_t uuid;
@@ -42,7 +42,7 @@ public:
         _possible_task_forces.clear();
     }
     
-    const AffiliationType affiliation() override
+    const affilation_type affiliation() override
     {
         return _affiliation;
     }
@@ -122,7 +122,7 @@ public:
     }
     
 private:
-    AffiliationType _affiliation;
+    affilation_type _affiliation;
     std::vector<std::shared_ptr<naval_station>> _bases;
     std::string _id;
     std::string _name;
@@ -134,12 +134,12 @@ private:
 
 #pragma mark Player
 
-const AffiliationType Player::affiliation()
+const affilation_type Player::affiliation()
 {
     runtime_assert_not_reached();
 }
 
-const std::string Player::alliance_to_string(const AffiliationType affiliation)
+const std::string Player::alliance_to_string(const affilation_type affiliation)
 {
     // TODO implement
     return "";
@@ -167,7 +167,7 @@ const std::string Player::id()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Player> Player::Make(const AffiliationType affiliation, const std::string &name, std::vector<std::string> task_force_ids)
+std::shared_ptr<Player> Player::Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids)
 {
     return std::make_shared<_Player>(affiliation, name, task_force_ids);
 }

@@ -19,7 +19,7 @@ public:
     _Unit(const std::string &id, const std::string &name, const UnitType type,
           const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun,
           const int aa_gun, const int missile_defense, const int max_speed,
-          const int cargo_capacity, const int defense_factor, const AffiliationType affiliation)
+          const int cargo_capacity, const int defense_factor, const affilation_type affiliation)
     : _anti_aircraft_gun(aa_gun), _cargo_capacity(cargo_capacity), _defense_factor(defense_factor),
     _id(id), _main_gun(main_gun), _max_speed(max_speed), _missile_defense(missile_defense),
     _name(name), _prefix(prefix), _type(type), _unit_class(unit_class), _affiliation(affiliation)
@@ -102,7 +102,7 @@ public:
     }
         
 private:
-    AffiliationType _affiliation;
+    affilation_type _affiliation;
     int _anti_aircraft_gun;
     int _cargo_capacity;
     int _defense_factor;
@@ -144,7 +144,7 @@ const std::string Unit::id()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Unit> Unit::Make(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const AffiliationType affiliation)
+std::shared_ptr<Unit> Unit::Make(const std::string &id, const std::string &name, const UnitType type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const affilation_type affiliation)
 {
     return std::make_shared<_Unit>(id, name, type, unit_class, prefix, class_id, main_gun, aa_gun, missile_defense, max_speed, cargo_capacity, defense_factor, affiliation);
 }

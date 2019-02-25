@@ -16,7 +16,7 @@ class _Aircraft : public Aircraft
 public:
     _Aircraft(const std::string &name, const std::string &designation, 
     const int range, const std::shared_ptr<WeaponSystem> weapon_system, const bool is_carrier_aircraft, 
-    const AffiliationType affiliation, const int ecm_rating, const int dogfighting_rating, 
+    const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
     const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
     const int lrcap_missile_ew_max, const int lrcap_missile_avg, const int lrcap_missile_max, 
     const int lrcap_dogfight_ew_avg, const int lrcap_dogfight_ew_max, const int lrcap_dogfight_avg, 
@@ -37,7 +37,7 @@ public:
     {
     }
 
-    const AffiliationType affiliation() override
+    const affilation_type affiliation() override
     {
         return _affiliation;
     }
@@ -172,7 +172,7 @@ public:
         std::stringstream ss;
         
         ss << "<Aircraft ";
-        ss << "affiliation: " << AffiliationUtility::to_string(_affiliation);
+        ss << "affiliation: " << affiliation_utility::to_string(_affiliation);
         ss << ", bomber_accuracy: " << _bomber_accuracy;
         ss << ", designation: " << _designation;
         ss << ", dogfighting_rating: " << _dogfighting_rating;
@@ -204,7 +204,7 @@ public:
 
 private:
 
-    AffiliationType _affiliation;
+    affilation_type _affiliation;
     int _bomber_accuracy;
     std::string _designation;
     int _dogfighting_rating;
@@ -235,7 +235,7 @@ private:
 
 #pragma mark aircraft
 
-const AffiliationType Aircraft::affiliation()
+const affilation_type Aircraft::affiliation()
 {
     runtime_assert_not_reached();
 }
@@ -357,7 +357,7 @@ const std::string Aircraft::description()
 
 std::shared_ptr<Aircraft> Aircraft::Make(const std::string &name, const std::string &designation,
     const int range, const std::shared_ptr<WeaponSystem> weapon_system, const bool is_carrier_aircraft, 
-    const AffiliationType affiliation, const int ecm_rating, const int dogfighting_rating, 
+    const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
     const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
     const int lrcap_missile_ew_max, const int lrcap_missile_avg, const int lrcap_missile_max, 
     const int lrcap_dogfight_ew_avg, const int lrcap_dogfight_ew_max, const int lrcap_dogfight_avg, 

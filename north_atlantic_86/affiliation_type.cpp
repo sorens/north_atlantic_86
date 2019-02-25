@@ -9,16 +9,16 @@
 #include <string>
 #include "affiliation_type.hpp"
 
-const std::string AffiliationUtility::to_string(AffiliationType t)
+const std::string affiliation_utility::to_string(affilation_type t)
 {
     switch (t) {
-        case AffiliationType::UNKNOWN:
+        case affilation_type::UNKNOWN:
             return "UNKNOWN";
-        case AffiliationType::NATO:
+        case affilation_type::NATO:
             return "NATO";
-        case AffiliationType::SOVIET:
+        case affilation_type::SOVIET:
             return "SOVIET";
-        case AffiliationType::CONTESTED:
+        case affilation_type::CONTESTED:
             return "CONTESTED";
     }
 }

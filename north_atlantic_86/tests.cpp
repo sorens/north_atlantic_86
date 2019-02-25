@@ -169,7 +169,7 @@ public:
         test_result("naval_station_unit_test", "Found Iceland", _game->find_naval_station("Iceland") != nullptr);
         test_result("naval_station_unit_test", "Won't find Chicago", _game->find_naval_station("Chicago") == nullptr);
         
-        test_result("naval_station_unit_test", "Iceland is CONTESTED", _game->find_naval_station("Iceland")->affiliation() == AffiliationType::CONTESTED);
+        test_result("naval_station_unit_test", "Iceland is CONTESTED", _game->find_naval_station("Iceland")->affiliation() == affilation_type::CONTESTED);
         test_result("naval_station_unit_test", "Iceland is an AIRBASE", _game->find_naval_station("Iceland")->type() == naval_station_type::Airbase);
         test_result("naval_station_unit_test", "Iceland has 30 light guns", _game->find_naval_station("Iceland")->anti_aircraft_gun() == 30);
         test_result("naval_station_unit_test", "Iceland has 0 missile defense", _game->find_naval_station("Iceland")->missible_defense() == 0);
@@ -179,7 +179,7 @@ public:
         test_result("naval_station_unit_test", "Iceland has 4 EW strength", _game->find_naval_station("Iceland")->ew_strength() == 4);
         test_result("naval_station_unit_test", "Iceland has 0 SONAR strength", _game->find_naval_station("Iceland")->sonar_strength() == 0);
         
-        test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == AffiliationType::SOVIET);
+        test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == affilation_type::SOVIET);
         test_result("naval_station_unit_test", "Murmansk is a PORT", _game->find_naval_station("Murmansk")->type() == naval_station_type::Port);
         
         _clean_up_every_time();
