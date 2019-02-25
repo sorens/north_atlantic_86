@@ -101,10 +101,10 @@ const std::string ShipData::Import_Data(const std::string &path)
     // read in ship_data.json
     std::string ship_data;
     
-    auto ship_file = File::Make("ship_data.json");
+    auto ship_file = file::Make("ship_data.json");
     
     if (ship_file) {
-        if (ship_file->open(FileModeOpenRead)) {
+        if (ship_file->open(file_mode_open_read)) {
             auto size = ship_file->size();
             if (size > 0) {
                 char *buf = (char *)malloc((size + 1) * sizeof(char));

@@ -132,10 +132,10 @@ const std::string naval_station_data::Import_Data(const std::string &path)
     // read in naval_station.json
     std::string naval_stattion_data;
     
-    auto file = File::Make("naval_station_data.json");
+    auto file = file::Make("naval_station_data.json");
     
     if (file) {
-        if (file->open(FileModeOpenRead)) {
+        if (file->open(file_mode_open_read)) {
             auto size = file->size();
             if (size > 0) {
                 char *buf = (char *)malloc((size + 1) * sizeof(char));

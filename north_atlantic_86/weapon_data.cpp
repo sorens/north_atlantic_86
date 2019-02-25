@@ -101,10 +101,10 @@ const std::string weapon_data::Import_Data(const std::string &path)
     // read in weapon_data.json
     std::string weapon_data;
     
-    auto weapon_file = File::Make("weapon_data.json");
+    auto weapon_file = file::Make("weapon_data.json");
     
     if (weapon_file) {
-        if (weapon_file->open(FileModeOpenRead)) {
+        if (weapon_file->open(file_mode_open_read)) {
             auto size = weapon_file->size();
             if (size > 0) {
                 char *buf = (char *)malloc((size + 1) * sizeof(char));

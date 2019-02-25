@@ -13,14 +13,14 @@
 
 #define INVALID             -1
 
-class _File : public File
+class _file : public file
 {
     std::fstream _fstream;
-    FileMode _mode;
+    file_mode _mode;
     std::string _path;
 
 public:
-    _File(const std::string &path) : _path(path)
+    _file(const std::string &path) : _path(path)
     {
     }
     
@@ -29,7 +29,7 @@ public:
         _fstream.close();
     }
     
-    bool open(FileMode mode) override
+    bool open(file_mode mode) override
     {
         if (_fstream.is_open())
             return false;
@@ -37,13 +37,13 @@ public:
         _mode = mode;
         
         std::ios_base::openmode openMode = (std::ios_base::openmode)0;
-        if (mode & FileModeOpenAppend)
+        if (mode & file_mode_open_append)
             openMode |= std::ios_base::app;
-        if (mode & FileModeOpenBinary)
+        if (mode & file_mode_open_binary)
             openMode |= std::ios_base::binary;
-        if (mode & FileModeOpenRead)
+        if (mode & file_mode_open_read)
             openMode |= std::ios_base::in;
-        if (mode & FileModeOpenTruncate)
+        if (mode & file_mode_open_truncate)
             openMode |= std::ios_base::trunc;
         
         _fstream.open(_path, openMode);
@@ -86,32 +86,32 @@ public:
 
 #pragma mark File
 
-void File::close()
+void file::close()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<File> File::Make(const std::string &path)
+std::shared_ptr<file> file::Make(const std::string &path)
 {
-    return std::make_shared<_File>(path);
+    return std::make_shared<_file>(path);
 }
 
-bool File::open(FileMode mode)
-{
-    runtime_assert_not_reached();
-}
-
-ssize_t File::read(char *buf, size_t size)
+bool file::open(file_mode mode)
 {
     runtime_assert_not_reached();
 }
 
-off_t File::size()
+ssize_t file::read(char *buf, size_t size)
 {
     runtime_assert_not_reached();
 }
 
-ssize_t File::write(const char *buf, size_t size)
+off_t file::size()
+{
+    runtime_assert_not_reached();
+}
+
+ssize_t file::write(const char *buf, size_t size)
 {
     runtime_assert_not_reached();
 }

@@ -126,10 +126,10 @@ const std::string aircraft_data::Import_Data(const std::string &path)
     // read in aircraft_data.json
     std::string aircraft_data;
     
-    auto aircraft_file = File::Make("aircraft_data.json");
+    auto aircraft_file = file::Make("aircraft_data.json");
     
     if (aircraft_file) {
-        if (aircraft_file->open(FileModeOpenRead)) {
+        if (aircraft_file->open(file_mode_open_read)) {
             auto size = aircraft_file->size();
             if (size > 0) {
                 char *buf = (char *)malloc((size + 1) * sizeof(char));

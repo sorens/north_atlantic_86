@@ -11,22 +11,22 @@
 #include <fstream>
 #include <sys/stat.h>
 
-typedef unsigned FileMode;
+typedef unsigned file_mode;
 enum : unsigned
 {
-    FileModeOpenRead        = (1 << 0),
-    FileModeOpenWrite       = (1 << 1),
-    FileModeOpenBinary      = (1 << 2),
-    FileModeOpenAppend      = (1 << 3),
-    FileModeOpenTruncate    = (1 << 4),
+    file_mode_open_read     = (1 << 0),
+    file_mode_open_write    = (1 << 1),
+    file_mode_open_binary   = (1 << 2),
+    file_mode_open_append   = (1 << 3),
+    file_mode_open_truncate = (1 << 4),
 };
 
-class File
+class file
 {
 public:
     virtual void close();
-    static std::shared_ptr<File> Make(const std::string &path);
-    virtual bool open(FileMode mode);
+    static std::shared_ptr<file> Make(const std::string &path);
+    virtual bool open(file_mode mode);
     virtual ssize_t read(char *buf, size_t size);
     virtual off_t size();
     virtual ssize_t write(const char *buf, size_t size);

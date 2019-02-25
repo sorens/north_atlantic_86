@@ -91,10 +91,10 @@ const std::string map_data::Import_Data(const std::string &path)
     // read in map_data.json
     std::string data;
     
-    auto file = File::Make("map_data.json");
+    auto file = file::Make("map_data.json");
     
     if (file) {
-        if (file->open(FileModeOpenRead)) {
+        if (file->open(file_mode_open_read)) {
             auto size = file->size();
             if (size > 0) {
                 char *buf = (char *)malloc((size + 1) * sizeof(char));
