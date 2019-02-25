@@ -85,7 +85,7 @@ public:
         return _weather;
     }
     
-    const std::vector<std::shared_ptr<Unit>> units() override
+    const std::vector<std::shared_ptr<unit>> units() override
     {
         return _units;
     }
@@ -95,7 +95,7 @@ private:
     int _x;
     int _y;
     grid_type _type;
-    std::vector<std::shared_ptr<Unit>> _units;
+    std::vector<std::shared_ptr<unit>> _units;
     int _water_temp;
     std::shared_ptr<Weather> _weather;
 };
@@ -157,7 +157,7 @@ const std::shared_ptr<Weather> grid::weather()
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<Unit>> grid::units()
+const std::vector<std::shared_ptr<unit>> grid::units()
 {
     runtime_assert_not_reached();
 }

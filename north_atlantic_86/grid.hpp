@@ -48,5 +48,5 @@ public:
     virtual const std::shared_ptr<Weather> weather();
     
     // return the vector of Units at this grid
-    virtual const std::vector<std::shared_ptr<Unit>> units();
+    virtual const std::vector<std::shared_ptr<unit>> units();
 };

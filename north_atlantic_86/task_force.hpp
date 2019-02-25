@@ -16,7 +16,7 @@ class task_force
 {
 public:
     // add a unit to this task force
-    virtual void add_unit(std::shared_ptr<Unit> unit);
+    virtual void add_unit(std::shared_ptr<unit> unit);
     
     // return a human-readable string that describes a task force
     virtual const std::string description();
@@ -40,7 +40,7 @@ public:
     virtual void set_mission_type(const task_force_mission_type mission);
     
     // a list of units in this task force
-    virtual const std::vector<std::weak_ptr<Unit>> units();
+    virtual const std::vector<std::weak_ptr<unit>> units();
     
     // x-coordinate of this task force
     virtual const int x();

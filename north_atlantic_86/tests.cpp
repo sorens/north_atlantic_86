@@ -231,7 +231,7 @@ public:
 
         // TRANSPORT Task Force
         auto transport_tf = task_force::Make("11", task_force_mission_type::TRANSPORT, 1, 1);
-        auto nimitz = _game->unit("CVN-68");
+        auto nimitz = _game->ship_unit("CVN-68");
         
         bool result = false;
         try
@@ -245,7 +245,7 @@ public:
         
         test_result("task_forces_unit_test", "Prevent CVN adding to Transport TF", result);
         
-        auto kennedy = _game->unit("CV-67");
+        auto kennedy = _game->ship_unit("CV-67");
         
         result = false;
         try
@@ -259,7 +259,7 @@ public:
         
         test_result("task_force_unit_test", "Prevent CV adding to Transport TF", result);
 
-        auto philadelphia = _game->unit("SSN-690");
+        auto philadelphia = _game->ship_unit("SSN-690");
 
         result = false;
         try
@@ -277,7 +277,7 @@ public:
         // COMBAT Task Force
         auto combat_tf = task_force::Make("12", task_force_mission_type::COMBAT, 1, 1);
         
-        auto guam = _game->unit("LPH-9");
+        auto guam = _game->ship_unit("LPH-9");
         
         result = false;
         try
@@ -291,7 +291,7 @@ public:
         
         test_result("task_force_unit_test", "Prevent LPH adding to Combat TF", result);
 
-        auto comet = _game->unit("AKR-7");
+        auto comet = _game->ship_unit("AKR-7");
         
         result = false;
         try
@@ -354,8 +354,8 @@ public:
     {
         _initialize_every_time();
 
-        auto nimitz_mutable = mutable_unit::Make(_game->unit("CVN-68"));
-        nimitz_mutable->apply_damage(nimitz_mutable->unit()->defense_factor() + 1);
+        auto nimitz_mutable = mutable_unit::Make(_game->ship_unit("CVN-68"));
+        nimitz_mutable->apply_damage(nimitz_mutable->immutable_unit()->defense_factor() + 1);
         
         bool result = false;
         if (nimitz_mutable->is_sunk())
@@ -364,8 +364,8 @@ public:
         test_result("unit_test", "Ship sinks when dmg >= df", result);
         
         result = false;
-        nimitz_mutable = mutable_unit::Make(_game->unit("CVN-68"));
-        nimitz_mutable->apply_damage(nimitz_mutable->unit()->defense_factor() / 2);
+        nimitz_mutable = mutable_unit::Make(_game->ship_unit("CVN-68"));
+        nimitz_mutable->apply_damage(nimitz_mutable->immutable_unit()->defense_factor() / 2);
         if (!nimitz_mutable->is_sunk())
             result = true;
 

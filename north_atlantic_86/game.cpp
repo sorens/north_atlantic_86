@@ -124,8 +124,8 @@ public:
     {
         // create a task force
         auto combat_tf = _player_nato->create_task_force(task_force_mission_type::COMBAT, 10, 10);
-        combat_tf->add_unit(unit("CG-47"));     // Ticonderoga
-        combat_tf->add_unit(unit("CVN-68"));    // Nimitz
+        combat_tf->add_unit(ship_unit("CG-47"));     // Ticonderoga
+        combat_tf->add_unit(ship_unit("CVN-68"));    // Nimitz
     }
     
     std::shared_ptr<player> player_nato() override
@@ -138,7 +138,7 @@ public:
         return _player_soviet;
     }
     
-    std::shared_ptr<Unit> unit(const std::string &id) override
+    std::shared_ptr<unit> ship_unit(const std::string &id) override
     {
         if (_ship_data) {
             return _ship_data->find_unit(id);
@@ -236,7 +236,7 @@ std::shared_ptr<player> game::player_soviet()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Unit> game::unit(const std::string &id)
+std::shared_ptr<unit> game::ship_unit(const std::string &id)
 {
     runtime_assert_not_reached();
 }

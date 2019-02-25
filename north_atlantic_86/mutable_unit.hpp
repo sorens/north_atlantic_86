@@ -12,7 +12,7 @@
 
 // mutable_unit provides read and write access to fields
 // of a Unit that can be updated during the progress of the game
-class mutable_unit : public Unit
+class mutable_unit : public unit
 {
 public:
     // damage
@@ -20,7 +20,7 @@ public:
     virtual const int damage();
 
     // return a mutable unit
-    static std::shared_ptr<mutable_unit> Make(std::shared_ptr<Unit> unit);
+    static std::shared_ptr<mutable_unit> Make(std::shared_ptr<unit> unit);
     
     // max speed
     virtual void update_max_speed(const int max_speed);
@@ -30,5 +30,5 @@ public:
     virtual const bool is_sunk();
     
     // return the immutable unit
-    virtual std::shared_ptr<Unit> unit();
+    virtual std::shared_ptr<unit> immutable_unit();
 };

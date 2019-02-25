@@ -17,7 +17,7 @@ public:
     static std::shared_ptr<ShipData> factory(const std::string &json_import);
     
     // find a ship by it's id (e.g. CVN-68 is the USS Nimitz)
-    virtual std::shared_ptr<Unit> find_unit(const std::string &id);
+    virtual std::shared_ptr<unit> find_unit(const std::string &id);
     
     // import JSON data
     static const std::string Import_Data(const std::string &path);

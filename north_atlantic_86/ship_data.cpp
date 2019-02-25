@@ -62,7 +62,7 @@ public:
             }
             
             // TODO look up class_id and convert to enumerated unit_class
-            auto ship = Unit::Make(id, name, unit_type::Ship, unit_class, ship_prefix, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, affiliation_type);
+            auto ship = unit::Make(id, name, unit_type::Ship, unit_class, ship_prefix, class_id, main_gun, aa_gun, missile_def, max_speed, cargo_capacity, defense_factor, affiliation_type);
             
             if (_data.find(id) != _data.end())
                 throw duplicate_id_ship_data_exception(id);
@@ -71,7 +71,7 @@ public:
         }
     }
     
-    std::shared_ptr<Unit> find_unit(const std::string &id) override
+    std::shared_ptr<unit> find_unit(const std::string &id) override
     {
         if (_data.find(id) != _data.end()) {
             return _data[id];
@@ -81,7 +81,7 @@ public:
     }
     
 private:
-    std::unordered_map<std::string, std::shared_ptr<Unit>> _data;
+    std::unordered_map<std::string, std::shared_ptr<unit>> _data;
 };
 
 std::shared_ptr<ShipData> ShipData::factory(const std::string &json_import)
@@ -91,7 +91,7 @@ std::shared_ptr<ShipData> ShipData::factory(const std::string &json_import)
     return ship_data;
 }
 
-std::shared_ptr<Unit> ShipData::find_unit(const std::string &id)
+std::shared_ptr<unit> ShipData::find_unit(const std::string &id)
 {
     return nullptr;
 }

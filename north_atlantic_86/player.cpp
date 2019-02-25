@@ -111,7 +111,7 @@ public:
         return _score;
     }
     
-    const std::vector<std::shared_ptr<Unit>> sunken_ships() override
+    const std::vector<std::shared_ptr<unit>> sunken_ships() override
     {
         return _sunken_ships;
     }
@@ -128,7 +128,7 @@ private:
     std::string _name;
     std::vector<std::tuple<std::string, bool>> _possible_task_forces;
     int _score;
-    std::vector<std::shared_ptr<Unit>> _sunken_ships;
+    std::vector<std::shared_ptr<unit>> _sunken_ships;
     std::vector<std::shared_ptr<task_force>> _task_forces;
 };
 
@@ -187,7 +187,7 @@ const int player::score()
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<Unit>> player::sunken_ships()
+const std::vector<std::shared_ptr<unit>> player::sunken_ships()
 {
     runtime_assert_not_reached();
 }

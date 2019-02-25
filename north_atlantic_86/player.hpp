@@ -49,7 +49,7 @@ public:
     virtual const int score();
     
     // return a vector of sunken ships
-    virtual const std::vector<std::shared_ptr<Unit>> sunken_ships();
+    virtual const std::vector<std::shared_ptr<unit>> sunken_ships();
     
     // return a list of task forces
     virtual const std::vector<std::shared_ptr<task_force>> task_forces();

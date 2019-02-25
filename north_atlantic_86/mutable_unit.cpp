@@ -13,11 +13,11 @@
 class _mutable_unit : public mutable_unit
 {
 public:
-    _mutable_unit(std::shared_ptr<Unit> unit) :
-    _unit(unit)
+    _mutable_unit(std::shared_ptr<unit> immutable_unit) :
+    _immutable_unit(immutable_unit)
     {
         _damage = 0;
-        _max_speed = unit->max_speed();
+        _max_speed = _immutable_unit->max_speed();
     }
 
     void apply_damage(const int damage) override
@@ -42,18 +42,18 @@ public:
 
     const bool is_sunk() override
     {
-        return _damage >= _unit->defense_factor();
+        return _damage >= _immutable_unit->defense_factor();
     }
     
-    std::shared_ptr<Unit> unit() override
+    std::shared_ptr<unit> immutable_unit() override
     {
-        return _unit;
+        return _immutable_unit;
     }
 
 private:
     int _damage;
     int _max_speed;
-    std::shared_ptr<Unit> _unit;
+    std::shared_ptr<unit> _immutable_unit;
 };
 
 #pragma mark mutable_unit
@@ -64,29 +64,30 @@ void mutable_unit::apply_damage(const int damage)
 
 const int mutable_unit::damage()
 {
-    return -1;
+    runtime_assert_not_reached();
 }
 
-std::shared_ptr<mutable_unit> mutable_unit::Make(std::shared_ptr<Unit> unit)
+std::shared_ptr<mutable_unit> mutable_unit::Make(std::shared_ptr<unit> unit)
 {
     return std::make_shared<_mutable_unit>(unit);
 }
 
 void mutable_unit::update_max_speed(const int max_speed)
 {
+    runtime_assert_not_reached();
 }
 
 const int mutable_unit::max_speed()
 {
-    return -1;
+    runtime_assert_not_reached();
 }
 
 const bool mutable_unit::is_sunk()
 {
-    return false;
+    runtime_assert_not_reached();
 }
 
-std::shared_ptr<Unit> mutable_unit::unit()
+std::shared_ptr<unit> mutable_unit::immutable_unit()
 {
     runtime_assert_not_reached();
 }

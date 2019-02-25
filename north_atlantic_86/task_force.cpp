@@ -20,7 +20,7 @@ public:
     {
     }
     
-    void add_unit(std::shared_ptr<Unit> unit) override
+    void add_unit(std::shared_ptr<unit> unit) override
     {
         if (!unit)
             return;
@@ -93,7 +93,7 @@ public:
         _mission = mission;
     }
     
-    const std::vector<std::weak_ptr<Unit>> units() override
+    const std::vector<std::weak_ptr<unit>> units() override
     {
         return _units;
     }
@@ -111,7 +111,7 @@ public:
     const std::string description() override
     {
         std::stringstream ss;
-        ss << "<Task Force";
+        ss << "<task force";
         ss << " id: " << _id;
         ss << " mission: " << task_force_mission_type_utility::to_string(_mission);
         ss << " location: " << _x << ", " << _y;
@@ -128,14 +128,14 @@ public:
 private:
     std::string _id;
     task_force_mission_type _mission;
-    std::vector<std::weak_ptr<Unit>> _units;
+    std::vector<std::weak_ptr<unit>> _units;
     int _x;
     int _y;
 };
 
 #pragma mark task_force
 
-void task_force::add_unit(std::shared_ptr<Unit> unit)
+void task_force::add_unit(std::shared_ptr<unit> unit)
 {
     runtime_assert_not_reached();
 }
@@ -175,7 +175,7 @@ void task_force::set_mission_type(const task_force_mission_type mission)
     runtime_assert_not_reached();
 }
 
-const std::vector<std::weak_ptr<Unit>> task_force::units()
+const std::vector<std::weak_ptr<unit>> task_force::units()
 {
     runtime_assert_not_reached();
 }

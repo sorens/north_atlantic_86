@@ -74,7 +74,7 @@ public:
         _dimension = std::pow(_map_grid.size(), 0.5);
     }
     
-    std::vector<std::shared_ptr<Unit>> units(const int x, const int y) override
+    std::vector<std::shared_ptr<unit>> units(const int x, const int y) override
     {
         int index = (y * (_dimension - 1)) + x;
         if (index < 0 || index >= _map_grid.size())
@@ -112,7 +112,7 @@ std::shared_ptr<map> map::Make(const std::string &map_data, std::shared_ptr<nava
     return map;
 }
 
-std::vector<std::shared_ptr<Unit>> map::units(const int x, const int y)
+std::vector<std::shared_ptr<unit>> map::units(const int x, const int y)
 {
     runtime_assert_not_reached();
 }

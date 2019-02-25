@@ -28,5 +28,5 @@ public:
     static std::shared_ptr<map> Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data);
     
     // return a list of Units for particular coordinates
-    virtual std::vector<std::shared_ptr<Unit>> units(const int x, const int y);
+    virtual std::vector<std::shared_ptr<unit>> units(const int x, const int y);
 };
