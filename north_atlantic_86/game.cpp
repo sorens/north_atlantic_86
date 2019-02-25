@@ -110,7 +110,7 @@ public:
                         const std::string &naval_station_json_data) {
         _ship_data = ShipData::factory(ships_json_data);
         _weapon_data = WeaponData::Make(weapons_json_data);
-        _aircraft_data = AircraftData::Make(aircraft_json_data, _weapon_data);
+        _aircraft_data = aircraft_data::Make(aircraft_json_data, _weapon_data);
         _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
         _map = Map::Make(map_data, _naval_station_data);
     }
@@ -153,7 +153,7 @@ public:
     }
 
 private:
-    std::shared_ptr<AircraftData> _aircraft_data;
+    std::shared_ptr<aircraft_data> _aircraft_data;
     std::shared_ptr<Map> _map;
     int _current_turn;
     std::shared_ptr<naval_station_data> _naval_station_data;

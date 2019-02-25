@@ -47,7 +47,7 @@ void play_game()
         std::string weapon_data = WeaponData::Import_Data("weapon_data.json");
         
         // read in aircraft_data.json
-        std::string aircraft_data = AircraftData::Import_Data("aircraft_data.json");
+        std::string aircraft_data = aircraft_data::Import_Data("aircraft_data.json");
         
         // read in naval_station_data.json
         std::string naval_station_data = naval_station_data::Import_Data("naval_station_data.json");

@@ -15,12 +15,12 @@
 
 using namespace json11;
 
-#pragma mark _AircraftData
+#pragma mark _aircraft_data
 
-class _AircraftData : public AircraftData
+class _aircraft_data : public aircraft_data
 {
 public:
-    _AircraftData() {}
+    _aircraft_data() {}
     
     void add_aircraft(std::shared_ptr<Aircraft> aircraft)
     {
@@ -107,21 +107,21 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Aircraft>> _data;
 };
 
-#pragma mark AircraftData
+#pragma mark aircraft_data
 
-std::shared_ptr<AircraftData> AircraftData::Make(const std::string &json_import, std::shared_ptr<WeaponData> weapons_data)
+std::shared_ptr<aircraft_data> aircraft_data::Make(const std::string &json_import, std::shared_ptr<WeaponData> weapons_data)
 {
-    auto aircraft_data = std::make_shared<_AircraftData>();
+    auto aircraft_data = std::make_shared<_aircraft_data>();
     aircraft_data->initialize(json_import, weapons_data);
     return aircraft_data;
 }
 
-std::shared_ptr<Aircraft> AircraftData::find_aircraft(const std::string &id)
+std::shared_ptr<Aircraft> aircraft_data::find_aircraft(const std::string &id)
 {
     runtime_assert_not_reached();
 }
 
-const std::string AircraftData::Import_Data(const std::string &path)
+const std::string aircraft_data::Import_Data(const std::string &path)
 {
     // read in aircraft_data.json
     std::string aircraft_data;
