@@ -52,7 +52,7 @@ public:
         return _bases;
     }
     
-    std::shared_ptr<TaskForce> create_task_force(const task_force_mission_type mission, const int x, const int y) override
+    std::shared_ptr<task_force> create_task_force(const task_force_mission_type mission, const int x, const int y) override
     {
         if (number_remaining_task_forces() <= 0)
             throw no_task_forces_available_player_exception();
@@ -67,17 +67,17 @@ public:
             }
         }
         
-        std::shared_ptr<TaskForce> task_force;
+        std::shared_ptr<task_force> task_force;
         
         if (!id.empty()) {
-            task_force = TaskForce::Make(id, mission, x, y);
+            task_force = task_force::Make(id, mission, x, y);
             _task_forces.push_back(task_force);
         }
 
         return task_force;
     }
     
-    void dissolve_task_force(std::shared_ptr<TaskForce> tf) override
+    void dissolve_task_force(std::shared_ptr<task_force> tf) override
     {
         // TODO throw exception when not in port
         if (tf) {
@@ -116,7 +116,7 @@ public:
         return _sunken_ships;
     }
     
-    const std::vector<std::shared_ptr<TaskForce>> task_forces() override
+    const std::vector<std::shared_ptr<task_force>> task_forces() override
     {
         return _task_forces;
     }
@@ -129,7 +129,7 @@ private:
     std::vector<std::tuple<std::string, bool>> _possible_task_forces;
     int _score;
     std::vector<std::shared_ptr<Unit>> _sunken_ships;
-    std::vector<std::shared_ptr<TaskForce>> _task_forces;
+    std::vector<std::shared_ptr<task_force>> _task_forces;
 };
 
 #pragma mark player
@@ -150,12 +150,12 @@ const std::vector<std::shared_ptr<naval_station>> player::bases()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<TaskForce> player::create_task_force(const task_force_mission_type mission, const int x, const int y)
+std::shared_ptr<task_force> player::create_task_force(const task_force_mission_type mission, const int x, const int y)
 {
     runtime_assert_not_reached();
 }
 
-void player::dissolve_task_force(std::shared_ptr<TaskForce> tf)
+void player::dissolve_task_force(std::shared_ptr<task_force> tf)
 {
     runtime_assert_not_reached();
 }
@@ -192,7 +192,7 @@ const std::vector<std::shared_ptr<Unit>> player::sunken_ships()
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<TaskForce>> player::task_forces()
+const std::vector<std::shared_ptr<task_force>> player::task_forces()
 {
     runtime_assert_not_reached();
 }

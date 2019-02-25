@@ -10,12 +10,12 @@
 #include "task_force.hpp"
 #include "task_force_exception.hpp"
 
-#pragma mark _TaskForce
+#pragma mark _task_force
 
-class _TaskForce : public TaskForce
+class _task_force : public task_force
 {
 public:
-    _TaskForce(const std::string id, const task_force_mission_type mission, const int x, const int y) :
+    _task_force(const std::string id, const task_force_mission_type mission, const int x, const int y) :
     _id(id), _mission(mission), _x(x), _y(y)
     {
     }
@@ -133,59 +133,59 @@ private:
     int _y;
 };
 
-#pragma mark TaskForce
+#pragma mark task_force
 
-void TaskForce::add_unit(std::shared_ptr<Unit> unit)
+void task_force::add_unit(std::shared_ptr<Unit> unit)
 {
     runtime_assert_not_reached();
 }
 
-const std::string TaskForce::description()
+const std::string task_force::description()
 {
     runtime_assert_not_reached();
 }
 
-const std::string TaskForce::id()
+const std::string task_force::id()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<TaskForce> TaskForce::Make(const std::string &id, const task_force_mission_type mission, const int x, const int y)
+std::shared_ptr<task_force> task_force::Make(const std::string &id, const task_force_mission_type mission, const int x, const int y)
 {
-    return std::make_shared<_TaskForce>(id, mission, x, y);
+    return std::make_shared<_task_force>(id, mission, x, y);
 }
 
-const int TaskForce::max_speed()
-{
-    runtime_assert_not_reached();
-}
-
-const task_force_mission_type TaskForce::mission()
+const int task_force::max_speed()
 {
     runtime_assert_not_reached();
 }
 
-void TaskForce::remove_unit(const std::string &id)
+const task_force_mission_type task_force::mission()
 {
     runtime_assert_not_reached();
 }
 
-void TaskForce::set_mission_type(const task_force_mission_type mission)
+void task_force::remove_unit(const std::string &id)
 {
     runtime_assert_not_reached();
 }
 
-const std::vector<std::weak_ptr<Unit>> TaskForce::units()
+void task_force::set_mission_type(const task_force_mission_type mission)
 {
     runtime_assert_not_reached();
 }
 
-const int TaskForce::x()
+const std::vector<std::weak_ptr<Unit>> task_force::units()
 {
     runtime_assert_not_reached();
 }
 
-const int TaskForce::y()
+const int task_force::x()
+{
+    runtime_assert_not_reached();
+}
+
+const int task_force::y()
 {
     runtime_assert_not_reached();
 }
