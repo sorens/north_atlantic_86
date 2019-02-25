@@ -16,7 +16,7 @@ class aircraft_data
 {
 public:
     // return a aircraft_data
-    static std::shared_ptr<aircraft_data> Make(const std::string &json_import, std::shared_ptr<WeaponData> weapons_data);
+    static std::shared_ptr<aircraft_data> Make(const std::string &json_import, std::shared_ptr<weapon_data> weapons_data);
     
     // find an aircraft by it's id (e.g. F14 is a Tomcat fighter)
     virtual std::shared_ptr<aircraft> find_aircraft(const std::string &id);

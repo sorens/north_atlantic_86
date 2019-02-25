@@ -29,7 +29,7 @@ public:
         _data[key] = aircraft;
     }
 
-    void initialize(const std::string &json_import, std::shared_ptr<WeaponData> weapons_data)
+    void initialize(const std::string &json_import, std::shared_ptr<weapon_data> weapons_data)
     {
         runtime_assert(weapons_data);
         
@@ -109,7 +109,7 @@ private:
 
 #pragma mark aircraft_data
 
-std::shared_ptr<aircraft_data> aircraft_data::Make(const std::string &json_import, std::shared_ptr<WeaponData> weapons_data)
+std::shared_ptr<aircraft_data> aircraft_data::Make(const std::string &json_import, std::shared_ptr<weapon_data> weapons_data)
 {
     auto aircraft_data = std::make_shared<_aircraft_data>();
     aircraft_data->initialize(json_import, weapons_data);

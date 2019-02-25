@@ -22,5 +22,5 @@ public:
     static const std::string Import_Data(const std::string &path);
 
     // return naval_station data
-    static std::shared_ptr<naval_station_data> Make(const std::string &json_import, std::shared_ptr<WeaponData> weapon_data);
+    static std::shared_ptr<naval_station_data> Make(const std::string &json_import, std::shared_ptr<weapon_data> weapon_data);
 };

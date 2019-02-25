@@ -55,7 +55,7 @@ public:
         std::string ship_data = ShipData::Import_Data("ship_data.json");
        
         // read in weapon_data.json
-        std::string weapon_data = WeaponData::Import_Data("weapon_data.json");
+        std::string weapon_data = weapon_data::Import_Data("weapon_data.json");
         
         // read in aircraft_data.json
         std::string aircraft_data = aircraft_data::Import_Data("aircraft_data.json");
@@ -129,7 +129,7 @@ public:
     {
         _initialize_every_time();
         
-        auto wd = WeaponData::Make(WeaponData::Import_Data("weapon_data.json"));
+        auto wd = weapon_data::Make(weapon_data::Import_Data("weapon_data.json"));
         auto naval_station_data = naval_station_data::Make(naval_station_data::Import_Data("naval_station_data.json"), wd);
         
         bool result = false;

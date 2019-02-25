@@ -114,7 +114,7 @@ public:
                         const std::string &aircraft_json_data,
                         const std::string &naval_station_json_data) {
         _ship_data = ShipData::factory(ships_json_data);
-        _weapon_data = WeaponData::Make(weapons_json_data);
+        _weapon_data = weapon_data::Make(weapons_json_data);
         _aircraft_data = aircraft_data::Make(aircraft_json_data, _weapon_data);
         _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
         _game_map = map::Make(map_data, _naval_station_data);
@@ -160,7 +160,7 @@ private:
     std::shared_ptr<player> _player_nato;
     std::shared_ptr<player> _player_soviet;
     std::shared_ptr<ShipData> _ship_data;
-    std::shared_ptr<WeaponData> _weapon_data;
+    std::shared_ptr<weapon_data> _weapon_data;
 };
 
 #pragma mark game

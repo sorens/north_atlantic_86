@@ -26,7 +26,7 @@ private:
 public:
     _naval_station_data() {}
     
-    void initialize(const std::string &json_import, std::shared_ptr<WeaponData> weapon_data)
+    void initialize(const std::string &json_import, std::shared_ptr<weapon_data> weapon_data)
     {
         if (json_import.empty())
             throw import_failed_naval_station_data_exception();
@@ -158,7 +158,7 @@ const std::string naval_station_data::Import_Data(const std::string &path)
 }
 
 // return naval_station data
-std::shared_ptr<naval_station_data> naval_station_data::Make(const std::string &json_import, std::shared_ptr<WeaponData> weapon_data)
+std::shared_ptr<naval_station_data> naval_station_data::Make(const std::string &json_import, std::shared_ptr<weapon_data> weapon_data)
 {
     auto naval_station_data = std::make_shared<_naval_station_data>();
     naval_station_data->initialize(json_import, weapon_data);

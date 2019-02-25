@@ -16,7 +16,7 @@
 
 using namespace json11;
 
-#pragma mark _WeaponData
+#pragma mark _weapon_data
 
 const static int FIELD_NAME                 = 0;
 const static int FIELD_TYPE                 = 1;
@@ -28,7 +28,7 @@ const static int FIELD_SURFACE_SKIMMING     = 6;
 const static int FIELD_SAM_SALVO_RATE       = 7;
 const static int FIELD_LRAAM_SALVO_RATE     = 8;
 
-class _WeaponData : public WeaponData
+class _weapon_data : public weapon_data
 {
     std::unordered_map<std::string, std::shared_ptr<WeaponSystem>> _weapon_systems;
 
@@ -94,9 +94,9 @@ public:
     }
 };
 
-#pragma mark WeaponData
+#pragma mark weapon_data
 
-const std::string WeaponData::Import_Data(const std::string &path)
+const std::string weapon_data::Import_Data(const std::string &path)
 {
     // read in weapon_data.json
     std::string weapon_data;
@@ -126,14 +126,14 @@ const std::string WeaponData::Import_Data(const std::string &path)
     return weapon_data;
 }
 
-std::shared_ptr<WeaponData> WeaponData::Make(const std::string &json_import)
+std::shared_ptr<weapon_data> weapon_data::Make(const std::string &json_import)
 {
-    auto weapon_data = std::make_shared<_WeaponData>();
+    auto weapon_data = std::make_shared<_weapon_data>();
     weapon_data->initialize(json_import);
     return weapon_data;
 }
 
-std::shared_ptr<WeaponSystem> WeaponData::weapon_system(const std::string &id)
+std::shared_ptr<WeaponSystem> weapon_data::weapon_system(const std::string &id)
 {
-    return nullptr;
+    runtime_assert_not_reached();
 }
