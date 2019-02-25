@@ -6,7 +6,7 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
-#pragma mark
+#pragma once
 
 #include "naval_station.hpp"
 #include "weapon_data.hpp"

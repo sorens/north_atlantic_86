@@ -39,7 +39,7 @@ std::ostringstream MapDisplayAscii::Generate(std::shared_ptr<Game> game)
                 break;
             case GridType::Airbase:
             case GridType::Port:
-                map[i] = g->name()[0];
+                map[i] = g->station()->name()[0];
                 break;
             case GridType::Unknown:
                 break;

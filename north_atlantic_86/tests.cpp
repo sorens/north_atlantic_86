@@ -129,9 +129,12 @@ public:
     {
         _initialize_every_time();
         
+        auto wd = WeaponData::Make(WeaponData::Import_Data("weapon_data.json"));
+        auto naval_station_data = naval_station_data::Make(naval_station_data::Import_Data("naval_station_data.json"), wd);
+        
         bool result = false;
-        auto grid1 = Grid::factory("A", GridType::Ocean, 4, 5);
-        auto grid2 = Grid::factory("b", GridType::Ocean, 9, 6);
+        auto grid1 = Grid::Make("A", GridType::Ocean, 4, 5, naval_station_data);
+        auto grid2 = Grid::Make("b", GridType::Ocean, 9, 6, naval_station_data);
         float distance = Grid::Distance(grid1, grid2);
         if (distance == 6)
             result = true;

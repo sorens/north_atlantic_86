@@ -60,11 +60,11 @@ public:
         return _grid;
     }
     
-    void initialize(std::vector<std::shared_ptr<MapSetup>> setup)
+    void initialize(std::vector<std::shared_ptr<MapSetup>> setup, std::shared_ptr<naval_station_data> naval_station_data)
     {
         for (auto &element : setup) {
             GridType type = GridType(static_cast<int>(element->type()));
-            std::shared_ptr<Grid> grid = Grid::factory(element->name(), type, element->x(), element->y());
+            std::shared_ptr<Grid> grid = Grid::Make(element->name(), type, element->x(), element->y(), naval_station_data);
             _grid.push_back(grid);
         }
         
@@ -97,10 +97,10 @@ std::string Map::description()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Map> Map::factory(std::vector<std::shared_ptr<MapSetup>> setup)
+std::shared_ptr<Map> Map::factory(std::vector<std::shared_ptr<MapSetup>> setup, std::shared_ptr<naval_station_data> naval_station_data)
 {
     auto map = std::make_shared<_Map>();
-    map->initialize(setup);
+    map->initialize(setup, naval_station_data);
     return map;
 }
 

@@ -108,11 +108,11 @@ public:
                         const std::string &weapons_json_data,
                         const std::string &aircraft_json_data,
                         const std::string &naval_station_json_data) {
-        _map = Map::factory(map_data);
         _ship_data = ShipData::factory(ships_json_data);
         _weapon_data = WeaponData::Make(weapons_json_data);
         _aircraft_data = AircraftData::Make(aircraft_json_data, _weapon_data);
         _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
+        _map = Map::factory(map_data, _naval_station_data);
     }
     
     std::shared_ptr<Map> map() override

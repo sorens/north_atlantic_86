@@ -9,6 +9,7 @@
 #include "grid.hpp"
 #include "debug.hpp"
 #include "map_setup.hpp"
+#include "naval_station.hpp"
 #include "unit.hpp"
 #include "weather.hpp"
 #include <cmath>
@@ -39,13 +40,19 @@ const std::string GridTypeUtility::to_string(GridType t)
 class _Grid : public Grid
 {
 public:
-    _Grid(const std::string &name, GridType type, const int x, const int y) :
-    _name(name), _type(type), _x(x), _y(y), _weather(Weather::random())
+    _Grid(const std::string &name, GridType type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data) :
+    _type(type), _x(x), _y(y), _weather(Weather::random())
     {
         if (_type == GridType::Ocean) {
             // create a random water temperature to start, weather
             // patterns will adjust it later. it will also change with the seasons
             _water_temp = rand() % 35 + 15;
+        }
+        
+        if (!name.empty()) {
+            // look up the city, attach
+            runtime_assert(naval_station_data);
+            _station = naval_station_data->find_naval_station(name);
         }
     }
     
@@ -56,8 +63,8 @@ public:
         ss << " x: " << _x;
         ss << ", y: " << _y;
         ss << ", type: " << GridTypeUtility::to_string(_type);
-        if (!_name.empty())
-            ss << ", name: '" << _name << "'";
+        if (_station)
+            ss << ", name: '" << _station->name() << "'";
         if (_type == GridType::Ocean)
             ss << ", water_temp: " << _water_temp;
         if (_weather) {
@@ -67,9 +74,9 @@ public:
         return ss.str();
     }
         
-    const std::string name() override
+    std::shared_ptr<naval_station> station() override
     {
-        return _name;
+        return _station;
     }
     
     const GridType type() override
@@ -103,7 +110,7 @@ public:
     }
  
 private:
-    std::string _name;
+    std::shared_ptr<naval_station> _station;
     int _x;
     int _y;
     GridType _type;
@@ -134,16 +141,16 @@ int Grid::Distance(std::shared_ptr<Grid> grid1, std::shared_ptr<Grid> grid2)
     return result;
 }
 
-std::shared_ptr<Grid> Grid::factory(const std::string &name, GridType type, const int x, const int y)
+std::shared_ptr<Grid> Grid::Make(const std::string &name, GridType type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data)
 {
-    return std::make_shared<_Grid>(name, type, x, y);
+    return std::make_shared<_Grid>(name, type, x, y, naval_station_data);
 }
         
-const std::string Grid::name()
+std::shared_ptr<naval_station> Grid::station()
 {
     runtime_assert_not_reached();
 }
-
+        
 const GridType Grid::type()
 {
     runtime_assert_not_reached();

@@ -11,6 +11,7 @@
 #include <vector>
 #include "grid.hpp"
 #include "map_setup.hpp"
+#include "naval_station_data.hpp"
 
 class MapOutOfBoundsException : public std::exception
 {
@@ -32,7 +33,7 @@ public:
     virtual std::string description();
     
     // factory method to create a map
-    static std::shared_ptr<Map> factory(std::vector<std::shared_ptr<MapSetup>> setup);
+    static std::shared_ptr<Map> factory(std::vector<std::shared_ptr<MapSetup>> setup, std::shared_ptr<naval_station_data> naval_station_data);
     
     // return a vector of all the grid in map-order
     virtual const std::vector<std::shared_ptr<Grid>> grid();
