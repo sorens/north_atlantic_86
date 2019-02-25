@@ -21,6 +21,7 @@ class _naval_station : public naval_station
     int _ew_strength;
     int _helicopters;
     int _main_guns;
+    int _missile_defense;
     std::string _name;
     int _sonar_strength;
     naval_station_type _type;
@@ -32,12 +33,24 @@ class _naval_station : public naval_station
     std::shared_ptr<WeaponSystem> _ast;
 
 public:
-    _naval_station(const std::string &name, const AffiliationType affiliation, 
-    const naval_station_type type, const int airbase_capacity, const int aa, const int df, const int ew, const int helicopters, const int mg, const int sonar,
-        std::shared_ptr<WeaponSystem> ssm, const int ssm_salvo_rate, const int ssm_magazine_capacity, std::shared_ptr<WeaponSystem> asw,
-    std::shared_ptr<WeaponSystem> sam, std::shared_ptr<WeaponSystem> ast) :
-    _affiliation(affiliation), _airbase_capacity(airbase_capacity), _defense_factor(df), _ew_strength(ew), _helicopters(helicopters), _main_guns(mg), _name(name), _sonar_strength(sonar), _type(type), _ssm(ssm), _ssm_salvo_rate(ssm_salvo_rate), _ssm_magazine_capacity(ssm_magazine_capacity),
-    _asw(asw), _sam(sam), _ast(ast)
+    _naval_station(const std::string &name,
+                   const AffiliationType affiliation,
+                   const naval_station_type type,
+                   const int airbase_capacity,
+                   const int aa,
+                   const int df,
+                   const int ew,
+                   const int helicopters,
+                   const int mg,
+                   const int md,
+                   const int sonar,
+                   std::shared_ptr<WeaponSystem> ssm,
+                   const int ssm_salvo_rate,
+                   const int ssm_magazine_capacity,
+                   std::shared_ptr<WeaponSystem> asw,
+                   std::shared_ptr<WeaponSystem> sam,
+                   std::shared_ptr<WeaponSystem> ast) :
+    _affiliation(affiliation), _airbase_capacity(airbase_capacity), _defense_factor(df), _ew_strength(ew), _helicopters(helicopters), _main_guns(mg), _missile_defense(df), _name(name), _sonar_strength(sonar), _type(type), _ssm(ssm), _ssm_salvo_rate(ssm_salvo_rate), _ssm_magazine_capacity(ssm_magazine_capacity), _asw(asw), _sam(sam), _ast(ast)
     {
     }
 
@@ -156,6 +169,7 @@ std::shared_ptr<naval_station> naval_station::Make(const std::string &name,
                                                    const int ew,
                                                    const int helicopters,
                                                    const int mg,
+                                                   const int md,
                                                    const int sonar,
                                                    std::shared_ptr<WeaponSystem> ssm,
                                                    const int ssm_salvo_rate,
@@ -165,7 +179,7 @@ std::shared_ptr<naval_station> naval_station::Make(const std::string &name,
                                                    std::shared_ptr<WeaponSystem> ast)
 {
     return std::make_shared<_naval_station>(name, affiliation, type, airbase_capacity,
-                                            aa, df, ew, helicopters, mg, sonar, ssm,
+                                            aa, df, ew, helicopters, mg, md, sonar, ssm,
                                             ssm_salvo_rate, ssm_magazine_capacity, asw,
                                             sam, ast);
 }

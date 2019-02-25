@@ -16,6 +16,8 @@
 #include "map.hpp"
 #include "map_display_ascii.hpp"
 #include "map_setup.hpp"
+#include "naval_station_data.hpp"
+#include "naval_station_data_exception.hpp"
 #include "ship_data_exception.hpp"
 #include "ship_data.hpp"
 #include "weapon_data.hpp"
@@ -47,8 +49,11 @@ void play_game()
         // read in aircraft_data.json
         std::string aircraft_data = AircraftData::Import_Data("aircraft_data.json");
         
+        // read in naval_station_data.json
+        std::string naval_station_data = naval_station_data::Import_Data("naval_station_data.json");
+        
         auto setup_data = MapSetup::factory(map_data);
-        auto game = Game::Make(setup_data, ship_data, weapon_data, aircraft_data);
+        auto game = Game::Make(setup_data, ship_data, weapon_data, aircraft_data, naval_station_data);
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
 

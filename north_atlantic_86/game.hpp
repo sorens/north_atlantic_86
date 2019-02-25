@@ -41,7 +41,12 @@ public:
     virtual void display_weather();     // debug-only
     
     // factory method to create a game
-    static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data, const std::string &aircraft_json_data);
+    static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data,
+                                      const std::string &ships_json_data,
+                                      const std::string &weapons_json_data,
+                                      const std::string &aircraft_json_data,
+                                      const std::string &naval_station_json_data
+                                      );
     
     // return a Map
     virtual std::shared_ptr<Map> map();

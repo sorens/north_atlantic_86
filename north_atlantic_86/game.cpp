@@ -14,6 +14,7 @@
 #include "game.hpp"
 #include "log.hpp"
 #include "mutable_unit.hpp"
+#include "naval_station_data.hpp"
 #include "ship_data.hpp"
 #include "weapon_data.hpp"
 #include "weapon_mount.hpp"
@@ -94,12 +95,18 @@ public:
         std::cout << "*************" << std::endl;
     }
     
-        void initialize(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data, const std::string &aircraft_json_data)
+        void initialize(std::vector<std::shared_ptr<MapSetup>> map_data,
+                        const std::string &ships_json_data,
+                        const std::string &weapons_json_data,
+                        const std::string &aircraft_json_data,
+                        const std::string &naval_station_json_data
+                        )
     {
         _map = Map::factory(map_data);
         _ship_data = ShipData::factory(ships_json_data);
         _weapon_data = WeaponData::Make(weapons_json_data);
         _aircraft_data = AircraftData::Make(aircraft_json_data, _weapon_data);
+        _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
     }
     
     std::shared_ptr<Map> map() override
@@ -143,6 +150,7 @@ private:
     std::shared_ptr<AircraftData> _aircraft_data;
     std::shared_ptr<Map> _map;
     int _current_turn;
+    std::shared_ptr<naval_station_data> _naval_station_data;
     std::shared_ptr<Player> _player_nato;
     std::shared_ptr<Player> _player_soviet;
     std::shared_ptr<ShipData> _ship_data;
@@ -186,10 +194,14 @@ void Game::display_weather()
     runtime_assert_not_reached();
 }
 
-        std::shared_ptr<Game> Game::Make(std::vector<std::shared_ptr<MapSetup>> map_data, const std::string &ships_json_data, const std::string &weapons_json_data, const std::string &aircraft_json_data)
+std::shared_ptr<Game> Game::Make(std::vector<std::shared_ptr<MapSetup>> map_data,
+                                 const std::string &ships_json_data,
+                                 const std::string &weapons_json_data,
+                                 const std::string &aircraft_json_data,
+                                 const std::string &naval_station_json_data)
 {
     auto game = std::make_shared<_Game>();
-    game->initialize(map_data, ships_json_data, weapons_json_data, aircraft_json_data);
+    game->initialize(map_data, ships_json_data, weapons_json_data, aircraft_json_data, naval_station_json_data);
     return game;
 }
 

@@ -53,6 +53,7 @@ public:
                                                const int ew,
                                                const int helicopters,
                                                const int mg,
+                                               const int md,
                                                const int sonar,
                                                std::shared_ptr<WeaponSystem> ssm,
                                                const int ssm_salvo_rate,
