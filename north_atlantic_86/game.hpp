@@ -43,6 +43,9 @@ public:
     // return a naval_station
     virtual std::shared_ptr<naval_station> find_naval_station(const std::string &name);
     
+    // return a Map
+    virtual std::shared_ptr<map> game_map();
+
     // factory method to create a game
     static std::shared_ptr<game> Make(const std::string &map_data,
                                       const std::string &ships_json_data,
@@ -50,9 +53,6 @@ public:
                                       const std::string &aircraft_json_data,
                                       const std::string &naval_station_json_data
                                       );
-    
-    // return a Map
-    virtual std::shared_ptr<Map> map();
     
     // run the next turn
     virtual void next_turn();

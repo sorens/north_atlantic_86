@@ -69,7 +69,7 @@ public:
 
         std::cout << "** WEATHER **" << std::endl;
         
-        auto grid = _map->grids();
+        auto grid = _game_map->grids();
         auto size = grid.size();
         int side = std::pow(size, 0.5);
         int i = 0;
@@ -103,6 +103,11 @@ public:
         return _naval_station_data->find_naval_station(name);
     }
     
+    std::shared_ptr<map> game_map() override
+    {
+        return _game_map;
+    }
+    
     void initialize(const std::string &map_data,
                         const std::string &ships_json_data,
                         const std::string &weapons_json_data,
@@ -112,14 +117,9 @@ public:
         _weapon_data = WeaponData::Make(weapons_json_data);
         _aircraft_data = aircraft_data::Make(aircraft_json_data, _weapon_data);
         _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
-        _map = Map::Make(map_data, _naval_station_data);
+        _game_map = map::Make(map_data, _naval_station_data);
     }
     
-    std::shared_ptr<Map> map() override
-    {
-        return _map;
-    }
-        
     void next_turn() override
     {
         // create a task force
@@ -154,7 +154,7 @@ public:
 
 private:
     std::shared_ptr<aircraft_data> _aircraft_data;
-    std::shared_ptr<Map> _map;
+    std::shared_ptr<map> _game_map;
     int _current_turn;
     std::shared_ptr<naval_station_data> _naval_station_data;
     std::shared_ptr<Player> _player_nato;
@@ -205,6 +205,11 @@ std::shared_ptr<naval_station> game::find_naval_station(const std::string &name)
     runtime_assert_not_reached();
 }
 
+std::shared_ptr<map> game::game_map()
+{
+    runtime_assert_not_reached();
+}
+
 std::shared_ptr<game> game::Make(const std::string &map_data,
                                  const std::string &ships_json_data,
                                  const std::string &weapons_json_data,
@@ -216,11 +221,6 @@ std::shared_ptr<game> game::Make(const std::string &map_data,
     return game;
 }
 
-std::shared_ptr<Map> game::map()
-{
-    runtime_assert_not_reached();
-}
-        
 void game::next_turn()
 {
     runtime_assert_not_reached();

@@ -20,7 +20,7 @@ int map_display_ascii::ConvertCoordinates(const int x, const int y)
 
 std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
 {
-    auto grid = game->map()->grids();
+    auto grid = game->game_map()->grids();
     auto size = grid.size();
     int side = std::pow(size, 0.5);
     

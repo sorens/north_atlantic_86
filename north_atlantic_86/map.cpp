@@ -18,12 +18,12 @@
 #include <time.h>
 #include <vector>
 
-# pragma mark _Map
+# pragma mark _map
 
-class _Map : public Map
+class _map : public map
 {
 public:
-    _Map()
+    _map()
     {
         srand(static_cast<unsigned int>(time(NULL)));
     }
@@ -40,7 +40,7 @@ public:
     std::string description() override
     {
         std::stringstream ss;
-        ss << "<Map";
+        ss << "<map";
         ss << " size: " << _map_grid.size();
         ss << " grid: ";
         bool first = true;
@@ -90,29 +90,29 @@ private:
 
 #pragma mark Map
         
-std::shared_ptr<grid> Map::at(const int x, const int y)
+std::shared_ptr<grid> map::at(const int x, const int y)
 {
     runtime_assert_not_reached();
 }
 
-std::string Map::description()
+std::string map::description()
 {
     runtime_assert_not_reached();
 }
 
-const std::vector<std::shared_ptr<grid>> Map::grids()
+const std::vector<std::shared_ptr<grid>> map::grids()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Map> Map::Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data)
+std::shared_ptr<map> map::Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data)
 {
-    auto map = std::make_shared<_Map>();
+    auto map = std::make_shared<_map>();
     map->initialize(map_data, naval_station_data);
     return map;
 }
 
-std::vector<std::shared_ptr<Unit>> Map::units(const int x, const int y)
+std::vector<std::shared_ptr<Unit>> map::units(const int x, const int y)
 {
     runtime_assert_not_reached();
 }

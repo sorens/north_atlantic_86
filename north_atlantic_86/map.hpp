@@ -12,7 +12,7 @@
 #include "grid.hpp"
 #include "naval_station_data.hpp"
 
-class Map
+class map
 {
 public:
     // return a Grid for particular coordinates
@@ -25,7 +25,7 @@ public:
     virtual const std::vector<std::shared_ptr<grid>> grids();
     
     // create a map
-    static std::shared_ptr<Map> Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data);
+    static std::shared_ptr<map> Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data);
     
     // return a list of Units for particular coordinates
     virtual std::vector<std::shared_ptr<Unit>> units(const int x, const int y);
