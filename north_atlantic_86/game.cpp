@@ -36,7 +36,7 @@ public:
     {
     }
     
-    std::shared_ptr<Aircraft> aircraft(const std::string &designation) override
+    std::shared_ptr<::aircraft> aircraft(const std::string &designation) override
     {
         runtime_assert(_aircraft_data);
         return _aircraft_data->find_aircraft(designation);
@@ -165,7 +165,7 @@ private:
 
 #pragma mark Game
 
-std::shared_ptr<Aircraft> Game::aircraft(const std::string &designation)
+std::shared_ptr<aircraft> Game::aircraft(const std::string &designation)
 {
     runtime_assert_not_reached();
 }

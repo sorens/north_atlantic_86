@@ -9,12 +9,12 @@
 #include "aircraft.hpp"
 #include "debug.hpp"
 
-#pragma mark _Aircraft
+#pragma mark _aircraft
 
-class _Aircraft : public Aircraft
+class _aircraft : public aircraft
 {
 public:
-    _Aircraft(const std::string &name, const std::string &designation, 
+    _aircraft(const std::string &name, const std::string &designation,
     const int range, const std::shared_ptr<WeaponSystem> weapon_system, const bool is_carrier_aircraft, 
     const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
     const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
@@ -171,7 +171,7 @@ public:
     {
         std::stringstream ss;
         
-        ss << "<Aircraft ";
+        ss << "<aircraft ";
         ss << "affiliation: " << affiliation_utility::to_string(_affiliation);
         ss << ", bomber_accuracy: " << _bomber_accuracy;
         ss << ", designation: " << _designation;
@@ -235,140 +235,177 @@ private:
 
 #pragma mark aircraft
 
-const affilation_type Aircraft::affiliation()
+const affilation_type aircraft::affiliation()
 {
     runtime_assert_not_reached();
 }
     
-const int Aircraft::bomber_accuracy()
+const int aircraft::bomber_accuracy()
 {
     runtime_assert_not_reached();
 }
     
-const std::string Aircraft::designation()
+const std::string aircraft::designation()
 {
     runtime_assert_not_reached();
 }
     
-const int Aircraft::dogfighting_rating()
+const int aircraft::dogfighting_rating()
 {
     runtime_assert_not_reached();
 }
     
-const int Aircraft::ecm_rating()
+const int aircraft::ecm_rating()
 {
     runtime_assert_not_reached();
 }
     
-const bool Aircraft::is_carrier_aircraft()
+const bool aircraft::is_carrier_aircraft()
 {
     runtime_assert_not_reached();
 }
     
-const std::string Aircraft::name()
+const std::string aircraft::name()
 {
     runtime_assert_not_reached();
 }
     
-const int Aircraft::radar_capability()
+const int aircraft::radar_capability()
 {
     runtime_assert_not_reached();
 }
     
-const int Aircraft::range()
+const int aircraft::range()
 {
     runtime_assert_not_reached();
 }
     
-std::shared_ptr<WeaponSystem> Aircraft::weapon_system()
+std::shared_ptr<WeaponSystem> aircraft::weapon_system()
 {
     runtime_assert_not_reached();
 }
 
-const int Aircraft::lrcap_missile_ew_avg()
+const int aircraft::lrcap_missile_ew_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_missile_ew_max()
+const int aircraft::lrcap_missile_ew_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_missile_avg()
+const int aircraft::lrcap_missile_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_missile_max()
+const int aircraft::lrcap_missile_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_dogfight_ew_avg()
+const int aircraft::lrcap_dogfight_ew_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_dogfight_ew_max()
+const int aircraft::lrcap_dogfight_ew_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_dogfight_avg()
+const int aircraft::lrcap_dogfight_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::lrcap_dogfight_max()
+const int aircraft::lrcap_dogfight_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_missile_ew_avg()
+const int aircraft::cap_missile_ew_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_missile_ew_max()
+const int aircraft::cap_missile_ew_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_missile_avg()
+const int aircraft::cap_missile_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_missile_max()
+const int aircraft::cap_missile_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_dogfight_ew_avg()
+const int aircraft::cap_dogfight_ew_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_dogfight_ew_max()
+const int aircraft::cap_dogfight_ew_max()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_dogfight_avg()
+const int aircraft::cap_dogfight_avg()
 {
     runtime_assert_not_reached();
 }
-const int Aircraft::cap_dogfight_max()
+const int aircraft::cap_dogfight_max()
 {
     runtime_assert_not_reached();
 }
     
-const std::string Aircraft::description()
+const std::string aircraft::description()
 {
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<Aircraft> Aircraft::Make(const std::string &name, const std::string &designation,
-    const int range, const std::shared_ptr<WeaponSystem> weapon_system, const bool is_carrier_aircraft, 
-    const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
-    const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
-    const int lrcap_missile_ew_max, const int lrcap_missile_avg, const int lrcap_missile_max, 
-    const int lrcap_dogfight_ew_avg, const int lrcap_dogfight_ew_max, const int lrcap_dogfight_avg, 
-    const int lrcap_dogfight_max, const int cap_missile_ew_avg, const int cap_missile_ew_max, 
-    const int cap_missile_avg, const int cap_missile_max, const int cap_dogfight_ew_avg, 
-    const int cap_dogfight_ew_max, const int cap_dogfight_avg, const int cap_dogfight_max)
+std::shared_ptr<aircraft> aircraft::Make(const std::string &name,
+                                         const std::string &designation,
+                                         const int range,
+                                         const std::shared_ptr<WeaponSystem> weapon_system,
+                                         const bool is_carrier_aircraft,
+                                         const affilation_type affiliation,
+                                         const int ecm_rating,
+                                         const int dogfighting_rating,
+                                         const int bomber_accuracy,
+                                         const int radar_capability,
+                                         const int lrcap_missile_ew_avg,
+                                         const int lrcap_missile_ew_max,
+                                         const int lrcap_missile_avg,
+                                         const int lrcap_missile_max,
+                                         const int lrcap_dogfight_ew_avg,
+                                         const int lrcap_dogfight_ew_max,
+                                         const int lrcap_dogfight_avg,
+                                         const int lrcap_dogfight_max,
+                                         const int cap_missile_ew_avg,
+                                         const int cap_missile_ew_max,
+                                         const int cap_missile_avg,
+                                         const int cap_missile_max,
+                                         const int cap_dogfight_ew_avg,
+                                         const int cap_dogfight_ew_max,
+                                         const int cap_dogfight_avg,
+                                         const int cap_dogfight_max)
 {
-    return std::make_shared<_Aircraft>(name, designation, range, weapon_system, is_carrier_aircraft, 
-        affiliation, ecm_rating, dogfighting_rating, bomber_accuracy, radar_capability, 
-        lrcap_missile_ew_avg, lrcap_missile_ew_max, lrcap_missile_avg, lrcap_missile_max, 
-        lrcap_dogfight_ew_avg, lrcap_dogfight_ew_max, lrcap_dogfight_avg, lrcap_dogfight_max, 
-        cap_missile_ew_avg, cap_missile_ew_max, cap_missile_avg, cap_missile_max, cap_dogfight_ew_avg, 
-        cap_dogfight_ew_max, cap_dogfight_avg, cap_dogfight_max);
+    return std::make_shared<_aircraft>(name,
+                                       designation,
+                                       range,
+                                       weapon_system,
+                                       is_carrier_aircraft,
+                                       affiliation,
+                                       ecm_rating,
+                                       dogfighting_rating,
+                                       bomber_accuracy,
+                                       radar_capability,
+                                       lrcap_missile_ew_avg,
+                                       lrcap_missile_ew_max,
+                                       lrcap_missile_avg,
+                                       lrcap_missile_max,
+                                       lrcap_dogfight_ew_avg,
+                                       lrcap_dogfight_ew_max,
+                                       lrcap_dogfight_avg,
+                                       lrcap_dogfight_max,
+                                       cap_missile_ew_avg,
+                                       cap_missile_ew_max,
+                                       cap_missile_avg,
+                                       cap_missile_max,
+                                       cap_dogfight_ew_avg,
+                                       cap_dogfight_ew_max,
+                                       cap_dogfight_avg,
+                                       cap_dogfight_max);
 }

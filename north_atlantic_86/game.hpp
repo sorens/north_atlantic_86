@@ -20,7 +20,7 @@ class Game
 public:
     
     // return an aicraft
-    virtual std::shared_ptr<Aircraft> aircraft(const std::string &designation);
+    virtual std::shared_ptr<aircraft> aircraft(const std::string &designation);
     
     // add the nato player
     virtual void add_nato_player(const std::string &name);

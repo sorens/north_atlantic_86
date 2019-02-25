@@ -22,7 +22,7 @@ class _aircraft_data : public aircraft_data
 public:
     _aircraft_data() {}
     
-    void add_aircraft(std::shared_ptr<Aircraft> aircraft)
+    void add_aircraft(std::shared_ptr<aircraft> aircraft)
     {
         std::string key(aircraft->designation());
         std::transform(key.begin(), key.end(), key.begin(), ::tolower);
@@ -86,13 +86,13 @@ public:
             int cap_dogfight_avg = element[24].int_value();
             int cap_dogfight_max = element[25].int_value();
             
-            auto aircraft = Aircraft::Make(name, designation, range, weapon_system, is_carrier_aircraft, affiliation, ecm_rating, dogfighting_rating, bomber_accuracy, radar_capability, lrcap_missile_ew_avg, lrcap_missile_ew_max, lrcap_missile_avg, lrcap_missile_max, lrcap_dogfight_ew_avg, lrcap_dogfight_ew_max, lrcap_dogfight_avg, lrcap_dogfight_max, cap_missile_ew_avg, cap_missile_ew_max, cap_missile_avg, cap_missile_max, cap_dogfight_ew_avg, cap_dogfight_ew_max, cap_dogfight_avg, cap_dogfight_max);
+            auto aircraft = aircraft::Make(name, designation, range, weapon_system, is_carrier_aircraft, affiliation, ecm_rating, dogfighting_rating, bomber_accuracy, radar_capability, lrcap_missile_ew_avg, lrcap_missile_ew_max, lrcap_missile_avg, lrcap_missile_max, lrcap_dogfight_ew_avg, lrcap_dogfight_ew_max, lrcap_dogfight_avg, lrcap_dogfight_max, cap_missile_ew_avg, cap_missile_ew_max, cap_missile_avg, cap_missile_max, cap_dogfight_ew_avg, cap_dogfight_ew_max, cap_dogfight_avg, cap_dogfight_max);
             
             add_aircraft(aircraft);
         }
     }
 
-    std::shared_ptr<Aircraft> find_aircraft(const std::string &id) override
+    std::shared_ptr<aircraft> find_aircraft(const std::string &id) override
     {
         std::string key(id);
         std::transform(key.begin(), key.end(), key.begin(), ::tolower);
@@ -104,7 +104,7 @@ public:
     }
 
 private:
-    std::unordered_map<std::string, std::shared_ptr<Aircraft>> _data;
+    std::unordered_map<std::string, std::shared_ptr<aircraft>> _data;
 };
 
 #pragma mark aircraft_data
@@ -116,7 +116,7 @@ std::shared_ptr<aircraft_data> aircraft_data::Make(const std::string &json_impor
     return aircraft_data;
 }
 
-std::shared_ptr<Aircraft> aircraft_data::find_aircraft(const std::string &id)
+std::shared_ptr<aircraft> aircraft_data::find_aircraft(const std::string &id)
 {
     runtime_assert_not_reached();
 }
