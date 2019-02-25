@@ -381,7 +381,7 @@ public:
         bool result = false;
         auto harpoon = _game->weapon_system("HARPOON");
         if (harpoon) {
-            auto wm = WeaponMount::Make(harpoon, 100, 10);
+            auto wm = weapon_mount::Make(harpoon, 100, 10);
             
             try {
                 while (wm->rounds_remaining() > 0) {

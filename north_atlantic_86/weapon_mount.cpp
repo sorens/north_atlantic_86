@@ -7,11 +7,12 @@
 //
 
 #include "weapon_mount.hpp"
+#include "debug.hpp"
 #include "weapon_mount_exception.hpp"
 
-#pragma mark _WeaponMount
+#pragma mark _weapon_mount
 
-class _WeaponMount : public WeaponMount
+class _weapon_mount : public weapon_mount
 {
     int _magazine_size;
     int _max_salvo_size;
@@ -19,7 +20,7 @@ class _WeaponMount : public WeaponMount
     std::shared_ptr<WeaponSystem> _weapon_system;
     
 public:
-    _WeaponMount(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size) : _magazine_size(magazine_size), _max_salvo_size(max_salvo_size), _rounds_remaining(_magazine_size), _weapon_system(weapon_system)
+    _weapon_mount(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size) : _magazine_size(magazine_size), _max_salvo_size(max_salvo_size), _rounds_remaining(_magazine_size), _weapon_system(weapon_system)
     {
     }
     
@@ -37,7 +38,7 @@ public:
     const std::string description() override
     {
         std::stringstream ss;
-        ss << "<WeaponMount";
+        ss << "<weapon_mount";
         ss << " weapon_system: '" << _weapon_system->description() << "'";
         ss << ", magazine_size: '" << _magazine_size<< "'";
         ss << ", max_salvo_size: '" << _max_salvo_size<< "'";
@@ -78,47 +79,49 @@ public:
     }
 };
 
-#pragma mark WeaponMount
+#pragma mark weapon_mount
 
-void WeaponMount::fire(const int salvo)
+void weapon_mount::fire(const int salvo)
 {
+    runtime_assert_not_reached();
 }
 
-const std::string WeaponMount::description()
+const std::string weapon_mount::description()
 {
-    return "";
+    runtime_assert_not_reached();
 }
 
-const bool WeaponMount::empty()
+const bool weapon_mount::empty()
 {
-    return true;
+    runtime_assert_not_reached();
 }
 
-const int WeaponMount::magazine_size()
+const int weapon_mount::magazine_size()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
-std::shared_ptr<WeaponMount> WeaponMount::Make(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size)
+std::shared_ptr<weapon_mount> weapon_mount::Make(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size)
 {
-    return std::make_shared<_WeaponMount>(weapon_system, magazine_size, max_salvo_size);
+    return std::make_shared<_weapon_mount>(weapon_system, magazine_size, max_salvo_size);
 }
 
-const int WeaponMount::max_salvo_size()
+const int weapon_mount::max_salvo_size()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
-void WeaponMount::reload()
+void weapon_mount::reload()
 {
+    runtime_assert_not_reached();
 }
 
-const int WeaponMount::rounds_remaining()
+const int weapon_mount::rounds_remaining()
 {
-    return 0;
+    runtime_assert_not_reached();
 }
 
-const std::shared_ptr<WeaponSystem> WeaponMount::weapon_system()
+const std::shared_ptr<WeaponSystem> weapon_mount::weapon_system()
 {
-    return nullptr;
+    runtime_assert_not_reached();
 }

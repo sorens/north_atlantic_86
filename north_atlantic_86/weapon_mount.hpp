@@ -10,7 +10,7 @@
 
 #include "weapon_system.hpp"
 
-class WeaponMount
+class weapon_mount
 {
 public:
     // fire a salvo
@@ -29,7 +29,7 @@ public:
     virtual const int magazine_size();
     
     // create a weapon mount
-    static std::shared_ptr<WeaponMount> Make(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size);
+    static std::shared_ptr<weapon_mount> Make(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size);
     
     // the maximum size of a salvo
     virtual const int max_salvo_size();
