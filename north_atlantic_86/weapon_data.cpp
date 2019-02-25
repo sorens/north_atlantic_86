@@ -30,10 +30,10 @@ const static int FIELD_LRAAM_SALVO_RATE     = 8;
 
 class _weapon_data : public weapon_data
 {
-    std::unordered_map<std::string, std::shared_ptr<WeaponSystem>> _weapon_systems;
+    std::unordered_map<std::string, std::shared_ptr<weapon_system>> _weapon_systems;
 
 public:
-    void add_system(std::shared_ptr<WeaponSystem> system)
+    void add_system(std::shared_ptr<weapon_system> system)
     {
         std::string key(system->name());
         std::transform(key.begin(), key.end(), key.begin(), ::tolower);
@@ -77,13 +77,13 @@ public:
             
             int lraam_salvo_rate = element[FIELD_LRAAM_SALVO_RATE].int_value();     // e.g. 0
             
-            auto weapon_system = WeaponSystem::Make(name, type, affiliation_type, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate, lraam_salvo_rate);
+            auto weapon_system = weapon_system::Make(name, type, affiliation_type, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate, lraam_salvo_rate);
             
             add_system(weapon_system);
         }
     }
     
-    std::shared_ptr<WeaponSystem> weapon_system(const std::string &id) override
+    std::shared_ptr<weapon_system> find_weapon_system(const std::string &id) override
     {
         std::string key(id);
         std::transform(key.begin(), key.end(), key.begin(), ::tolower);
@@ -133,7 +133,7 @@ std::shared_ptr<weapon_data> weapon_data::Make(const std::string &json_import)
     return weapon_data;
 }
 
-std::shared_ptr<WeaponSystem> weapon_data::weapon_system(const std::string &id)
+std::shared_ptr<weapon_system> weapon_data::find_weapon_system(const std::string &id)
 {
     runtime_assert_not_reached();
 }

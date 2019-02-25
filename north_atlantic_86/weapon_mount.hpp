@@ -29,7 +29,7 @@ public:
     virtual const int magazine_size();
     
     // create a weapon mount
-    static std::shared_ptr<weapon_mount> Make(std::shared_ptr<WeaponSystem> weapon_system, const int magazine_size, const int max_salvo_size);
+    static std::shared_ptr<weapon_mount> Make(std::shared_ptr<weapon_system> weapon_system, const int magazine_size, const int max_salvo_size);
     
     // the maximum size of a salvo
     virtual const int max_salvo_size();
@@ -41,5 +41,5 @@ public:
     virtual const int rounds_remaining();
     
     // the weapon system
-    virtual const std::shared_ptr<WeaponSystem> weapon_system();
+    virtual const std::shared_ptr<weapon_system> system();
 };

@@ -67,5 +67,5 @@ public:
     virtual std::shared_ptr<unit> ship_unit(const std::string &id);
     
     // return a weapon system
-    virtual std::shared_ptr<WeaponSystem> weapon_system(const std::string &id);
+    virtual std::shared_ptr<weapon_system> find_weapon_system(const std::string &id);
 };

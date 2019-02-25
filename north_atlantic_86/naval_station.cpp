@@ -25,12 +25,12 @@ class _naval_station : public naval_station
     std::string _name;
     int _sonar_strength;
     naval_station_type _type;
-    std::shared_ptr<WeaponSystem> _ssm;
+    std::shared_ptr<weapon_system> _ssm;
     int _ssm_salvo_rate;
     int _ssm_magazine_capacity;
-    std::shared_ptr<WeaponSystem> _asw;
-    std::shared_ptr<WeaponSystem> _sam;
-    std::shared_ptr<WeaponSystem> _ast;
+    std::shared_ptr<weapon_system> _asw;
+    std::shared_ptr<weapon_system> _sam;
+    std::shared_ptr<weapon_system> _ast;
 
 public:
     _naval_station(const std::string &name,
@@ -44,12 +44,12 @@ public:
                    const int mg,
                    const int md,
                    const int sonar,
-                   std::shared_ptr<WeaponSystem> ssm,
+                   std::shared_ptr<weapon_system> ssm,
                    const int ssm_salvo_rate,
                    const int ssm_magazine_capacity,
-                   std::shared_ptr<WeaponSystem> asw,
-                   std::shared_ptr<WeaponSystem> sam,
-                   std::shared_ptr<WeaponSystem> ast) :
+                   std::shared_ptr<weapon_system> asw,
+                   std::shared_ptr<weapon_system> sam,
+                   std::shared_ptr<weapon_system> ast) :
     _affiliation(affiliation), _airbase_capacity(airbase_capacity), _anti_aircraft_gun(aa), _defense_factor(df), _ew_strength(ew), _helicopters(helicopters), _main_guns(mg), _missile_defense(md), _name(name), _sonar_strength(sonar), _type(type), _ssm(ssm), _ssm_salvo_rate(ssm_salvo_rate), _ssm_magazine_capacity(ssm_magazine_capacity), _asw(asw), _sam(sam), _ast(ast)
     {
     }
@@ -109,7 +109,7 @@ public:
         return _type;
     }
 
-    std::shared_ptr<WeaponSystem> weapon_system(const weapon_system_type t) override
+    std::shared_ptr<weapon_system> find_weapon_system(const weapon_system_type t) override
     {
         if (weapon_system_type::SSM == t) {
             return _ssm;
@@ -176,12 +176,12 @@ std::shared_ptr<naval_station> naval_station::Make(const std::string &name,
                                                    const int mg,
                                                    const int md,
                                                    const int sonar,
-                                                   std::shared_ptr<WeaponSystem> ssm,
+                                                   std::shared_ptr<weapon_system> ssm,
                                                    const int ssm_salvo_rate,
                                                    const int ssm_magazine_capacity,
-                                                   std::shared_ptr<WeaponSystem> asw,
-                                                   std::shared_ptr<WeaponSystem> sam,
-                                                   std::shared_ptr<WeaponSystem> ast)
+                                                   std::shared_ptr<weapon_system> asw,
+                                                   std::shared_ptr<weapon_system> sam,
+                                                   std::shared_ptr<weapon_system> ast)
 {
     return std::make_shared<_naval_station>(name, affiliation, type, airbase_capacity,
                                             aa, df, ew, helicopters, mg, md, sonar, ssm,
@@ -209,7 +209,7 @@ const naval_station_type naval_station::type()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<WeaponSystem> naval_station::weapon_system(const weapon_system_type t)
+std::shared_ptr<weapon_system> naval_station::find_weapon_system(const weapon_system_type t)
 {
     runtime_assert_not_reached();
 }

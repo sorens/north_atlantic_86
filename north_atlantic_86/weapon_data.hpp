@@ -19,5 +19,5 @@ public:
     
     static std::shared_ptr<weapon_data> Make(const std::string &json_import);
     
-    virtual std::shared_ptr<WeaponSystem> weapon_system(const std::string &id);
+    virtual std::shared_ptr<weapon_system> find_weapon_system(const std::string &id);
 };

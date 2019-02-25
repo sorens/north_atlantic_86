@@ -44,7 +44,7 @@ public:
     virtual const int range();
     
     // aircraft's primary weapon system
-    virtual std::shared_ptr<WeaponSystem> weapon_system();
+    virtual std::shared_ptr<weapon_system> aaw_weapon_system();
 
     // combat specifications
     // lrcap => Long Range Combat Air Patrol
@@ -75,7 +75,7 @@ public:
     static std::shared_ptr<aircraft> Make(const std::string &name,
                                           const std::string &designation,
                                           const int range,
-                                          const std::shared_ptr<WeaponSystem> weapon_system,
+                                          const std::shared_ptr<weapon_system> weapon_system,
                                           const bool is_carrier_aircraft,
                                           const affilation_type affiliation,
                                           const int ecm_rating,

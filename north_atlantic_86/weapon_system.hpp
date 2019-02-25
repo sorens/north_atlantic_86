@@ -12,7 +12,7 @@
 #include "weapon_system_type.hpp"
 #include "affiliation_type.hpp"
 
-class WeaponSystem
+class weapon_system
 {
 public:
     // return the accuracy rating
@@ -34,7 +34,7 @@ public:
     virtual const std::string name();
     
     // create a weapon system
-    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
+    static std::shared_ptr<weapon_system> Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
 
     // return the range
     virtual const int range();

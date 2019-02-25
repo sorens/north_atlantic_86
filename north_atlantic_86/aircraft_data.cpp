@@ -55,10 +55,10 @@ public:
             std::string designation = element[1].string_value();
             int range = element[2].int_value();
             // TODO inject weapon_data
-            std::shared_ptr<WeaponSystem> weapon_system;
+            std::shared_ptr<weapon_system> weapon_system;
             std::string weapon_system_key = element[3].string_value();
             if (!weapon_system_key.empty())
-                weapon_system = weapons_data->weapon_system(weapon_system_key);
+                weapon_system = weapons_data->find_weapon_system(weapon_system_key);
             bool is_carrier_aircraft = element[4].bool_value();
             affilation_type affiliation = affilation_type::NATO;
             if (element[5].string_value() == "SOVIET")

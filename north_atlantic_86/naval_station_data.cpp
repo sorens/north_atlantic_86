@@ -66,10 +66,10 @@ public:
             int missile_defense = element[5].int_value();
             int airbase_capacity = element[6].int_value();
             int defense_factor = element[7].int_value();
-            std::shared_ptr<WeaponSystem> ssm;
-            std::shared_ptr<WeaponSystem> asw;
-            std::shared_ptr<WeaponSystem> sam;
-            std::shared_ptr<WeaponSystem> ast;
+            std::shared_ptr<weapon_system> ssm;
+            std::shared_ptr<weapon_system> asw;
+            std::shared_ptr<weapon_system> sam;
+            std::shared_ptr<weapon_system> ast;
             int ssm_salvo_rate = 0;
             int ssm_magazine_capacity = 0;
             std::string ssm_string = element[8].string_value();

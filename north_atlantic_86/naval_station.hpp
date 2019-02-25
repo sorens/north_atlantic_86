@@ -55,12 +55,12 @@ public:
                                                const int mg,
                                                const int md,
                                                const int sonar,
-                                               std::shared_ptr<WeaponSystem> ssm,
+                                               std::shared_ptr<weapon_system> ssm,
                                                const int ssm_salvo_rate,
                                                const int ssm_magazine_capacity,
-                                               std::shared_ptr<WeaponSystem> asw,
-                                               std::shared_ptr<WeaponSystem> sam,
-                                               std::shared_ptr<WeaponSystem> ast);
+                                               std::shared_ptr<weapon_system> asw,
+                                               std::shared_ptr<weapon_system> sam,
+                                               std::shared_ptr<weapon_system> ast);
 
     // missile defense
     virtual const int missible_defense();
@@ -75,5 +75,5 @@ public:
     virtual const naval_station_type type();
     
     // weapon system
-    virtual std::shared_ptr<WeaponSystem> weapon_system(const weapon_system_type t);
+    virtual std::shared_ptr<weapon_system> find_weapon_system(const weapon_system_type t);
 };

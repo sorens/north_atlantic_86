@@ -116,7 +116,7 @@ public:
         test_result("aircraft_unit_test", "Lookup F14", result);
         
         result = false;
-        auto phoenix = f14->weapon_system();
+        auto phoenix = f14->aaw_weapon_system();
         if (phoenix && phoenix->name() == "Phoenix")
             result = true;
         
@@ -379,7 +379,7 @@ public:
         _initialize_every_time();
 
         bool result = false;
-        auto harpoon = _game->weapon_system("HARPOON");
+        auto harpoon = _game->find_weapon_system("HARPOON");
         if (harpoon) {
             auto wm = weapon_mount::Make(harpoon, 100, 10);
             

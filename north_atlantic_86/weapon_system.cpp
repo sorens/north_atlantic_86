@@ -11,9 +11,9 @@
 #include "debug.hpp"
 #include <sstream>
 
-#pragma mark _WeaponSystem
+#pragma mark _weapon_system
 
-class _WeaponSystem : public WeaponSystem
+class _weapon_system : public weapon_system
 {
     int _accuracy_rating;
     affilation_type _affiliation;
@@ -26,7 +26,7 @@ class _WeaponSystem : public WeaponSystem
     weapon_system_type _type;
 
 public:
-    _WeaponSystem(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate) :
+    _weapon_system(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate) :
     _accuracy_rating(accuracy_rating), _affiliation(affiliation), _average_damage(average_damage), _lraam_salvo_rate(lraam_salvo_rate), _name(name), _range(range), _sam_salvo_rate(sam_salvo_rate), _surface_skimming(surface_skimming), _type(type)
     {
     }
@@ -49,7 +49,7 @@ public:
     const std::string description() override
     {
         std::stringstream ss;
-        ss << "<WeaponSystem";
+        ss << "<weapon_system";
         ss << " type: '" << weapon_system_type_utility::to_string(_type) << "'";
         ss << ", affiliation: '" << affiliation_utility::to_string(_affiliation) << "'";
         ss << ", range: '" << _range << "'";
@@ -95,60 +95,60 @@ public:
     }
 };
 
-#pragma mark WeaponSystem
+#pragma mark weapon_system
 
-const int WeaponSystem::accuracy_rating()
+const int weapon_system::accuracy_rating()
 {
     runtime_assert_not_reached();
 }
 
-const affilation_type WeaponSystem::affiliation()
+const affilation_type weapon_system::affiliation()
 {
     runtime_assert_not_reached();
 }
 
-const int WeaponSystem::average_damage()
+const int weapon_system::average_damage()
 {
     runtime_assert_not_reached();
 }
         
-const std::string WeaponSystem::description()
+const std::string weapon_system::description()
 {
     runtime_assert_not_reached();
 }
         
-const int WeaponSystem::long_range_aam_salvo_rate()
+const int weapon_system::long_range_aam_salvo_rate()
 {
     runtime_assert_not_reached();
 }
 
-const std::string WeaponSystem::name()
+const std::string weapon_system::name()
 {
     runtime_assert_not_reached();
 }
 
 // create a weapon system
-std::shared_ptr<WeaponSystem> WeaponSystem::Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate, int lraam_salvo_rate)
+std::shared_ptr<weapon_system> weapon_system::Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate, int lraam_salvo_rate)
 {
-    return std::make_shared<_WeaponSystem>(name, type, affiliation, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate, lraam_salvo_rate);
+    return std::make_shared<_weapon_system>(name, type, affiliation, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate, lraam_salvo_rate);
 }
 
-const int WeaponSystem::range()
+const int weapon_system::range()
 {
     runtime_assert_not_reached();
 }
         
-const int WeaponSystem::sam_salvo_rate()
+const int weapon_system::sam_salvo_rate()
 {
     runtime_assert_not_reached();
 }
 
-const bool WeaponSystem::surface_skimming()
+const bool weapon_system::surface_skimming()
 {
     runtime_assert_not_reached();
 }
 
-const weapon_system_type WeaponSystem::type()
+const weapon_system_type weapon_system::type()
 {
     runtime_assert_not_reached();
 }

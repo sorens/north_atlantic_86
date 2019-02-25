@@ -147,9 +147,9 @@ public:
         return nullptr;
     }
         
-    std::shared_ptr<WeaponSystem> weapon_system(const std::string &id) override
+    std::shared_ptr<weapon_system> find_weapon_system(const std::string &id) override
     {
-        return _weapon_data->weapon_system(id);
+        return _weapon_data->find_weapon_system(id);
     }
 
 private:
@@ -241,7 +241,7 @@ std::shared_ptr<unit> game::ship_unit(const std::string &id)
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<WeaponSystem> game::weapon_system(const std::string &id)
+std::shared_ptr<weapon_system> game::find_weapon_system(const std::string &id)
 {
     runtime_assert_not_reached();
 }

@@ -15,7 +15,7 @@ class _aircraft : public aircraft
 {
 public:
     _aircraft(const std::string &name, const std::string &designation,
-    const int range, const std::shared_ptr<WeaponSystem> weapon_system, const bool is_carrier_aircraft, 
+    const int range, const std::shared_ptr<weapon_system> weapon_system, const bool is_carrier_aircraft,
     const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
     const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
     const int lrcap_missile_ew_max, const int lrcap_missile_avg, const int lrcap_missile_max, 
@@ -82,7 +82,7 @@ public:
         return _range;
     }
 
-    std::shared_ptr<WeaponSystem> weapon_system() override
+    std::shared_ptr<weapon_system> aaw_weapon_system() override
     {
         return _weapon_system;
     }
@@ -213,7 +213,7 @@ private:
     std::string _name;
     int _radar_capability;
     int _range;
-    std::shared_ptr<WeaponSystem> _weapon_system;
+    std::shared_ptr<weapon_system> _weapon_system;
 
     int _lrcap_missile_ew_avg;
     int _lrcap_missile_ew_max;
@@ -280,7 +280,7 @@ const int aircraft::range()
     runtime_assert_not_reached();
 }
     
-std::shared_ptr<WeaponSystem> aircraft::weapon_system()
+std::shared_ptr<weapon_system> aircraft::aaw_weapon_system()
 {
     runtime_assert_not_reached();
 }
@@ -358,7 +358,7 @@ const std::string aircraft::description()
 std::shared_ptr<aircraft> aircraft::Make(const std::string &name,
                                          const std::string &designation,
                                          const int range,
-                                         const std::shared_ptr<WeaponSystem> weapon_system,
+                                         const std::shared_ptr<weapon_system> weapon_system,
                                          const bool is_carrier_aircraft,
                                          const affilation_type affiliation,
                                          const int ecm_rating,
