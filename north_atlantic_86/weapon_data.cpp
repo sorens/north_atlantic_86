@@ -61,7 +61,7 @@ public:
                 throw new import_failed_weapon_data_exception("expecting an array");
             
             std::string name = element[FIELD_NAME].string_value();                  // e.g. Harpoon
-            WeaponSystemType type = WeaponSystemTypeUtility::to_enum(element[FIELD_TYPE].string_value()); // e.g. SSM
+            weapon_system_type type = weapon_system_type_utility::to_enum(element[FIELD_TYPE].string_value()); // e.g. SSM
             std::string affiliation_id = element[FIELD_AFFILIATION].string_value(); // e.g. NATO
             affilation_type affiliation_type = affilation_type::NATO;
             if (affiliation_id == "SOVIET") {
@@ -72,7 +72,7 @@ public:
             int accuracy_rating = element[FIELD_ACCURACY_RATING].int_value();       // e.g. 9
             bool surface_skimming = element[FIELD_SURFACE_SKIMMING].bool_value();   // e.g. true
             int sam_salvo_rate = 0;
-            if (type == WeaponSystemType::SAM)
+            if (type == weapon_system_type::SAM)
                 sam_salvo_rate = element[FIELD_SAM_SALVO_RATE].int_value();         // e.g. 0
             
             int lraam_salvo_rate = element[FIELD_LRAAM_SALVO_RATE].int_value();     // e.g. 0

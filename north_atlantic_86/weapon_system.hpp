@@ -34,7 +34,7 @@ public:
     virtual const std::string name();
     
     // create a weapon system
-    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const WeaponSystemType tye, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
+    static std::shared_ptr<WeaponSystem> Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
 
     // return the range
     virtual const int range();
@@ -46,5 +46,5 @@ public:
     virtual const bool surface_skimming();
     
     // type of weapon system
-    virtual const WeaponSystemType type();
+    virtual const weapon_system_type type();
 };

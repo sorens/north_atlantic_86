@@ -10,7 +10,7 @@
 
 #include <string>
 
-enum class WeaponSystemType : int
+enum class weapon_system_type : int
 {
     Unknown,
     SSM,                // surface-to-surface missile (e.g. Tomahawk)
@@ -22,9 +22,9 @@ enum class WeaponSystemType : int
     ASM                 // air-to-surface missile (e.g. Walleye)
 };
 
-class WeaponSystemTypeUtility
+class weapon_system_type_utility
 {
 public:
-    static const std::string to_string(WeaponSystemType t);
-    static const WeaponSystemType to_enum(const std::string &t);
+    static const std::string to_string(weapon_system_type t);
+    static const weapon_system_type to_enum(const std::string &t);
 };

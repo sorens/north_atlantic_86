@@ -75,5 +75,5 @@ public:
     virtual const naval_station_type type();
     
     // weapon system
-    virtual std::shared_ptr<WeaponSystem> weapon_system(const WeaponSystemType t);
+    virtual std::shared_ptr<WeaponSystem> weapon_system(const weapon_system_type t);
 };

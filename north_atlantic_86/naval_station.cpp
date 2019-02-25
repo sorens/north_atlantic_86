@@ -109,18 +109,18 @@ public:
         return _type;
     }
 
-    std::shared_ptr<WeaponSystem> weapon_system(const WeaponSystemType t) override
+    std::shared_ptr<WeaponSystem> weapon_system(const weapon_system_type t) override
     {
-        if (WeaponSystemType::SSM == t) {
+        if (weapon_system_type::SSM == t) {
             return _ssm;
         }
-        else if (WeaponSystemType::ASW == t) {
+        else if (weapon_system_type::ASW == t) {
             return _asw;
         }
-        else if (WeaponSystemType::SAM == t) {
+        else if (weapon_system_type::SAM == t) {
             return _sam;
         }
-        else if (WeaponSystemType::AST == t) {
+        else if (weapon_system_type::AST == t) {
             return _ast;
         }
 
@@ -209,7 +209,7 @@ const naval_station_type naval_station::type()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<WeaponSystem> naval_station::weapon_system(const WeaponSystemType t)
+std::shared_ptr<WeaponSystem> naval_station::weapon_system(const weapon_system_type t)
 {
     runtime_assert_not_reached();
 }

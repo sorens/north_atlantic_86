@@ -8,45 +8,44 @@
 
 #include "weapon_system_type.hpp"
 
-const std::string WeaponSystemTypeUtility::to_string(WeaponSystemType t)
+const std::string weapon_system_type_utility::to_string(weapon_system_type t)
 {
-    switch (t)
-    {
-        case WeaponSystemType::Unknown:
+    switch (t) {
+        case weapon_system_type::Unknown:
             return "Unknown";
-        case WeaponSystemType::SSM:
+        case weapon_system_type::SSM:
             return "SSM";
-        case WeaponSystemType::SAM:
+        case weapon_system_type::SAM:
             return "SAM";
-        case WeaponSystemType::ASW:
+        case weapon_system_type::ASW:
             return "ASW";
-        case WeaponSystemType::AST:
+        case weapon_system_type::AST:
             return "AST";
-        case WeaponSystemType::AAM:
+        case weapon_system_type::AAM:
             return "AAM";
-        case WeaponSystemType::AAM_LONGRANGE:
+        case weapon_system_type::AAM_LONGRANGE:
             return "AAM_LONGRANGE";
-        case WeaponSystemType::ASM:
+        case weapon_system_type::ASM:
             return "ASM";
     }
 }
 
-const WeaponSystemType WeaponSystemTypeUtility::to_enum(const std::string &t)
+const weapon_system_type weapon_system_type_utility::to_enum(const std::string &t)
 {
     if ("SSM" == t)
-        return WeaponSystemType::SSM;
+        return weapon_system_type::SSM;
     else if ("SAM" == t)
-        return WeaponSystemType::SAM;
+        return weapon_system_type::SAM;
     else if ("ASW" == t)
-        return WeaponSystemType::ASW;
+        return weapon_system_type::ASW;
     else if ("AST" == t)
-        return WeaponSystemType::AST;
+        return weapon_system_type::AST;
     else if ("AAM" == t)
-        return WeaponSystemType::AAM;
+        return weapon_system_type::AAM;
     else if ("AAM_LONGRANGE" == t)
-        return WeaponSystemType::AAM_LONGRANGE;
+        return weapon_system_type::AAM_LONGRANGE;
     else if ("ASM" == t)
-        return WeaponSystemType::ASM;
+        return weapon_system_type::ASM;
     
-    return WeaponSystemType::Unknown;
+    return weapon_system_type::Unknown;
 }
