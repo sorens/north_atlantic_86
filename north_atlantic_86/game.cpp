@@ -6,14 +6,16 @@
 //  Copyright © 2019 STEPHEN ORENS. All rights reserved.
 //
 
+#include "game.hpp"
+
 #include <cmath>
 #include <iostream>     // TODO inject
 #include "aircraft_data.hpp"
 #include "affiliation_type.hpp"
 #include "debug.hpp"
-#include "game.hpp"
 #include "log.hpp"
 #include "mutable_unit.hpp"
+//#include "naval_station.hpp"
 #include "naval_station_data.hpp"
 #include "ship_data.hpp"
 #include "weapon_data.hpp"
@@ -95,13 +97,17 @@ public:
         std::cout << "*************" << std::endl;
     }
     
-        void initialize(std::vector<std::shared_ptr<MapSetup>> map_data,
+    std::shared_ptr<naval_station> find_naval_station(const std::string &name) override
+    {
+        runtime_assert(_naval_station_data);
+        return _naval_station_data->find_naval_station(name);
+    }
+    
+    void initialize(std::vector<std::shared_ptr<MapSetup>> map_data,
                         const std::string &ships_json_data,
                         const std::string &weapons_json_data,
                         const std::string &aircraft_json_data,
-                        const std::string &naval_station_json_data
-                        )
-    {
+                        const std::string &naval_station_json_data) {
         _map = Map::factory(map_data);
         _ship_data = ShipData::factory(ships_json_data);
         _weapon_data = WeaponData::Make(weapons_json_data);
@@ -113,7 +119,7 @@ public:
     {
         return _map;
     }
-    
+        
     void next_turn() override
     {
         // create a task force
@@ -194,6 +200,11 @@ void Game::display_weather()
     runtime_assert_not_reached();
 }
 
+std::shared_ptr<naval_station> Game::find_naval_station(const std::string &name)
+{
+    runtime_assert_not_reached();
+}
+
 std::shared_ptr<Game> Game::Make(std::vector<std::shared_ptr<MapSetup>> map_data,
                                  const std::string &ships_json_data,
                                  const std::string &weapons_json_data,
@@ -209,7 +220,7 @@ std::shared_ptr<Map> Game::map()
 {
     runtime_assert_not_reached();
 }
-
+        
 void Game::next_turn()
 {
     runtime_assert_not_reached();

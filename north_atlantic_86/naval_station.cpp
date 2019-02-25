@@ -50,7 +50,7 @@ public:
                    std::shared_ptr<WeaponSystem> asw,
                    std::shared_ptr<WeaponSystem> sam,
                    std::shared_ptr<WeaponSystem> ast) :
-    _affiliation(affiliation), _airbase_capacity(airbase_capacity), _defense_factor(df), _ew_strength(ew), _helicopters(helicopters), _main_guns(mg), _missile_defense(df), _name(name), _sonar_strength(sonar), _type(type), _ssm(ssm), _ssm_salvo_rate(ssm_salvo_rate), _ssm_magazine_capacity(ssm_magazine_capacity), _asw(asw), _sam(sam), _ast(ast)
+    _affiliation(affiliation), _airbase_capacity(airbase_capacity), _anti_aircraft_gun(aa), _defense_factor(df), _ew_strength(ew), _helicopters(helicopters), _main_guns(mg), _missile_defense(md), _name(name), _sonar_strength(sonar), _type(type), _ssm(ssm), _ssm_salvo_rate(ssm_salvo_rate), _ssm_magazine_capacity(ssm_magazine_capacity), _asw(asw), _sam(sam), _ast(ast)
     {
     }
 
@@ -87,6 +87,11 @@ public:
     const int main_guns() override
     {
         return _main_guns;
+    }
+    
+    const int missible_defense() override
+    {
+        return _missile_defense;
     }
 
     const std::string name() override
@@ -185,6 +190,11 @@ std::shared_ptr<naval_station> naval_station::Make(const std::string &name,
 }
 
 const std::string naval_station::name()
+{
+    runtime_assert_not_reached();
+}
+
+const int naval_station::missible_defense()
 {
     runtime_assert_not_reached();
 }

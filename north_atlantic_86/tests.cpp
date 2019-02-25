@@ -95,6 +95,7 @@ public:
         grid_unit_test();
         map_unit_test();
         mutable_unit_unit_test();
+        naval_station_unit_test();
         player_unit_test();
         task_force_unit_test();
         unit_test();
@@ -141,12 +142,44 @@ public:
 
     void map_unit_test() override
     {
-
+        _initialize_every_time();
+        _clean_up_every_time();
     }
 
     void mutable_unit_unit_test() override
     {
+        _initialize_every_time();
+        _clean_up_every_time();
+    }
+    
+    void naval_station_unit_test() override
+    {
+        _initialize_every_time();
 
+        test_result("naval_station_unit_test", "Found America", _game->find_naval_station("America") != nullptr);
+        test_result("naval_station_unit_test", "Found Murmansk", _game->find_naval_station("Murmansk") != nullptr);
+        test_result("naval_station_unit_test", "Found Riga", _game->find_naval_station("Riga") != nullptr);
+        test_result("naval_station_unit_test", "Found Bergen", _game->find_naval_station("Bergen") != nullptr);
+        test_result("naval_station_unit_test", "Found Hamburg", _game->find_naval_station("Hamburg") != nullptr);
+        test_result("naval_station_unit_test", "Found Scapa Flow", _game->find_naval_station("Scapa Flow") != nullptr);
+        test_result("naval_station_unit_test", "Found Faroes", _game->find_naval_station("Faroes") != nullptr);
+        test_result("naval_station_unit_test", "Found Iceland", _game->find_naval_station("Iceland") != nullptr);
+        test_result("naval_station_unit_test", "Won't find Chicago", _game->find_naval_station("Chicago") == nullptr);
+        
+        test_result("naval_station_unit_test", "Iceland is CONTESTED", _game->find_naval_station("Iceland")->affiliation() == AffiliationType::CONTESTED);
+        test_result("naval_station_unit_test", "Iceland is an AIRBASE", _game->find_naval_station("Iceland")->type() == naval_station_type::Airbase);
+        test_result("naval_station_unit_test", "Iceland has 30 light guns", _game->find_naval_station("Iceland")->anti_aircraft_gun() == 30);
+        test_result("naval_station_unit_test", "Iceland has 0 missile defense", _game->find_naval_station("Iceland")->missible_defense() == 0);
+        test_result("naval_station_unit_test", "Iceland has 80 aircraft capacity", _game->find_naval_station("Iceland")->airbase_capacity() == 80);
+        test_result("naval_station_unit_test", "Iceland has 99 defense factor", _game->find_naval_station("Iceland")->defense_factor() == 99);
+        test_result("naval_station_unit_test", "Iceland has 12 helicopters", _game->find_naval_station("Iceland")->helicopters() == 12);
+        test_result("naval_station_unit_test", "Iceland has 4 EW strength", _game->find_naval_station("Iceland")->ew_strength() == 4);
+        test_result("naval_station_unit_test", "Iceland has 0 SONAR strength", _game->find_naval_station("Iceland")->sonar_strength() == 0);
+        
+        test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == AffiliationType::SOVIET);
+        test_result("naval_station_unit_test", "Murmansk is a PORT", _game->find_naval_station("Murmansk")->type() == naval_station_type::Port);
+        
+        _clean_up_every_time();
     }
 
     void player_unit_test() override
@@ -404,6 +437,11 @@ void Tests::map_unit_test()
 }
 
 void Tests::mutable_unit_unit_test()
+{
+    runtime_assert_not_reached();
+}
+
+void Tests::naval_station_unit_test()
 {
     runtime_assert_not_reached();
 }

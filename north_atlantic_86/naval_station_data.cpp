@@ -54,7 +54,7 @@ public:
             std::string affiliation_string = element[2].string_value();
             
             AffiliationType affiliation_type = AffiliationType::NATO;
-            if (affiliation_string == "USSR") {
+            if (affiliation_string == "SOVIET") {
                 affiliation_type = AffiliationType::SOVIET;
             }
             else if (affiliation_string == "CONTESTED") {
@@ -100,15 +100,19 @@ public:
 
             
             auto naval_station = naval_station::Make(name, affiliation_type, type, airbase_capacity, light_guns, defense_factor, ew_strength, helicopters, main_guns, missile_defense, sonar_strength, ssm, ssm_salvo_rate, ssm_magazine_capacity, asw, sam, ast);
-            
-            // TODO _data.insert(std::make_pair(name, naval_station));
+
+            std::string key(name);
+            std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+            _data.insert(std::make_pair(key, naval_station));
         }
     }
     
     std::shared_ptr<naval_station> find_naval_station(const std::string &name) override
     {
-        if (_data.find(name) != _data.end()) {
-            return _data[name];
+        std::string key(name);
+        std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+        if (_data.find(key) != _data.end()) {
+            return _data[key];
         }
         
         return nullptr;

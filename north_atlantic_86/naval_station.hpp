@@ -62,6 +62,9 @@ public:
                                                std::shared_ptr<WeaponSystem> sam,
                                                std::shared_ptr<WeaponSystem> ast);
 
+    // missile defense
+    virtual const int missible_defense();
+    
     // name of naval_station
     virtual const std::string name();
 

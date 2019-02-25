@@ -11,6 +11,7 @@
 #include "aircraft.hpp"
 #include "map.hpp"
 #include "map_setup.hpp"
+#include "naval_station.hpp"
 #include "player.hpp"
 #include "unit.hpp"
 #include "weapon_system.hpp"
@@ -39,6 +40,9 @@ public:
     
     // print out the current weather
     virtual void display_weather();     // debug-only
+    
+    // return a naval_station
+    virtual std::shared_ptr<naval_station> find_naval_station(const std::string &name);
     
     // factory method to create a game
     static std::shared_ptr<Game> Make(std::vector<std::shared_ptr<MapSetup>> map_data,
