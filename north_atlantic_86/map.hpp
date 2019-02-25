@@ -12,16 +12,6 @@
 #include "grid.hpp"
 #include "naval_station_data.hpp"
 
-class MapOutOfBoundsException : public std::exception
-{
-public:
-    virtual const char * what() noexcept
-    {
-        return "coordinates do not exist on map";
-    }
-};
-
-
 class Map
 {
 public:

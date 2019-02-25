@@ -10,6 +10,7 @@
 
 #include "debug.hpp"
 #include "grid.hpp"
+#include "map_exception.hpp"
 #include "map_setup.hpp"
 #include <cmath>
 #include <iostream>
@@ -30,7 +31,7 @@ public:
     {
         int index = (y * _dimension) + x;
         if (index < 0 || index >= _grid.size())
-            throw new MapOutOfBoundsException();
+            throw map_out_of_bounds_exception();
             
         return _grid[index];
     }
@@ -78,7 +79,7 @@ public:
     {
         int index = (y * (_dimension - 1)) + x;
         if (index < 0 || index >= _grid.size())
-            throw new MapOutOfBoundsException();
+            throw map_out_of_bounds_exception();
         
         return _grid[index]->units();
     }
