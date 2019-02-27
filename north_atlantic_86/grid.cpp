@@ -33,7 +33,12 @@ public:
         if (!name.empty()) {
             // look up the city, attach
             runtime_assert(naval_station_data);
-            _station = naval_station_data->find_naval_station(name);
+            std::string key(name);
+            if (key == "Iceland")
+                key = "iceland-nato";
+            else if (key == "Faroes")
+                key = "faroes-nato";
+            _station = naval_station_data->find_naval_station(key);
         }
     }
     
