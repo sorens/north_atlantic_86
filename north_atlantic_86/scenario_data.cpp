@@ -195,7 +195,7 @@ public:
         }
     }
     
-    std::shared_ptr<player> make_player(const affilation_type affiliation) override
+    std::shared_ptr<player> make_player(const affiliation_type affiliation) override
     {
         auto player = player::Make(affiliation);
         
@@ -274,7 +274,7 @@ std::shared_ptr<scenario_data> scenario_data::Make(const std::string &json_impor
     return scenario;
 }
 
-std::shared_ptr<player> scenario_data::make_player(const affilation_type affiliation)
+std::shared_ptr<player> scenario_data::make_player(const affiliation_type affiliation)
 {
     runtime_assert_not_reached();
 }

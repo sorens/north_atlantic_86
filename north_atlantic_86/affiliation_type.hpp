@@ -10,7 +10,7 @@
 
 #include <string>
 
-enum class affilation_type : int
+enum class affiliation_type : int
 {
     UNKNOWN = -1,
     NATO,
@@ -21,5 +21,5 @@ enum class affilation_type : int
 class affiliation_utility
 {
 public:
-    static const std::string to_string(affilation_type t);
+    static const std::string to_string(affiliation_type t);
 };

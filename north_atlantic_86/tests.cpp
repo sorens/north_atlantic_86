@@ -178,7 +178,7 @@ public:
         test_result("naval_station_unit_test", "Found SOVIET Iceland", _game->find_naval_station("Iceland-soviet") != nullptr);
         test_result("naval_station_unit_test", "Won't find Chicago", _game->find_naval_station("Chicago") == nullptr);
         
-        test_result("naval_station_unit_test", "Iceland-NATO is NATO", _game->find_naval_station("Iceland-NATO")->affiliation() == affilation_type::NATO);
+        test_result("naval_station_unit_test", "Iceland-NATO is NATO", _game->find_naval_station("Iceland-NATO")->affiliation() == affiliation_type::NATO);
         test_result("naval_station_unit_test", "Iceland-NATO is an AIRBASE", _game->find_naval_station("Iceland-NATO")->type() == naval_station_type::Airbase);
         test_result("naval_station_unit_test", "Iceland-NATO has 30 light guns", _game->find_naval_station("Iceland-NATO")->anti_aircraft_gun() == 30);
         test_result("naval_station_unit_test", "Iceland-NATO has 0 missile defense", _game->find_naval_station("Iceland-NATO")->missible_defense() == 0);
@@ -190,7 +190,7 @@ public:
         test_result("naval_station_unit_test", "Iceland-NATO has 120 infantry", _game->find_naval_station("Iceland-NATO")->infantry_remaining() == 120);
         test_result("naval_station_unit_test", "Iceland-NATO has 20 supplies", _game->find_naval_station("Iceland-NATO")->supplies_remaining() == 20);
         
-        test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == affilation_type::SOVIET);
+        test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == affiliation_type::SOVIET);
         test_result("naval_station_unit_test", "Murmansk is a PORT", _game->find_naval_station("Murmansk")->type() == naval_station_type::Port);
         
         _clean_up_every_time();

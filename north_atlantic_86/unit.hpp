@@ -32,7 +32,7 @@ public:
     virtual const std::string id();
     
     // factory method to create a unit
-    static std::shared_ptr<unit> Make(const std::string &id, const std::string &name, const unit_type type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const affilation_type affiliation);
+    static std::shared_ptr<unit> Make(const std::string &id, const std::string &name, const unit_type type, const std::string &unit_class, const std::string &prefix, const int class_id, const int main_gun, const int aa_gun, const int missile_defense, const int max_speed, const int cargo_capacity, const int defense_factor, const affiliation_type affiliation);
     
     // value for unit main gun
     virtual const int main_gun();

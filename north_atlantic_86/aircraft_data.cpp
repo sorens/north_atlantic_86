@@ -60,9 +60,9 @@ public:
             if (!weapon_system_key.empty())
                 weapon_system = weapons_data->find_weapon_system(weapon_system_key);
             bool is_carrier_aircraft = element[4].bool_value();
-            affilation_type affiliation = affilation_type::NATO;
+            affiliation_type affiliation = affiliation_type::NATO;
             if (element[5].string_value() == "SOVIET")
-                affiliation = affilation_type::SOVIET;
+                affiliation = affiliation_type::SOVIET;
             
             int ecm_rating = element[6].int_value();
             int dogfighting_rating = element[7].int_value();

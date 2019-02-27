@@ -16,7 +16,7 @@ class _aircraft : public aircraft
 public:
     _aircraft(const std::string &name, const std::string &designation,
     const int range, const std::shared_ptr<weapon_system> weapon_system, const bool is_carrier_aircraft,
-    const affilation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
+    const affiliation_type affiliation, const int ecm_rating, const int dogfighting_rating, 
     const int bomber_accuracy, const int radar_capability, const int lrcap_missile_ew_avg, 
     const int lrcap_missile_ew_max, const int lrcap_missile_avg, const int lrcap_missile_max, 
     const int lrcap_dogfight_ew_avg, const int lrcap_dogfight_ew_max, const int lrcap_dogfight_avg, 
@@ -37,7 +37,7 @@ public:
     {
     }
 
-    const affilation_type affiliation() override
+    const affiliation_type affiliation() override
     {
         return _affiliation;
     }
@@ -204,7 +204,7 @@ public:
 
 private:
 
-    affilation_type _affiliation;
+    affiliation_type _affiliation;
     int _bomber_accuracy;
     std::string _designation;
     int _dogfighting_rating;
@@ -235,7 +235,7 @@ private:
 
 #pragma mark aircraft
 
-const affilation_type aircraft::affiliation()
+const affiliation_type aircraft::affiliation()
 {
     runtime_assert_not_reached();
 }
@@ -360,7 +360,7 @@ std::shared_ptr<aircraft> aircraft::Make(const std::string &name,
                                          const int range,
                                          const std::shared_ptr<weapon_system> weapon_system,
                                          const bool is_carrier_aircraft,
-                                         const affilation_type affiliation,
+                                         const affiliation_type affiliation,
                                          const int ecm_rating,
                                          const int dogfighting_rating,
                                          const int bomber_accuracy,

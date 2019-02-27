@@ -19,10 +19,10 @@ class player
 {
 public:
     // return the player's affiliation (e.g. NATO, SOVIET)
-    virtual const affilation_type affiliation();
+    virtual const affiliation_type affiliation();
     
     // convert Alliance to a human-readable string
-    static const std::string alliance_to_string(const affilation_type affiliation);
+    static const std::string alliance_to_string(const affiliation_type affiliation);
     
     // return a list of ports and airbases
     virtual const std::vector<std::shared_ptr<naval_station>> bases();
@@ -37,10 +37,10 @@ public:
     virtual const std::string id();
     
     // factory method to create a player
-    static std::shared_ptr<player> Make(const affilation_type affiliation);
+    static std::shared_ptr<player> Make(const affiliation_type affiliation);
     
     // factory method to create a player
-    static std::shared_ptr<player> Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids);  // TODO bases
+    static std::shared_ptr<player> Make(const affiliation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids);  // TODO bases
     
     // return the player's name
     virtual const std::string name();

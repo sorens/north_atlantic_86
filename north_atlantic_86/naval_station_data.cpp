@@ -54,12 +54,12 @@ public:
             
             std::string affiliation_string = element[3].string_value();
             
-            affilation_type affiliation_type = affilation_type::NATO;
+            affiliation_type affiliation_type = affiliation_type::NATO;
             if (affiliation_string == "SOVIET") {
-                affiliation_type = affilation_type::SOVIET;
+                affiliation_type = affiliation_type::SOVIET;
             }
             else if (affiliation_string == "CONTESTED") {
-                affiliation_type = affilation_type::CONTESTED;
+                affiliation_type = affiliation_type::CONTESTED;
             }
             
             int main_guns = element[4].int_value();

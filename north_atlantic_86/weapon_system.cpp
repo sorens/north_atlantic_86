@@ -16,7 +16,7 @@
 class _weapon_system : public weapon_system
 {
     int _accuracy_rating;
-    affilation_type _affiliation;
+    affiliation_type _affiliation;
     int _average_damage;
     int _lraam_salvo_rate;
     std::string _name;
@@ -26,7 +26,7 @@ class _weapon_system : public weapon_system
     weapon_system_type _type;
 
 public:
-    _weapon_system(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate) :
+    _weapon_system(const std::string &name, const weapon_system_type type, const affiliation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate) :
     _accuracy_rating(accuracy_rating), _affiliation(affiliation), _average_damage(average_damage), _lraam_salvo_rate(lraam_salvo_rate), _name(name), _range(range), _sam_salvo_rate(sam_salvo_rate), _surface_skimming(surface_skimming), _type(type)
     {
     }
@@ -36,7 +36,7 @@ public:
         return _accuracy_rating;
     }
     
-    const affilation_type affiliation() override
+    const affiliation_type affiliation() override
     {
         return _affiliation;
     }
@@ -102,7 +102,7 @@ const int weapon_system::accuracy_rating()
     runtime_assert_not_reached();
 }
 
-const affilation_type weapon_system::affiliation()
+const affiliation_type weapon_system::affiliation()
 {
     runtime_assert_not_reached();
 }
@@ -128,7 +128,7 @@ const std::string weapon_system::name()
 }
 
 // create a weapon system
-std::shared_ptr<weapon_system> weapon_system::Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate, int lraam_salvo_rate)
+std::shared_ptr<weapon_system> weapon_system::Make(const std::string &name, const weapon_system_type type, const affiliation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, int sam_salvo_rate, int lraam_salvo_rate)
 {
     return std::make_shared<_weapon_system>(name, type, affiliation, range, average_damage, accuracy_rating, surface_skimming, sam_salvo_rate, lraam_salvo_rate);
 }

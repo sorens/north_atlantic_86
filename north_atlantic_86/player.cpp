@@ -20,12 +20,12 @@ static const int Field_TaskForce_AVAILABLE  = 1;
 class _player : public player
 {
 public:
-    _player(const affilation_type affiliation) :
+    _player(const affiliation_type affiliation) :
     _affiliation(affiliation)
     {
     }
     
-    _player(affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
+    _player(affiliation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
     _affiliation(affiliation), _name(name), _possible_task_forces(task_force_ids.size()), _score(0)
     {
         uuid_t uuid;
@@ -47,7 +47,7 @@ public:
         _possible_task_forces.clear();
     }
     
-    const affilation_type affiliation() override
+    const affiliation_type affiliation() override
     {
         return _affiliation;
     }
@@ -127,7 +127,7 @@ public:
     }
     
 private:
-    affilation_type _affiliation;
+    affiliation_type _affiliation;
     std::vector<std::shared_ptr<naval_station>> _bases;
     std::string _id;
     std::string _name;
@@ -139,12 +139,12 @@ private:
 
 #pragma mark player
 
-const affilation_type player::affiliation()
+const affiliation_type player::affiliation()
 {
     runtime_assert_not_reached();
 }
 
-const std::string player::alliance_to_string(const affilation_type affiliation)
+const std::string player::alliance_to_string(const affiliation_type affiliation)
 {
     // TODO implement
     return "";
@@ -172,12 +172,12 @@ const std::string player::id()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<player> player::Make(const affilation_type affiliation)
+std::shared_ptr<player> player::Make(const affiliation_type affiliation)
 {
     return std::make_shared<_player>(affiliation);
 }
 
-std::shared_ptr<player> player::Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids)
+std::shared_ptr<player> player::Make(const affiliation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids)
 {
     return std::make_shared<_player>(affiliation, name, task_force_ids);
 }

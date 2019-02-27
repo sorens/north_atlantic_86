@@ -22,7 +22,7 @@ public:
     static std::shared_ptr<scenario_data> Make(const std::string &json_import, std::shared_ptr<ShipData> ship_data);
     
     // create a player with scenario data
-    virtual std::shared_ptr<player> make_player(const affilation_type affiliation);
+    virtual std::shared_ptr<player> make_player(const affiliation_type affiliation);
   
     // return the infantry for a naval station
     virtual const int station_infantry(const std::string &id);

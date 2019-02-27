@@ -19,7 +19,7 @@ public:
     virtual const int accuracy_rating();
     
     // return the affiliation
-    virtual const affilation_type affiliation();
+    virtual const affiliation_type affiliation();
     
     // return the average damage per hit
     virtual const int average_damage();
@@ -34,7 +34,7 @@ public:
     virtual const std::string name();
     
     // create a weapon system
-    static std::shared_ptr<weapon_system> Make(const std::string &name, const weapon_system_type type, const affilation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
+    static std::shared_ptr<weapon_system> Make(const std::string &name, const weapon_system_type type, const affiliation_type affiliation, const int range, const int average_damage, const int accuracy_rating, const bool surface_skimming, const int sam_salvo_rate, const int lraam_salvo_rate);
 
     // return the range
     virtual const int range();

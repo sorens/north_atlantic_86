@@ -14,7 +14,7 @@
 
 class _naval_station : public naval_station
 {
-    affilation_type _affiliation;
+    affiliation_type _affiliation;
     int _airbase_capacity;
     int _anti_aircraft_gun;
     int _defense_factor;
@@ -41,7 +41,7 @@ class _naval_station : public naval_station
 
 public:
     _naval_station(const std::string &name,
-                   const affilation_type affiliation,
+                   const affiliation_type affiliation,
                    const naval_station_type type,
                    const int airbase_capacity,
                    const int aa,
@@ -91,7 +91,7 @@ public:
     {
     }
 
-    const affilation_type affiliation() override
+    const affiliation_type affiliation() override
     {
         return _affiliation;
     }
@@ -197,7 +197,7 @@ public:
 
 #pragma mark naval_station
 
-const affilation_type naval_station::affiliation()
+const affiliation_type naval_station::affiliation()
 {
     runtime_assert_not_reached();
 }
@@ -253,7 +253,7 @@ const int naval_station::main_guns()
 }
 
 std::shared_ptr<naval_station> naval_station::Make(const std::string &name,
-                                                   const affilation_type affiliation,
+                                                   const affiliation_type affiliation,
                                                    const naval_station_type type,
                                                    const int airbase_capacity,
                                                    const int aa,
