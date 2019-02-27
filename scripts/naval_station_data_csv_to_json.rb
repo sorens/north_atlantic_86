@@ -19,27 +19,33 @@ naval_stations = []
 # SSM_MAGAZINE_CAPACITY,ASW,SAM,AST,HELICOPTERS,EW_STRENGTH,
 # SONAR_STRENGTH
 
-FIELD_NAME              = 0
-FIELD_TYPE              = 1
-FIELD_AFFILIATION       = 2
-FIELD_MAIN_GUN          = 3
-FIELD_AA_GUN            = 4
-FIELD_MD                = 5
-FIELD_CC                = 6
-FIELD_DF                = 7
-FIELD_SSM               = 8
-FIELD_SSM_SALVO         = 9
-FIELD_SSM_MAGAZINE      = 10
-FIELD_ASW               = 11
-FIELD_SAM               = 12
-FIELD_AST               = 13
-FIELD_HELICOPTERS       = 14
-FIELD_EW_STRENGTH       = 15
-FIELD_SONAR_STRENGTH    = 16
+FIELD_ID                = 0
+FIELD_NAME              = 1
+FIELD_TYPE              = 2
+FIELD_AFFILIATION       = 3
+FIELD_MAIN_GUN          = 4
+FIELD_AA_GUN            = 5
+FIELD_MD                = 6
+FIELD_CC                = 7
+FIELD_DF                = 8
+FIELD_SSM               = 9
+FIELD_SSM_SALVO         = 10
+FIELD_SSM_MAGAZINE      = 11
+FIELD_ASW               = 12
+FIELD_SAM               = 13
+FIELD_AST               = 14
+FIELD_HELICOPTERS       = 15
+FIELD_EW_STRENGTH       = 16
+FIELD_SONAR_STRENGTH    = 17
+FIELD_AIR_RECON         = 18
+FIELD_AIR_EW            = 19
+FIELD_AIR_ASW           = 20
+FIELD_AIR_AWACS         = 21
 
 CSV.foreach(input_path, {headers: true}) do |row|
-    if row.size == 17
+    if row.size == 22
         naval_station = []
+        naval_station << row[FIELD_ID]
         naval_station << row[FIELD_NAME]
         naval_station << row[FIELD_TYPE]
         naval_station << row[FIELD_AFFILIATION]
@@ -57,6 +63,10 @@ CSV.foreach(input_path, {headers: true}) do |row|
         naval_station << row[FIELD_HELICOPTERS].to_i
         naval_station << row[FIELD_EW_STRENGTH].to_i
         naval_station << row[FIELD_SONAR_STRENGTH].to_i
+        naval_station << row[FIELD_AIR_RECON].to_i
+        naval_station << row[FIELD_AIR_EW].to_i
+        naval_station << row[FIELD_AIR_ASW].to_i
+        naval_station << row[FIELD_AIR_AWACS].to_i
         naval_stations << naval_station
     end
 end

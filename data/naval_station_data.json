@@ -2,6 +2,7 @@
   "naval_stations": [
     [
       "MURMANSK",
+      "MURMANSK",
       "PORT",
       "SOVIET",
       0,
@@ -17,9 +18,14 @@
       "",
       24,
       5,
-      0
+      0,
+      12,
+      2,
+      12,
+      2
     ],
     [
+      "RIGA",
       "RIGA",
       "PORT",
       "SOVIET",
@@ -36,9 +42,14 @@
       "",
       24,
       5,
-      0
+      0,
+      12,
+      2,
+      12,
+      2
     ],
     [
+      "HAMBURG",
       "HAMBURG",
       "AIRBASE",
       "SOVIET",
@@ -55,9 +66,14 @@
       "",
       12,
       4,
-      0
+      0,
+      12,
+      2,
+      12,
+      2
     ],
     [
+      "BERGEN",
       "BERGEN",
       "AIRBASE",
       "SOVIET",
@@ -74,12 +90,17 @@
       "",
       12,
       4,
-      0
+      0,
+      12,
+      2,
+      12,
+      2
     ],
     [
+      "FAROES-SOVIET",
       "FAROES",
       "AIRBASE",
-      "CONTESTED",
+      "SOVIET",
       0,
       30,
       0,
@@ -93,12 +114,17 @@
       "",
       12,
       4,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     [
+      "ICELAND-SOVIET",
       "ICELAND",
       "AIRBASE",
-      "CONTESTED",
+      "SOVIET",
       0,
       30,
       0,
@@ -112,9 +138,14 @@
       "",
       12,
       4,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     [
+      "AMERICA",
       "AMERICA",
       "PORT",
       "NATO",
@@ -131,9 +162,14 @@
       "",
       0,
       5,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     [
+      "SCAPA FLOW",
       "SCAPA FLOW",
       "AIRBASE",
       "NATO",
@@ -150,7 +186,59 @@
       "",
       12,
       4,
+      0,
+      0,
+      0,
+      0,
       0
+    ],
+    [
+      "FAROES-NATO",
+      "FAROES",
+      "AIRBASE",
+      "NATO",
+      0,
+      30,
+      0,
+      60,
+      99,
+      "",
+      0,
+      0,
+      "",
+      "",
+      "",
+      12,
+      4,
+      0,
+      6,
+      1,
+      6,
+      1
+    ],
+    [
+      "ICELAND-NATO",
+      "ICELAND",
+      "AIRBASE",
+      "NATO",
+      0,
+      30,
+      0,
+      80,
+      99,
+      "",
+      0,
+      0,
+      "",
+      "",
+      "",
+      12,
+      4,
+      0,
+      12,
+      2,
+      6,
+      2
     ]
   ]
 }
