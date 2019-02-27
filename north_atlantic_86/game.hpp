@@ -13,6 +13,7 @@
 #include "naval_station.hpp"
 #include "player.hpp"
 #include "unit.hpp"
+#include "scenario_data.hpp"
 #include "weapon_system.hpp"
 
 class game
@@ -41,7 +42,7 @@ public:
     virtual void display_weather();     // debug-only
     
     // return a naval_station
-    virtual std::shared_ptr<naval_station> find_naval_station(const std::string &name);
+    virtual std::shared_ptr<naval_station> find_naval_station(const std::string &id);
     
     // return a Map
     virtual std::shared_ptr<map> game_map();
@@ -51,7 +52,8 @@ public:
                                       const std::string &ships_json_data,
                                       const std::string &weapons_json_data,
                                       const std::string &aircraft_json_data,
-                                      const std::string &naval_station_json_data
+                                      const std::string &naval_station_json_data,
+                                      const std::string &scenario_data
                                       );
     
     // run the next turn
@@ -65,6 +67,9 @@ public:
     
     // return a unit
     virtual std::shared_ptr<unit> ship_unit(const std::string &id);
+    
+    // return scenario data
+    virtual std::shared_ptr<scenario_data> scenario();
     
     // return a weapon system
     virtual std::shared_ptr<weapon_system> find_weapon_system(const std::string &id);

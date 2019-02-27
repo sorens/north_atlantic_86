@@ -37,6 +37,9 @@ public:
     virtual const std::string id();
     
     // factory method to create a player
+    static std::shared_ptr<player> Make(const affilation_type affiliation);
+    
+    // factory method to create a player
     static std::shared_ptr<player> Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids);  // TODO bases
     
     // return the player's name

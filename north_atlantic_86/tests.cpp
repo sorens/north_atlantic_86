@@ -19,6 +19,7 @@
 #include "naval_station_data_exception.hpp"
 #include "player.hpp"
 #include "player_exception.hpp"
+#include "scenario_data.hpp"
 #include "ship_data.hpp"
 #include "task_force.hpp"
 #include "task_force_exception.hpp"
@@ -54,6 +55,9 @@ public:
         // read in ship_data.json
         std::string ship_data = ShipData::Import_Data("ship_data.json");
        
+        // read in scenario data
+        std::string scenario_data = scenario_data::Import_Data("scenario_1_data.json");
+
         // read in weapon_data.json
         std::string weapon_data = weapon_data::Import_Data("weapon_data.json");
         
@@ -63,7 +67,7 @@ public:
         // read in naval_station_data.json
         std::string naval_station_data = naval_station_data::Import_Data("naval_station_data.json");
 
-        _game = game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data);
+        _game = game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data, scenario_data);
         _game->add_nato_player("Sally");
         _game->add_soviet_player("Yuri");    
     }
@@ -97,6 +101,7 @@ public:
         mutable_unit_unit_test();
         naval_station_unit_test();
         player_unit_test();
+        scenario_data_unit_tests();
         task_force_unit_test();
         unit_test();
         weapon_mount_unit_test();
@@ -130,7 +135,9 @@ public:
         _initialize_every_time();
         
         auto wd = weapon_data::Make(weapon_data::Import_Data("weapon_data.json"));
-        auto naval_station_data = naval_station_data::Make(naval_station_data::Import_Data("naval_station_data.json"), wd);
+        auto ship_data = ShipData::factory(ShipData::Import_Data("ship_data.json"));
+        auto sd = scenario_data::Make(scenario_data::Import_Data("scenario_1_data.json"), ship_data);
+        auto naval_station_data = naval_station_data::Make(naval_station_data::Import_Data("naval_station_data.json"), wd, sd);
         
         bool result = false;
         auto grid1 = grid::Make("A", grid_type::Ocean, 4, 5, naval_station_data);
@@ -165,19 +172,23 @@ public:
         test_result("naval_station_unit_test", "Found Bergen", _game->find_naval_station("Bergen") != nullptr);
         test_result("naval_station_unit_test", "Found Hamburg", _game->find_naval_station("Hamburg") != nullptr);
         test_result("naval_station_unit_test", "Found Scapa Flow", _game->find_naval_station("Scapa Flow") != nullptr);
-        test_result("naval_station_unit_test", "Found Faroes", _game->find_naval_station("Faroes") != nullptr);
-        test_result("naval_station_unit_test", "Found Iceland", _game->find_naval_station("Iceland") != nullptr);
+        test_result("naval_station_unit_test", "Found NATO Faroes", _game->find_naval_station("faroes-nato") != nullptr);
+        test_result("naval_station_unit_test", "Found NATO Iceland", _game->find_naval_station("Iceland-nato") != nullptr);
+        test_result("naval_station_unit_test", "Found SOVIET Faroes", _game->find_naval_station("Faroes-SOVIET") != nullptr);
+        test_result("naval_station_unit_test", "Found SOVIET Iceland", _game->find_naval_station("Iceland-soviet") != nullptr);
         test_result("naval_station_unit_test", "Won't find Chicago", _game->find_naval_station("Chicago") == nullptr);
         
-        test_result("naval_station_unit_test", "Iceland is CONTESTED", _game->find_naval_station("Iceland")->affiliation() == affilation_type::CONTESTED);
-        test_result("naval_station_unit_test", "Iceland is an AIRBASE", _game->find_naval_station("Iceland")->type() == naval_station_type::Airbase);
-        test_result("naval_station_unit_test", "Iceland has 30 light guns", _game->find_naval_station("Iceland")->anti_aircraft_gun() == 30);
-        test_result("naval_station_unit_test", "Iceland has 0 missile defense", _game->find_naval_station("Iceland")->missible_defense() == 0);
-        test_result("naval_station_unit_test", "Iceland has 80 aircraft capacity", _game->find_naval_station("Iceland")->airbase_capacity() == 80);
-        test_result("naval_station_unit_test", "Iceland has 99 defense factor", _game->find_naval_station("Iceland")->defense_factor() == 99);
-        test_result("naval_station_unit_test", "Iceland has 12 helicopters", _game->find_naval_station("Iceland")->helicopters() == 12);
-        test_result("naval_station_unit_test", "Iceland has 4 EW strength", _game->find_naval_station("Iceland")->ew_strength() == 4);
-        test_result("naval_station_unit_test", "Iceland has 0 SONAR strength", _game->find_naval_station("Iceland")->sonar_strength() == 0);
+        test_result("naval_station_unit_test", "Iceland-NATO is NATO", _game->find_naval_station("Iceland-NATO")->affiliation() == affilation_type::NATO);
+        test_result("naval_station_unit_test", "Iceland-NATO is an AIRBASE", _game->find_naval_station("Iceland-NATO")->type() == naval_station_type::Airbase);
+        test_result("naval_station_unit_test", "Iceland-NATO has 30 light guns", _game->find_naval_station("Iceland-NATO")->anti_aircraft_gun() == 30);
+        test_result("naval_station_unit_test", "Iceland-NATO has 0 missile defense", _game->find_naval_station("Iceland-NATO")->missible_defense() == 0);
+        test_result("naval_station_unit_test", "Iceland-NATO has 80 aircraft capacity", _game->find_naval_station("Iceland-NATO")->airbase_capacity() == 80);
+        test_result("naval_station_unit_test", "Iceland-NATO has 99 defense factor", _game->find_naval_station("Iceland-NATO")->defense_factor() == 99);
+        test_result("naval_station_unit_test", "Iceland-NATO has 12 helicopters", _game->find_naval_station("Iceland-NATO")->helicopters() == 12);
+        test_result("naval_station_unit_test", "Iceland-NATO has 4 EW strength", _game->find_naval_station("Iceland-NATO")->ew_strength() == 4);
+        test_result("naval_station_unit_test", "Iceland-NATO has 0 SONAR strength", _game->find_naval_station("Iceland-NATO")->sonar_strength() == 0);
+        test_result("naval_station_unit_test", "Iceland-NATO has 120 infantry", _game->find_naval_station("Iceland-NATO")->infantry_remaining() == 120);
+        test_result("naval_station_unit_test", "Iceland-NATO has 20 supplies", _game->find_naval_station("Iceland-NATO")->supplies_remaining() == 20);
         
         test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == affilation_type::SOVIET);
         test_result("naval_station_unit_test", "Murmansk is a PORT", _game->find_naval_station("Murmansk")->type() == naval_station_type::Port);
@@ -221,6 +232,19 @@ public:
         }
         
         test_result("player_unit_test", "soviet player can only have 9 task forces", result);
+        
+        _clean_up_every_time();
+    }
+    
+    void scenario_data_unit_tests() override
+    {
+        _initialize_every_time();
+        
+        auto sd = _game->scenario();
+        test_result("scenario_data_unit_test", "initialize scenario 1 data", sd != nullptr);
+        
+        int supplies = sd->station_supplies("AMERICA");
+        test_result("scenario_data_unit_test", "there are 900 supplies in America", supplies == 900);
         
         _clean_up_every_time();
     }
@@ -450,6 +474,11 @@ void Tests::naval_station_unit_test()
 }
 
 void Tests::player_unit_test()
+{
+    runtime_assert_not_reached();
+}
+
+void Tests::scenario_data_unit_tests()
 {
     runtime_assert_not_reached();
 }

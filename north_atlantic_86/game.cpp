@@ -13,10 +13,12 @@
 #include "aircraft_data.hpp"
 #include "affiliation_type.hpp"
 #include "debug.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "mutable_unit.hpp"
 //#include "naval_station.hpp"
 #include "naval_station_data.hpp"
+#include "scenario_data.hpp"
 #include "ship_data.hpp"
 #include "weapon_data.hpp"
 #include "weapon_mount.hpp"
@@ -38,8 +40,9 @@ public:
     
     std::shared_ptr<::aircraft> aircraft(const std::string &designation) override
     {
-        runtime_assert(_aircraft_data);
-        return _aircraft_data->find_aircraft(designation);
+        runtime_assert(_game_data);
+        runtime_assert(_game_data->aircraft());
+        return _game_data->aircraft()->find_aircraft(designation);
     }
     
     void add_nato_player(const std::string &name) override
@@ -97,10 +100,11 @@ public:
         std::cout << "*************" << std::endl;
     }
     
-    std::shared_ptr<naval_station> find_naval_station(const std::string &name) override
+    std::shared_ptr<naval_station> find_naval_station(const std::string &id) override
     {
-        runtime_assert(_naval_station_data);
-        return _naval_station_data->find_naval_station(name);
+        runtime_assert(_game_data);
+        runtime_assert(_game_data->stations());
+        return _game_data->stations()->find_naval_station(id);
     }
     
     std::shared_ptr<map> game_map() override
@@ -112,12 +116,15 @@ public:
                         const std::string &ships_json_data,
                         const std::string &weapons_json_data,
                         const std::string &aircraft_json_data,
-                        const std::string &naval_station_json_data) {
-        _ship_data = ShipData::factory(ships_json_data);
-        _weapon_data = weapon_data::Make(weapons_json_data);
-        _aircraft_data = aircraft_data::Make(aircraft_json_data, _weapon_data);
-        _naval_station_data = naval_station_data::Make(naval_station_json_data, _weapon_data);
-        _game_map = map::Make(map_data, _naval_station_data);
+                        const std::string &naval_station_json_data,
+                        const std::string &scenario_data) {
+        _game_data = game_data::Make(aircraft_json_data,
+                                     map_data,
+                                     naval_station_json_data,
+                                     scenario_data,
+                                     ships_json_data,
+                                     weapons_json_data);
+        _game_map = map::Make(map_data, _game_data->stations());
     }
     
     void next_turn() override
@@ -137,30 +144,34 @@ public:
     {
         return _player_soviet;
     }
+        
+    std::shared_ptr<scenario_data> scenario() override
+    {
+        runtime_assert(_game_data);
+        runtime_assert(_game_data->scenario());
+        return _game_data->scenario();
+    }
     
     std::shared_ptr<unit> ship_unit(const std::string &id) override
     {
-        if (_ship_data) {
-            return _ship_data->find_unit(id);
-        }
-        
-        return nullptr;
+        runtime_assert(_game_data);
+        runtime_assert(_game_data->ships());
+        return _game_data->ships()->find_unit(id);
     }
         
     std::shared_ptr<weapon_system> find_weapon_system(const std::string &id) override
     {
-        return _weapon_data->find_weapon_system(id);
+        runtime_assert(_game_data);
+        runtime_assert(_game_data->weapons());
+        return _game_data->weapons()->find_weapon_system(id);
     }
 
 private:
-    std::shared_ptr<aircraft_data> _aircraft_data;
+    std::shared_ptr<game_data> _game_data;
     std::shared_ptr<map> _game_map;
     int _current_turn;
-    std::shared_ptr<naval_station_data> _naval_station_data;
     std::shared_ptr<player> _player_nato;
     std::shared_ptr<player> _player_soviet;
-    std::shared_ptr<ShipData> _ship_data;
-    std::shared_ptr<weapon_data> _weapon_data;
 };
 
 #pragma mark game
@@ -200,7 +211,7 @@ void game::display_weather()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<naval_station> game::find_naval_station(const std::string &name)
+std::shared_ptr<naval_station> game::find_naval_station(const std::string &id)
 {
     runtime_assert_not_reached();
 }
@@ -214,10 +225,11 @@ std::shared_ptr<game> game::Make(const std::string &map_data,
                                  const std::string &ships_json_data,
                                  const std::string &weapons_json_data,
                                  const std::string &aircraft_json_data,
-                                 const std::string &naval_station_json_data)
+                                 const std::string &naval_station_json_data,
+                                 const std::string &scenario_data)
 {
     auto game = std::make_shared<_game>();
-    game->initialize(map_data, ships_json_data, weapons_json_data, aircraft_json_data, naval_station_json_data);
+    game->initialize(map_data, ships_json_data, weapons_json_data, aircraft_json_data, naval_station_json_data, scenario_data);
     return game;
 }
 
@@ -232,6 +244,11 @@ std::shared_ptr<player> game::player_nato()
 }
 
 std::shared_ptr<player> game::player_soviet()
+{
+    runtime_assert_not_reached();
+}
+
+std::shared_ptr<scenario_data> game::scenario()
 {
     runtime_assert_not_reached();
 }

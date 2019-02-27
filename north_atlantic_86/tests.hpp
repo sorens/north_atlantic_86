@@ -24,6 +24,7 @@ public:
     virtual void mutable_unit_unit_test();
     virtual void naval_station_unit_test();
     virtual void player_unit_test();
+    virtual void scenario_data_unit_tests();
     virtual void task_force_unit_test();
     virtual void unit_test();
     virtual void weapon_mount_unit_test();

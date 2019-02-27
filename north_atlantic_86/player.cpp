@@ -20,6 +20,11 @@ static const int Field_TaskForce_AVAILABLE  = 1;
 class _player : public player
 {
 public:
+    _player(const affilation_type affiliation) :
+    _affiliation(affiliation)
+    {
+    }
+    
     _player(affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids) :
     _affiliation(affiliation), _name(name), _possible_task_forces(task_force_ids.size()), _score(0)
     {
@@ -165,6 +170,11 @@ void player::dissolve_task_force(std::shared_ptr<task_force> tf)
 const std::string player::id()
 {
     runtime_assert_not_reached();
+}
+
+std::shared_ptr<player> player::Make(const affilation_type affiliation)
+{
+    return std::make_shared<_player>(affiliation);
 }
 
 std::shared_ptr<player> player::Make(const affilation_type affiliation, const std::string &name, std::vector<std::string> task_force_ids)

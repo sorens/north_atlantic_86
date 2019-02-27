@@ -18,6 +18,7 @@
 #include "map_data.hpp"
 #include "naval_station_data.hpp"
 #include "naval_station_data_exception.hpp"
+#include "scenario_data.hpp"
 #include "ship_data_exception.hpp"
 #include "ship_data.hpp"
 #include "weapon_data.hpp"
@@ -43,6 +44,9 @@ void play_game()
         // read in ship_data.json
         std::string ship_data = ShipData::Import_Data("ship_data.json");
        
+        // read in scenario data
+        std::string scenario_data = scenario_data::Import_Data("scenario_1_data.json");
+        
         // read in weapon_data.json
         std::string weapon_data = weapon_data::Import_Data("weapon_data.json");
         
@@ -52,7 +56,8 @@ void play_game()
         // read in naval_station_data.json
         std::string naval_station_data = naval_station_data::Import_Data("naval_station_data.json");
         
-        auto game = game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data);
+        auto game = game::Make(map_data, ship_data, weapon_data, aircraft_data, naval_station_data, scenario_data);
+        
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
 
@@ -65,6 +70,10 @@ void play_game()
     catch(ship_data_exception &e)
     {
         logerror("ship_data_exception => '" << e.what() << "'");
+    }
+    catch(na_exception &ne)
+    {
+        logerror("na_exception => '" << ne.what() << "'");
     }
     catch(std::exception &e)
     {
