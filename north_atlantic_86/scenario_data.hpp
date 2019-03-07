@@ -19,7 +19,7 @@ public:
     static const std::string Import_Data(const std::string &path);
     
     // create a scenario container
-    static std::shared_ptr<scenario_data> Make(const std::string &json_import, std::shared_ptr<ShipData> ship_data);
+    static std::shared_ptr<scenario_data> Make(const std::string &json_import, std::shared_ptr<ship_data> ship_data);
     
     // create a player with scenario data
     virtual std::shared_ptr<player> make_player(const affiliation_type affiliation);

@@ -29,7 +29,7 @@ class _game_data : public game_data
     std::shared_ptr<map_data> _map;
     std::shared_ptr<naval_station_data> _naval_stations;
     std::shared_ptr<scenario_data> _scenario;
-    std::shared_ptr<ShipData> _ships;
+    std::shared_ptr<ship_data> _ships;
     std::shared_ptr<weapon_data> _weapons;
     
 public:
@@ -50,7 +50,7 @@ public:
     
     void initialize()
     {
-        _ships = ShipData::factory(_ship_data);
+        _ships = ship_data::factory(_ship_data);
         _scenario = scenario_data::Make(_scenario_data, _ships);
         _weapons = weapon_data::Make(_weapon_data);
         _aircraft = aircraft_data::Make(_aircraft_data, _weapons);
@@ -78,7 +78,7 @@ public:
         return _scenario;
     }
 
-    std::shared_ptr<ShipData> ships() override
+    std::shared_ptr<ship_data> ships() override
     {
         return _ships;
     }
@@ -127,7 +127,7 @@ std::shared_ptr<scenario_data> game_data::scenario()
     runtime_assert_not_reached();
 }
 
-std::shared_ptr<ShipData> game_data::ships()
+std::shared_ptr<ship_data> game_data::ships()
 {
     runtime_assert_not_reached();
 }

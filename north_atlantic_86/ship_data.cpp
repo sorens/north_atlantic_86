@@ -16,12 +16,12 @@
 
 using namespace json11;
 
-#pragma mark _ShipData
+#pragma mark _ship_data
 
-class _ShipData : public ShipData
+class _ship_data : public ship_data
 {
 public:
-    _ShipData() {}
+    _ship_data() {}
     
     void initialize(const std::string &json_import) 
     {
@@ -84,19 +84,19 @@ private:
     std::unordered_map<std::string, std::shared_ptr<unit>> _data;
 };
 
-std::shared_ptr<ShipData> ShipData::factory(const std::string &json_import)
+std::shared_ptr<ship_data> ship_data::factory(const std::string &json_import)
 {
-    auto ship_data = std::make_shared<_ShipData>();
+    auto ship_data = std::make_shared<_ship_data>();
     ship_data->initialize(json_import);
     return ship_data;
 }
 
-std::shared_ptr<unit> ShipData::find_unit(const std::string &id)
+std::shared_ptr<unit> ship_data::find_unit(const std::string &id)
 {
     return nullptr;
 }
 
-const std::string ShipData::Import_Data(const std::string &path)
+const std::string ship_data::Import_Data(const std::string &path)
 {
     // read in ship_data.json
     std::string ship_data;

@@ -53,7 +53,7 @@ public:
         std::string map_data = map_data::Import_Data("map_data.json");
         
         // read in ship_data.json
-        std::string ship_data = ShipData::Import_Data("ship_data.json");
+        std::string ship_data = ship_data::Import_Data("ship_data.json");
        
         // read in scenario data
         std::string scenario_data = scenario_data::Import_Data("scenario_1_data.json");
@@ -135,7 +135,7 @@ public:
         _initialize_every_time();
         
         auto wd = weapon_data::Make(weapon_data::Import_Data("weapon_data.json"));
-        auto ship_data = ShipData::factory(ShipData::Import_Data("ship_data.json"));
+        auto ship_data = ship_data::factory(ship_data::Import_Data("ship_data.json"));
         auto sd = scenario_data::Make(scenario_data::Import_Data("scenario_1_data.json"), ship_data);
         auto naval_station_data = naval_station_data::Make(naval_station_data::Import_Data("naval_station_data.json"), wd, sd);
         

@@ -53,7 +53,7 @@ class _scenario_data : public scenario_data
 public:
     _scenario_data() {}
     
-    void initialize(const std::string &json_import, std::shared_ptr<ShipData> ship_data)
+    void initialize(const std::string &json_import, std::shared_ptr<ship_data> ship_data)
     {
         if (json_import.empty())
             throw na_exception("json data is empty");
@@ -267,7 +267,7 @@ const std::string scenario_data::Import_Data(const std::string &path)
     return scenario_data;
 }
 
-std::shared_ptr<scenario_data> scenario_data::Make(const std::string &json_import, std::shared_ptr<ShipData> ship_data)
+std::shared_ptr<scenario_data> scenario_data::Make(const std::string &json_import, std::shared_ptr<ship_data> ship_data)
 {
     auto scenario = std::make_shared<_scenario_data>();
     scenario->initialize(json_import, ship_data);

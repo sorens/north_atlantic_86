@@ -24,7 +24,7 @@ public:
     virtual std::shared_ptr<map_data> map();
     virtual std::shared_ptr<naval_station_data> stations();
     virtual std::shared_ptr<scenario_data> scenario();
-    virtual std::shared_ptr<ShipData> ships();
+    virtual std::shared_ptr<ship_data> ships();
     virtual std::shared_ptr<weapon_data> weapons();
     
     static std::shared_ptr<game_data> Make(const std::string &aircraft_data,

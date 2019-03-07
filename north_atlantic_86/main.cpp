@@ -42,7 +42,7 @@ void play_game()
         std::string map_data = map_data::Import_Data("map_data.json");
         
         // read in ship_data.json
-        std::string ship_data = ShipData::Import_Data("ship_data.json");
+        std::string ship_data = ship_data::Import_Data("ship_data.json");
        
         // read in scenario data
         std::string scenario_data = scenario_data::Import_Data("scenario_1_data.json");

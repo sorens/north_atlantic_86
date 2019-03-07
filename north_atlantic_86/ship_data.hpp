@@ -10,11 +10,11 @@
 
 #include "unit.hpp"
 
-class ShipData
+class ship_data
 {
 public:
     // return a ship_data
-    static std::shared_ptr<ShipData> factory(const std::string &json_import);
+    static std::shared_ptr<ship_data> factory(const std::string &json_import);
     
     // find a ship by it's id (e.g. CVN-68 is the USS Nimitz)
     virtual std::shared_ptr<unit> find_unit(const std::string &id);
