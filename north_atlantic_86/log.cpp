@@ -22,7 +22,7 @@ const std::string LogLine::convert(const LogLine &log)
     // TODO move to its own log file so we can make this field a key
 //    ss << std::left << std::setw(5) << "NA86";
 //    ss << " ";
-    ss << std::left << std::setw(10) << level_to_string(log.level());
+    ss << std::left << std::setw(7) << level_to_string(log.level());
     ss << " ";
     ss << log.message();
     ss << std::endl;
