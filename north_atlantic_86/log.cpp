@@ -8,6 +8,7 @@
 
 #include "log.hpp"
 #include <iomanip>
+#include <syslog.h>
 
 #pragma mark LogLine
 
@@ -19,8 +20,8 @@ const std::string LogLine::convert(const LogLine &log)
 {
     std::ostringstream ss;
     // TODO move to its own log file so we can make this field a key
-    ss << std::left << std::setw(5) << "NA86";
-    ss << " ";
+//    ss << std::left << std::setw(5) << "NA86";
+//    ss << " ";
     ss << std::left << std::setw(10) << level_to_string(log.level());
     ss << " ";
     ss << log.message();
@@ -57,18 +58,5 @@ const std::string LogLine::message() const
 
 void Log::write_log(LogLevel level, const std::string &message)
 {
-    // for syslog, VERBOSE => notice, INFO => warning, WARNING => error, ERROR => critical
-    
-    std::string level_string = "critical";
-    if (LogLevel::VERBOSE == level)
-        level_string = "notice";
-    else if (LogLevel::INFO == level)
-        level_string = "warning";
-    else if (LogLevel::WARNING == level)
-        level_string = "error";
-    
-    std::transform(level_string.begin(), level_string.end(), level_string.begin(), ::tolower);
-    std::ostringstream ss;
-    ss << "syslog -s -l notice" << level_string << " \"" << message << "\"";
-    system(ss.str().c_str());
+    syslog(static_cast<int>(level), "%s", message.c_str());
 }
