@@ -49,5 +49,6 @@ private:
 class Log
 {
 public:
+    static LogLevel LOG_LEVEL;
     static void write_log(LogLevel level, const std::string &message);
 };

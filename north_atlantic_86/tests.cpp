@@ -12,6 +12,7 @@
 #include "debug.hpp"
 #include "file.hpp"
 #include "game.hpp"
+#include "log.hpp"
 #include "map.hpp"
 #include "map_data.hpp"
 #include "mutable_unit.hpp"
@@ -49,6 +50,8 @@ public:
 
     void _initialize_every_time()
     {
+        Log::LOG_LEVEL = LogLevel::INFO;
+        
         // read in map data
         std::string map_data = map_data::Import_Data("map_data.json");
         

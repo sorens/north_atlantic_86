@@ -56,7 +56,10 @@ const std::string LogLine::message() const
 
 #pragma mark Log
 
+LogLevel Log::LOG_LEVEL = LogLevel::VERBOSE;
+
 void Log::write_log(LogLevel level, const std::string &message)
 {
-    syslog(static_cast<int>(level), "%s", message.c_str());
+    if (level <= Log::LOG_LEVEL)
+        syslog(static_cast<int>(level), "%s", message.c_str());
 }
