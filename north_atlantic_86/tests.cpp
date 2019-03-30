@@ -90,10 +90,10 @@ public:
         if (result)
             result_string = "✅,";
         
-        std::string test_case_with_markers = "'" + test_case + "', ";
-        std::string message_with_markers = "'" + message + "', ";
+        std::string test_case_with_markers = "'" + test_case + "'";
+        std::string message_with_markers = "'" + message + "'";
         
-        std::cout << "<TEST CASE result: " << std::left << std::setw(6) << result_string << std::left << std::setw(30) << test_case_with_markers << "CONDITION: " << std::left << std::setw(40) << message_with_markers << std::endl;
+        std::cout << "<TEST CASE result: " << std::left << std::setw(6) << result_string << std::left << std::setw(30) << test_case_with_markers << "CONDITION: " << std::left << std::setw(60) << message_with_markers << ">" << std::endl;
     }
     
     void test_all() override
