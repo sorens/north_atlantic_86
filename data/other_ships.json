@@ -1,0 +1,6 @@
+{
+    "ships": [
+        ["CVG-137", "Novorossiysk",                     0,     4,   94,   30,  15,    50,       3,     "CVG",     "SOVIET"]
+        ["CGN-XXX", "Frunze",                    0,     2,   94,   35,   0,    50,      16,     "CGN",     "SOVIET"]
+    ]
+}
