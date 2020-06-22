@@ -49,6 +49,10 @@ private:
 class Log
 {
 public:
-    static LogLevel LOG_LEVEL;
+    static void initialize(const std::string& file_path, LogLevel level, bool stdout_to_log = false, bool stderr_to_log = false);
+    static void change_log_level(LogLevel level);
     static void write_log(LogLevel level, const std::string &message);
+private:
+    static LogLevel LOG_LEVEL;
+    static std::string LOG_PATH;
 };

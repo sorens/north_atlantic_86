@@ -50,7 +50,7 @@ public:
 
     void _initialize_every_time()
     {
-        Log::LOG_LEVEL = LogLevel::INFO;
+        Log::change_log_level(LogLevel::VERBOSE);
         
         // read in map data
         std::string map_data = map_data::Import_Data("map_data.json");
@@ -98,6 +98,7 @@ public:
     
     void test_all() override
     {
+        loginfo("** all tests: BEGIN");
         aircraft_unit_test();
         grid_unit_test();
         map_unit_test();
@@ -110,6 +111,7 @@ public:
         weapon_mount_unit_test();
         weapon_system_unit_test();
         weather_unit_test();
+        loginfo("** all tests: FINISHED");
     }
     
     void aircraft_unit_test() override

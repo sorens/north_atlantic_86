@@ -108,6 +108,8 @@ void run_unit_tests()
 
 int main(int argc, const char * argv[]) {
 
+    Log::initialize("~/Library/Logs/na86.log", LogLevel::INFO);
+    
     argh::parser cmdl(argc, argv);
     
     if (cmdl[{"-u", "--unit-tests"}]) {

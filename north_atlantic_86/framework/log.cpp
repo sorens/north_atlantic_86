@@ -7,8 +7,9 @@
 //
 
 #include "log.hpp"
-#include <iomanip>
-#include <syslog.h>
+#include <fstream>
+#include <iostream>
+#include <unistd.h>
 
 #pragma mark LogLine
 
@@ -19,10 +20,37 @@ LogLine::LogLine(LogLevel level) : _level(level)
 const std::string LogLine::convert(const LogLine &log)
 {
     std::ostringstream ss;
-    // TODO move to its own log file so we can make this field a key
-//    ss << std::left << std::setw(5) << "NA86";
-//    ss << " ";
-    ss << std::left << std::setw(7) << level_to_string(log.level());
+    auto tty = isatty(STDOUT_FILENO);
+    
+    if (tty) {
+        auto t = time(NULL);
+        struct tm tmp;
+        if (!localtime_r(&t, &tmp)) {
+            // assert?
+            return "";
+        }
+        
+        char str[32];
+        if (!strftime(str, sizeof(str), "%F %T", &tmp)) {
+            // asert!
+            return "";
+        }
+        
+        ss << std::setw(19) << std::left << str;
+        ss << " ";
+    }
+    
+    ss << std::left << std::setw(5) << level_to_string(log.level());
+    ss << " ";
+    
+//        if(tty) {
+//            ss << std::left << std::setw(6) << "[PID]";
+//            ss << " ";
+//            ss << std::left << std::setw(10) << "process_name";
+//            ss << " ";
+//        }
+    
+    ss << std::left << std::setw(10) << "NA86";
     ss << " ";
     ss << log.message();
     ss << std::endl;
@@ -57,9 +85,54 @@ const std::string LogLine::message() const
 #pragma mark Log
 
 LogLevel Log::LOG_LEVEL = LogLevel::VERBOSE;
+std::string Log::LOG_PATH  = "";
+
+void Log::initialize(const std::string& file_path, LogLevel level, bool stdout_to_log, bool stderr_to_log)
+{
+    LOG_LEVEL = level;
+    
+    std::string home(getenv("HOME"));
+    if (file_path != "") {
+        auto pos = file_path.find("~");
+        if (pos != std::string::npos) {
+            if (home != "") {
+                Log::LOG_PATH = home + file_path.substr(pos+1, file_path.length());
+            }
+        }
+        else {
+            Log::LOG_PATH = file_path;
+        }
+    }
+    
+    if (Log::LOG_PATH == "") {
+          Log::LOG_PATH = "./na86.log";
+    }
+    
+    if (stdout_to_log && LOG_PATH != "") {
+        // redirect stdout to our log file
+        freopen(LOG_PATH.c_str(), "a", stdout);
+    }
+    
+    if (stderr_to_log && LOG_PATH != "") {
+        // redirect stderr to our log file
+        freopen(LOG_PATH.c_str(), "a", stderr);
+    }
+}
+
+void Log::change_log_level(LogLevel level)
+{
+    Log::LOG_LEVEL = level;
+}
 
 void Log::write_log(LogLevel level, const std::string &message)
 {
-    if (level <= Log::LOG_LEVEL)
-        syslog(static_cast<int>(level), "%s", message.c_str());
+    if (level <= Log::LOG_LEVEL && Log::LOG_PATH != "") {
+        std::ofstream os;
+        os.open(Log::LOG_PATH, std::ios_base::app);
+        if (os.is_open()) {
+            os << message;
+            os.flush();
+            os.close();
+        }
+    }
 }
