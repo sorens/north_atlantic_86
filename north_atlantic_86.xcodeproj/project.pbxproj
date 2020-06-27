@@ -146,7 +146,7 @@
 		618D3FDC2225D4E200C081CA /* pipeline_unit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pipeline_unit.hpp; sourceTree = "<group>"; };
 		618D3FDE2225D64E00C081CA /* pipeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pipeline.cpp; sourceTree = "<group>"; };
 		618D3FDF2225D64E00C081CA /* pipeline.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pipeline.hpp; sourceTree = "<group>"; };
-		61F7D00F2210980D009C3F34 /* north_atlantic_86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = north_atlantic_86; sourceTree = BUILT_PRODUCTS_DIR; };
+		61F7D00F2210980D009C3F34 /* na86 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = na86; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F7D0122210980D009C3F34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61F7D0192210985D009C3F34 /* unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit.cpp; sourceTree = "<group>"; };
 		61F7D01A2210985D009C3F34 /* unit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit.hpp; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		61F7D0102210980D009C3F34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				61F7D00F2210980D009C3F34 /* north_atlantic_86 */,
+				61F7D00F2210980D009C3F34 /* na86 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,9 +333,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		61F7D00E2210980D009C3F34 /* north_atlantic_86 */ = {
+		61F7D00E2210980D009C3F34 /* na86 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 61F7D0162210980D009C3F34 /* Build configuration list for PBXNativeTarget "north_atlantic_86" */;
+			buildConfigurationList = 61F7D0162210980D009C3F34 /* Build configuration list for PBXNativeTarget "na86" */;
 			buildPhases = (
 				61F7D00B2210980D009C3F34 /* Sources */,
 				61F7D00C2210980D009C3F34 /* Frameworks */,
@@ -345,9 +345,9 @@
 			);
 			dependencies = (
 			);
-			name = north_atlantic_86;
+			name = na86;
 			productName = north_atlantic_86;
-			productReference = 61F7D00F2210980D009C3F34 /* north_atlantic_86 */;
+			productReference = 61F7D00F2210980D009C3F34 /* na86 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -378,7 +378,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				61F7D00E2210980D009C3F34 /* north_atlantic_86 */,
+				61F7D00E2210980D009C3F34 /* na86 */,
 			);
 		};
 /* End PBXProject section */
@@ -540,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -553,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -574,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		61F7D0162210980D009C3F34 /* Build configuration list for PBXNativeTarget "north_atlantic_86" */ = {
+		61F7D0162210980D009C3F34 /* Build configuration list for PBXNativeTarget "na86" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61F7D0172210980D009C3F34 /* Debug */,
