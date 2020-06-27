@@ -4,7 +4,7 @@
 
 The original game, [North Atlantic '86](https://en.wikipedia.org/wiki/North_Atlantic_%2786), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the thread to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
 
-![Original Box Front](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/box-front.png "Box Cover")
+![Original Box Front](docs/screen_shots/box-front.png "Box Cover")
 
 ## Summary
 
@@ -177,12 +177,12 @@ A Task Force is comprised of one or more units from the same navy. Each navy can
 
 ## Example
 
-![map_weather_grid](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/map_weather_grid.png "Map and Weather")
+![map_weather_grid](docs/screen_shots/map_weather_grid.png "Map and Weather")
 
 An early look at what the game map for the North Atlantic
 
-![game_map](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/map.png "Game Map")
+![game_map](docs/screen_shots/map.png "Game Map")
 
 Some initial unit tests
 
-![unit_tests](https://raw.githubusercontent.com/sorens/north_atlantic_86/master/docs/screen_shots/unit_tests.png "Unit Tests")
+![unit_tests](docs/screen_shots/unit_tests.png "Unit Tests")
