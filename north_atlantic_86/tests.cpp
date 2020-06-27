@@ -51,7 +51,7 @@ public:
     void _initialize_every_time()
     {
         Log::change_log_level(LogLevel::VERBOSE);
-        
+
         // read in map data
         std::string map_data = map_data::Import_Data("map_data.json");
         
