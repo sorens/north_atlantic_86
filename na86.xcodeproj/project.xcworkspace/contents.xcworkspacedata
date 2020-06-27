@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:north_atlantic_86.xcodeproj">
+      location = "self:/Users/sorens/src/github.com/sorens/north_atlantic_86/na86.xcodeproj">
    </FileRef>
 </Workspace>

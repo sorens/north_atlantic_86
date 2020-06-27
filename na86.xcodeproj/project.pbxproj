@@ -269,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				61047427222349080095A80B /* data */,
-				61F7D0112210980D009C3F34 /* north_atlantic_86 */,
+				61F7D0112210980D009C3F34 /* na86 */,
 				61F7D0102210980D009C3F34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		61F7D0112210980D009C3F34 /* north_atlantic_86 */ = {
+		61F7D0112210980D009C3F34 /* na86 */ = {
 			isa = PBXGroup;
 			children = (
 				61148EBB2220923D00AFF3F1 /* aircraft.cpp */,
@@ -327,7 +327,7 @@
 				61F7D0272210A523009C3F34 /* weather.cpp */,
 				61F7D0282210A523009C3F34 /* weather.hpp */,
 			);
-			path = north_atlantic_86;
+			path = na86;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,7 +365,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 61F7D00A2210980D009C3F34 /* Build configuration list for PBXProject "north_atlantic_86" */;
+			buildConfigurationList = 61F7D00A2210980D009C3F34 /* Build configuration list for PBXProject "na86" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -567,7 +567,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		61F7D00A2210980D009C3F34 /* Build configuration list for PBXProject "north_atlantic_86" */ = {
+		61F7D00A2210980D009C3F34 /* Build configuration list for PBXProject "na86" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61F7D0142210980D009C3F34 /* Debug */,
