@@ -2,7 +2,7 @@
 
 ## Original Game
 
-The original game, [North Atlantic '86](https://en.wikipedia.org/wiki/North_Atlantic_%2786), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the thread to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
+The original game, [North Atlantic '86](https://northatlantic86.com), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the thread to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
 
 ![Original Box Front](docs/screen_shots/box-front.png "Box Cover")
 
@@ -12,7 +12,7 @@ I needed a reason to practice coding and re-creating this game was more fun than
 
 1. Employ good coding practices
 1. The game should be playable
-1. capture in Github at https://github.com/sorens/north_atlantic_86
+1. Document in Github at https://github.com/sorens/na86
 
 This game project is broken into four chief components:
 
