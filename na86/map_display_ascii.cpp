@@ -35,7 +35,7 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
                 map[i] = '*';
                 break;
             case grid_type::Ocean:
-                map[i] = '-';
+                map[i] = ' ';
                 break;
             case grid_type::Airbase:
             case grid_type::Port:
