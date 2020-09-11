@@ -47,6 +47,11 @@ public:
         _possible_task_forces.clear();
     }
     
+    void add_task_force(std::shared_ptr<task_force> tf) override
+    {
+        _task_forces.push_back(tf);
+    }
+    
     const affiliation_type affiliation() override
     {
         return _affiliation;
@@ -138,6 +143,11 @@ private:
 };
 
 #pragma mark player
+
+void player::add_task_force(std::shared_ptr<task_force> tf)
+{
+    runtime_assert_not_reached();
+}
 
 const affiliation_type player::affiliation()
 {

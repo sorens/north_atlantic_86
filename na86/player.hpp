@@ -18,6 +18,9 @@
 class player
 {
 public:
+    // add a task force
+    virtual void add_task_force(std::shared_ptr<task_force> tf);
+    
     // return the player's affiliation (e.g. NATO, SOVIET)
     virtual const affiliation_type affiliation();
     
