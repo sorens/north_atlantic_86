@@ -2,7 +2,7 @@
 
 ## Original Game
 
-The original game, [North Atlantic '86](https://northatlantic86.com), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the threat to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
+The original game, [North Atlantic '86](https://northatlantic86.com), was released in 1983 by the legendary game creator, [Gary Grigsby](https://en.wikipedia.org/wiki/Gary_Grigsby). The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the threat to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
 
 ![Original Box Front](docs/screen_shots/box-front.png "Box Cover")
 
@@ -92,26 +92,30 @@ The data should be encoded in a JSON object.
 
 Grid Type:
 
-0: landmass
-1: ocean
-2: airbase
-3: port
+ - 0: landmass
+ - 1: ocean
+ - 2: airbase
+ - 3: port
 
 ```javascript
 {
-    "map": [0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
-    0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
-    0, 0, 3, 1, 1, 1, 1, 1, 0, 2,
-    0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 0, 0, 1, 1, 1, 1,
-    1, 1, 1, 1, 2, 0, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    "names": ["Portsmouth", 
-    "Halifax",
-    "Centersville"]
+    "map": [
+            0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+            0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+            0, 0, 3, 1, 1, 1, 1, 1, 0, 2,
+            0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 0, 0, 1, 1, 1, 1,
+            1, 1, 1, 1, 2, 0, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        ],
+        "names": [
+            "Portsmouth", 
+            "Halifax",
+            "Centersville"
+        ]
 }
 ```
 
@@ -120,26 +124,27 @@ Note: The names of the airbases and ports will follow the grid array and should 
 The above example should create a map that looks like this:
 
 ```
-* * * _ _ _ _ _ * *
-* * * _ _ _ _ _ * *
-* * P _ _ _ _ _ * H
-* * _ _ _ _ _ _ _ *
-_ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _
-_ _ _ _ * * _ _ _ _
-_ _ _ _ C * _ _ _ _
-_ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _
+* * *           * *
+* * *           * *
+* * P           * H
+* *               *
+                   
+                   
+        * *        
+        C *        
+                   
+                   
 
 ```
 
 ```
 *: landmass
-_: ocean
+ : ocean
 P: Portsmouth port
 H: Halifax airbase
 C: Centersvill airbase
 ```
+note: I've changed the ocean grid to be represented by the space character. This helps to unclutter the board a bit, but at the cost that its not always easy to see how many grids there are between objects.
 
 ```c++
 // Create the MapSetup vector using JSON
@@ -161,7 +166,7 @@ auto weather_type = weather->type();
 
 ## Unit and MutableUnit
 
-A unit will describe a ship, an aircraft or a port/airbase. Each unit will have different characteristics. Ships can move, Aircraft remain fixed to a ship or base but can attack and defend if scrambled, ports and airbases have aircraft, troops and supplies. A unit will be defined via inheritance and composition. A MutableUnit will allow the game to modify certain fields of a unit as the game progress (e.g. damage)
+A unit will describe a ship, an aircraft or a port/airbase. Each unit will have different characteristics. Ships can move, Aircraft remain fixed to a ship or base but can attack and defend if scrambled, ports and airbases have aircraft, troops and supplies. A unit will be defined via inheritance and composition. A `MutableUnit` will allow the game to modify certain fields of a unit as the game progress (e.g. damage)
 
 ## ShipData
 
@@ -173,7 +178,16 @@ Each Weapon System in the game will be backed by a read-only object loaded from 
 
 ## Task Force
 
-A Task Force is comprised of one or more units from the same navy. Each navy can put to sea Task Forces with the mission type: COMBAT, BOMBARDMENT, TRANSPORT, EVACUATION or SUBMARINE. A sixth mission type, RETURN, is used when a Task Force can no longer fufill its original mission.
+A Task Force is comprised of one or more units from the same navy. Each navy can put to sea Task Forces with the mission type: 
+```
+COMBAT
+BOMBARDMENT
+TRANSPORT
+EVACUATION
+SUBMARINE
+RETURN
+```
+RETURN is used when a Task Force can no longer fufill its original mission.
 
 ## Example
 
