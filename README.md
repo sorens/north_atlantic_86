@@ -1,4 +1,4 @@
-# North Atlantic 86 Simulation Library
+# North Atlantic 86 Simulation Library (na86)
 
 ## Original Game
 
@@ -179,10 +179,10 @@ A Task Force is comprised of one or more units from the same navy. Each navy can
 
 ![map_weather_grid](docs/screen_shots/map_weather_grid.png "Map and Weather")
 
-An early look at what the game map for the North Atlantic
+An early look at what the game map for the na86
 
 ![game_map](docs/screen_shots/map.png "Game Map")
 
-Some initial unit tests
+Unit tests
 
 ![unit_tests](docs/screen_shots/unit_tests.png "Unit Tests")
