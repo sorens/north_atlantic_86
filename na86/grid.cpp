@@ -15,6 +15,7 @@
 #include <cmath>
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 #pragma mark _grid
 
@@ -42,6 +43,16 @@ public:
         }
     }
     
+    void add_unit(std::shared_ptr<unit> unit) override
+    {
+        _units.push_back(unit);
+    }
+    
+    void clear_units() override
+    {
+        _units.clear();
+    }
+    
     const std::string description() override
     {
         std::stringstream ss;
@@ -60,6 +71,16 @@ public:
         return ss.str();
     }
         
+    void remove_unit(std::shared_ptr<unit> unit) override
+    {
+        for (auto iter = _units.begin(); iter != _units.end(); ++iter) {
+            if ((*iter)->id() == unit->id()) {
+                _units.erase(iter);
+                break;
+            }
+        }
+    }
+    
     std::shared_ptr<naval_station> station() override
     {
         return _station;
@@ -107,6 +128,16 @@ private:
 
 #pragma mark grid
 
+void grid::add_unit(std::shared_ptr<unit> unit)
+{
+    runtime_assert_not_reached();
+}
+
+void grid::clear_units()
+{
+    runtime_assert_not_reached();
+}
+
 const std::string grid::description()
 {
     runtime_assert_not_reached();
@@ -130,6 +161,11 @@ int grid::Distance(std::shared_ptr<grid> grid1, std::shared_ptr<grid> grid2)
 std::shared_ptr<grid> grid::Make(const std::string &name, grid_type type, const int x, const int y, std::shared_ptr<naval_station_data> naval_station_data)
 {
     return std::make_shared<_grid>(name, type, x, y, naval_station_data);
+}
+
+void grid::remove_unit(std::shared_ptr<unit> unit)
+{
+    runtime_assert_not_reached();
 }
         
 std::shared_ptr<naval_station> grid::station()
