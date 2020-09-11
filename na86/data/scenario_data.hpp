@@ -24,6 +24,12 @@ public:
     // create a player with scenario data
     virtual std::shared_ptr<player> make_player(const affiliation_type affiliation);
   
+    // return the nato task forces in this scenario
+    virtual std::vector<std::shared_ptr<task_force>> nato_task_forces();
+    
+    // return the soviet task forces in this scenarip
+    virtual std::vector<std::shared_ptr<task_force>> soviet_task_forces();
+
     // return the infantry for a naval station
     virtual const int station_infantry(const std::string &id);
     

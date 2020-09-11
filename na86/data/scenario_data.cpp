@@ -166,12 +166,12 @@ public:
                 int y = fields["y"].int_value();
                 task_force_mission_type mission = task_force_mission_type_utility::to_enum(mission_string);
                 auto tf = task_force::Make(tfid, mission, x, y);
-                _nato_task_forces[tfid] = tf;
                 for (auto &u : fields["units"].array_items()) {
                     std::string id = u[1].string_value();
                     std::shared_ptr<unit> ship_unit = ship_data->find_unit(id);
                     tf->add_unit(ship_unit);
                 }
+                _nato_task_forces[tfid] = tf;
             }
         }
 
@@ -185,12 +185,12 @@ public:
                 int y = fields["y"].int_value();
                 task_force_mission_type mission = task_force_mission_type_utility::to_enum(mission_string);
                 auto tf = task_force::Make(tfid, mission, x, y);
-                _soviet_task_forces[tfid] = tf;
                 for (auto &u : fields["units"].array_items()) {
                     std::string id = u[1].string_value();
                     std::shared_ptr<unit> ship_unit = ship_data->find_unit(id);
                     tf->add_unit(ship_unit);
                 }
+                _soviet_task_forces[tfid] = tf;
             }
         }
     }
@@ -202,6 +202,26 @@ public:
         return player;
     }
     
+    std::vector<std::shared_ptr<task_force>> nato_task_forces() override
+    {
+        std::vector<std::shared_ptr<task_force>> tfs;
+        tfs.reserve(_nato_task_forces.size());
+        for (auto tf : _nato_task_forces) {
+            tfs.push_back(tf.second);
+        }
+        return tfs;
+    }
+
+    std::vector<std::shared_ptr<task_force>> soviet_task_forces() override
+    {
+        std::vector<std::shared_ptr<task_force>> tfs;
+        tfs.reserve(_soviet_task_forces.size());
+        for (auto tf : _soviet_task_forces) {
+            tfs.push_back(tf.second);
+        }
+        return tfs;
+    }
+
     const int station_infantry(const std::string &id) override
     {
         if (_nato_ports.find(id) != _nato_ports.end())
@@ -275,6 +295,16 @@ std::shared_ptr<scenario_data> scenario_data::Make(const std::string &json_impor
 }
 
 std::shared_ptr<player> scenario_data::make_player(const affiliation_type affiliation)
+{
+    runtime_assert_not_reached();
+}
+
+std::vector<std::shared_ptr<task_force>> scenario_data::nato_task_forces()
+{
+    runtime_assert_not_reached();
+}
+
+std::vector<std::shared_ptr<task_force>> scenario_data::soviet_task_forces()
 {
     runtime_assert_not_reached();
 }
