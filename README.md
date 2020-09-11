@@ -2,7 +2,7 @@
 
 ## Original Game
 
-The original game, [North Atlantic '86](https://northatlantic86.com), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the thread to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
+The original game, [North Atlantic '86](https://northatlantic86.com), was released in 1983 by the great game creator, Gary Grigsby. The game featured two player (NATO v USSR) or a human player (NATO) against a computer player (USSR). The two players battled for control of the North Atlantic. The goal of the NATO player was to keep the sea lanes open and keep its allies in Europe supplied. The USSR goal was to deny the supplies to the British Isles, eliminate the threat to its naval forces at Iceland and the Faroes so that it coule operate uncontested in the North Atlantic. Game play included landing paratroopers, shore bombardment from battleships, carrier battle groups and countless warnings of "Incoming Vampires!". It was great fun to play!
 
 ![Original Box Front](docs/screen_shots/box-front.png "Box Cover")
 
@@ -64,7 +64,7 @@ std::shared_ptr<Grid> grid = map->at(int x, int y);
 ```c++
 // Return a description of the Grid object
 auto portsmouth = game->map()->at(2, 2);
-std::cout << portsmouth->description() << std::endl;3
+std::cout << portsmouth->description() << std::endl;
 
 // e.g. <Grid x: 2, y: 2, type: port, name: 'Portsmouth', 
 // <Weather type: 'gale', radar: '0.0706602', satellite: 
