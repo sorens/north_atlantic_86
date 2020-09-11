@@ -40,7 +40,7 @@ const std::string LogLine::convert(const LogLine &log)
         ss << " ";
     }
     
-    ss << std::left << std::setw(5) << level_to_string(log.level());
+    ss << std::left << std::setw(4) << level_to_string(log.level());
     ss << " ";
     
 //        if(tty) {
@@ -50,7 +50,7 @@ const std::string LogLine::convert(const LogLine &log)
 //            ss << " ";
 //        }
     
-    ss << std::left << std::setw(10) << "NA86";
+    ss << std::left << std::setw(4) << "NA86";
     ss << " ";
     ss << log.message();
     ss << std::endl;
@@ -62,13 +62,13 @@ const std::string LogLine::level_to_string(LogLevel level)
 {
     switch (level) {
         case LogLevel::ERROR:
-            return "ERROR";
+            return "ERRO";
         case LogLevel::WARNING:
-            return "WARNING";
+            return "WARN";
         case LogLevel::INFO:
             return "INFO";
         case LogLevel::VERBOSE:
-            return "VERBOSE";
+            return "VERB";
     }
 }
 
