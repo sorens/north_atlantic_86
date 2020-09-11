@@ -48,11 +48,21 @@ public:
     void add_nato_player(const std::string &name) override
     {
         _player_nato = player::Make(affiliation_type::NATO, name, NATO_POSSIBLE_TASK_FORCES);
+        
+        // loop over scenario tasks forces, add them to our player
+        for (auto tf : _game_data->scenario()->nato_task_forces()) {
+            _player_nato->add_task_force(tf);
+        }
     }
     
     void add_soviet_player(const std::string &name) override
     {
         _player_soviet = player::Make(affiliation_type::SOVIET, name, SOVIET_POSSIBLE_TASK_FORCES);
+        
+        // loop over scenario tasks forces, add them to our player
+        for (auto tf : _game_data->scenario()->soviet_task_forces()) {
+            _player_soviet->add_task_force(tf);
+        }
     }
     
     std::string current_time() override
