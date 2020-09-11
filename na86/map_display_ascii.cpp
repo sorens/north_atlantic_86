@@ -35,8 +35,15 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
                 map[i] = '*';
                 break;
             case grid_type::Ocean:
+            {
                 map[i] = ' ';
+#if defined(_WEATHER)
+                int type = static_cast<int>(g->grid_weather()->type());
+                if (type >= 7)
+                    map[i] = '.';
+#endif // #if defined(_WEATHER)
                 break;
+            }
             case grid_type::Airbase:
             case grid_type::Port:
                 map[i] = g->station()->name()[0];
@@ -73,20 +80,59 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
     std::ostringstream ss;
     
     ss << "NATO: " << game->player_nato()->name() << "                     SOVIET: " << game->player_soviet()->name() << std::endl;
-    ss << "|==================================== M A P ====================================|" << std::endl;
-    ss << "|";
     
+    // print the column numbers (ones place)
+    ss << " ";
+    for (int j = 1; j < side+1; ++j) {
+        ss << j % 10;
+        ss << " ";
+    }
+    ss << std::endl;
+
+    // print the column numbers (tens place)
+    ss << " ";
+    for (int j = 1; j < side+1; ++j) {
+        ss << j / 10;
+        ss << " ";
+    }
+    ss << std::endl;
+    
+    // print the map border including title
+    auto doubleSided = side * 2;
+    auto startTitle = std::floor((doubleSided - 7) / 2);
+    ss << "|";
+    for (int j = 0; j < startTitle; ++j) {
+        ss << "=";
+    }
+    ss << " M A P ";
+    for (int j = 0; j < startTitle; ++j) {
+        ss << "=";
+    }
+    ss << "|" << std::endl;
+
+
+    // print the map, with side borders
     for (int j = 1; j < size+1; ++j) {
+        if (j % side == 1)
+            ss << "|";
         ss << map[j-1];
         if (j % side == 0) {
-            ss << "|" << std::endl << "|";
+            ss << "|" << (side - j/side)+1 << std::endl;
         }
         else {
             ss << " ";
         }
     }
     
-    ss << "===============================================================================|" << std::endl;
-    
+    // print the bottom border
+    for (int j = 1; j < doubleSided; ++j) {
+        if (j == 1)
+            ss << "|";
+        ss << "=";
+        if (j == doubleSided-1) {
+            ss << "|" << std::endl;;
+        }
+    }
+
     return ss;
 }
