@@ -115,10 +115,10 @@ public:
         ss << " id: " << _id;
         ss << " mission: " << task_force_mission_type_utility::to_string(_mission);
         ss << " location: " << _x << ", " << _y;
-        ss << " units (" << _units.size() << "): ";
+        ss << " units (" << _units.size() << "): " << std::endl;
         for (auto &unit : _units) {
             if (auto strong = unit.lock())
-                ss << strong->id() << ", ";
+                ss << "    " << strong->id() << ", " << std::endl;
         }
         ss << ">";
         
