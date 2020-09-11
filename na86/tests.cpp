@@ -215,7 +215,7 @@ public:
                     result = false;
             }
             catch(no_task_forces_available_player_exception &e) {
-                if (i < 12)
+                if (nato->task_forces().size() < 11)
                     result = false;
             }
         }
@@ -231,7 +231,7 @@ public:
                     result = false;
             }
             catch(no_task_forces_available_player_exception &e) {
-                if (i < 10)
+                if (soviet->task_forces().size() < 9)
                     result = false;
             }
         }
