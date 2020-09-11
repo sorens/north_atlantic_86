@@ -20,8 +20,8 @@ int map_display_ascii::ConvertCoordinates(const int x, const int y)
 
 std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
 {
-    auto grid = game->game_map()->grids();
-    auto size = grid.size();
+    auto grids = game->game_map()->grids();
+    auto size = grids.size();
     int side = std::pow(size, 0.5);
     
     std::vector<char> map(size);
@@ -29,7 +29,7 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
     int i = 0;
     
     // place all grid objects
-    for (auto g : grid) {
+    for (auto g : grids) {
         switch (g->type()) {
             case grid_type::Landmass:
                 map[i] = '*';
@@ -48,21 +48,26 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
         ++i;
     }
 
-    // TODO
-    
-    
     // place all NATO fleet objects
     auto nato_tfs = game->player_nato()->task_forces();
     
     for (auto &tf : nato_tfs) {
+        // nato task forces, marked with `n`
         logverbose(tf->description());
+        int index = ConvertCoordinates(tf->x(), tf->y());
+        loginfo("nato tf: " << tf->id() << ", index: " << index);
+        map[index] = 'n';
     }
     
     // place all SOVIET fleet objects
     auto soviet_tfs = game->player_soviet()->task_forces();
     
     for (auto &tf : soviet_tfs) {
+        // soviet task forces, marked with 's'
         logverbose(tf->description());
+        int index = ConvertCoordinates(tf->x(), tf->y());
+        loginfo("soviet tf: " << tf->id() << ", index: " << index);
+        map[index] = 's';
     }
     
     std::ostringstream ss;
