@@ -57,6 +57,12 @@ public:
     // return a vector of sunken ships
     virtual const std::vector<std::shared_ptr<unit>> sunken_ships();
     
+    // find a task_force by id
+    virtual const std::shared_ptr<task_force> task_force_by_id(const std::string &id);
+    
+    // find all task_forces at a coordinate
+    virtual const std::vector<std::shared_ptr<task_force>> task_forces_at(const int x, const int y);
+
     // return a list of task forces
     virtual const std::vector<std::shared_ptr<task_force>> task_forces();
 };

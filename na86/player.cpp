@@ -49,7 +49,7 @@ public:
     
     void add_task_force(std::shared_ptr<task_force> tf) override
     {
-        _task_forces.push_back(tf);
+        __task_forces[tf->id()] = tf;
     }
     
     const affiliation_type affiliation() override
@@ -81,7 +81,8 @@ public:
         
         if (!id.empty()) {
             task_force = task_force::Make(id, mission, x, y);
-            _task_forces.push_back(task_force);
+//            _task_forces.push_back(task_force);
+            __task_forces[task_force->id()] = task_force;
         }
 
         return task_force;
@@ -111,7 +112,7 @@ public:
     
     const int number_remaining_task_forces() override
     {
-        int result = static_cast<int>(_possible_task_forces.size()) - static_cast<int>(_task_forces.size());
+        int result = static_cast<int>(_possible_task_forces.size()) - static_cast<int>(__task_forces.size());
         runtime_assert(result >= 0 && result <= _possible_task_forces.size());
         return result;
     }
@@ -126,9 +127,32 @@ public:
         return _sunken_ships;
     }
     
+    const std::shared_ptr<task_force> task_force_by_id(const std::string &id) override
+    {
+        auto iter = __task_forces.find(id);
+        return (iter == __task_forces.end()) ? nullptr : iter->second;
+    }
+    
+    const std::vector<std::shared_ptr<task_force>> task_forces_at(const int x, const int y) override
+    {
+        std::vector<std::shared_ptr<task_force>> tfs;
+        for (auto kv : __task_forces) {
+            if (kv.second->x() == x && kv.second->y()) {
+                tfs.push_back(kv.second);
+            }
+        }
+        
+        return tfs;
+    }
+    
     const std::vector<std::shared_ptr<task_force>> task_forces() override
     {
-        return _task_forces;
+        std::vector<std::shared_ptr<task_force>> tfs;
+         tfs.reserve(__task_forces.size());
+         for (auto tf : __task_forces) {
+             tfs.push_back(tf.second);
+         }
+         return tfs;
     }
     
 private:
@@ -139,7 +163,8 @@ private:
     std::vector<std::tuple<std::string, bool>> _possible_task_forces;
     int _score;
     std::vector<std::shared_ptr<unit>> _sunken_ships;
-    std::vector<std::shared_ptr<task_force>> _task_forces;
+//    std::vector<std::shared_ptr<task_force>> _task_forces;
+    std::unordered_map<std::string, std::shared_ptr<task_force>> __task_forces;
 };
 
 #pragma mark player
@@ -213,6 +238,16 @@ const std::vector<std::shared_ptr<unit>> player::sunken_ships()
 }
 
 const std::vector<std::shared_ptr<task_force>> player::task_forces()
+{
+    runtime_assert_not_reached();
+}
+
+const std::shared_ptr<task_force> player::task_force_by_id(const std::string &id)
+{
+    runtime_assert_not_reached();
+}
+
+const std::vector<std::shared_ptr<task_force>> player::task_forces_at(const int x, const int y)
 {
     runtime_assert_not_reached();
 }
