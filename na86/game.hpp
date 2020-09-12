@@ -56,6 +56,9 @@ public:
                                       const std::string &scenario_data
                                       );
     
+    // move a task force to coordinates
+    virtual void move_task_force(std::shared_ptr<task_force> &task_force, const int x, const int y);
+
     // run the next turn
     virtual void next_turn();
     
@@ -73,4 +76,7 @@ public:
     
     // return a weapon system
     virtual std::shared_ptr<weapon_system> find_weapon_system(const std::string &id);
+    
+    // return a list of task forces at coordinates
+    virtual std::vector<std::shared_ptr<task_force>> task_forces_at_coordinates(const int x, const int y);
 };

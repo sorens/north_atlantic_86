@@ -137,6 +137,25 @@ public:
         _game_map = map::Make(map_data, _game_data->stations());
     }
     
+    std::vector<std::shared_ptr<task_force>> task_forces_at_coordinates(const int x, const int y) override
+    {
+        std::vector<std::shared_ptr<task_force>> tfs;
+        
+        for (auto tf : player_nato()->task_forces()) {
+            if (tf->x() == x && tf->y() == y) {
+                tfs.push_back(tf);
+            }
+        }
+        
+        for (auto tf : player_soviet()->task_forces()) {
+            if (tf->x() == x && tf->y() == y) {
+                tfs.push_back(tf);
+            }
+        }
+        
+        return tfs;
+    }
+    
     void next_turn() override
     {
         // create a task force
@@ -174,6 +193,14 @@ public:
         runtime_assert(_game_data);
         runtime_assert(_game_data->weapons());
         return _game_data->weapons()->find_weapon_system(id);
+    }
+
+    void move_task_force(std::shared_ptr<task_force> &task_force, const int x, const int y) override
+    {
+        if (task_force == nullptr)
+            return;
+        
+        task_force->move(x, y);
     }
 
 private:
@@ -243,6 +270,11 @@ std::shared_ptr<game> game::Make(const std::string &map_data,
     return game;
 }
 
+void game::move_task_force(std::shared_ptr<task_force> &task_force, const int x, const int y)
+{
+    runtime_assert_not_reached();
+}
+
 void game::next_turn()
 {
     runtime_assert_not_reached();
@@ -269,6 +301,11 @@ std::shared_ptr<unit> game::ship_unit(const std::string &id)
 }
 
 std::shared_ptr<weapon_system> game::find_weapon_system(const std::string &id)
+{
+    runtime_assert_not_reached();
+}
+
+std::vector<std::shared_ptr<task_force>> game::task_forces_at_coordinates(const int x, const int y)
 {
     runtime_assert_not_reached();
 }
