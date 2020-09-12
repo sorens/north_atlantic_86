@@ -75,6 +75,12 @@ public:
         return max_speed;
     }
     
+    void move(const int x, const int y) override
+    {
+        _x = x;
+        _y = y;
+    }
+    
     void remove_unit(const std::string &id) override
     {
         for (auto iter = _units.begin(); iter != _units.end(); ++iter) {
@@ -161,6 +167,11 @@ const int task_force::max_speed()
 }
 
 const task_force_mission_type task_force::mission()
+{
+    runtime_assert_not_reached();
+}
+
+void task_force::move(const int x, const int y)
 {
     runtime_assert_not_reached();
 }

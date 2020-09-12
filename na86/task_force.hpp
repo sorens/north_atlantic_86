@@ -33,6 +33,9 @@ public:
     // mission type for this task force
     virtual const task_force_mission_type mission();
     
+    // move the task force
+    virtual void move(const int x, const int y);
+    
     // remove the unit from the task force
     virtual void remove_unit(const std::string &id);
     
