@@ -3272,7 +3272,7 @@
       "20": {
         "mission": "COMBAT",
         "x": 13,
-        "y": 15,
+        "y": 26,
         "units": [
           [
             "CV-INVINCIBLE",
@@ -3617,7 +3617,7 @@
       "21": {
         "mission": "SUBMARINE",
         "x": 29,
-        "y": 9,
+        "y": 33,
         "units": [
           [
             "SSN-SWIFTSURE",
@@ -3701,8 +3701,8 @@
       },
       "22": {
         "mission": "SUBMARINE",
-        "x": 16,
-        "y": 21,
+        "x": 15,
+        "y": 11,
         "units": [
           [
             "SSN-PHILADELPHIA",
@@ -3760,8 +3760,8 @@
       },
       "23": {
         "mission": "SUBMARINE",
-        "x": 10,
-        "y": 26,
+        "x": 16,
+        "y": 23,
         "units": [
           [
             "SS-ODIN",
@@ -3835,7 +3835,7 @@
       "7": {
         "mission": "SUBMARINE",
         "x": 7,
-        "y": 31,
+        "y": 10,
         "units": [
           [
             "SSNG-C6",
@@ -3907,7 +3907,7 @@
       "8": {
         "mission": "SUBMARINE",
         "x": 13,
-        "y": 19,
+        "y": 22,
         "units": [
           [
             "SSNG-E12",
@@ -4031,7 +4031,7 @@
       "9": {
         "mission": "SUBMARINE",
         "x": 15,
-        "y": 31,
+        "y": 10,
         "units": [
           [
             "SSN-V6",
