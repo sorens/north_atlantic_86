@@ -74,15 +74,6 @@ public:
         _dimension = std::pow(_map_grid.size(), 0.5);
     }
     
-    std::vector<std::shared_ptr<unit>> units(const int x, const int y) override
-    {
-        int index = (y * (_dimension - 1)) + x;
-        if (index < 0 || index >= _map_grid.size())
-            throw map_out_of_bounds_exception();
-        
-        return _map_grid[index]->units();
-    }
-    
 private:
     std::vector<std::shared_ptr<grid>> _map_grid;
     int _dimension = -1;
@@ -110,9 +101,4 @@ std::shared_ptr<map> map::Make(const std::string &map_data, std::shared_ptr<nava
     auto map = std::make_shared<_map>();
     map->initialize(map_data, naval_station_data);
     return map;
-}
-
-std::vector<std::shared_ptr<unit>> map::units(const int x, const int y)
-{
-    runtime_assert_not_reached();
 }
