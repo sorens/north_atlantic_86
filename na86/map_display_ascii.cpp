@@ -12,10 +12,10 @@
 
 #pragma mark map_display_ascii
 
-int map_display_ascii::ConvertCoordinates(const int x, const int y)
+int map_display_ascii::ConvertCoordinates(const int x, const int y, const long size)
 {
-    // TODO hard-coded
-    return (y * 40) + x;
+    auto side = std::pow(size, 0.5);
+    return size-(y * side) + x-1;
 }
 
 std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
@@ -61,7 +61,7 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
     for (auto &tf : nato_tfs) {
         // nato task forces, marked with `n`
         logverbose(tf->description());
-        int index = ConvertCoordinates(tf->x(), tf->y());
+        int index = ConvertCoordinates(tf->x(), tf->y(), size);
         loginfo("nato tf: " << tf->id() << ", index: " << index);
         map[index] = 'n';
     }
@@ -72,7 +72,7 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
     for (auto &tf : soviet_tfs) {
         // soviet task forces, marked with 's'
         logverbose(tf->description());
-        int index = ConvertCoordinates(tf->x(), tf->y());
+        int index = ConvertCoordinates(tf->x(), tf->y(), size);
         loginfo("soviet tf: " << tf->id() << ", index: " << index);
         map[index] = 's';
     }
