@@ -43,16 +43,6 @@ public:
         }
     }
     
-    void add_unit(std::shared_ptr<unit> unit) override
-    {
-        _units.push_back(unit);
-    }
-    
-    void clear_units() override
-    {
-        _units.clear();
-    }
-    
     const std::string description() override
     {
         std::stringstream ss;
@@ -71,16 +61,6 @@ public:
         return ss.str();
     }
         
-    void remove_unit(std::shared_ptr<unit> unit) override
-    {
-        for (auto iter = _units.begin(); iter != _units.end(); ++iter) {
-            if ((*iter)->id() == unit->id()) {
-                _units.erase(iter);
-                break;
-            }
-        }
-    }
-    
     std::shared_ptr<naval_station> station() override
     {
         return _station;
@@ -111,32 +91,16 @@ public:
         return _weather;
     }
     
-    const std::vector<std::shared_ptr<unit>> units() override
-    {
-        return _units;
-    }
- 
 private:
     std::shared_ptr<naval_station> _station;
     int _x;
     int _y;
     grid_type _type;
-    std::vector<std::shared_ptr<unit>> _units;
     int _water_temp;
     std::shared_ptr<weather> _weather;
 };
 
 #pragma mark grid
-
-void grid::add_unit(std::shared_ptr<unit> unit)
-{
-    runtime_assert_not_reached();
-}
-
-void grid::clear_units()
-{
-    runtime_assert_not_reached();
-}
 
 const std::string grid::description()
 {
@@ -163,16 +127,11 @@ std::shared_ptr<grid> grid::Make(const std::string &name, grid_type type, const 
     return std::make_shared<_grid>(name, type, x, y, naval_station_data);
 }
 
-void grid::remove_unit(std::shared_ptr<unit> unit)
-{
-    runtime_assert_not_reached();
-}
-        
 std::shared_ptr<naval_station> grid::station()
 {
     runtime_assert_not_reached();
 }
-        
+
 const grid_type grid::type()
 {
     runtime_assert_not_reached();
@@ -194,11 +153,6 @@ const int grid::water_temperature()
 }
 
 const std::shared_ptr<weather> grid::grid_weather()
-{
-    runtime_assert_not_reached();
-}
-
-const std::vector<std::shared_ptr<unit>> grid::units()
 {
     runtime_assert_not_reached();
 }
