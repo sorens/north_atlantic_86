@@ -79,8 +79,6 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
     
     std::ostringstream ss;
     
-    ss << "NATO: " << game->player_nato()->name() << "                     SOVIET: " << game->player_soviet()->name() << std::endl;
-    
     // print the column numbers (ones place)
     ss << " ";
     for (int j = 1; j < side+1; ++j) {
@@ -124,11 +122,20 @@ std::ostringstream map_display_ascii::Generate(std::shared_ptr<game> game)
         }
     }
     
+    auto nato_player = "NATO: " + game->player_nato()->name() + " ";
+    auto soviet_player = " SOVIET: " + game->player_soviet()->name();
+
     // print the bottom border
     for (int j = 1; j < doubleSided; ++j) {
         if (j == 1)
             ss << "|";
-        ss << "=";
+        if (j <= nato_player.size())
+            ss << nato_player[j-1];
+        else if (j >= doubleSided - soviet_player.size()) {
+            ss << soviet_player[j + soviet_player.size() - doubleSided];
+        }
+        else
+            ss << "=";
         if (j == doubleSided-1) {
             ss << "|" << std::endl;;
         }
