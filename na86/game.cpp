@@ -158,10 +158,6 @@ public:
     
     void next_turn() override
     {
-        // create a task force
-        auto combat_tf = _player_nato->create_task_force(task_force_mission_type::COMBAT, 10, 10);
-        combat_tf->add_unit(ship_unit("CG-47"));     // Ticonderoga
-        combat_tf->add_unit(ship_unit("CVN-68"));    // Nimitz
     }
     
     std::shared_ptr<player> player_nato() override
