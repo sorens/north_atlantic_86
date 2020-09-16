@@ -15,6 +15,7 @@
 #include "debug.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
+#include "map_exception.hpp"
 #include "mutable_unit.hpp"
 //#include "naval_station.hpp"
 #include "naval_station_data.hpp"
@@ -196,7 +197,15 @@ public:
         if (task_force == nullptr)
             return;
         
-        task_force->move(x, y);
+        // check if the new coordinates are within bounds
+        if (_game_map->validate_task_force_coordinates(x, y)) {
+            // move the task_force
+            task_force->move(x, y);
+            return;
+        }
+        
+        // throw a map_out_of_bounds_exception
+        throw map_out_of_bounds_exception::factory(x, y);
     }
 
 private:

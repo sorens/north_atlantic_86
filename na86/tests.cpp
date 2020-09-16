@@ -18,6 +18,7 @@
 #include "mutable_unit.hpp"
 #include "naval_station_data.hpp"
 #include "naval_station_data_exception.hpp"
+#include "map_exception.hpp"
 #include "player.hpp"
 #include "player_exception.hpp"
 #include "scenario_data.hpp"
@@ -203,6 +204,57 @@ public:
         test_result("map_unit_test", "map square should be Port, Murmansk", _game->game_map()->at(40, 32)->type() == grid_type::Port);
         test_result("map_unit_test", "map square should be x == 40", _game->game_map()->at(40, 32)->x() == 40);
         test_result("map_unit_test", "map square should be y == 32", _game->game_map()->at(40, 32)->y() == 32);
+
+        // use the game object to move a task force
+        auto combat_tf = task_force::Make("12", task_force_mission_type::COMBAT, 1, 1);
+        auto nimitz = _game->ship_unit("CVN-68");
+        combat_tf->add_unit(nimitz);
+
+        // x outside of map boundaries
+        try {
+            _game->move_task_force(combat_tf, 1000, 2);
+            test_result("map_unit_test", "task force should not move to x: 1000", false);
+        }
+        catch (map_out_of_bounds_exception &e) {
+            test_result("map_unit_test", e.what(), true);
+        }
+
+        // y outside of map boundaries
+        try {
+            _game->move_task_force(combat_tf, 2, 1000);
+            test_result("map_unit_test", "task force should not move to y: 1000", false);
+        }
+        catch (map_out_of_bounds_exception &e) {
+            test_result("map_unit_test", e.what(), true);
+        }
+        
+        // not an ocean or port
+        try {
+            _game->move_task_force(combat_tf, 1, 40); // in Greenland
+            test_result("map_unit_test", "task force should not move to a non ocean or port grid", false);
+        }
+        catch (map_out_of_bounds_exception &e) {
+            test_result("map_unit_test", e.what(), true);
+        }
+        
+        // Ocean, valid
+        try {
+            _game->move_task_force(combat_tf, 2, 2);
+            test_result("map_unit_test", "task force moved one grid", true);
+        }
+        catch (map_out_of_bounds_exception &e) {
+            test_result("map_unit_test", e.what(), false);
+        }
+        
+        // Port, valid
+        try {
+            _game->move_task_force(combat_tf, 13, 26);
+            test_result("map_unit_test", "task force moved one grid", true);
+        }
+        catch (map_out_of_bounds_exception &e) {
+            test_result("map_unit_test", e.what(), false);
+        }
+        
         _clean_up_every_time();
     }
 
