@@ -120,7 +120,7 @@ void run_unit_tests()
 
 int main(int argc, const char * argv[]) {
 
-    Log::initialize("~/Library/Logs/na86.log", LogLevel::INFO);
+    Log::initialize("~/Library/Logs/na86.log", LogLevel::VERBOSE);
     
     argh::parser cmdl(argc, argv);
     
