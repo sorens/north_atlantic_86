@@ -21,6 +21,7 @@
 		61148EA6221DB96100AFF3F1 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EA4221DB96100AFF3F1 /* tests.cpp */; };
 		61148EBD2220923D00AFF3F1 /* aircraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EBB2220923D00AFF3F1 /* aircraft.cpp */; };
 		61148EC32223445700AFF3F1 /* naval_station.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61148EC12223445700AFF3F1 /* naval_station.cpp */; };
+		616EC56F2511A11B001D087A /* mutable_naval_station.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 616EC56D2511A11B001D087A /* mutable_naval_station.cpp */; };
 		617070CF224B40A50083C2EC /* scenario_1_data.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 617070CE224B405E0083C2EC /* scenario_1_data.json */; };
 		6173C2E9224F395C00C580D0 /* map_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6173C2DE224F395C00C580D0 /* map_data.cpp */; };
 		6173C2EA224F395C00C580D0 /* scenario_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6173C2E0224F395C00C580D0 /* scenario_data.cpp */; };
@@ -95,6 +96,8 @@
 		613E53A925112A8F002B22D6 /* weapon_data_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_data_exception.hpp; sourceTree = "<group>"; };
 		613E53AA25112A8F002B22D6 /* weapon_mount_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = weapon_mount_exception.hpp; sourceTree = "<group>"; };
 		613E53AD25113C02002B22D6 /* map_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map_exception.hpp; sourceTree = "<group>"; };
+		616EC56D2511A11B001D087A /* mutable_naval_station.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mutable_naval_station.cpp; sourceTree = "<group>"; };
+		616EC56E2511A11B001D087A /* mutable_naval_station.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mutable_naval_station.hpp; sourceTree = "<group>"; };
 		617070CE224B405E0083C2EC /* scenario_1_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = scenario_1_data.json; path = data/scenario_1_data.json; sourceTree = "<group>"; };
 		6173C2DD224F395C00C580D0 /* aircraft_data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aircraft_data.hpp; sourceTree = "<group>"; };
 		6173C2DE224F395C00C580D0 /* map_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_data.cpp; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				61148E96221CF10F00AFF3F1 /* map_display_ascii.hpp */,
 				61F7D02D2210BDD3009C3F34 /* map.cpp */,
 				61F7D02E2210BDD3009C3F34 /* map.hpp */,
+				616EC56D2511A11B001D087A /* mutable_naval_station.cpp */,
+				616EC56E2511A11B001D087A /* mutable_naval_station.hpp */,
 				61148E4A2214FBFF00AFF3F1 /* mutable_unit.cpp */,
 				61148E4B2214FBFF00AFF3F1 /* mutable_unit.hpp */,
 				61148EC12223445700AFF3F1 /* naval_station.cpp */,
@@ -410,6 +415,7 @@
 				6173C31C224F3CF900C580D0 /* weather_type.cpp in Sources */,
 				6173C317224F3CF900C580D0 /* affiliation_type.cpp in Sources */,
 				6173C2EB224F395C00C580D0 /* weapon_data.cpp in Sources */,
+				616EC56F2511A11B001D087A /* mutable_naval_station.cpp in Sources */,
 				618D3FDD2225D4E200C081CA /* pipeline_unit.cpp in Sources */,
 				618D3FE02225D64E00C081CA /* pipeline.cpp in Sources */,
 				6173C318224F3CF900C580D0 /* aircraft_type.cpp in Sources */,

@@ -47,12 +47,6 @@ public:
     // helicopters
     virtual const int helicopters();
     
-    // infantry remaining
-    virtual const int infantry_remaining();
-    
-    // update the number of infantry
-    virtual void infantry_update(const int value);
-
     // main guns
     virtual const int main_guns();
 
@@ -93,12 +87,6 @@ public:
 
     // sonar strength
     virtual const int sonar_strength();
-    
-    // supplies remaining
-    virtual const int supplies_remaining();
-    
-    // update the number of supplies
-    virtual void supplies_update(const int value);
     
     // naval_station type
     virtual const naval_station_type type();

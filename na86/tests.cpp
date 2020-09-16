@@ -16,6 +16,7 @@
 #include "map.hpp"
 #include "map_data.hpp"
 #include "mutable_unit.hpp"
+#include "mutable_naval_station.hpp"
 #include "naval_station_data.hpp"
 #include "naval_station_data_exception.hpp"
 #include "map_exception.hpp"
@@ -306,6 +307,24 @@ public:
         
         _clean_up_every_time();
     }
+    
+    void mutable_naval_station_test() override
+    {
+        _initialize_every_time();
+        auto naval_station =  naval_station::Make("test", affiliation_type::NATO, naval_station_type::Port, 100, 100, 100, 100, 100, 100, 100, 100, nullptr, 0, 0, nullptr, nullptr, nullptr, 100, 100, 100, 100, 100, 100);
+        auto mutable_naval_station = mutable_naval_station::Make(naval_station, 100, 100);
+        test_result("naval_station_unit_test", "naval station should have 100 infantry", mutable_naval_station->infantry() == 100);
+        test_result("naval_station_unit_test", "naval station should have 100 supplies", mutable_naval_station->supplies() == 100);
+        mutable_naval_station->lose_infantry(10);
+        mutable_naval_station->lose_supplies(10);
+        test_result("naval_station_unit_test", "naval station should have 90 infantry", mutable_naval_station->infantry() == 90);
+        test_result("naval_station_unit_test", "naval station should have 90 supplies", mutable_naval_station->supplies() == 90);
+        mutable_naval_station->gain_infantry(20);
+        mutable_naval_station->gain_supplies(20);
+        test_result("naval_station_unit_test", "naval station should have 110 infantry", mutable_naval_station->infantry() == 110);
+        test_result("naval_station_unit_test", "naval station should have 110 supplies", mutable_naval_station->supplies() == 110);
+        _clean_up_every_time();
+    }
 
     void mutable_unit_unit_test() override
     {
@@ -338,8 +357,6 @@ public:
         test_result("naval_station_unit_test", "Iceland-NATO has 12 helicopters", _game->find_naval_station("Iceland-NATO")->helicopters() == 12);
         test_result("naval_station_unit_test", "Iceland-NATO has 4 EW strength", _game->find_naval_station("Iceland-NATO")->ew_strength() == 4);
         test_result("naval_station_unit_test", "Iceland-NATO has 0 SONAR strength", _game->find_naval_station("Iceland-NATO")->sonar_strength() == 0);
-        test_result("naval_station_unit_test", "Iceland-NATO has 120 infantry", _game->find_naval_station("Iceland-NATO")->infantry_remaining() == 120);
-        test_result("naval_station_unit_test", "Iceland-NATO has 20 supplies", _game->find_naval_station("Iceland-NATO")->supplies_remaining() == 20);
         
         test_result("naval_station_unit_test", "Murmansk is SOVIET", _game->find_naval_station("Murmansk")->affiliation() == affiliation_type::SOVIET);
         test_result("naval_station_unit_test", "Murmansk is a PORT", _game->find_naval_station("Murmansk")->type() == naval_station_type::Port);
@@ -610,6 +627,11 @@ void Tests::grid_unit_test()
 }
 
 void Tests::map_unit_test()
+{
+    runtime_assert_not_reached();
+}
+
+void Tests::mutable_naval_station_test()
 {
     runtime_assert_not_reached();
 }

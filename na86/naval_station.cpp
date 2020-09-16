@@ -36,8 +36,6 @@ class _naval_station : public naval_station
     int _air_ew;
     int _air_asw;
     int _air_awacs;
-    int _supplies;
-    int _infantry;
 
 public:
     _naval_station(const std::string &name,
@@ -85,9 +83,7 @@ public:
     _air_recon(air_recon),
     _air_ew(air_ew),
     _air_asw(air_asw),
-    _air_awacs(air_awacs),
-    _supplies(supplies),
-    _infantry(infantry)
+    _air_awacs(air_awacs)
     {
     }
 
@@ -144,16 +140,6 @@ public:
         return _helicopters;
     }
     
-    const int infantry_remaining() override
-    {
-        return _infantry;
-    }
-    
-    void infantry_update(const int value) override
-    {
-        _infantry = value;
-    }
-
     const int main_guns() override
     {
         return _main_guns;
@@ -177,16 +163,6 @@ public:
     const int sonar_strength() override
     {
         return _sonar_strength;
-    }
-    
-    const int supplies_remaining() override
-    {
-        return _supplies;
-    }
-    
-    void supplies_update(const int value) override
-    {
-        _supplies = value;
     }
     
     const naval_station_type type() override
@@ -233,16 +209,6 @@ std::shared_ptr<weapon_system> naval_station::find_weapon_system(const weapon_sy
 }
 
 const int naval_station::helicopters()
-{
-    runtime_assert_not_reached();
-}
-
-const int naval_station::infantry_remaining()
-{
-    runtime_assert_not_reached();
-}
-
-void naval_station::infantry_update(const int value)
 {
     runtime_assert_not_reached();
 }
@@ -299,16 +265,6 @@ void naval_station::set_pipeline(std::shared_ptr<pipeline> pipeline)
 }
 
 const int naval_station::sonar_strength()
-{
-    runtime_assert_not_reached();
-}
-
-const int naval_station::supplies_remaining()
-{
-    runtime_assert_not_reached();
-}
-
-void naval_station::supplies_update(const int value)
 {
     runtime_assert_not_reached();
 }
