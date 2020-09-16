@@ -60,6 +60,7 @@ private:
 
 void mutable_unit::apply_damage(const int damage)
 {
+    runtime_assert_not_reached();
 }
 
 const int mutable_unit::damage()
