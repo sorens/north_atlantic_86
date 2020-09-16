@@ -26,4 +26,8 @@ public:
     
     // create a map
     static std::shared_ptr<map> Make(const std::string &map_data, std::shared_ptr<naval_station_data> naval_station_data);
+    
+    // determine if the coordinates are allowed coordinates for task_force
+    // allowed coordinates include any ocean source and any port
+    virtual bool validate_task_force_coordinates(const int x, const int y);
 };

@@ -30,7 +30,10 @@ public:
     
     std::shared_ptr<grid> at(const int x, const int y) override
     {
-        int index = (y * _dimension) + x;
+        if (x < 1 || x > _dimension || y < 1 || y > _dimension)
+            throw map_out_of_bounds_exception::factory(x, y);
+
+        int index = static_cast<int>((_map_grid.size() - (y * _dimension)) + x-1);
         if (index < 0 || index >= _map_grid.size())
             throw map_out_of_bounds_exception::factory(x, y);
             
@@ -74,6 +77,22 @@ public:
         _dimension = std::pow(_map_grid.size(), 0.5);
     }
     
+    bool validate_task_force_coordinates(const int x, const int y) override
+    {
+        // is the grid ocean or port?
+        try {
+            auto grid = at(x, y);
+            if (grid->type() == grid_type::Ocean || grid->type() == grid_type::Port) {
+                return true;
+            }
+        } catch(map_out_of_bounds_exception &e) {
+            // handled a map_out_of_bounds_exception, coordinates are
+            // not on the map. fall through and return false
+        }
+        
+        return false;
+    }
+    
 private:
     std::vector<std::shared_ptr<grid>> _map_grid;
     int _dimension = -1;
@@ -101,4 +120,9 @@ std::shared_ptr<map> map::Make(const std::string &map_data, std::shared_ptr<nava
     auto map = std::make_shared<_map>();
     map->initialize(map_data, naval_station_data);
     return map;
+}
+
+bool map::validate_task_force_coordinates(const int x, const int y)
+{
+    runtime_assert_not_reached();
 }

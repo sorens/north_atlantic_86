@@ -50,7 +50,7 @@ public:
         if (n * n != map_size)
             throw map_not_square_setup_exception();
         
-        int x = 0, y = 0;
+        int x = 1, y = n;
         int name_index = 0;
         
         for (auto &element : map) {
@@ -71,9 +71,9 @@ public:
             _data.push_back(grid);
             
             x++;
-            if (x >= n) {
-                x = 0;
-                y++;
+            if (x > n) {
+                x = 1;
+                y--;
             }
         }
     }

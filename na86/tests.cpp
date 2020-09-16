@@ -158,6 +158,51 @@ public:
     void map_unit_test() override
     {
         _initialize_every_time();
+        
+        // 1, 40 is the top left (Greenland)
+        test_result("map_unit_test", "map square should be Greenland", _game->game_map()->at(1, 40)->type() == grid_type::Landmass);
+        test_result("map_unit_test", "map square should be x == 1", _game->game_map()->at(1, 40)->x() == 1);
+        test_result("map_unit_test", "map square should be y == 40", _game->game_map()->at(1, 40)->y() == 40);
+        // 1, 1  is the bottom left (Ocean, below America)
+        test_result("map_unit_test", "map square should be Ocean, below America", _game->game_map()->at(1, 1)->type() == grid_type::Ocean);
+        test_result("map_unit_test", "map square should be x == 1", _game->game_map()->at(1, 1)->x() == 1);
+        test_result("map_unit_test", "map square should be y == 1", _game->game_map()->at(1, 1)->y() == 1);
+        // 40, 1 is the bottom right (Europe)
+        test_result("map_unit_test", "map square should be Europe", _game->game_map()->at(40, 1)->type() == grid_type::Landmass);
+        test_result("map_unit_test", "map square should be x == 40", _game->game_map()->at(40, 1)->x() == 40);
+        test_result("map_unit_test", "map square should be y == 1", _game->game_map()->at(40, 1)->y() == 1);
+        // 40, 40 is the top right (Ocean, above Murmanks)
+        test_result("map_unit_test", "map square should be Ocean, above Murmanks", _game->game_map()->at(40, 40)->type() == grid_type::Ocean);
+        test_result("map_unit_test", "map square should be x == 40", _game->game_map()->at(40, 40)->x() == 40);
+        test_result("map_unit_test", "map square should be y == 40", _game->game_map()->at(40, 40)->y() == 40);
+        // 1, 7 is Port, America
+        test_result("map_unit_test", "map square should be Port, America", _game->game_map()->at(1, 7)->type() == grid_type::Port);
+        test_result("map_unit_test", "map square should be x == 1", _game->game_map()->at(1, 7)->x() == 1);
+        test_result("map_unit_test", "map square should be y == 7", _game->game_map()->at(1, 7)->y() == 7);
+        // 13, 26 is Port, Iceland
+        test_result("map_unit_test", "map square should be Port, Iceland", _game->game_map()->at(13, 26)->type() == grid_type::Port);
+        test_result("map_unit_test", "map square should be x == 13", _game->game_map()->at(13, 26)->x() == 13);
+        test_result("map_unit_test", "map square should be y == 26", _game->game_map()->at(13, 26)->y() == 26);
+        // 31, 12 is Port, Hamburg
+        test_result("map_unit_test", "map square should be Airbase, Hamburg", _game->game_map()->at(31, 12)->type() == grid_type::Airbase);
+        test_result("map_unit_test", "map square should be x == 31", _game->game_map()->at(31, 12)->x() == 31);
+        test_result("map_unit_test", "map square should be y == 12", _game->game_map()->at(31, 12)->y() == 12);
+        // 40, 19 is Port, Riga
+        test_result("map_unit_test", "map square should be  Port, Riga", _game->game_map()->at(40, 19)->type() == grid_type::Port);
+        test_result("map_unit_test", "map square should be x == 40", _game->game_map()->at(40, 19)->x() == 40);
+        test_result("map_unit_test", "map square should be y == 19", _game->game_map()->at(40, 19)->y() == 19);
+        // 21, 22 is Port, Faroes
+        test_result("map_unit_test", "map square should be Port, Faroes", _game->game_map()->at(21, 22)->type() == grid_type::Port);
+        test_result("map_unit_test", "map square should be x == 21", _game->game_map()->at(21, 22)->x() == 21);
+        test_result("map_unit_test", "map square should be y == 22", _game->game_map()->at(21, 22)->y() == 22);
+        // 29, 21 is Port, Bergen
+        test_result("map_unit_test", "map square should be Airbase, Bergen", _game->game_map()->at(29, 21)->type() == grid_type::Airbase);
+        test_result("map_unit_test", "map square should be x == 29", _game->game_map()->at(29, 21)->x() == 29);
+        test_result("map_unit_test", "map square should be y == 21", _game->game_map()->at(29, 21)->y() == 21);
+        // 40, 32 is Port, Murmansk
+        test_result("map_unit_test", "map square should be Port, Murmansk", _game->game_map()->at(40, 32)->type() == grid_type::Port);
+        test_result("map_unit_test", "map square should be x == 40", _game->game_map()->at(40, 32)->x() == 40);
+        test_result("map_unit_test", "map square should be y == 32", _game->game_map()->at(40, 32)->y() == 32);
         _clean_up_every_time();
     }
 
