@@ -16,6 +16,7 @@
 #include "map.hpp"
 #include "map_display_ascii.hpp"
 #include "map_data.hpp"
+#include "map_exception.hpp"
 #include "naval_station_data.hpp"
 #include "naval_station_data_exception.hpp"
 #include "scenario_data.hpp"
@@ -60,16 +61,27 @@ void play_game()
         
         game->add_nato_player("Sally");
         game->add_soviet_player("Yuri");
-
+        
         // take a turn
         game->next_turn();
 
-        auto display = map_display_ascii::Generate(game);
-        std::cout << display.str();
+        // generate an ascii map to display
+        std::cout << map_display_ascii::Generate(game).str();
+        
+        // find and move task_force 21
+        auto tf21 = game->player_nato()->task_force_by_id("21");
+        game->move_task_force(tf21, tf21->x()+1, tf21->y()+1);
+        // regenerate ascii map to show tf21's movement
+        std::cout << std::endl;
+        std::cout << map_display_ascii::Generate(game).str();
     }
-    catch(ship_data_exception &e)
+    catch(map_out_of_bounds_exception &mapobe)
     {
-        logerror("ship_data_exception => '" << e.what() << "'");
+        logerror("map_out_of_bounds_exception => '" << mapobe.what() << "'");
+    }
+    catch(ship_data_exception &sde)
+    {
+        logerror("ship_data_exception => '" << sde.what() << "'");
     }
     catch(na_exception &ne)
     {
