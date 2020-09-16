@@ -7,6 +7,8 @@
 //
 
 #include "exception.hpp"
+#include <stdio.h>
+#include <string>
 
 #pragma once
 
@@ -20,5 +22,11 @@ public:
 class map_out_of_bounds_exception : public map_exception
 {
 public:
-    map_out_of_bounds_exception() : map_exception("coordinates do not exist on map") {}
+    static map_out_of_bounds_exception factory(const int x, const int y) {
+        std::stringstream ss;
+        ss << "invalid coordinates: " << x << ", " << y;
+        return map_out_of_bounds_exception(ss.str());
+    }
+private:
+    map_out_of_bounds_exception(const std::string &info) : map_exception(info) {}
 };

@@ -32,7 +32,7 @@ public:
     {
         int index = (y * _dimension) + x;
         if (index < 0 || index >= _map_grid.size())
-            throw map_out_of_bounds_exception();
+            throw map_out_of_bounds_exception::factory(x, y);
             
         return _map_grid[index];
     }
