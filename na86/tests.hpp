@@ -19,6 +19,7 @@ public:
     virtual void test_all();
 
     virtual void aircraft_unit_test();
+    virtual void game_unit_test();
     virtual void grid_unit_test();
     virtual void map_unit_test();
     virtual void mutable_naval_station_test();
