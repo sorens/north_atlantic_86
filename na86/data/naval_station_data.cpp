@@ -82,17 +82,17 @@ public:
             
             std::string asw_string = element[12].string_value();
             if (!asw_string.empty()) {
-                // TODO match up ASW wapon system
+                // TODO match up ASW weapon system
             }
             
             std::string sam_string = element[13].string_value();
             if (!sam_string.empty()) {
-                // TODO match up SAM wapon system
+                // TODO match up SAM weapon system
             }
             
             std::string ast_string = element[14].string_value();
             if (!ast_string.empty()) {
-                // TODO match up AST wapon system
+                // TODO match up AST weapon system
             }
             
             int helicopters = element[15].int_value();
