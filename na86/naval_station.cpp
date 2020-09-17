@@ -145,7 +145,7 @@ public:
         return _main_guns;
     }
     
-    const int missible_defense() override
+    const int missile_defense() override
     {
         return _missile_defense;
     }
@@ -254,7 +254,7 @@ const std::string naval_station::name()
     runtime_assert_not_reached();
 }
 
-const int naval_station::missible_defense()
+const int naval_station::missile_defense()
 {
     runtime_assert_not_reached();
 }

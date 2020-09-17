@@ -77,7 +77,7 @@ public:
                                                );
 
     // missile defense
-    virtual const int missible_defense();
+    virtual const int missile_defense();
     
     // name of naval_station
     virtual const std::string name();

@@ -205,7 +205,7 @@ public:
         test_result("game_unit_test", "Iceland-NATO is NATO", _game->find_naval_station("Iceland-NATO")->affiliation() == affiliation_type::NATO);
         test_result("game_unit_test", "Iceland-NATO is an AIRBASE", _game->find_naval_station("Iceland-NATO")->type() == naval_station_type::Airbase);
         test_result("game_unit_test", "Iceland-NATO has 30 light guns", _game->find_naval_station("Iceland-NATO")->anti_aircraft_gun() == 30);
-        test_result("game_unit_test", "Iceland-NATO has 0 missile defense", _game->find_naval_station("Iceland-NATO")->missible_defense() == 0);
+        test_result("game_unit_test", "Iceland-NATO has 0 missile defense", _game->find_naval_station("Iceland-NATO")->missile_defense() == 0);
         test_result("game_unit_test", "Iceland-NATO has 80 aircraft capacity", _game->find_naval_station("Iceland-NATO")->airbase_capacity() == 80);
         test_result("game_unit_test", "Iceland-NATO has 99 defense factor", _game->find_naval_station("Iceland-NATO")->defense_factor() == 99);
         test_result("game_unit_test", "Iceland-NATO has 12 helicopters", _game->find_naval_station("Iceland-NATO")->helicopters() == 12);
