@@ -365,8 +365,29 @@ public:
     
     void naval_station_unit_test() override
     {
-        _initialize_every_time();
-        _clean_up_every_time();
+        auto n =  naval_station::Make("test",
+                                      affiliation_type::NATO,
+                                      naval_station_type::Port,
+                                      100,      // airbase capacity
+                                      100,      // anti-air power
+                                      100,      // defense factor
+                                      100,      // electronic warfare
+                                      100,      // number of helicopters
+                                      100,      // main guns
+                                      100,      // missile defense
+                                      100,      // sonar
+                                      nullptr,  // ssm system
+                                      0,        // ssm salvo rate
+                                      0,        // ssm magazine capacity
+                                      nullptr,  // asw
+                                      nullptr,  // sam
+                                      nullptr,  // ast
+                                      100,      // number of recon aircraft
+                                      100,      // number of ew aircraft
+                                      100,      // number of asw aircraft
+                                      100,      // number of awacs aircraft
+                                      100,      // number of supplies
+                                      100);     // number of infantry
     }
 
     void player_unit_test() override
