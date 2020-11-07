@@ -102,8 +102,8 @@ void print_help()
     std::cout << "North Atlantic '86 (© Stephen Orens, 2019)" << std::endl;
     std::cout << "A recreation of the famous Gary Grigsby game!" << std::endl;
     std::cout << "usage: na86 -u|-p" << std::endl;
-    std::cout << "        -u, --unit_tests        run the unit tests" << std::endl;
-    std::cout << "        -p, --play_game         play the game" << std::endl;
+    std::cout << "        -u, --unit-tests        run the unit tests" << std::endl;
+    std::cout << "        -p, --play         play the game" << std::endl;
 }
 
 void run_unit_tests()
